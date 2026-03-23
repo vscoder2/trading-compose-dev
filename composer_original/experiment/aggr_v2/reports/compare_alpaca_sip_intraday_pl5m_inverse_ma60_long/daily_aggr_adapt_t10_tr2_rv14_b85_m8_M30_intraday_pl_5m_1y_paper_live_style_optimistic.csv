@@ -1,0 +1,254 @@
+Date,Start Equity,End Equity,PnL,Return %,Drawdown %,Holdings,Notes
+2025-03-19,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-20,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-21,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-24,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-25,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-26,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-27,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-28,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-03-31,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-01,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-02,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-03,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-04,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-07,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-08,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-09,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-10,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-11,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-14,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-15,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-16,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-17,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-21,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-22,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-23,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-24,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-25,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-28,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-29,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-04-30,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-01,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-02,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-05,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-06,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-07,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-08,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-09,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-12,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-13,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-14,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-15,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-16,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-19,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-20,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-21,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-22,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-23,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-27,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-28,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-29,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-05-30,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-02,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-03,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-04,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-05,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-06,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-09,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-10,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-11,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-12,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-13,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-16,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2025-06-17,10000.0,9999.0,-1.0,-0.01,0.01,"{""SOXL"": 156.12802498048399, ""SPXL"": 21.37300162434812, ""TQQQ"": 91.0722446931767}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-06-18,10019.84,10019.17,-0.67,-0.0067,0.0,"{""SOXL"": 155.0578182014355, ""TMF"": 91.7315408969767, ""TQQQ"": 91.38683768191113}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-06-20,9892.19,9892.18,-0.0,-0.0,1.2674,"{""SOXL"": 155.97901504788916, ""TMF"": 91.06314217377457, ""TQQQ"": 91.51794443665916}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-06-23,10089.73,10089.73,-0.01,-0.0001,0.0,"{""SOXL"": 156.35723719054096, ""TMF"": 91.84153039892523, ""TQQQ"": 90.53147165460393}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-06-24,10692.47,10627.74,-64.73,-0.6054,0.0,"{""SOXL"": 443.93232353408376}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-25,10907.42,10907.42,0.0,0.0,0.0,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-26,11182.66,11182.66,0.0,0.0,0.0,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-27,11142.7,11142.7,0.0,0.0,0.3573,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-30,11142.7,11142.7,0.0,0.0,0.3573,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-01,10965.13,10965.13,0.0,0.0,1.9452,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-02,11560.0,11560.0,0.0,0.0,0.0,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-03,11728.69,11728.69,0.0,0.0,0.0,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-07,11080.55,11080.55,0.0,0.0,5.5261,"{""SOXL"": 443.93232353408376}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-08,11702.06,11752.8,50.74,0.4336,0.0,"{""SOXL"": 445.8573429158487}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-09,11877.64,11877.64,0.0,0.0,0.0,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-10,12198.66,12198.66,0.0,0.0,0.0,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-11,12162.99,12162.99,0.0,0.0,0.2924,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-14,11810.76,11810.76,0.0,0.0,3.1798,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-15,12162.99,12162.99,0.0,0.0,0.2924,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-16,12047.07,12047.07,0.0,0.0,1.2427,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-17,12176.36,12176.36,0.0,0.0,0.1827,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-18,12180.82,12180.82,0.0,0.0,0.1462,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-21,12256.62,12256.62,0.0,0.0,0.0,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-22,11730.51,11730.51,0.0,0.0,4.2925,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-23,11489.74,11489.74,0.0,0.0,6.2568,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-24,11418.41,11418.41,0.0,0.0,6.8389,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-25,11409.49,11409.49,0.0,0.0,6.9116,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-28,11980.19,11980.19,0.0,0.0,2.2554,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-29,12047.07,12047.07,0.0,0.0,1.7097,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-30,12305.66,12305.66,0.0,0.0,0.0,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-31,11133.06,11133.06,0.0,0.0,9.529,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-01,10731.79,10731.79,0.0,0.0,12.7899,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-04,11141.97,11141.97,0.0,0.0,9.4565,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-05,10927.96,10927.96,0.0,0.0,11.1957,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-06,10691.66,10691.66,0.0,0.0,13.1159,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-07,11141.97,11141.97,0.0,0.0,9.4565,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-08,11458.53,11458.53,0.0,0.0,6.8841,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-11,11413.95,11413.95,0.0,0.0,7.2464,"{""SOXL"": 445.8573429158487}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-12,12479.55,12262.46,-217.09,-1.7396,0.3511,"{""SOXL"": 438.10141358870845}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-13,12818.85,12818.85,0.0,0.0,0.0,"{""SOXL"": 438.10141358870845}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-14,12884.56,12884.56,0.0,0.0,0.0,"{""SOXL"": 438.10141358870845}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-15,11986.45,11986.45,0.0,0.0,6.9704,"{""SOXL"": 438.10141358870845}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-18,12056.55,12056.55,0.0,0.0,6.4264,"{""SOXL"": 438.10141358870845}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-19,11491.4,11491.4,0.0,0.0,10.8126,"{""SOXL"": 438.10141358870845}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-20,11298.64,11298.64,0.0,0.0,12.3087,"{""SOXL"": 438.10141358870845}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-21,11101.49,11101.49,0.0,0.0,13.8388,"{""SOXL"": 438.10141358870845}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-22,12021.5,12152.17,130.66,1.0869,5.6843,"{""SOXL"": 442.8632405900291}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-25,12085.74,12085.74,0.0,0.0,6.1999,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-26,12369.17,12369.17,0.0,0.0,4.0001,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-27,12475.46,12475.46,0.0,0.0,3.1752,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-28,12630.46,12630.46,0.0,0.0,1.9722,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-08-29,11527.73,11527.73,0.0,0.0,10.5307,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-09-02,11177.87,11177.87,0.0,0.0,13.246,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-09-03,11027.29,11027.29,0.0,0.0,14.4147,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-09-04,11355.01,11355.01,0.0,0.0,11.8712,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-09-05,11709.3,11709.3,0.0,0.0,9.1214,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-09-08,11988.31,11988.31,0.0,0.0,6.956,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-09-09,12032.59,12032.59,0.0,0.0,6.6123,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-09-10,12661.46,12661.46,0.0,0.0,1.7315,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-09-11,12913.89,12913.89,0.0,0.0,0.0,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-09-12,12971.46,12971.46,0.0,0.0,0.0,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-15,13281.47,13281.47,0.0,0.0,0.0,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-16,13494.04,13494.04,0.0,0.0,0.0,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-17,13489.61,13489.61,0.0,0.0,0.0328,"{""SOXL"": 442.8632405900291}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-18,14893.49,14809.66,-83.83,-0.5629,0.0,"{""SOXL"": 440.37055381335506}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-19,14536.63,14536.63,0.0,0.0,1.8436,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-22,15157.55,15157.55,0.0,0.0,0.0,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-23,15104.71,15104.71,0.0,0.0,0.3486,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-24,15060.67,15060.67,0.0,0.0,0.6392,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-25,14906.54,14906.54,0.0,0.0,1.656,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-26,14981.41,14981.41,0.0,0.0,1.1621,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-29,14981.41,14981.41,0.0,0.0,1.1621,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-09-30,15342.51,15342.51,0.0,0.0,0.0,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-01,16232.06,16232.06,0.0,0.0,0.0,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-02,17209.68,17209.68,0.0,0.0,0.0,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-03,16835.37,16835.37,0.0,0.0,2.175,"{""SOXL"": 440.3705538133551}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-06,18367.86,18713.15,345.29,1.8799,0.0,"{""SOXL"": 448.6490169289821}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-07,17421.04,17421.04,0.0,0.0,6.9048,"{""SOXL"": 448.6490169289821}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-08,19193.2,18875.91,-317.29,-1.6531,0.0,"{""SOXL"": 441.23219847932836}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-09,18637.65,18637.65,0.0,0.0,1.2623,"{""SOXL"": 441.23219847932836}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-10,15094.55,15094.55,0.0,0.0,20.0327,"{""SOXL"": 441.23219847932836}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-10-13,17269.83,17063.71,-206.12,-1.1935,9.6006,"{""SOXL"": 435.96609843057223}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-14,15969.44,15969.44,0.0,0.0,15.3978,"{""SOXL"": 435.96609843057223}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-15,17429.92,17159.07,-270.85,-1.554,9.0954,"{""SOXL"": 429.1913670107706}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-16,17412.29,17412.29,0.0,0.0,7.7539,"{""SOXL"": 429.1913670107706}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-17,17292.12,17292.12,0.0,0.0,8.3906,"{""SOXL"": 429.1913670107706}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-20,18129.04,18129.04,0.0,0.0,3.9567,"{""SOXL"": 429.1913670107706}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-21,17815.73,17815.73,0.0,0.0,5.6166,"{""SOXL"": 429.1913670107706}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-22,16476.66,16476.66,0.0,0.0,12.7107,"{""SOXL"": 429.1913670107706}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-23,17669.81,17439.11,-230.7,-1.3056,7.6119,"{""SOXL"": 423.5877216424802}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-24,18273.57,18273.57,0.0,0.0,3.191,"{""SOXL"": 423.5877216424802}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-27,19840.85,19572.95,-267.89,-1.3502,0.0,"{""SOXL"": 417.8683610440155}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-28,19623.1,19623.1,0.0,0.0,0.0,"{""SOXL"": 417.8683610440155}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-29,20634.34,20782.62,148.28,0.7186,0.0,"{""SOXL"": 420.87122532497034}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-30,19945.09,19945.09,0.0,0.0,4.03,"{""SOXL"": 420.87122532497034}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-10-31,20109.23,20109.23,0.0,0.0,3.2402,"{""SOXL"": 420.87122532497034}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-11-03,20445.92,20445.92,0.0,0.0,1.6201,"{""SOXL"": 420.87122532497034}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-11-04,18013.29,18013.29,0.0,0.0,13.3252,"{""SOXL"": 420.87122532497034}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-05,19709.4,19971.14,261.74,1.328,3.9046,"{""SOXL"": 426.46045153932573}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-11-06,18342.06,18342.06,0.0,0.0,11.7433,"{""SOXL"": 426.46045153932573}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-07,17800.46,17800.46,0.0,0.0,14.3493,"{""SOXL"": 426.46045153932573}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-10,19173.66,19020.43,-153.24,-0.7992,8.4792,"{""SOXL"": 423.0521728959846}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-11,17687.81,17687.81,0.0,0.0,14.8913,"{""SOXL"": 423.0521728959846}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-12,18491.61,18491.61,0.0,0.0,11.0237,"{""SOXL"": 423.0521728959846}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-13,16592.11,16592.11,0.0,0.0,20.1636,"{""SOXL"": 423.0521728959846}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-14,16439.81,16439.81,0.0,0.0,20.8964,"{""SOXL"": 423.0521728959846}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-17,15585.24,15585.24,0.0,0.0,25.0083,"{""SOXL"": 423.0521728959846}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-18,14531.84,14531.84,0.0,0.0,30.077,"{""SOXL"": 423.0521728959846}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-11-19,15212.96,15461.16,248.2,1.6315,25.6054,"{""SOXL"": 429.95429887286616}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-11-20,13246.89,16509.61,3262.72,24.6301,20.5605,"{""SOXL"": 535.8522733345535}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-11-21,17002.59,17002.59,0.0,0.0,18.1884,"{""SOXL"": 535.8522733345535}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-11-24,19215.66,19063.85,-151.82,-0.7901,8.2702,"{""SOXL"": 531.6187109083207}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-11-25,19228.65,19228.65,0.0,0.0,7.4773,"{""SOXL"": 531.6187109083207}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-11-26,20834.14,20910.81,76.68,0.368,0.0,"{""SOXL"": 533.575246373745}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-11-28,22015.31,22015.31,0.0,0.0,0.0,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-01,22041.99,22041.99,0.0,0.0,0.0,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-02,23370.6,23370.6,0.0,0.0,0.0,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-03,24853.93,24853.93,0.0,0.0,0.0,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-04,24096.26,24096.26,0.0,0.0,3.0485,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-05,24811.25,24811.25,0.0,0.0,0.1717,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-08,25606.28,25606.28,0.0,0.0,0.0,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-09,25499.56,25499.56,0.0,0.0,0.4168,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-10,26492.01,26492.01,0.0,0.0,0.0,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-11,26033.14,26033.14,0.0,0.0,1.7321,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-12,22255.42,22255.42,0.0,0.0,15.9919,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-15,21972.63,21972.63,0.0,0.0,17.0594,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-16,21604.46,21604.46,0.0,0.0,18.4491,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-12-17,19214.04,19214.04,0.0,0.0,27.4723,"{""SOXL"": 533.5752463737451}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-12-18,20585.33,21129.56,544.22,2.6437,20.2418,"{""SOXL"": 547.6815930854101}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2025-12-19,22849.28,22731.25,-118.03,-0.5165,14.1958,"{""SOXL"": 544.8525822823343}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-22,23570.32,23570.32,0.0,0.0,11.0286,"{""SOXL"": 544.8525822823343}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-23,23810.06,23810.06,0.0,0.0,10.1236,"{""SOXL"": 544.8525822823343}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-24,24087.93,24087.93,0.0,0.0,9.0747,"{""SOXL"": 544.8525822823343}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-26,24087.93,24087.93,0.0,0.0,9.0747,"{""SOXL"": 544.8525822823343}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-29,23875.44,23875.44,0.0,0.0,9.8768,"{""SOXL"": 544.8525822823343}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-30,23793.71,23793.71,0.0,0.0,10.1853,"{""SOXL"": 544.8525822823343}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2025-12-31,22900.15,22900.15,0.0,0.0,13.5583,"{""SOXL"": 544.8525822823343}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2026-01-02,25738.84,25672.79,-66.05,-0.2566,3.0923,"{""SOXL"": 543.454411463415}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-05,26748.83,27273.56,524.74,1.9617,0.0,"{""SOXL"": 554.1155017782941}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-06,29927.78,29480.81,-446.97,-1.4935,0.0,"{""SOXL"": 545.8397622818533}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-07,28541.96,28541.96,0.0,0.0,3.1846,"{""SOXL"": 545.8397622818533}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-08,27100.94,27100.94,0.0,0.0,8.0726,"{""SOXL"": 545.8397622818533}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-09,29448.06,29286.52,-161.53,-0.5485,0.659,"{""SOXL"": 542.8456679213581}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-12,29666.52,29666.52,0.0,0.0,0.0,"{""SOXL"": 542.8456679213582}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-13,30437.36,30437.36,0.0,0.0,0.0,"{""SOXL"": 542.8456679213582}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-14,30062.79,30062.79,0.0,0.0,1.2306,"{""SOXL"": 542.8456679213582}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-15,31528.48,32798.53,1270.05,4.0283,0.0,"{""SOXL"": 564.7129164746771}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-16,34306.31,34306.31,0.0,0.0,0.0,"{""SOXL"": 564.7129164746771}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-20,32719.47,32719.47,0.0,0.0,4.6255,"{""SOXL"": 564.7129164746771}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-21,35847.98,36025.88,177.91,0.4963,0.0,"{""SOXL"": 567.515484162827}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-22,36162.09,36162.09,0.0,0.0,0.0,"{""SOXL"": 567.515484162827}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-23,34958.95,34958.95,0.0,0.0,3.3271,"{""SOXL"": 567.515484162827}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-26,34448.19,34448.19,0.0,0.0,4.7395,"{""SOXL"": 567.515484162827}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-27,36865.81,36694.0,-171.81,-0.466,0.0,"{""SOXL"": 564.8706947334895}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-28,39591.79,39257.1,-334.69,-0.8453,0.0,"{""SOXL"": 560.0956000079332}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-29,39469.94,39469.94,0.0,0.0,0.0,"{""SOXL"": 560.0956000079332}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-01-30,34608.31,34608.31,0.0,0.0,12.3173,"{""SOXL"": 560.0956000079332}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-02,36518.23,36735.6,217.36,0.5952,6.9277,"{""SOXL"": 563.4293806952571}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-03,34481.88,34481.88,0.0,0.0,12.6376,"{""SOXL"": 563.4293806952571}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-04,29968.81,29968.81,0.0,0.0,24.0718,"{""SOXL"": 563.4293806952571}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2026-02-05,30002.61,30002.61,0.0,0.0,23.9862,"{""SOXL"": 563.4293806952571}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2026-02-06,34791.76,34365.14,-426.63,-1.2262,12.9334,"{""SOXL"": 556.5204154625384}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-09,35634.0,35634.0,0.0,0.0,9.7186,"{""SOXL"": 556.5204154625384}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-10,35250.0,35250.0,0.0,0.0,10.6915,"{""SOXL"": 556.5204154625384}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-11,37871.21,37676.19,-195.03,-0.515,4.5446,"{""SOXL"": 553.6544680873864}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-12,34935.6,34935.6,0.0,0.0,11.4881,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-13,35760.54,35760.54,0.0,0.0,9.398,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-17,35627.67,35627.67,0.0,0.0,9.7347,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-18,36701.75,36701.75,0.0,0.0,7.0134,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-19,36114.88,36114.88,0.0,0.0,8.5003,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_no_inverse_exposure
+2026-02-20,37155.75,37155.75,0.0,0.0,5.8632,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-23,36463.68,36463.68,0.0,0.0,7.6166,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-24,37941.94,37941.94,0.0,0.0,3.8713,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-25,39785.61,39785.61,0.0,0.0,0.0,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-26,36175.78,36175.78,0.0,0.0,9.0732,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-02-27,34752.89,34752.89,0.0,0.0,12.6496,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-03-02,34747.35,34747.35,0.0,0.0,12.6635,"{""SOXL"": 553.6544680873864}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-03-03,29576.22,29570.31,-5.91,-0.02,25.6759,"{""SOXS"": 717.7258988436024}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-04,27704.22,27698.68,-5.54,-0.02,30.3802,"{""SOXL"": 489.20309794159255}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-03-05,26808.33,26802.97,-5.36,-0.02,32.6315,"{""SOXS"": 668.5699335834076}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-06,30199.3,30067.47,-131.84,-0.4366,24.4263,"{""SOXL"": 627.8443854209398}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-09,33476.66,33083.54,-393.12,-1.1743,16.8455,"{""SOXL"": 620.4715727005072}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-10,33871.54,35126.8,1255.26,3.7059,11.7098,"{""SOXL"": 643.4659178920076}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-11,36092.0,36092.0,0.0,0.0,9.2838,"{""SOXL"": 643.4659178920076}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2026-03-12,32353.47,32353.47,0.0,0.0,18.6805,"{""SOXL"": 643.4659178920076}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-13,32636.59,32636.59,0.0,0.0,17.9689,"{""SOXL"": 643.4659178920076}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-16,34547.69,35104.6,556.91,1.612,11.7656,"{""SOXL"": 653.83864854707}",optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-17,35928.43,35928.43,0.0,0.0,9.6949,"{""SOXL"": 653.83864854707}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-18,35320.36,35320.36,0.0,0.0,11.2233,"{""SOXL"": 653.83864854707}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-19,35863.05,35863.05,0.0,0.0,9.8592,"{""SOXL"": 653.83864854707}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull
+2026-03-20,33437.31,33437.31,0.0,0.0,15.9563,"{""SOXL"": 653.83864854707}",vol_target_off;persistence_off;inverse_blocker_trend_not_bull

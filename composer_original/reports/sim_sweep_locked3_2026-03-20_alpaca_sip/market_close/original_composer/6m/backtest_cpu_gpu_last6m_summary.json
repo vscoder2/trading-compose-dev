@@ -1,0 +1,45 @@
+{
+  "cpu_report": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20_alpaca_sip/market_close/original_composer/6m/backtest_cpu_last6m.json",
+  "data_files": {
+    "last6m_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20_alpaca_sip/_shared_parquet/6m_original_composer_market_close/soxl_strategy_last6m_2025-09-20_2026-03-20.parquet",
+    "lookback_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20_alpaca_sip/_shared_parquet/6m_original_composer_market_close/soxl_strategy_lookback_2024-07-27_2026-03-20.parquet",
+    "raw_daily_dir": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20_alpaca_sip/_shared_parquet/6m_original_composer_market_close/raw_daily"
+  },
+  "gpu_report": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20_alpaca_sip/market_close/original_composer/6m/backtest_gpu_last6m.json",
+  "parity_window": {
+    "cpu_final_equity": 20502.3113892186,
+    "final_equity_abs_diff": 0.0,
+    "final_equity_diff_bps_vs_cpu": 0.0,
+    "gpu_final_equity": 20502.3113892186
+  },
+  "profit_lock": {
+    "adaptive_max_threshold_pct": 30.0,
+    "adaptive_min_threshold_pct": 8.0,
+    "adaptive_rv_baseline_pct": 85.0,
+    "adaptive_rv_window": 14,
+    "adaptive_symbol": "TQQQ",
+    "adaptive_threshold": false,
+    "enabled": false,
+    "exec_model": "market_close",
+    "exec_model_effective": "market_close",
+    "mode": "fixed",
+    "model": "daily_high_threshold_emulation",
+    "partial_sell_pct": 50.0,
+    "regime_gated": false,
+    "regime_rv_threshold_pct": 85.0,
+    "regime_rv_window": 14,
+    "regime_symbol": "SOXL",
+    "threshold_pct": 15.0,
+    "trail_pct": 5.0,
+    "trend_filter": false,
+    "trend_ma_window": 20,
+    "trend_symbol": "SOXL"
+  },
+  "strategy_mode": "original",
+  "strategy_preset": "original_composer",
+  "strategy_source": "/home/chewy/projects/trading-compose-dev/composer_original/files/composer_original_file.txt",
+  "window": {
+    "end_date": "2026-03-20",
+    "start_date": "2025-09-20"
+  }
+}

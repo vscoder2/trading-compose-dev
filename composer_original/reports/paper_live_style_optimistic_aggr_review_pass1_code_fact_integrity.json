@@ -1,0 +1,11 @@
+{
+  "review_pass": 1,
+  "name": "code_fact_integrity",
+  "status": "pass",
+  "checks": [
+    "aggr profile lock values parsed and matched expected constants",
+    "paper_live_style_optimistic present in replay CLI choices",
+    "effective exec model mapping market_close->market_close and others->synthetic exists",
+    "runtime aggr profile constants match backtest profile constants"
+  ]
+}

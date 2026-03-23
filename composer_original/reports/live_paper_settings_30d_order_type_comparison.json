@@ -1,0 +1,58 @@
+[
+  {
+    "order_type": "close_position",
+    "period": "2026-02-19 to 2026-03-21",
+    "cpu_final_equity": 17338.606090232148,
+    "cpu_return_pct": 73.38606090232147,
+    "cpu_pnl": 7338.606090232148,
+    "cpu_maxdd_pct": 5.9517023932351485,
+    "gpu_final_equity": 17338.606090232148,
+    "gpu_return_pct": 73.38606090232147,
+    "gpu_pnl": 7338.606090232148,
+    "gpu_maxdd_pct": 5.9517023932351485,
+    "cpu_gpu_diff_bps": 0.0,
+    "profit_lock_exec_model_effective": "synthetic"
+  },
+  {
+    "order_type": "market_order",
+    "period": "2026-02-19 to 2026-03-21",
+    "cpu_final_equity": 17338.606090232148,
+    "cpu_return_pct": 73.38606090232147,
+    "cpu_pnl": 7338.606090232148,
+    "cpu_maxdd_pct": 5.9517023932351485,
+    "gpu_final_equity": 17338.606090232148,
+    "gpu_return_pct": 73.38606090232147,
+    "gpu_pnl": 7338.606090232148,
+    "gpu_maxdd_pct": 5.9517023932351485,
+    "cpu_gpu_diff_bps": 0.0,
+    "profit_lock_exec_model_effective": "synthetic"
+  },
+  {
+    "order_type": "stop_order",
+    "period": "2026-02-19 to 2026-03-21",
+    "cpu_final_equity": 14406.150605563847,
+    "cpu_return_pct": 44.061506055638475,
+    "cpu_pnl": 4406.150605563847,
+    "cpu_maxdd_pct": 6.272673009156344,
+    "gpu_final_equity": 14406.150605563847,
+    "gpu_return_pct": 44.061506055638475,
+    "gpu_pnl": 4406.150605563847,
+    "gpu_maxdd_pct": 6.272673009156344,
+    "cpu_gpu_diff_bps": 0.0,
+    "profit_lock_exec_model_effective": "synthetic"
+  },
+  {
+    "order_type": "trailing_stop",
+    "period": "2026-02-19 to 2026-03-21",
+    "cpu_final_equity": 14596.335420874324,
+    "cpu_return_pct": 45.96335420874325,
+    "cpu_pnl": 4596.335420874324,
+    "cpu_maxdd_pct": 6.190942415596309,
+    "gpu_final_equity": 14596.335420874324,
+    "gpu_return_pct": 45.96335420874325,
+    "gpu_pnl": 4596.335420874324,
+    "gpu_maxdd_pct": 6.190942415596309,
+    "cpu_gpu_diff_bps": 0.0,
+    "profit_lock_exec_model_effective": "synthetic"
+  }
+]

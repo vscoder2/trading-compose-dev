@@ -1,0 +1,40 @@
+{
+  "window_start": "2026-03-09",
+  "window_end": "2026-03-20",
+  "window_trading_days": 10,
+  "trading_days": [
+    "2026-03-09",
+    "2026-03-10",
+    "2026-03-11",
+    "2026-03-12",
+    "2026-03-13",
+    "2026-03-16",
+    "2026-03-17",
+    "2026-03-18",
+    "2026-03-19",
+    "2026-03-20"
+  ],
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+  "exec_model_requested": "paper_live_style_optimistic",
+  "exec_model_effective": "synthetic",
+  "cpu": {
+    "start_equity": 10000.0,
+    "final_equity": 11744.5232895597,
+    "return_pct": 17.44523289559701,
+    "max_drawdown_pct": 6.933578381059166,
+    "cagr_pct": 20737.830263834763,
+    "avg_daily_return_pct": 1.9126492603679823,
+    "window_trade_count": 7
+  },
+  "gpu": {
+    "start_equity": 10000.0,
+    "final_equity": 11744.5232895597,
+    "return_pct": 17.44523289559701,
+    "max_drawdown_pct": 6.933578381059166,
+    "cagr_pct": 20737.830263834763,
+    "avg_daily_return_pct": 1.9126492603679823,
+    "window_trade_count": 7
+  },
+  "cpu_gpu_diff_bps": 0.0,
+  "reports_dir": "/home/chewy/projects/trading-compose-dev/composer_original/reports/last10tradingdays_aggr_optimistic_10k"
+}

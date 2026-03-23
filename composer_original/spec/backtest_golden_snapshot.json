@@ -1,0 +1,39 @@
+{
+  "allocation_samples": {
+    "first": {
+      "date": "2024-12-30",
+      "weights": {
+        "SOXS": 1.0
+      }
+    },
+    "last": {
+      "date": "2025-08-08",
+      "weights": {
+        "SOXS": 1.0
+      }
+    },
+    "middle": {
+      "date": "2025-04-21",
+      "weights": {
+        "SOXS": 1.0
+      }
+    }
+  },
+  "config": {
+    "initial_equity": 100000.0,
+    "sell_fee_bps": 0.0,
+    "slippage_bps": 1.0,
+    "warmup_days": 260
+  },
+  "fixture_csv": "composer_original/fixtures/deep_check_prices.csv",
+  "summary": {
+    "allocation_days": 160,
+    "avg_daily_return_pct": -0.053150356081771315,
+    "cagr_pct": -12.989563975229668,
+    "equity_points": 420,
+    "final_equity": 80023.01040817637,
+    "max_drawdown_pct": 19.976989591823628,
+    "total_return_pct": -19.976989591823624,
+    "trade_count": 1
+  }
+}

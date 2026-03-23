@@ -1,0 +1,264 @@
+Date,Start Equity,End Equity,PnL,Return %,Drawdown %,Holdings,Notes
+2024-08-07,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-08,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-09,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-12,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-13,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-14,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-15,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-16,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-19,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-20,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-21,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-22,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-23,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-26,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-27,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-28,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-29,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-08-30,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-02,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-03,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-04,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-05,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-06,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-09,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-10,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-11,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-12,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-13,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-16,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-17,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-18,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-19,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-20,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-23,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-24,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-25,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-26,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-27,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-09-30,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-01,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-02,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-03,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-04,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-07,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-08,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-09,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-10,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-11,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-14,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-15,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-16,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-17,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-18,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-21,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-22,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-23,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-24,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-25,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-28,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-29,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-30,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-10-31,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-01,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-04,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-05,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-06,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-07,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-08,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-11,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-12,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-13,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-14,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-15,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-18,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-19,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-20,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-21,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-22,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-25,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-26,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-27,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-28,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-11-29,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-02,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-03,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-04,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-05,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-06,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-09,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-10,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-11,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-12,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-13,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-16,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-17,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-18,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-19,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-20,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-23,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-24,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-25,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-26,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-27,10000.0,10000.0,0.0,0.0,0.0,{},warmup
+2024-12-30,10000.0,9999.0,-1.0,-0.01,0.01,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2024-12-31,10017.0,10017.0,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-01,10035.03,10035.03,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-02,10053.09,10053.09,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-03,10071.19,10071.19,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-06,10089.32,10089.32,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-07,10107.48,10107.48,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-08,10125.67,10125.67,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-09,10143.9,10143.9,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-10,10162.16,10162.16,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-13,10180.45,10180.45,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-14,10198.77,10198.77,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-15,10217.13,10217.13,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-16,10235.52,10235.52,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-17,10253.94,10253.94,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-20,10272.4,10272.4,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-21,10290.89,10290.89,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-22,10309.42,10309.42,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-23,10327.97,10327.97,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-24,10346.56,10346.56,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-27,10365.19,10365.19,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-28,10383.84,10383.84,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-29,10402.53,10402.53,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-30,10421.26,10421.26,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-01-31,10440.02,10440.02,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-03,10458.81,10458.81,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-04,10477.64,10477.64,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-05,10496.5,10496.5,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-06,10515.39,10515.39,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-07,10534.32,10534.32,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-10,10553.28,10553.28,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-11,10572.27,10572.27,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-12,10591.3,10591.3,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-13,10610.37,10610.37,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-14,10629.47,10629.47,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-17,10648.6,10648.6,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-18,10667.77,10667.77,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-19,10686.97,10686.97,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-20,10706.21,10706.21,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-21,10725.48,10725.48,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-24,10744.78,10744.78,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-25,10764.12,10764.12,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-26,10783.5,10783.5,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-27,10802.91,10802.91,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-02-28,10822.35,10822.35,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-03,10841.84,10841.84,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-04,10861.35,10861.35,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-05,10880.9,10880.9,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-06,10900.49,10900.49,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-07,10920.11,10920.11,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-10,10939.76,10939.76,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-11,10959.46,10959.46,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-12,10979.18,10979.18,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-13,10998.94,10998.94,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-14,11018.74,11018.74,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-17,11038.58,11038.58,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-18,11058.45,11058.45,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-19,11078.35,11078.35,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-20,11098.29,11098.29,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-21,11118.27,11118.27,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-24,11138.28,11138.28,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-25,11158.33,11158.33,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-26,11178.42,11178.42,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-27,11198.54,11198.54,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-28,11218.69,11218.69,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-03-31,11238.89,11238.89,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-01,11259.12,11259.12,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-02,11279.38,11279.38,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-03,11299.69,11299.69,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-04,11320.03,11320.03,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-07,11340.4,11340.4,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-08,11360.82,11360.82,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-09,11381.27,11381.27,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-10,11401.75,11401.75,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-11,11422.27,11422.27,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-14,11442.83,11442.83,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-15,11463.43,11463.43,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-16,11484.07,11484.07,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-17,11504.74,11504.74,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-18,11525.45,11525.45,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-21,11546.19,11546.19,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-22,11566.97,11566.97,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-23,11587.8,11587.8,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-24,11608.65,11608.65,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-25,11629.55,11629.55,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-28,11650.48,11650.48,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-29,11671.45,11671.45,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-04-30,11692.46,11692.46,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-01,11713.51,11713.51,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-02,11734.59,11734.59,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-05,11755.71,11755.71,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-06,11776.87,11776.87,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-07,11798.07,11798.07,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-08,11819.31,11819.31,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-09,11840.58,11840.58,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-12,11861.9,11861.9,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-13,11883.25,11883.25,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-14,11904.64,11904.64,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-15,11926.07,11926.07,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-16,11947.53,11947.53,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-19,11969.04,11969.04,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-20,11990.58,11990.58,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-21,12012.17,12012.17,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-22,12033.79,12033.79,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-23,12055.45,12055.45,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-26,12077.15,12077.15,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-27,12098.89,12098.89,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-28,12120.67,12120.67,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-29,12142.48,12142.48,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-05-30,12164.34,12164.34,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-02,12186.24,12186.24,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-03,12208.17,12208.17,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-04,12230.15,12230.15,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-05,12252.16,12252.16,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-06,12274.21,12274.21,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-09,12296.31,12296.31,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-10,12318.44,12318.44,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-11,12340.61,12340.61,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-12,12362.83,12362.83,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-13,12385.08,12385.08,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-16,12407.37,12407.37,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-17,12429.71,12429.71,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-18,12452.08,12452.08,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-19,12474.49,12474.49,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-20,12496.95,12496.95,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-23,12519.44,12519.44,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-24,12541.98,12541.98,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-25,12564.55,12564.55,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-26,12587.17,12587.17,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-27,12609.83,12609.83,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-06-30,12632.52,12632.52,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-01,12655.26,12655.26,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-02,12678.04,12678.04,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-03,12700.86,12700.86,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-04,12723.72,12723.72,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-07,12746.63,12746.63,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-08,12769.57,12769.57,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-09,12792.56,12792.56,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-10,12815.58,12815.58,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-11,12838.65,12838.65,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-14,12861.76,12861.76,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-15,12884.91,12884.91,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-16,12908.1,12908.1,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-17,12931.34,12931.34,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-18,12954.61,12954.61,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-21,12977.93,12977.93,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-22,13001.29,13001.29,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-23,13024.7,13024.7,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-24,13048.14,13048.14,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-25,13071.63,13071.63,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-28,13095.16,13095.16,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-29,13118.73,13118.73,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-30,13142.34,13142.34,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-07-31,13166.0,13166.0,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-01,13189.7,13189.7,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-04,13213.44,13213.44,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-05,13237.22,13237.22,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-06,13261.05,13261.05,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-07,13284.92,13284.92,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl
+2025-08-08,13308.83,13308.83,0.0,0.0,0.0,"{""SOXL"": 62.53288018388208}",vol_target_off;persistence_off;inverse_blocker_fallback_soxl

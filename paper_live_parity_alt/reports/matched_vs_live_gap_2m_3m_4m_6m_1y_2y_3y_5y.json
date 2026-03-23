@@ -1,0 +1,74 @@
+[
+  {
+    "window": "2m",
+    "live_market_final_equity": 18331.83362439398,
+    "matched_final_equity": 31304.10908814832,
+    "equity_uplift": 12972.27546375434,
+    "live_market_return_pct": 83.31833624393981,
+    "matched_return_pct": 213.04109088148323,
+    "return_uplift_pct_points": 129.7227546375434
+  },
+  {
+    "window": "3m",
+    "live_market_final_equity": 13319.509320570543,
+    "matched_final_equity": 24735.652039746652,
+    "equity_uplift": 11416.142719176109,
+    "live_market_return_pct": 33.19509320570544,
+    "matched_return_pct": 147.35652039746654,
+    "return_uplift_pct_points": 114.1614271917611
+  },
+  {
+    "window": "4m",
+    "live_market_final_equity": 17070.069663874227,
+    "matched_final_equity": 34743.03013645778,
+    "equity_uplift": 17672.960472583556,
+    "live_market_return_pct": 70.70069663874226,
+    "matched_return_pct": 247.43030136457782,
+    "return_uplift_pct_points": 176.72960472583554
+  },
+  {
+    "window": "6m",
+    "live_market_final_equity": 15333.836396640858,
+    "matched_final_equity": 39793.88106636636,
+    "equity_uplift": 24460.044669725503,
+    "live_market_return_pct": 53.338363966408586,
+    "matched_return_pct": 297.9388106636636,
+    "return_uplift_pct_points": 244.60044669725502
+  },
+  {
+    "window": "1y",
+    "live_market_final_equity": 29084.448475975674,
+    "matched_final_equity": 75881.35249810589,
+    "equity_uplift": 46796.90402213021,
+    "live_market_return_pct": 190.84448475975674,
+    "matched_return_pct": 658.8135249810589,
+    "return_uplift_pct_points": 467.9690402213022
+  },
+  {
+    "window": "2y",
+    "live_market_final_equity": 17030.95837731234,
+    "matched_final_equity": 66590.11284767915,
+    "equity_uplift": 49559.154470366804,
+    "live_market_return_pct": 70.30958377312342,
+    "matched_return_pct": 565.9011284767914,
+    "return_uplift_pct_points": 495.591544703668
+  },
+  {
+    "window": "3y",
+    "live_market_final_equity": 8497.687731087968,
+    "matched_final_equity": 41359.99056282781,
+    "equity_uplift": 32862.30283173984,
+    "live_market_return_pct": -15.023122689120317,
+    "matched_return_pct": 313.5999056282781,
+    "return_uplift_pct_points": 328.62302831739845
+  },
+  {
+    "window": "5y",
+    "live_market_final_equity": 14233.963267702893,
+    "matched_final_equity": 109176.60752914664,
+    "equity_uplift": 94942.64426144375,
+    "live_market_return_pct": 42.33963267702894,
+    "matched_return_pct": 991.7660752914663,
+    "return_uplift_pct_points": 949.4264426144374
+  }
+]

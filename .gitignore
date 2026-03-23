@@ -1,0 +1,15 @@
+# Secrets / local env
+.env
+.env.*
+
+# Python environments and cache
+.venv/
+**/.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+
+# Tooling/runtime cache
+.pytest_cache/
+.mypy_cache/
+.streamlit/secrets.toml

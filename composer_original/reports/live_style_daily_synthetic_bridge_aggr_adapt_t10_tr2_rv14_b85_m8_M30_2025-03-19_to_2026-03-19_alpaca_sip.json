@@ -1,0 +1,68 @@
+{
+  "path_type": "live_style_daily_synthetic_bridge",
+  "note": "Standalone bridge path that preserves Alpaca daily-high synthetic semantics for live-style benchmarking. This is intentionally optimistic relative to minute-path executable replay.",
+  "strategy_source": "/home/chewy/projects/trading-compose-dev/composer_original/files/composer_original_file.txt",
+  "strategy_preset": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+  "strategy_mode": "original",
+  "window": {
+    "start_date": "2025-03-19",
+    "end_date": "2026-03-19"
+  },
+  "initial_principal": 10000.0,
+  "initial_equity": 10000.0,
+  "data_source": "alpaca",
+  "alpaca_data_feed": "sip",
+  "anchor_window_start_equity": true,
+  "warmup_days_requested": 260,
+  "warmup_days_effective": 289,
+  "profit_lock": {
+    "enabled": true,
+    "mode": "trailing",
+    "threshold_pct": 10.0,
+    "trail_pct": 2.0,
+    "partial_sell_pct": 50.0,
+    "adaptive_threshold": true,
+    "adaptive_symbol": "TQQQ",
+    "adaptive_rv_window": 14,
+    "adaptive_rv_baseline_pct": 85.0,
+    "adaptive_min_threshold_pct": 8.0,
+    "adaptive_max_threshold_pct": 30.0,
+    "exec_model_requested": "synthetic",
+    "exec_model_effective": "synthetic",
+    "model": "daily_high_threshold_emulation"
+  },
+  "cpu": {
+    "equity_points": 252,
+    "start_date": "2025-03-19",
+    "end_date": "2026-03-19",
+    "start_equity": 10000.0,
+    "final_equity": 82198.23200321803,
+    "total_return_pct": 721.9823200321804,
+    "max_drawdown_pct": 36.865289980001556,
+    "cagr_pct": 723.1691663075998,
+    "avg_daily_return_pct": 1.0004690896022765,
+    "window_trade_count": 273,
+    "full_trade_count": 273
+  },
+  "gpu": {
+    "equity_points": 252,
+    "start_date": "2025-03-19",
+    "end_date": "2026-03-19",
+    "start_equity": 10000.0,
+    "final_equity": 82198.23200321797,
+    "total_return_pct": 721.9823200321796,
+    "max_drawdown_pct": 36.86528998000156,
+    "cagr_pct": 723.169166307599,
+    "avg_daily_return_pct": 1.0004690896022763,
+    "window_trade_count": 274,
+    "full_trade_count": 274
+  },
+  "parity": {
+    "final_equity_abs_diff": 5.820766091346741e-11,
+    "final_equity_diff_bps_vs_cpu": 7.0813762650258216e-12
+  },
+  "outputs": {
+    "summary_json": "/home/chewy/projects/trading-compose-dev/composer_original/reports/live_style_daily_synthetic_bridge_aggr_adapt_t10_tr2_rv14_b85_m8_M30_2025-03-19_to_2026-03-19_alpaca_sip.json",
+    "curve_csv": "/home/chewy/projects/trading-compose-dev/composer_original/reports/live_style_daily_synthetic_bridge_aggr_adapt_t10_tr2_rv14_b85_m8_M30_2025-03-19_to_2026-03-19_alpaca_sip_curve.csv"
+  }
+}

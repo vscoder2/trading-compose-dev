@@ -1,0 +1,98 @@
+{
+  "strategy_mode": "original",
+  "mode": "composer_like_mode",
+  "initial_equity": 10000.0,
+  "profit_lock_enabled": false,
+  "rows": [
+    {
+      "window": "1M",
+      "start_date": "2026-02-19",
+      "end_date": "2026-03-19",
+      "cpu": {
+        "final_equity": 18769.763601768704,
+        "return_pct": 87.69763601768703,
+        "max_drawdown_pct": 8.620689844168508,
+        "window_trades": 8
+      },
+      "gpu": {
+        "final_equity": 18769.763601768704,
+        "return_pct": 87.69763601768703,
+        "max_drawdown_pct": 8.620689844168508,
+        "window_trades": 8
+      },
+      "cpu_gpu_diff_bps": 0.0
+    },
+    {
+      "window": "3M",
+      "start_date": "2025-12-19",
+      "end_date": "2026-03-19",
+      "cpu": {
+        "final_equity": 18559.373763461394,
+        "return_pct": 85.59373763461393,
+        "max_drawdown_pct": 35.999998612837366,
+        "window_trades": 17
+      },
+      "gpu": {
+        "final_equity": 18559.373763461394,
+        "return_pct": 85.59373763461393,
+        "max_drawdown_pct": 35.999998612837366,
+        "window_trades": 17
+      },
+      "cpu_gpu_diff_bps": 0.0
+    },
+    {
+      "window": "6M",
+      "start_date": "2025-09-19",
+      "end_date": "2026-03-19",
+      "cpu": {
+        "final_equity": 20642.821542328693,
+        "return_pct": 106.42821542328691,
+        "max_drawdown_pct": 39.11872168216416,
+        "window_trades": 32
+      },
+      "gpu": {
+        "final_equity": 20642.821542328693,
+        "return_pct": 106.42821542328691,
+        "max_drawdown_pct": 39.11872168216416,
+        "window_trades": 32
+      },
+      "cpu_gpu_diff_bps": 0.0
+    },
+    {
+      "window": "1Y",
+      "start_date": "2025-03-19",
+      "end_date": "2026-03-19",
+      "cpu": {
+        "final_equity": 33698.36865929706,
+        "return_pct": 236.98368659297066,
+        "max_drawdown_pct": 39.11872168216416,
+        "window_trades": 231
+      },
+      "gpu": {
+        "final_equity": 33698.368659297055,
+        "return_pct": 236.98368659297054,
+        "max_drawdown_pct": 39.11872168216417,
+        "window_trades": 232
+      },
+      "cpu_gpu_diff_bps": 2.1591423869048502e-12
+    },
+    {
+      "window": "3Y",
+      "start_date": "2023-03-19",
+      "end_date": "2026-03-19",
+      "cpu": {
+        "final_equity": 11350.8919248145,
+        "return_pct": 13.508919248144991,
+        "max_drawdown_pct": 84.6128231193413,
+        "window_trades": 471
+      },
+      "gpu": {
+        "final_equity": 11350.8919248145,
+        "return_pct": 13.508919248144991,
+        "max_drawdown_pct": 84.6128231193413,
+        "window_trades": 470
+      },
+      "cpu_gpu_diff_bps": 0.0
+    }
+  ]
+}

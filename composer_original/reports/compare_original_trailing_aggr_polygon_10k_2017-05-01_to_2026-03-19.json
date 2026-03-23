@@ -1,0 +1,66 @@
+{
+  "start_date": "2017-05-01",
+  "end_date": "2026-03-19",
+  "initial_equity": 10000.0,
+  "strategy_mode": "original",
+  "anchor_window_start_equity": true,
+  "source": "polygon",
+  "strategies": [
+    "original_composer",
+    "trailing12_4_adapt",
+    "aggr_adapt_t10_tr2_rv14_b85_m8_M30"
+  ],
+  "results": [
+    {
+      "source": "polygon",
+      "strategy": "original_composer",
+      "start_date": "2017-05-01",
+      "end_date": "2026-03-19",
+      "cpu_final_equity": 34129.374063423544,
+      "cpu_return_pct": 241.29374063423543,
+      "cpu_pnl": 24129.374063423544,
+      "cpu_max_drawdown_pct": 39.11872329383373,
+      "cpu_trade_count": 212,
+      "gpu_final_equity": 34129.37406342356,
+      "gpu_return_pct": 241.29374063423558,
+      "gpu_pnl": 24129.37406342356,
+      "gpu_max_drawdown_pct": 39.11872329383373,
+      "gpu_trade_count": 215,
+      "cpu_gpu_diff_bps": 4.2637509850970694e-12
+    },
+    {
+      "source": "polygon",
+      "strategy": "trailing12_4_adapt",
+      "start_date": "2017-05-01",
+      "end_date": "2026-03-19",
+      "cpu_final_equity": 51920.362789877014,
+      "cpu_return_pct": 419.20362789877015,
+      "cpu_pnl": 41920.362789877014,
+      "cpu_max_drawdown_pct": 38.784502971135026,
+      "cpu_trade_count": 230,
+      "gpu_final_equity": 51920.362789877014,
+      "gpu_return_pct": 419.20362789877015,
+      "gpu_pnl": 41920.362789877014,
+      "gpu_max_drawdown_pct": 38.784502971135026,
+      "gpu_trade_count": 229,
+      "cpu_gpu_diff_bps": 0.0
+    },
+    {
+      "source": "polygon",
+      "strategy": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "start_date": "2017-05-01",
+      "end_date": "2026-03-19",
+      "cpu_final_equity": 79390.93572784768,
+      "cpu_return_pct": 693.9093572784768,
+      "cpu_pnl": 69390.93572784768,
+      "cpu_max_drawdown_pct": 36.86528998000155,
+      "cpu_trade_count": 254,
+      "gpu_final_equity": 79390.93572784768,
+      "gpu_return_pct": 693.9093572784768,
+      "gpu_pnl": 69390.93572784768,
+      "gpu_max_drawdown_pct": 36.86528998000155,
+      "gpu_trade_count": 253,
+      "cpu_gpu_diff_bps": 0.0
+    }
+  ]
+}

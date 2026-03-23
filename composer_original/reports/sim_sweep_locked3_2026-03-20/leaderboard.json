@@ -1,0 +1,94 @@
+{
+  "leaderboard": [
+    {
+      "exec_model": "paper_live_style_optimistic",
+      "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 428.5277435924337,
+      "avg_cpu_max_dd_pct": 49.24915487437992,
+      "avg_return_over_dd": 10.277242842528024,
+      "best_window": "5y",
+      "best_window_cpu_return_pct": 964.2785307694235
+    },
+    {
+      "exec_model": "synthetic",
+      "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 428.5274973195895,
+      "avg_cpu_max_dd_pct": 49.24915498216354,
+      "avg_return_over_dd": 10.277240315195652,
+      "best_window": "5y",
+      "best_window_cpu_return_pct": 964.2784899625661
+    },
+    {
+      "exec_model": "paper_live_style_optimistic",
+      "profile": "trailing12_4_adapt",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 187.59379702768672,
+      "avg_cpu_max_dd_pct": 51.05214989838764,
+      "avg_return_over_dd": 5.821408510863226,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 441.0678825287709
+    },
+    {
+      "exec_model": "synthetic",
+      "profile": "trailing12_4_adapt",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 187.59379620582015,
+      "avg_cpu_max_dd_pct": 51.05215168162217,
+      "avg_return_over_dd": 5.821408074350097,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 441.0677990044663
+    },
+    {
+      "exec_model": "market_close",
+      "profile": "original_composer",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 85.73653907868368,
+      "avg_cpu_max_dd_pct": 51.96055737843145,
+      "avg_return_over_dd": 3.5799538132392357,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 233.65468227087797
+    },
+    {
+      "exec_model": "synthetic",
+      "profile": "original_composer",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 85.73647528600294,
+      "avg_cpu_max_dd_pct": 51.960563201113196,
+      "avg_return_over_dd": 3.579952904557397,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 233.65457573592016
+    },
+    {
+      "exec_model": "paper_live_style_optimistic",
+      "profile": "original_composer",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 85.7364307909973,
+      "avg_cpu_max_dd_pct": 51.96056699870004,
+      "avg_return_over_dd": 3.579952433754479,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 233.65464008596368
+    },
+    {
+      "exec_model": "market_close",
+      "profile": "trailing12_4_adapt",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 85.33516659642287,
+      "avg_cpu_max_dd_pct": 51.97663568716117,
+      "avg_return_over_dd": 3.567847130110985,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 232.92141086568301
+    },
+    {
+      "exec_model": "market_close",
+      "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "count_windows": 9,
+      "avg_cpu_return_pct": 84.94557957949414,
+      "avg_cpu_max_dd_pct": 51.996270026367355,
+      "avg_return_over_dd": 3.5598631779791585,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 232.40183647188655
+    }
+  ]
+}

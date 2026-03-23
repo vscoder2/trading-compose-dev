@@ -1,0 +1,85 @@
+{
+  "leaderboard": [
+    {
+      "exec_model": "synthetic",
+      "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 357.51904350349037,
+      "avg_cpu_max_dd_pct": 38.83376414084981,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 713.8623747597005
+    },
+    {
+      "exec_model": "paper_live_style_optimistic",
+      "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 357.51904350349037,
+      "avg_cpu_max_dd_pct": 38.83376414084981,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 713.8623747597005
+    },
+    {
+      "exec_model": "synthetic",
+      "profile": "trailing12_4_adapt",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 206.38116733021695,
+      "avg_cpu_max_dd_pct": 40.173277843035194,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 440.4825091862795
+    },
+    {
+      "exec_model": "paper_live_style_optimistic",
+      "profile": "trailing12_4_adapt",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 206.38116733021695,
+      "avg_cpu_max_dd_pct": 40.173277843035194,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 440.4825091862795
+    },
+    {
+      "exec_model": "synthetic",
+      "profile": "original_composer",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 112.67758418972171,
+      "avg_cpu_max_dd_pct": 40.612778769770244,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 233.52112810451553
+    },
+    {
+      "exec_model": "market_close",
+      "profile": "original_composer",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 112.67758418972171,
+      "avg_cpu_max_dd_pct": 40.612778769770244,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 233.52112810451553
+    },
+    {
+      "exec_model": "paper_live_style_optimistic",
+      "profile": "original_composer",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 112.67758418972171,
+      "avg_cpu_max_dd_pct": 40.612778769770244,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 233.52112810451553
+    },
+    {
+      "exec_model": "market_close",
+      "profile": "trailing12_4_adapt",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 112.2917946576871,
+      "avg_cpu_max_dd_pct": 40.62684172387628,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 232.78818814981204
+    },
+    {
+      "exec_model": "market_close",
+      "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "count_windows": 7,
+      "avg_cpu_return_pct": 111.98867341532915,
+      "avg_cpu_max_dd_pct": 40.63815173958637,
+      "best_window": "1y",
+      "best_window_cpu_return_pct": 232.26880178592765
+    }
+  ]
+}

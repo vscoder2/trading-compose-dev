@@ -1,0 +1,45 @@
+{
+  "cpu_report": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/paper_live_style_optimistic/aggr_adapt_t10_tr2_rv14_b85_m8_M30/3m/backtest_cpu_last6m.json",
+  "data_files": {
+    "last6m_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_parquet/3m_aggr_adapt_t10_tr2_rv14_b85_m8_M30_paper_live_style_optimistic/soxl_strategy_last6m_2025-12-20_2026-03-20.parquet",
+    "lookback_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_parquet/3m_aggr_adapt_t10_tr2_rv14_b85_m8_M30_paper_live_style_optimistic/soxl_strategy_lookback_2024-10-26_2026-03-20.parquet",
+    "raw_daily_dir": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_parquet/3m_aggr_adapt_t10_tr2_rv14_b85_m8_M30_paper_live_style_optimistic/raw_daily"
+  },
+  "gpu_report": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/paper_live_style_optimistic/aggr_adapt_t10_tr2_rv14_b85_m8_M30/3m/backtest_gpu_last6m.json",
+  "parity_window": {
+    "cpu_final_equity": 26262.996869293464,
+    "final_equity_abs_diff": 0.0,
+    "final_equity_diff_bps_vs_cpu": 0.0,
+    "gpu_final_equity": 26262.996869293464
+  },
+  "profit_lock": {
+    "adaptive_max_threshold_pct": 30.0,
+    "adaptive_min_threshold_pct": 8.0,
+    "adaptive_rv_baseline_pct": 85.0,
+    "adaptive_rv_window": 14,
+    "adaptive_symbol": "TQQQ",
+    "adaptive_threshold": true,
+    "enabled": true,
+    "exec_model": "paper_live_style_optimistic",
+    "exec_model_effective": "synthetic",
+    "mode": "trailing",
+    "model": "daily_high_threshold_emulation",
+    "partial_sell_pct": 50.0,
+    "regime_gated": false,
+    "regime_rv_threshold_pct": 85.0,
+    "regime_rv_window": 14,
+    "regime_symbol": "SOXL",
+    "threshold_pct": 10.0,
+    "trail_pct": 2.0,
+    "trend_filter": false,
+    "trend_ma_window": 20,
+    "trend_symbol": "SOXL"
+  },
+  "strategy_mode": "original",
+  "strategy_preset": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+  "strategy_source": "/home/chewy/projects/trading-compose-dev/composer_original/files/composer_original_file.txt",
+  "window": {
+    "end_date": "2026-03-20",
+    "start_date": "2025-12-20"
+  }
+}

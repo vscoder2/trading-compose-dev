@@ -1,0 +1,3 @@
+timestamp,symbol,side,qty,price,fees,cash,market_value,equity,trade_realized_pnl,cum_realized_pnl,positions_json
+2026-03-20T14:00:00Z,SOXL,buy,10.0,40.0,0.0,9600.0,400.0,10000.0,0.0,0.0,"{""SOXL"":{""qty"":10.0,""last_price"":40.0,""market_value"":400.0}}"
+2026-03-20T19:59:00Z,SOXL,sell,10.0,44.0,0.0,10040.0,0.0,10040.0,40.0,40.0,{}

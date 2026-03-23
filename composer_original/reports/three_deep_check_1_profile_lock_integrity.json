@@ -1,0 +1,105 @@
+{
+  "check_group": "deep_check_1_profile_lock_integrity",
+  "passed_count": 10,
+  "failed_count": 0,
+  "checks": [
+    {
+      "name": "preset_keyset_exact",
+      "passed": true,
+      "details": {
+        "expected": [
+          "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+          "original_composer",
+          "trailing12_4_adapt"
+        ],
+        "actual": [
+          "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+          "original_composer",
+          "trailing12_4_adapt"
+        ]
+      }
+    },
+    {
+      "name": "runtime_profile_keyset_exact",
+      "passed": true,
+      "details": {
+        "expected": [
+          "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+          "original_composer",
+          "trailing12_4_adapt"
+        ],
+        "actual": [
+          "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+          "original_composer",
+          "trailing12_4_adapt"
+        ]
+      }
+    },
+    {
+      "name": "original_composer_lock_values_match_expected",
+      "passed": true,
+      "details": {
+        "mismatches": {}
+      }
+    },
+    {
+      "name": "original_composer_cross_file_consistency",
+      "passed": true,
+      "details": {
+        "cross_mismatch": {}
+      }
+    },
+    {
+      "name": "trailing12_4_adapt_lock_values_match_expected",
+      "passed": true,
+      "details": {
+        "mismatches": {}
+      }
+    },
+    {
+      "name": "trailing12_4_adapt_cross_file_consistency",
+      "passed": true,
+      "details": {
+        "cross_mismatch": {}
+      }
+    },
+    {
+      "name": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_lock_values_match_expected",
+      "passed": true,
+      "details": {
+        "mismatches": {}
+      }
+    },
+    {
+      "name": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_cross_file_consistency",
+      "passed": true,
+      "details": {
+        "cross_mismatch": {}
+      }
+    },
+    {
+      "name": "strategy_mode_locked_to_original",
+      "passed": true,
+      "details": {
+        "actual_choices": [
+          "original"
+        ]
+      }
+    },
+    {
+      "name": "strategy_preset_choices_locked_to_three",
+      "passed": true,
+      "details": {
+        "actual_choices": [
+          "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+          "original_composer",
+          "trailing12_4_adapt"
+        ]
+      }
+    }
+  ],
+  "files_checked": [
+    "/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py",
+    "/home/chewy/projects/trading-compose-dev/composer_original/tools/runtime_backtest_parity_loop.py"
+  ]
+}

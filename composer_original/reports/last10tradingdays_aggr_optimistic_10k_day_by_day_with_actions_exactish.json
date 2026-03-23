@@ -1,0 +1,127 @@
+{
+  "reported_final_equity": 11744.5232895597,
+  "replayed_final_equity": 11744.5232895597,
+  "abs_diff": 0.0,
+  "rows": [
+    {
+      "date": "2026-03-09",
+      "equity": 10000.0,
+      "daily_pnl": 0.0,
+      "daily_return_pct": 0.0,
+      "drawdown_dollar": 0.0,
+      "drawdown_pct": 0.0,
+      "fell_dollar_day": 0.0,
+      "fell_pct_day": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-10",
+      "equity": 9999.000099990002,
+      "daily_pnl": -0.999900009997873,
+      "daily_return_pct": -0.00999900009998056,
+      "drawdown_dollar": 0.999900009997873,
+      "drawdown_pct": 0.00999900009997873,
+      "fell_dollar_day": 0.999900009997873,
+      "fell_pct_day": 0.00999900009997873,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "EOD simulated | SOXL"
+    },
+    {
+      "date": "2026-03-11",
+      "equity": 10271.693680145805,
+      "daily_pnl": 272.6935801558029,
+      "daily_return_pct": 2.727208495138189,
+      "drawdown_dollar": 0.0,
+      "drawdown_pct": 0.0,
+      "fell_dollar_day": 0.0,
+      "fell_pct_day": 0.0,
+      "sale_time_stock": "EOD simulated | SOXL",
+      "new_purchase_time_stock": "EOD simulated | SOXS"
+    },
+    {
+      "date": "2026-03-12",
+      "equity": 11363.83398573589,
+      "daily_pnl": 1092.1403055900846,
+      "daily_return_pct": 10.632524095817676,
+      "drawdown_dollar": 0.0,
+      "drawdown_pct": 0.0,
+      "fell_dollar_day": 0.0,
+      "fell_pct_day": 0.0,
+      "sale_time_stock": "EOD simulated | SOXS",
+      "new_purchase_time_stock": "EOD simulated | SOXL"
+    },
+    {
+      "date": "2026-03-13",
+      "equity": 11463.279387861037,
+      "daily_pnl": 99.44540212514767,
+      "daily_return_pct": 0.8751043199854314,
+      "drawdown_dollar": 0.0,
+      "drawdown_pct": 0.0,
+      "fell_dollar_day": 0.0,
+      "fell_pct_day": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-16",
+      "equity": 12330.141705387823,
+      "daily_pnl": 866.8623175267858,
+      "daily_return_pct": 7.562079647511188,
+      "drawdown_dollar": 0.0,
+      "drawdown_pct": 0.0,
+      "fell_dollar_day": 0.0,
+      "fell_pct_day": 0.0,
+      "sale_time_stock": "EOD simulated | SOXL",
+      "new_purchase_time_stock": "EOD simulated | SOXL"
+    },
+    {
+      "date": "2026-03-17",
+      "equity": 12619.50667626127,
+      "daily_pnl": 289.3649708734465,
+      "daily_return_pct": 2.3468097754870465,
+      "drawdown_dollar": 0.0,
+      "drawdown_pct": 0.0,
+      "fell_dollar_day": 0.0,
+      "fell_pct_day": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-18",
+      "equity": 12405.928061208617,
+      "daily_pnl": -213.57861505265282,
+      "daily_return_pct": -1.6924482115803996,
+      "drawdown_dollar": 213.57861505265282,
+      "drawdown_pct": 1.6924482115803983,
+      "fell_dollar_day": 213.57861505265282,
+      "fell_pct_day": 1.6924482115803983,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-19",
+      "equity": 12596.540715681414,
+      "daily_pnl": 190.61265447279766,
+      "daily_return_pct": 1.5364642897520264,
+      "drawdown_dollar": 22.965960579855164,
+      "drawdown_pct": 0.1819877842218409,
+      "fell_dollar_day": 0.0,
+      "fell_pct_day": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-20",
+      "equity": 11744.5232895597,
+      "daily_pnl": -852.0174261217144,
+      "daily_return_pct": -6.763900068699336,
+      "drawdown_dollar": 874.9833867015695,
+      "drawdown_pct": 6.933578381059166,
+      "fell_dollar_day": 852.0174261217144,
+      "fell_pct_day": 6.763900068699331,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    }
+  ]
+}

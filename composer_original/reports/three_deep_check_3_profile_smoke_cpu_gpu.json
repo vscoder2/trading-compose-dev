@@ -1,0 +1,40 @@
+{
+  "check_group": "deep_check_3_profile_smoke_cpu_gpu",
+  "window": {
+    "start_date": "2026-02-19",
+    "end_date": "2026-03-19"
+  },
+  "initial_equity": 10000.0,
+  "data_source": "stooq",
+  "profiles": [
+    {
+      "profile": "original_composer",
+      "command": "/home/chewy/projects/trading-compose-dev/composer_original/.venv/bin/python /home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py --data-source stooq --start-date 2026-02-19 --end-date 2026-03-19 --initial-equity 10000 --anchor-window-start-equity --strategy-mode original --strategy-preset original_composer --reports-dir /home/chewy/projects/trading-compose-dev/composer_original/reports/deep_check_profile_smoke/original_composer --parquet-dir /home/chewy/projects/trading-compose-dev/composer_original/data/parquet --fixtures-dir /home/chewy/projects/trading-compose-dev/composer_original/fixtures",
+      "returncode": 1,
+      "passed": false,
+      "stderr_tail": "Traceback (most recent call last):\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 1608, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 1323, in main\n    frame = _fetch_symbol_daily(symbol=symbol, start_day=preload_start, end_day=end_day)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 157, in _fetch_symbol_daily\n    raise RuntimeError(f\"Unexpected Stooq CSV response for {symbol}\")\nRuntimeError: Unexpected Stooq CSV response for SOXL",
+      "stdout_parse_ok": false,
+      "stdout_tail": ""
+    },
+    {
+      "profile": "trailing12_4_adapt",
+      "command": "/home/chewy/projects/trading-compose-dev/composer_original/.venv/bin/python /home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py --data-source stooq --start-date 2026-02-19 --end-date 2026-03-19 --initial-equity 10000 --anchor-window-start-equity --strategy-mode original --strategy-preset trailing12_4_adapt --reports-dir /home/chewy/projects/trading-compose-dev/composer_original/reports/deep_check_profile_smoke/trailing12_4_adapt --parquet-dir /home/chewy/projects/trading-compose-dev/composer_original/data/parquet --fixtures-dir /home/chewy/projects/trading-compose-dev/composer_original/fixtures",
+      "returncode": 1,
+      "passed": false,
+      "stderr_tail": "Traceback (most recent call last):\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 1608, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 1323, in main\n    frame = _fetch_symbol_daily(symbol=symbol, start_day=preload_start, end_day=end_day)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 157, in _fetch_symbol_daily\n    raise RuntimeError(f\"Unexpected Stooq CSV response for {symbol}\")\nRuntimeError: Unexpected Stooq CSV response for SOXL",
+      "stdout_parse_ok": false,
+      "stdout_tail": ""
+    },
+    {
+      "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30",
+      "command": "/home/chewy/projects/trading-compose-dev/composer_original/.venv/bin/python /home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py --data-source stooq --start-date 2026-02-19 --end-date 2026-03-19 --initial-equity 10000 --anchor-window-start-equity --strategy-mode original --strategy-preset aggr_adapt_t10_tr2_rv14_b85_m8_M30 --reports-dir /home/chewy/projects/trading-compose-dev/composer_original/reports/deep_check_profile_smoke/aggr_adapt_t10_tr2_rv14_b85_m8_M30 --parquet-dir /home/chewy/projects/trading-compose-dev/composer_original/data/parquet --fixtures-dir /home/chewy/projects/trading-compose-dev/composer_original/fixtures",
+      "returncode": 1,
+      "passed": false,
+      "stderr_tail": "Traceback (most recent call last):\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 1608, in <module>\n    raise SystemExit(main())\n                     ^^^^^^\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 1323, in main\n    frame = _fetch_symbol_daily(symbol=symbol, start_day=preload_start, end_day=end_day)\n            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/home/chewy/projects/trading-compose-dev/composer_original/tools/run_last_6m_cpu_gpu_backtests.py\", line 157, in _fetch_symbol_daily\n    raise RuntimeError(f\"Unexpected Stooq CSV response for {symbol}\")\nRuntimeError: Unexpected Stooq CSV response for SOXL",
+      "stdout_parse_ok": false,
+      "stdout_tail": ""
+    }
+  ],
+  "passed_count": 0,
+  "failed_count": 3
+}

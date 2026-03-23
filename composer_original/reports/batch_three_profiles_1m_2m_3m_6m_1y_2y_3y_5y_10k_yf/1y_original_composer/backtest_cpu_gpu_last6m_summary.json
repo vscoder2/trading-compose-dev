@@ -1,0 +1,43 @@
+{
+  "cpu_report": "/home/chewy/projects/trading-compose-dev/composer_original/reports/batch_three_profiles_1m_2m_3m_6m_1y_2y_3y_5y_10k_yf/1y_original_composer/backtest_cpu_last6m.json",
+  "data_files": {
+    "last6m_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/data/parquet/soxl_strategy_last6m_2025-03-19_2026-03-19.parquet",
+    "lookback_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/data/parquet/soxl_strategy_lookback_2024-01-24_2026-03-19.parquet",
+    "raw_daily_dir": "/home/chewy/projects/trading-compose-dev/composer_original/data/parquet/raw_daily"
+  },
+  "gpu_report": "/home/chewy/projects/trading-compose-dev/composer_original/reports/batch_three_profiles_1m_2m_3m_6m_1y_2y_3y_5y_10k_yf/1y_original_composer/backtest_gpu_last6m.json",
+  "parity_window": {
+    "cpu_final_equity": 33698.37313908151,
+    "final_equity_abs_diff": 0.0,
+    "final_equity_diff_bps_vs_cpu": 0.0,
+    "gpu_final_equity": 33698.37313908151
+  },
+  "profit_lock": {
+    "adaptive_max_threshold_pct": 30.0,
+    "adaptive_min_threshold_pct": 8.0,
+    "adaptive_rv_baseline_pct": 85.0,
+    "adaptive_rv_window": 14,
+    "adaptive_symbol": "TQQQ",
+    "adaptive_threshold": false,
+    "enabled": false,
+    "mode": "fixed",
+    "model": "daily_high_threshold_emulation",
+    "partial_sell_pct": 50.0,
+    "regime_gated": false,
+    "regime_rv_threshold_pct": 85.0,
+    "regime_rv_window": 14,
+    "regime_symbol": "SOXL",
+    "threshold_pct": 15.0,
+    "trail_pct": 5.0,
+    "trend_filter": false,
+    "trend_ma_window": 20,
+    "trend_symbol": "SOXL"
+  },
+  "strategy_mode": "original",
+  "strategy_preset": "original_composer",
+  "strategy_source": "/home/chewy/projects/trading-compose-dev/composer_original/files/composer_original_file.txt",
+  "window": {
+    "end_date": "2026-03-19",
+    "start_date": "2025-03-19"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "config": {
+    "initial_equity": 100000.0,
+    "sell_fee_bps": 0.0,
+    "slippage_bps": 1.0,
+    "warmup_days": 260
+  },
+  "cpu": {
+    "allocation_days": 160,
+    "equity_points": 420,
+    "final_equity": 80023.01040817637,
+    "total_return_pct": -19.976989591823624,
+    "trade_count": 1
+  },
+  "gpu": {
+    "allocation_days": 160,
+    "equity_points": 420,
+    "final_equity": 80023.01040817637,
+    "total_return_pct": -19.976989591823624,
+    "trade_count": 1
+  },
+  "parity": {
+    "final_equity_abs_diff": 0.0,
+    "final_equity_diff_bps_vs_cpu": 0.0
+  },
+  "prices_csv": "/home/chewy/projects/trading-compose-dev/composer_original/fixtures/deep_check_prices.csv"
+}

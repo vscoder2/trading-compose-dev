@@ -1,0 +1,119 @@
+{
+  "hashes": {
+    "original_clj_sha256": "251236fbee29786c4a04e835b9d2a2cd5d20672a6e7810fbcf4d85d38d4b11d5",
+    "python_tree_sha256": "7d423fc2aca22dd8877e86c3a5a4f6dea0a480c4051e95fbb35d901ac5cfa16a"
+  },
+  "source_files": {
+    "original_clj": "composer_original/files/composer_original_file.txt",
+    "python_tree": "soxl_growth/composer_port/symphony_soxl_growth_v245_rl.py"
+  },
+  "strategy_name": "SOXL Growth v2.4.5 RL",
+  "threshold_count": 15,
+  "threshold_map": [
+    {
+      "metric": "cumulative-return",
+      "op": "<=",
+      "symbol": "SOXL",
+      "value": -12.0,
+      "window": 32
+    },
+    {
+      "metric": "cumulative-return",
+      "op": "<=",
+      "symbol": "TQQQ",
+      "value": -20.0,
+      "window": 8
+    },
+    {
+      "metric": "cumulative-return",
+      "op": "<=",
+      "symbol": "TQQQ",
+      "value": -10.0,
+      "window": 30
+    },
+    {
+      "metric": "max-drawdown",
+      "op": ">=",
+      "symbol": "SOXL",
+      "value": 50.0,
+      "window": 60
+    },
+    {
+      "metric": "max-drawdown",
+      "op": "<=",
+      "symbol": "SOXL",
+      "value": 71.0,
+      "window": 250
+    },
+    {
+      "metric": "max-drawdown",
+      "op": "<=",
+      "symbol": "TQQQ",
+      "value": 65.0,
+      "window": 200
+    },
+    {
+      "metric": "rsi",
+      "op": ">=",
+      "symbol": "SOXL",
+      "value": 57.49,
+      "window": 30
+    },
+    {
+      "metric": "rsi",
+      "op": "<=",
+      "symbol": "SOXL",
+      "value": 62.1995,
+      "window": 32
+    },
+    {
+      "metric": "rsi",
+      "op": ">=",
+      "symbol": "SOXL",
+      "value": 50.0,
+      "window": 32
+    },
+    {
+      "metric": "rsi",
+      "op": ">=",
+      "symbol": "TQQQ",
+      "value": 50.0,
+      "window": 30
+    },
+    {
+      "metric": "stdev-return",
+      "op": ">=",
+      "symbol": "SOXL",
+      "value": 5.4135,
+      "window": 30
+    },
+    {
+      "metric": "stdev-return",
+      "op": "<=",
+      "symbol": "SOXL",
+      "value": 4.9226,
+      "window": 105
+    },
+    {
+      "metric": "stdev-return",
+      "op": "<=",
+      "symbol": "TQQQ",
+      "value": 18.0,
+      "window": 14
+    },
+    {
+      "metric": "stdev-return",
+      "op": ">=",
+      "symbol": "TQQQ",
+      "value": 5.8,
+      "window": 30
+    },
+    {
+      "metric": "stdev-return",
+      "op": "<=",
+      "symbol": "TQQQ",
+      "value": 3.8,
+      "window": 100
+    }
+  ]
+}

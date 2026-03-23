@@ -1,0 +1,90 @@
+[
+  {
+    "window": "1m",
+    "period": "2026-02-19 to 2026-03-19",
+    "cpu_final_equity": 18337.33962016393,
+    "cpu_return_pct": 83.37339620163931,
+    "cpu_maxdd_pct": 5.239783369285987,
+    "gpu_final_equity": 18337.33962016393,
+    "gpu_return_pct": 83.37339620163931,
+    "gpu_maxdd_pct": 5.239783369285987,
+    "cpu_gpu_diff_bps": 0.0
+  },
+  {
+    "window": "2m",
+    "period": "2026-01-19 to 2026-03-19",
+    "cpu_final_equity": 17477.291672723546,
+    "cpu_return_pct": 74.77291672723545,
+    "cpu_maxdd_pct": 10.705957651624304,
+    "gpu_final_equity": 17477.291672723546,
+    "gpu_return_pct": 74.77291672723545,
+    "gpu_maxdd_pct": 10.705957651624304,
+    "cpu_gpu_diff_bps": 0.0
+  },
+  {
+    "window": "3m",
+    "period": "2025-12-19 to 2026-03-19",
+    "cpu_final_equity": 14721.57552794969,
+    "cpu_return_pct": 47.2157552794969,
+    "cpu_maxdd_pct": 26.955079940390483,
+    "gpu_final_equity": 14721.57552794969,
+    "gpu_return_pct": 47.2157552794969,
+    "gpu_maxdd_pct": 26.955079940390483,
+    "cpu_gpu_diff_bps": 0.0
+  },
+  {
+    "window": "6m",
+    "period": "2025-09-19 to 2026-03-19",
+    "cpu_final_equity": 16397.78682975437,
+    "cpu_return_pct": 63.97786829754368,
+    "cpu_maxdd_pct": 31.212248208014262,
+    "gpu_final_equity": 16397.78682975437,
+    "gpu_return_pct": 63.97786829754368,
+    "gpu_maxdd_pct": 31.212248208014262,
+    "cpu_gpu_diff_bps": 0.0
+  },
+  {
+    "window": "1y",
+    "period": "2025-03-19 to 2026-03-19",
+    "cpu_final_equity": 34324.31463985521,
+    "cpu_return_pct": 243.24314639855214,
+    "cpu_maxdd_pct": 31.212248208014277,
+    "gpu_final_equity": 34324.31463985521,
+    "gpu_return_pct": 243.24314639855214,
+    "gpu_maxdd_pct": 31.212248208014277,
+    "cpu_gpu_diff_bps": 0.0
+  },
+  {
+    "window": "2y",
+    "period": "2024-03-19 to 2026-03-19",
+    "cpu_final_equity": 19038.02701758665,
+    "cpu_return_pct": 90.3802701758665,
+    "cpu_maxdd_pct": 43.11180666923895,
+    "gpu_final_equity": 19038.02701758665,
+    "gpu_return_pct": 90.3802701758665,
+    "gpu_maxdd_pct": 43.11180666923895,
+    "cpu_gpu_diff_bps": 0.0
+  },
+  {
+    "window": "3y",
+    "period": "2023-03-19 to 2026-03-19",
+    "cpu_final_equity": 10485.741765378727,
+    "cpu_return_pct": 4.857417653787266,
+    "cpu_maxdd_pct": 85.57805050322308,
+    "gpu_final_equity": 10485.741765378727,
+    "gpu_return_pct": 4.857417653787266,
+    "gpu_maxdd_pct": 85.57805050322308,
+    "cpu_gpu_diff_bps": 0.0
+  },
+  {
+    "window": "5y",
+    "period": "2021-03-19 to 2026-03-19",
+    "cpu_final_equity": 19167.53034149384,
+    "cpu_return_pct": 91.6753034149384,
+    "cpu_maxdd_pct": 85.57805050322308,
+    "gpu_final_equity": 19167.53034149384,
+    "gpu_return_pct": 91.6753034149384,
+    "gpu_maxdd_pct": 85.57805050322308,
+    "cpu_gpu_diff_bps": 0.0
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "overall_status": "pass",
+  "passes": [
+    {
+      "review_pass": 1,
+      "name": "code_fact_integrity",
+      "status": "pass",
+      "checks": [
+        "aggr profile lock values parsed and matched expected constants",
+        "paper_live_style_optimistic present in replay CLI choices",
+        "effective exec model mapping market_close->market_close and others->synthetic exists",
+        "runtime aggr profile constants match backtest profile constants"
+      ]
+    },
+    {
+      "review_pass": 2,
+      "status": "pass"
+    },
+    {
+      "review_pass": 3,
+      "status": "pass"
+    }
+  ],
+  "artifacts": [
+    "/home/chewy/projects/trading-compose-dev/composer_original/reports/paper_live_style_optimistic_aggr_review_pass1_code_fact_integrity.json",
+    "/home/chewy/projects/trading-compose-dev/composer_original/reports/paper_live_style_optimistic_aggr_review_pass2_metrics_consistency.json",
+    "/home/chewy/projects/trading-compose-dev/composer_original/reports/paper_live_style_optimistic_aggr_review_pass3_document_completeness.json",
+    "/home/chewy/projects/trading-compose-dev/composer_original/docs/PAPER_LIVE_STYLE_OPTIMISTIC_AGGR_DEEP_DIVE.md"
+  ]
+}

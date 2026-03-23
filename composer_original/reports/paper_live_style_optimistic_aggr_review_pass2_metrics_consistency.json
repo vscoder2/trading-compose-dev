@@ -1,0 +1,64 @@
+{
+  "review_pass": 2,
+  "name": "metrics_consistency",
+  "status": "pass",
+  "source_csv": "/home/chewy/projects/trading-compose-dev/composer_original/reports/paper_live_style_optimistic_backtest_aggr_1m_2m_3m_6m_1y_2y_3y_5y_10k_2026-03-19_rerun_anchor10k/results.csv",
+  "checks": [
+    {
+      "window": "1m",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    },
+    {
+      "window": "2m",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    },
+    {
+      "window": "3m",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    },
+    {
+      "window": "6m",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    },
+    {
+      "window": "1y",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    },
+    {
+      "window": "2y",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    },
+    {
+      "window": "3y",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    },
+    {
+      "window": "5y",
+      "start_equity_10k": true,
+      "cpu_return_formula_match": true,
+      "cpu_gpu_parity_exact": true,
+      "effective_exec_model_synthetic": true
+    }
+  ]
+}

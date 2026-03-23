@@ -1,0 +1,6 @@
+Profile,Window,Mode,Start Equity,CPU Final Equity,CPU Return %,CPU PnL,CPU MaxDD %,CPU Trades,GPU Backend,GPU Final Equity,GPU Return %,CPU-GPU Diff (bps),Sharpe,Sortino,Calmar,Worst Day %,Best Day %,Bootstrap P10 %,Bootstrap P50 %,Bootstrap P90 %
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,1m,paper_live_style_optimistic,10000.0,10496.5,4.965,496.5,0.01,0,cpu_emulated_fallback,10496.5,4.965,0.0,17701334.4404,0.0,0.0,0.18,0.18,4.223,4.223,4.223
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,2m,paper_live_style_optimistic,10000.0,10920.11,9.2011,920.11,0.01,0,cpu_emulated_fallback,10920.11,9.2011,0.0,16681159.8766,0.0,0.0,0.18,0.18,8.2344,8.2344,8.2344
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,3m,paper_live_style_optimistic,10000.0,11360.82,13.6082,1360.82,0.01,0,cpu_emulated_fallback,11360.82,13.6082,0.0,15518571.0896,0.0,0.0,0.18,0.18,12.8051,12.8051,12.8051
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,6m,paper_live_style_optimistic,10000.0,12815.58,28.1558,2815.58,0.01,0,cpu_emulated_fallback,12815.58,28.1558,0.0,13638216.661,0.0,0.0,0.18,0.18,27.25,27.25,27.25
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,1y,paper_live_style_optimistic,10000.0,16132.8,61.328,6132.8,0.01,0,cpu_emulated_fallback,16132.8,61.328,0.0,12102336.0598,0.0,0.0,0.18,0.18,60.1877,60.1877,60.1877

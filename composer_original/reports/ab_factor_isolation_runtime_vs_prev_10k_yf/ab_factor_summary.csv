@@ -1,0 +1,19 @@
+Profile,Scenario,Avg Delta Return % vs S0,Avg Delta Final Equity vs S0,Avg Delta Trades vs S0
+original_composer,S1_threshold_5pct,2.099572496859511,209.95724968595164,-152.875
+original_composer,S2_sequence_rebalance_then_profit,0.0,0.0,0.0
+original_composer,S3_anchor_off,-2.3241571020642713,-232.415710206428,-0.875
+original_composer,S4_zero_costs,1.596774449133915,159.6774449133909,-0.25
+original_composer,S5_profit_exec_market_close,0.0,0.0,0.0
+original_composer,S6_runtime_like_bundle,-0.26108327888018046,-26.10832788801872,-152.75
+trailing12_4_adapt,S1_threshold_5pct,3.6103814342546343,361.0381434254641,-153.25
+trailing12_4_adapt,S2_sequence_rebalance_then_profit,-94.09253535941302,-9409.2535359413,-6.5
+trailing12_4_adapt,S3_anchor_off,-5.492380042962971,-549.2380042962959,-0.25
+trailing12_4_adapt,S4_zero_costs,3.7527668002526084,375.2766800252607,2.125
+trailing12_4_adapt,S5_profit_exec_market_close,-108.12401740673853,-10812.401740673853,1.625
+trailing12_4_adapt,S6_runtime_like_bundle,-108.380002385322,-10838.000238532199,-152.875
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,S1_threshold_5pct,6.6944903075213595,669.4490307521351,-150.875
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,S2_sequence_rebalance_then_profit,-142.39221206017586,-14239.221206017586,-7.125
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,S3_anchor_off,-14.076601160834514,-1407.660116083453,1.875
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,S4_zero_costs,10.287047980173595,1028.704798017362,1.25
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,S5_profit_exec_market_close,-335.1662104450473,-33516.621044504725,1.125
+aggr_adapt_t10_tr2_rv14_b85_m8_M30,S6_runtime_like_bundle,-335.08649504511885,-33508.64950451189,-151.375

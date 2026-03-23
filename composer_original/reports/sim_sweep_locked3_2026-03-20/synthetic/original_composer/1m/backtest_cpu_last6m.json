@@ -1,0 +1,73 @@
+{
+  "config": {
+    "anchor_window_start_equity": true,
+    "composer_like_mode": true,
+    "data_source": "yfinance",
+    "initial_equity": 10000.0,
+    "lookback_buffer_days": 420,
+    "profit_lock_adaptive_max_threshold_pct": 30.0,
+    "profit_lock_adaptive_min_threshold_pct": 8.0,
+    "profit_lock_adaptive_rv_baseline_pct": 85.0,
+    "profit_lock_adaptive_rv_window": 14,
+    "profit_lock_adaptive_symbol": "TQQQ",
+    "profit_lock_adaptive_threshold": false,
+    "profit_lock_enabled": false,
+    "profit_lock_exec_model": "synthetic",
+    "profit_lock_exec_model_effective": "synthetic",
+    "profit_lock_mode": "fixed",
+    "profit_lock_partial_sell_pct": 50.0,
+    "profit_lock_regime_gated": false,
+    "profit_lock_regime_rv_threshold_pct": 85.0,
+    "profit_lock_regime_rv_window": 14,
+    "profit_lock_regime_symbol": "SOXL",
+    "profit_lock_threshold_pct": 15.0,
+    "profit_lock_trail_pct": 5.0,
+    "profit_lock_trend_filter": false,
+    "profit_lock_trend_ma_window": 20,
+    "profit_lock_trend_symbol": "SOXL",
+    "sell_fee_bps": 0.0,
+    "slippage_bps": 1.0,
+    "strategy_mode": "original",
+    "strategy_preset": "original_composer",
+    "symbols": [
+      "SOXL",
+      "SOXS",
+      "TQQQ",
+      "SQQQ",
+      "SPXL",
+      "SPXS",
+      "TMF",
+      "TMV"
+    ],
+    "warmup_days_effective": 287,
+    "warmup_days_requested": 260
+  },
+  "data_files": {
+    "last6m_csv": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_fixtures/1m_original_composer_synthetic/soxl_strategy_last6m_2026-02-20_2026-03-20.csv",
+    "last6m_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_parquet/1m_original_composer_synthetic/soxl_strategy_last6m_2026-02-20_2026-03-20.parquet",
+    "lookback_csv": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_fixtures/1m_original_composer_synthetic/soxl_strategy_lookback_2024-12-27_2026-03-20.csv",
+    "lookback_parquet": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_parquet/1m_original_composer_synthetic/soxl_strategy_lookback_2024-12-27_2026-03-20.parquet",
+    "raw_daily_dir": "/home/chewy/projects/trading-compose-dev/composer_original/reports/sim_sweep_locked3_2026-03-20/_shared_parquet/1m_original_composer_synthetic/raw_daily"
+  },
+  "full_allocation_days": 19,
+  "full_trade_count": 9,
+  "mode": "cpu",
+  "strategy_source": "/home/chewy/projects/trading-compose-dev/composer_original/files/composer_original_file.txt",
+  "window": {
+    "end_date": "2026-03-20",
+    "start_date": "2026-02-20"
+  },
+  "window_allocation_days": 19,
+  "window_metrics": {
+    "avg_daily_return_pct": 3.4055340175483804,
+    "cagr_pct": 365204.5383245337,
+    "end_date": "2026-03-19",
+    "equity_points": 20,
+    "final_equity": 18338.275185377282,
+    "max_drawdown_pct": 8.62982686148236,
+    "start_date": "2026-02-20",
+    "start_equity": 10000.0,
+    "total_return_pct": 83.38275185377282
+  },
+  "window_trade_count": 9
+}

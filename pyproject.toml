@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "soxl-growth-port"
+version = "0.1.0"
+description = "Intraday multi-timeframe port of Composer SOXL Growth v2.4.5 RL"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+
+[project.scripts]
+soxl-growth = "soxl_growth.main:main"
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2",
+]
+alpaca = [
+  "alpaca-py>=0.30.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["soxl_growth*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

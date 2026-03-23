@@ -1,0 +1,1998 @@
+{
+  "end_date": "2026-03-19",
+  "windows": [
+    "1y",
+    "3y",
+    "5y"
+  ],
+  "config_count": 28,
+  "results": [
+    {
+      "config": "original_no_lock",
+      "family": "baseline",
+      "flags": [],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 236.98375470294422,
+          "cpu_final_equity": 33698.37547029442,
+          "cpu_max_drawdown_pct": 39.11872168216416,
+          "gpu_return_pct": 236.98375470294422,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 13.509011959846461,
+          "cpu_final_equity": 11350.901195984647,
+          "cpu_max_drawdown_pct": 84.61282064308112,
+          "gpu_return_pct": 13.509011959846507,
+          "cpu_gpu_diff_bps": 3.2050131917090768e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 62.24140719604754,
+          "cpu_final_equity": 16224.140719604755,
+          "cpu_max_drawdown_pct": 88.19802223877677,
+          "gpu_return_pct": 62.241407196047625,
+          "cpu_gpu_diff_bps": 4.48464898075704e-12
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 104.24472461961274,
+        "avg_cpu_final_equity": 20424.47246196127,
+        "avg_cpu_max_drawdown_pct": 70.64318818800736,
+        "score_return_minus_0p15_dd": 93.64824639141163,
+        "max_abs_cpu_gpu_diff_bps": 4.48464898075704e-12
+      }
+    },
+    {
+      "config": "trailing12_4_adapt_locked_profile",
+      "family": "locked_reference",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 446.46631432655613,
+          "cpu_final_equity": 54646.63143265561,
+          "cpu_max_drawdown_pct": 38.778751444116054,
+          "gpu_return_pct": 446.46631432655613,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 97.35539222288885,
+          "cpu_final_equity": 19735.539222288884,
+          "cpu_max_drawdown_pct": 83.5729513153641,
+          "gpu_return_pct": 97.35539222288885,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 277.839021713914,
+          "cpu_final_equity": 37783.9021713914,
+          "cpu_max_drawdown_pct": 84.24762904765505,
+          "gpu_return_pct": 277.8390217139142,
+          "cpu_gpu_diff_bps": 5.777029789971654e-12
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 273.8869094211197,
+        "avg_cpu_final_equity": 37388.69094211196,
+        "avg_cpu_max_drawdown_pct": 68.86644393571173,
+        "score_return_minus_0p15_dd": 263.5569428307629,
+        "max_abs_cpu_gpu_diff_bps": 5.777029789971654e-12
+      }
+    },
+    {
+      "config": "trailing_11_4",
+      "family": "non_adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "11",
+        "--profit-lock-trail-pct",
+        "4"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 290.3662014184771,
+          "cpu_final_equity": 39036.62014184771,
+          "cpu_max_drawdown_pct": 38.77875144411608,
+          "gpu_return_pct": 290.3662014184771,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 36.24121517409424,
+          "cpu_final_equity": 13624.121517409425,
+          "cpu_max_drawdown_pct": 84.0568489825557,
+          "gpu_return_pct": 36.2412151740942,
+          "cpu_gpu_diff_bps": 4.005372532580868e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 116.50265216025674,
+          "cpu_final_equity": 21650.265216025673,
+          "cpu_max_drawdown_pct": 86.40458058243934,
+          "gpu_return_pct": 116.50265216025674,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 147.70335625094268,
+        "avg_cpu_final_equity": 24770.33562509427,
+        "avg_cpu_max_drawdown_pct": 69.74672700303704,
+        "score_return_minus_0p15_dd": 137.24134720048713,
+        "max_abs_cpu_gpu_diff_bps": 4.005372532580868e-12
+      }
+    },
+    {
+      "config": "trailing_12_4",
+      "family": "non_adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 290.3662486928253,
+          "cpu_final_equity": 39036.62486928253,
+          "cpu_max_drawdown_pct": 38.77875144411606,
+          "gpu_return_pct": 290.36624869282497,
+          "cpu_gpu_diff_bps": 9.319398947203543e-12
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 31.490078315735758,
+          "cpu_final_equity": 13149.007831573575,
+          "cpu_max_drawdown_pct": 84.61282372866731,
+          "gpu_return_pct": 31.490078315735804,
+          "cpu_gpu_diff_bps": 4.15009883676107e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 106.03528159725832,
+          "cpu_final_equity": 20603.528159725833,
+          "cpu_max_drawdown_pct": 87.0618947557286,
+          "gpu_return_pct": 106.03528159725823,
+          "cpu_gpu_diff_bps": 3.5314134345232675e-12
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 142.6305362019398,
+        "avg_cpu_final_equity": 24263.05362019398,
+        "avg_cpu_max_drawdown_pct": 70.15115664283732,
+        "score_return_minus_0p15_dd": 132.1078627055142,
+        "max_abs_cpu_gpu_diff_bps": 9.319398947203543e-12
+      }
+    },
+    {
+      "config": "trailing_13_4",
+      "family": "non_adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "13",
+        "--profit-lock-trail-pct",
+        "4"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 288.1984527800828,
+          "cpu_final_equity": 38819.84527800828,
+          "cpu_max_drawdown_pct": 39.11872168216417,
+          "gpu_return_pct": 288.1984527800828,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 30.760011758457374,
+          "cpu_final_equity": 13076.001175845737,
+          "cpu_max_drawdown_pct": 84.61282082188329,
+          "gpu_return_pct": 30.760011758457438,
+          "cpu_gpu_diff_bps": 5.564359865326203e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 100.59652674627158,
+          "cpu_final_equity": 20059.652674627156,
+          "cpu_max_drawdown_pct": 87.33307826644267,
+          "gpu_return_pct": 100.59652674627185,
+          "cpu_gpu_diff_bps": 1.4508641265532107e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 139.85166376160393,
+        "avg_cpu_final_equity": 23985.16637616039,
+        "avg_cpu_max_drawdown_pct": 70.35487359016338,
+        "score_return_minus_0p15_dd": 129.29843272307943,
+        "max_abs_cpu_gpu_diff_bps": 1.4508641265532107e-11
+      }
+    },
+    {
+      "config": "trailing_12_5",
+      "family": "non_adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "5"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 266.6530216934768,
+          "cpu_final_equity": 36665.30216934768,
+          "cpu_max_drawdown_pct": 39.11872168216417,
+          "gpu_return_pct": 266.6530216934768,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 23.502539912339305,
+          "cpu_final_equity": 12350.25399123393,
+          "cpu_max_drawdown_pct": 84.61282584940615,
+          "gpu_return_pct": 23.502539912339305,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 89.50874351273062,
+          "cpu_final_equity": 18950.87435127306,
+          "cpu_max_drawdown_pct": 87.33002667806514,
+          "gpu_return_pct": 89.50874351273006,
+          "cpu_gpu_diff_bps": 2.879533740495191e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 126.5547683728489,
+        "avg_cpu_final_equity": 22655.476837284892,
+        "avg_cpu_max_drawdown_pct": 70.35385806987848,
+        "score_return_minus_0p15_dd": 116.00168966236713,
+        "max_abs_cpu_gpu_diff_bps": 2.879533740495191e-11
+      }
+    },
+    {
+      "config": "adapt_t11_tr3_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "11",
+        "--profit-lock-trail-pct",
+        "3",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 534.9360763853011,
+          "cpu_final_equity": 63493.60763853011,
+          "cpu_max_drawdown_pct": 38.14137008595055,
+          "gpu_return_pct": 534.9360763853011,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 163.16748263356095,
+          "cpu_final_equity": 26316.748263356098,
+          "cpu_max_drawdown_pct": 82.53258141128606,
+          "gpu_return_pct": 163.16748263356118,
+          "cpu_gpu_diff_bps": 8.294289485963503e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 491.9988903929686,
+          "cpu_final_equity": 59199.88903929686,
+          "cpu_max_drawdown_pct": 82.53256895380855,
+          "gpu_return_pct": 491.99889039296795,
+          "cpu_gpu_diff_bps": 1.1061442781452316e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 396.70081647061016,
+        "avg_cpu_final_equity": 49670.08164706102,
+        "avg_cpu_max_drawdown_pct": 67.73550681701505,
+        "score_return_minus_0p15_dd": 386.5404904480579,
+        "max_abs_cpu_gpu_diff_bps": 1.1061442781452316e-11
+      }
+    },
+    {
+      "config": "adapt_t11_tr3_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "11",
+        "--profit-lock-trail-pct",
+        "3",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 534.9361839002545,
+          "cpu_final_equity": 63493.61839002545,
+          "cpu_max_drawdown_pct": 38.14137008595056,
+          "gpu_return_pct": 534.9361839002551,
+          "cpu_gpu_diff_bps": 8.021546824819976e-12
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 163.16751568837944,
+          "cpu_final_equity": 26316.751568837943,
+          "cpu_max_drawdown_pct": 82.53257248680795,
+          "gpu_return_pct": 163.16751568837944,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 478.54719281978373,
+          "cpu_final_equity": 57854.71928197837,
+          "cpu_max_drawdown_pct": 82.53257370948366,
+          "gpu_return_pct": 478.54719281978373,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 392.2169641361392,
+        "avg_cpu_final_equity": 49221.696413613914,
+        "avg_cpu_max_drawdown_pct": 67.73550542741405,
+        "score_return_minus_0p15_dd": 382.0566383220271,
+        "max_abs_cpu_gpu_diff_bps": 8.021546824819976e-12
+      }
+    },
+    {
+      "config": "adapt_t11_tr4_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "11",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 446.4661971394746,
+          "cpu_final_equity": 54646.61971394746,
+          "cpu_max_drawdown_pct": 38.778751444116075,
+          "gpu_return_pct": 446.4661971394746,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 104.1918199424805,
+          "cpu_final_equity": 20419.18199424805,
+          "cpu_max_drawdown_pct": 83.5729505593891,
+          "gpu_return_pct": 104.1918199424805,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 309.05257374901305,
+          "cpu_final_equity": 40905.2573749013,
+          "cpu_max_drawdown_pct": 83.57295156850972,
+          "gpu_return_pct": 309.05257374901305,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 286.5701969436561,
+        "avg_cpu_final_equity": 38657.019694365605,
+        "avg_cpu_max_drawdown_pct": 68.64155119067163,
+        "score_return_minus_0p15_dd": 276.2739642650553,
+        "max_abs_cpu_gpu_diff_bps": 0.0
+      }
+    },
+    {
+      "config": "adapt_t11_tr4_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "11",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 446.46634616563955,
+          "cpu_final_equity": 54646.634616563955,
+          "cpu_max_drawdown_pct": 38.778751444116075,
+          "gpu_return_pct": 446.46634616563955,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 104.1916810209671,
+          "cpu_final_equity": 20419.168102096708,
+          "cpu_max_drawdown_pct": 83.57295465622128,
+          "gpu_return_pct": 104.1916810209671,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 301.6877026354659,
+          "cpu_final_equity": 40168.77026354659,
+          "cpu_max_drawdown_pct": 83.81404344160035,
+          "gpu_return_pct": 301.6877026354657,
+          "cpu_gpu_diff_bps": 3.6226937326913405e-12
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 284.1152432740242,
+        "avg_cpu_final_equity": 38411.52432740242,
+        "avg_cpu_max_drawdown_pct": 68.72191651397924,
+        "score_return_minus_0p15_dd": 273.8069557969273,
+        "max_abs_cpu_gpu_diff_bps": 3.6226937326913405e-12
+      }
+    },
+    {
+      "config": "adapt_t11_tr5_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "11",
+        "--profit-lock-trail-pct",
+        "5",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 379.4977044038993,
+          "cpu_final_equity": 47949.77044038993,
+          "cpu_max_drawdown_pct": 39.11872168216417,
+          "gpu_return_pct": 379.4977044038993,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 70.83571651280592,
+          "cpu_final_equity": 17083.571651280592,
+          "cpu_max_drawdown_pct": 84.10398511371822,
+          "gpu_return_pct": 70.83571651280592,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 212.48289892377935,
+          "cpu_final_equity": 31248.289892377936,
+          "cpu_max_drawdown_pct": 85.14861591942675,
+          "gpu_return_pct": 212.48289892377935,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 220.9387732801615,
+        "avg_cpu_final_equity": 32093.877328016155,
+        "avg_cpu_max_drawdown_pct": 69.45710757176971,
+        "score_return_minus_0p15_dd": 210.52020714439607,
+        "max_abs_cpu_gpu_diff_bps": 0.0
+      }
+    },
+    {
+      "config": "adapt_t11_tr5_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "11",
+        "--profit-lock-trail-pct",
+        "5",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 379.4977086360067,
+          "cpu_final_equity": 47949.77086360067,
+          "cpu_max_drawdown_pct": 39.118721682164164,
+          "gpu_return_pct": 379.497708636007,
+          "cpu_gpu_diff_bps": 7.587061922444665e-12
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 70.83554189558323,
+          "cpu_final_equity": 17083.554189558323,
+          "cpu_max_drawdown_pct": 84.10399028743737,
+          "gpu_return_pct": 70.83554189558316,
+          "cpu_gpu_diff_bps": 4.259042078392903e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 207.9663157879039,
+          "cpu_final_equity": 30796.63157879039,
+          "cpu_max_drawdown_pct": 85.36326875955363,
+          "gpu_return_pct": 207.9663157879034,
+          "cpu_gpu_diff_bps": 1.7719367121941277e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 219.4331887731646,
+        "avg_cpu_final_equity": 31943.318877316462,
+        "avg_cpu_max_drawdown_pct": 69.52866024305172,
+        "score_return_minus_0p15_dd": 209.00388973670684,
+        "max_abs_cpu_gpu_diff_bps": 1.7719367121941277e-11
+      }
+    },
+    {
+      "config": "adapt_t12_tr3_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "3",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 506.71560235718295,
+          "cpu_final_equity": 60671.560235718294,
+          "cpu_max_drawdown_pct": 38.14137008595056,
+          "gpu_return_pct": 506.71560235718243,
+          "cpu_gpu_diff_bps": 8.39465856843083e-12
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 140.545388733909,
+          "cpu_final_equity": 24054.5388733909,
+          "cpu_max_drawdown_pct": 82.53257712113857,
+          "gpu_return_pct": 140.545388733909,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 429.4611743537266,
+          "cpu_final_equity": 52946.11743537266,
+          "cpu_max_drawdown_pct": 82.53258189007808,
+          "gpu_return_pct": 429.4611743537259,
+          "cpu_gpu_diff_bps": 1.3742192943731218e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 358.9073884816062,
+        "avg_cpu_final_equity": 45890.738848160625,
+        "avg_cpu_max_drawdown_pct": 67.73550969905574,
+        "score_return_minus_0p15_dd": 348.7470620267478,
+        "max_abs_cpu_gpu_diff_bps": 1.3742192943731218e-11
+      }
+    },
+    {
+      "config": "adapt_t12_tr3_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "3",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 534.9361165680679,
+          "cpu_final_equity": 63493.61165680679,
+          "cpu_max_drawdown_pct": 38.14137008595057,
+          "gpu_return_pct": 534.9361165680679,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 151.73418836729843,
+          "cpu_final_equity": 25173.41883672984,
+          "cpu_max_drawdown_pct": 82.53258325735088,
+          "gpu_return_pct": 151.73418836729843,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 432.7147261251385,
+          "cpu_final_equity": 53271.47261251385,
+          "cpu_max_drawdown_pct": 82.53257512909067,
+          "gpu_return_pct": 432.7147261251385,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 373.12834368683497,
+        "avg_cpu_final_equity": 47312.83436868349,
+        "avg_cpu_max_drawdown_pct": 67.73550949079737,
+        "score_return_minus_0p15_dd": 362.96801726321536,
+        "max_abs_cpu_gpu_diff_bps": 0.0
+      }
+    },
+    {
+      "config": "adapt_t12_tr4_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 427.61717439173896,
+          "cpu_final_equity": 52761.717439173895,
+          "cpu_max_drawdown_pct": 38.77875144411607,
+          "gpu_return_pct": 427.6171743917393,
+          "cpu_gpu_diff_bps": 6.895110666717285e-12
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 90.54802173313226,
+          "cpu_final_equity": 19054.802173313226,
+          "cpu_max_drawdown_pct": 83.57295125828816,
+          "gpu_return_pct": 90.54802173313219,
+          "cpu_gpu_diff_bps": 3.8184377607307854e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 274.8478681777761,
+          "cpu_final_equity": 37484.78681777761,
+          "cpu_max_drawdown_pct": 83.81402266695187,
+          "gpu_return_pct": 274.8478681777761,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 264.3376881008824,
+        "avg_cpu_final_equity": 36433.768810088244,
+        "avg_cpu_max_drawdown_pct": 68.72190845645203,
+        "score_return_minus_0p15_dd": 254.0294018324146,
+        "max_abs_cpu_gpu_diff_bps": 6.895110666717285e-12
+      }
+    },
+    {
+      "config": "adapt_t12_tr4_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 446.4662484834113,
+          "cpu_final_equity": 54646.62484834113,
+          "cpu_max_drawdown_pct": 38.77875144411608,
+          "gpu_return_pct": 446.4662484834113,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 97.35541857330897,
+          "cpu_final_equity": 19735.541857330896,
+          "cpu_max_drawdown_pct": 83.57294483070535,
+          "gpu_return_pct": 97.35541857330912,
+          "cpu_gpu_diff_bps": 7.37345613997492e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 277.83920029018145,
+          "cpu_final_equity": 37783.92002901815,
+          "cpu_max_drawdown_pct": 84.2476100432025,
+          "gpu_return_pct": 277.83920029018077,
+          "cpu_gpu_diff_bps": 1.9256756865342378e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 273.88695578230056,
+        "avg_cpu_final_equity": 37388.69557823006,
+        "avg_cpu_max_drawdown_pct": 68.86643543934132,
+        "score_return_minus_0p15_dd": 263.5569904663994,
+        "max_abs_cpu_gpu_diff_bps": 1.9256756865342378e-11
+      }
+    },
+    {
+      "config": "adapt_t12_tr5_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "5",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 367.83172621340736,
+          "cpu_final_equity": 46783.17262134073,
+          "cpu_max_drawdown_pct": 39.11872168216416,
+          "gpu_return_pct": 367.83172621340736,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 62.79465555876751,
+          "cpu_final_equity": 16279.465555876752,
+          "cpu_max_drawdown_pct": 84.10398308152527,
+          "gpu_return_pct": 62.79465555876751,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 193.4710505975245,
+          "cpu_final_equity": 29347.10505975245,
+          "cpu_max_drawdown_pct": 85.36325000636839,
+          "gpu_return_pct": 193.47105059752442,
+          "cpu_gpu_diff_bps": 3.71891414810889e-12
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 208.03247745656645,
+        "avg_cpu_final_equity": 30803.247745656645,
+        "avg_cpu_max_drawdown_pct": 69.52865159001927,
+        "score_return_minus_0p15_dd": 197.60317971806356,
+        "max_abs_cpu_gpu_diff_bps": 3.71891414810889e-12
+      }
+    },
+    {
+      "config": "adapt_t12_tr5_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "5",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 112.93630558315813,
+          "cpu_final_equity": 21293.630558315814,
+          "cpu_max_drawdown_pct": 87.10116507357174,
+          "gpu_return_pct": 112.93630558315813,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 66.85405081880329,
+          "cpu_final_equity": 16685.40508188033,
+          "cpu_max_drawdown_pct": 84.10398789741978,
+          "gpu_return_pct": 66.85405081880329,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 195.81277443439072,
+          "cpu_final_equity": 29581.27744343907,
+          "cpu_max_drawdown_pct": 85.60540029865447,
+          "gpu_return_pct": 195.81277443439072,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 125.20104361211737,
+        "avg_cpu_final_equity": 22520.104361211736,
+        "avg_cpu_max_drawdown_pct": 85.60351775654867,
+        "score_return_minus_0p15_dd": 112.36051594863507,
+        "max_abs_cpu_gpu_diff_bps": 0.0
+      }
+    },
+    {
+      "config": "adapt_t13_tr3_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "13",
+        "--profit-lock-trail-pct",
+        "3",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 503.1301848993722,
+          "cpu_final_equity": 60313.01848993722,
+          "cpu_max_drawdown_pct": 38.14137008595055,
+          "gpu_return_pct": 503.1301848993725,
+          "cpu_gpu_diff_bps": 6.031830105964076e-12
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 138.39302025828118,
+          "cpu_final_equity": 23839.302025828118,
+          "cpu_max_drawdown_pct": 82.58598548290375,
+          "gpu_return_pct": 138.39302025828118,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 419.6695806609549,
+          "cpu_final_equity": 51966.95806609549,
+          "cpu_max_drawdown_pct": 82.58598951714023,
+          "gpu_return_pct": 419.6695806609549,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 353.7309286062027,
+        "avg_cpu_final_equity": 45373.09286062027,
+        "avg_cpu_max_drawdown_pct": 67.77111502866485,
+        "score_return_minus_0p15_dd": 343.565261351903,
+        "max_abs_cpu_gpu_diff_bps": 6.031830105964076e-12
+      }
+    },
+    {
+      "config": "adapt_t13_tr3_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "13",
+        "--profit-lock-trail-pct",
+        "3",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 534.9361677940618,
+          "cpu_final_equity": 63493.616779406184,
+          "cpu_max_drawdown_pct": 38.141370085950555,
+          "gpu_return_pct": 534.9361677940618,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 150.9643915502152,
+          "cpu_final_equity": 25096.43915502152,
+          "cpu_max_drawdown_pct": 82.58598826409133,
+          "gpu_return_pct": 150.9643915502152,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 431.08570422219276,
+          "cpu_final_equity": 53108.57042221928,
+          "cpu_max_drawdown_pct": 82.58598322651785,
+          "gpu_return_pct": 431.0857042221934,
+          "cpu_gpu_diff_bps": 1.0960125729370941e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 372.32875452215654,
+        "avg_cpu_final_equity": 47232.87545221566,
+        "avg_cpu_max_drawdown_pct": 67.77111385885324,
+        "score_return_minus_0p15_dd": 362.16308744332855,
+        "max_abs_cpu_gpu_diff_bps": 1.0960125729370941e-11
+      }
+    },
+    {
+      "config": "adapt_t13_tr4_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "13",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 427.6172269554748,
+          "cpu_final_equity": 52761.72269554748,
+          "cpu_max_drawdown_pct": 38.778751444116075,
+          "gpu_return_pct": 427.6172269554748,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 90.54782171367657,
+          "cpu_final_equity": 19054.782171367657,
+          "cpu_max_drawdown_pct": 83.572953062983,
+          "gpu_return_pct": 90.54782171367657,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 274.8471570136312,
+          "cpu_final_equity": 37484.71570136312,
+          "cpu_max_drawdown_pct": 83.81405839799582,
+          "gpu_return_pct": 274.8471570136312,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 264.33740189426084,
+        "avg_cpu_final_equity": 36433.74018942609,
+        "avg_cpu_max_drawdown_pct": 68.72192096836497,
+        "score_return_minus_0p15_dd": 254.0291137490061,
+        "max_abs_cpu_gpu_diff_bps": 0.0
+      }
+    },
+    {
+      "config": "adapt_t13_tr4_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "13",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 446.46634165643866,
+          "cpu_final_equity": 54646.63416564386,
+          "cpu_max_drawdown_pct": 38.778751444116075,
+          "gpu_return_pct": 446.46634165643866,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 97.35541994879524,
+          "cpu_final_equity": 19735.541994879524,
+          "cpu_max_drawdown_pct": 83.57294306650218,
+          "gpu_return_pct": 97.35541994879524,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 277.8391056109298,
+          "cpu_final_equity": 37783.91056109298,
+          "cpu_max_drawdown_pct": 84.24761840632932,
+          "gpu_return_pct": 277.83910561092944,
+          "cpu_gpu_diff_bps": 7.702704676286905e-12
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 273.8869557387212,
+        "avg_cpu_final_equity": 37388.69557387212,
+        "avg_cpu_max_drawdown_pct": 68.86643763898253,
+        "score_return_minus_0p15_dd": 263.55699009287383,
+        "max_abs_cpu_gpu_diff_bps": 7.702704676286905e-12
+      }
+    },
+    {
+      "config": "adapt_t13_tr5_rv10_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "13",
+        "--profit-lock-trail-pct",
+        "5",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "10",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 367.8317793538614,
+          "cpu_final_equity": 46783.17793538614,
+          "cpu_max_drawdown_pct": 39.118721682164164,
+          "gpu_return_pct": 367.8317793538614,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 62.79461894778815,
+          "cpu_final_equity": 16279.461894778815,
+          "cpu_max_drawdown_pct": 84.10399283974284,
+          "gpu_return_pct": 62.79461894778817,
+          "cpu_gpu_diff_bps": 1.117352290452086e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 193.47113470008247,
+          "cpu_final_equity": 29347.113470008244,
+          "cpu_max_drawdown_pct": 85.3632495202443,
+          "gpu_return_pct": 193.47113470008247,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 208.03251100057733,
+        "avg_cpu_final_equity": 30803.251100057736,
+        "avg_cpu_max_drawdown_pct": 69.52865468071711,
+        "score_return_minus_0p15_dd": 197.60321279846977,
+        "max_abs_cpu_gpu_diff_bps": 1.117352290452086e-12
+      }
+    },
+    {
+      "config": "adapt_t13_tr5_rv14_b85_m8_M30",
+      "family": "adaptive",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "13",
+        "--profit-lock-trail-pct",
+        "5",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 379.49784551435624,
+          "cpu_final_equity": 47949.78455143562,
+          "cpu_max_drawdown_pct": 39.11872168216416,
+          "gpu_return_pct": 379.49784551435533,
+          "cpu_gpu_diff_bps": 1.8208943415906756e-11
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 66.8541651149587,
+          "cpu_final_equity": 16685.41651149587,
+          "cpu_max_drawdown_pct": 84.10398381418837,
+          "gpu_return_pct": 66.8541651149587,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 195.813003680655,
+          "cpu_final_equity": 29581.3003680655,
+          "cpu_max_drawdown_pct": 85.60538619252411,
+          "gpu_return_pct": 195.81300368065496,
+          "cpu_gpu_diff_bps": 1.2298238285085987e-12
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 214.05500476998998,
+        "avg_cpu_final_equity": 31405.500476998994,
+        "avg_cpu_max_drawdown_pct": 69.60936389629221,
+        "score_return_minus_0p15_dd": 203.61360018554615,
+        "max_abs_cpu_gpu_diff_bps": 1.8208943415906756e-11
+      }
+    },
+    {
+      "config": "adapt_t12_tr4_rv14_b70_m8_M30",
+      "family": "adaptive_baseline_sensitivity",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "70",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 325.4046657113757,
+          "cpu_final_equity": 42540.46657113757,
+          "cpu_max_drawdown_pct": 38.77875144411607,
+          "gpu_return_pct": 325.4046657113766,
+          "cpu_gpu_diff_bps": 2.0524337979273443e-11
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 50.710993677007686,
+          "cpu_final_equity": 15071.099367700768,
+          "cpu_max_drawdown_pct": 83.81618363320518,
+          "gpu_return_pct": 50.71099367700784,
+          "cpu_gpu_diff_bps": 1.0862448871512044e-11
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 171.20472113917958,
+          "cpu_final_equity": 27120.472113917956,
+          "cpu_max_drawdown_pct": 85.41315679622683,
+          "gpu_return_pct": 171.20472113917958,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 182.44012684252098,
+        "avg_cpu_final_equity": 28244.0126842521,
+        "avg_cpu_max_drawdown_pct": 69.33603062451603,
+        "score_return_minus_0p15_dd": 172.0397222488436,
+        "max_abs_cpu_gpu_diff_bps": 2.0524337979273443e-11
+      }
+    },
+    {
+      "config": "adapt_t12_tr4_rv14_b100_m8_M30",
+      "family": "adaptive_baseline_sensitivity",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "100",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "8",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "30"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 470.51579703430264,
+          "cpu_final_equity": 57051.57970343026,
+          "cpu_max_drawdown_pct": 38.778751444116075,
+          "gpu_return_pct": 470.51579703430264,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 127.0367513838774,
+          "cpu_final_equity": 22703.675138387738,
+          "cpu_max_drawdown_pct": 83.57294996793959,
+          "gpu_return_pct": 127.0367513838774,
+          "cpu_gpu_diff_bps": 0.0
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 346.62800823734636,
+          "cpu_final_equity": 44662.80082373464,
+          "cpu_max_drawdown_pct": 83.57295850506186,
+          "gpu_return_pct": 346.62800823734636,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 314.7268522185088,
+        "avg_cpu_final_equity": 41472.68522185088,
+        "avg_cpu_max_drawdown_pct": 68.64155330570584,
+        "score_return_minus_0p15_dd": 304.4306192226529,
+        "max_abs_cpu_gpu_diff_bps": 0.0
+      }
+    },
+    {
+      "config": "adapt_t12_tr4_rv14_b85_m6_M25",
+      "family": "adaptive_clamp_sensitivity",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "6",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "25"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 480.7211677780592,
+          "cpu_final_equity": 58072.116777805924,
+          "cpu_max_drawdown_pct": 38.77875144411607,
+          "gpu_return_pct": 480.7211677780599,
+          "cpu_gpu_diff_bps": 1.1276258239079283e-11
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 111.75434169425688,
+          "cpu_final_equity": 21175.434169425687,
+          "cpu_max_drawdown_pct": 83.41410795843476,
+          "gpu_return_pct": 111.75434169425667,
+          "cpu_gpu_diff_bps": 1.0308111119660827e-11
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 310.24858017785306,
+          "cpu_final_equity": 41024.8580177853,
+          "cpu_max_drawdown_pct": 83.90531780933968,
+          "gpu_return_pct": 310.24858017785215,
+          "cpu_gpu_diff_bps": 2.1282582216945006e-11
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 300.9080298833897,
+        "avg_cpu_final_equity": 40090.802988338975,
+        "avg_cpu_max_drawdown_pct": 68.6993924039635,
+        "score_return_minus_0p15_dd": 290.60312102279516,
+        "max_abs_cpu_gpu_diff_bps": 2.1282582216945006e-11
+      }
+    },
+    {
+      "config": "adapt_t12_tr4_rv14_b85_m10_M35",
+      "family": "adaptive_clamp_sensitivity",
+      "flags": [
+        "--enable-profit-lock",
+        "--profit-lock-mode",
+        "trailing",
+        "--profit-lock-threshold-pct",
+        "12",
+        "--profit-lock-trail-pct",
+        "4",
+        "--profit-lock-adaptive-threshold",
+        "--profit-lock-adaptive-symbol",
+        "TQQQ",
+        "--profit-lock-adaptive-rv-window",
+        "14",
+        "--profit-lock-adaptive-rv-baseline-pct",
+        "85",
+        "--profit-lock-adaptive-min-threshold-pct",
+        "10",
+        "--profit-lock-adaptive-max-threshold-pct",
+        "35"
+      ],
+      "windows": [
+        {
+          "window": "1y",
+          "cpu_return_pct": 291.4859221370919,
+          "cpu_final_equity": 39148.59221370919,
+          "cpu_max_drawdown_pct": 38.778751444116054,
+          "gpu_return_pct": 291.4859221370916,
+          "cpu_gpu_diff_bps": 7.434195921492682e-12
+        },
+        {
+          "window": "3y",
+          "cpu_return_pct": 36.632012275603934,
+          "cpu_final_equity": 13663.201227560394,
+          "cpu_max_drawdown_pct": 84.05685137579829,
+          "gpu_return_pct": 36.63201227560391,
+          "cpu_gpu_diff_bps": 2.6626108673225516e-12
+        },
+        {
+          "window": "5y",
+          "cpu_return_pct": 133.11400804082237,
+          "cpu_final_equity": 23311.400804082237,
+          "cpu_max_drawdown_pct": 85.53565305034536,
+          "gpu_return_pct": 133.11400804082237,
+          "cpu_gpu_diff_bps": 0.0
+        }
+      ],
+      "aggregate": {
+        "avg_cpu_return_pct": 153.7439808178394,
+        "avg_cpu_final_equity": 25374.398081783944,
+        "avg_cpu_max_drawdown_pct": 69.45708529008657,
+        "score_return_minus_0p15_dd": 143.3254180243264,
+        "max_abs_cpu_gpu_diff_bps": 7.434195921492682e-12
+      }
+    }
+  ],
+  "leaderboards": {
+    "by_avg_cpu_return_pct": [
+      {
+        "rank": 1,
+        "config": "adapt_t11_tr3_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 396.70081647061016,
+        "avg_cpu_final_equity": 49670.08164706102,
+        "avg_cpu_max_drawdown_pct": 67.73550681701505,
+        "score_return_minus_0p15_dd": 386.5404904480579
+      },
+      {
+        "rank": 2,
+        "config": "adapt_t11_tr3_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 392.2169641361392,
+        "avg_cpu_final_equity": 49221.696413613914,
+        "avg_cpu_max_drawdown_pct": 67.73550542741405,
+        "score_return_minus_0p15_dd": 382.0566383220271
+      },
+      {
+        "rank": 3,
+        "config": "adapt_t12_tr3_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 373.12834368683497,
+        "avg_cpu_final_equity": 47312.83436868349,
+        "avg_cpu_max_drawdown_pct": 67.73550949079737,
+        "score_return_minus_0p15_dd": 362.96801726321536
+      },
+      {
+        "rank": 4,
+        "config": "adapt_t13_tr3_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 372.32875452215654,
+        "avg_cpu_final_equity": 47232.87545221566,
+        "avg_cpu_max_drawdown_pct": 67.77111385885324,
+        "score_return_minus_0p15_dd": 362.16308744332855
+      },
+      {
+        "rank": 5,
+        "config": "adapt_t12_tr3_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 358.9073884816062,
+        "avg_cpu_final_equity": 45890.738848160625,
+        "avg_cpu_max_drawdown_pct": 67.73550969905574,
+        "score_return_minus_0p15_dd": 348.7470620267478
+      },
+      {
+        "rank": 6,
+        "config": "adapt_t13_tr3_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 353.7309286062027,
+        "avg_cpu_final_equity": 45373.09286062027,
+        "avg_cpu_max_drawdown_pct": 67.77111502866485,
+        "score_return_minus_0p15_dd": 343.565261351903
+      },
+      {
+        "rank": 7,
+        "config": "adapt_t12_tr4_rv14_b100_m8_M30",
+        "avg_cpu_return_pct": 314.7268522185088,
+        "avg_cpu_final_equity": 41472.68522185088,
+        "avg_cpu_max_drawdown_pct": 68.64155330570584,
+        "score_return_minus_0p15_dd": 304.4306192226529
+      },
+      {
+        "rank": 8,
+        "config": "adapt_t12_tr4_rv14_b85_m6_M25",
+        "avg_cpu_return_pct": 300.9080298833897,
+        "avg_cpu_final_equity": 40090.802988338975,
+        "avg_cpu_max_drawdown_pct": 68.6993924039635,
+        "score_return_minus_0p15_dd": 290.60312102279516
+      },
+      {
+        "rank": 9,
+        "config": "adapt_t11_tr4_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 286.5701969436561,
+        "avg_cpu_final_equity": 38657.019694365605,
+        "avg_cpu_max_drawdown_pct": 68.64155119067163,
+        "score_return_minus_0p15_dd": 276.2739642650553
+      },
+      {
+        "rank": 10,
+        "config": "adapt_t11_tr4_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 284.1152432740242,
+        "avg_cpu_final_equity": 38411.52432740242,
+        "avg_cpu_max_drawdown_pct": 68.72191651397924,
+        "score_return_minus_0p15_dd": 273.8069557969273
+      },
+      {
+        "rank": 11,
+        "config": "adapt_t12_tr4_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 273.88695578230056,
+        "avg_cpu_final_equity": 37388.69557823006,
+        "avg_cpu_max_drawdown_pct": 68.86643543934132,
+        "score_return_minus_0p15_dd": 263.5569904663994
+      },
+      {
+        "rank": 12,
+        "config": "adapt_t13_tr4_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 273.8869557387212,
+        "avg_cpu_final_equity": 37388.69557387212,
+        "avg_cpu_max_drawdown_pct": 68.86643763898253,
+        "score_return_minus_0p15_dd": 263.55699009287383
+      },
+      {
+        "rank": 13,
+        "config": "trailing12_4_adapt_locked_profile",
+        "avg_cpu_return_pct": 273.8869094211197,
+        "avg_cpu_final_equity": 37388.69094211196,
+        "avg_cpu_max_drawdown_pct": 68.86644393571173,
+        "score_return_minus_0p15_dd": 263.5569428307629
+      },
+      {
+        "rank": 14,
+        "config": "adapt_t12_tr4_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 264.3376881008824,
+        "avg_cpu_final_equity": 36433.768810088244,
+        "avg_cpu_max_drawdown_pct": 68.72190845645203,
+        "score_return_minus_0p15_dd": 254.0294018324146
+      },
+      {
+        "rank": 15,
+        "config": "adapt_t13_tr4_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 264.33740189426084,
+        "avg_cpu_final_equity": 36433.74018942609,
+        "avg_cpu_max_drawdown_pct": 68.72192096836497,
+        "score_return_minus_0p15_dd": 254.0291137490061
+      },
+      {
+        "rank": 16,
+        "config": "adapt_t11_tr5_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 220.9387732801615,
+        "avg_cpu_final_equity": 32093.877328016155,
+        "avg_cpu_max_drawdown_pct": 69.45710757176971,
+        "score_return_minus_0p15_dd": 210.52020714439607
+      },
+      {
+        "rank": 17,
+        "config": "adapt_t11_tr5_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 219.4331887731646,
+        "avg_cpu_final_equity": 31943.318877316462,
+        "avg_cpu_max_drawdown_pct": 69.52866024305172,
+        "score_return_minus_0p15_dd": 209.00388973670684
+      },
+      {
+        "rank": 18,
+        "config": "adapt_t13_tr5_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 214.05500476998998,
+        "avg_cpu_final_equity": 31405.500476998994,
+        "avg_cpu_max_drawdown_pct": 69.60936389629221,
+        "score_return_minus_0p15_dd": 203.61360018554615
+      },
+      {
+        "rank": 19,
+        "config": "adapt_t13_tr5_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 208.03251100057733,
+        "avg_cpu_final_equity": 30803.251100057736,
+        "avg_cpu_max_drawdown_pct": 69.52865468071711,
+        "score_return_minus_0p15_dd": 197.60321279846977
+      },
+      {
+        "rank": 20,
+        "config": "adapt_t12_tr5_rv10_b85_m8_M30",
+        "avg_cpu_return_pct": 208.03247745656645,
+        "avg_cpu_final_equity": 30803.247745656645,
+        "avg_cpu_max_drawdown_pct": 69.52865159001927,
+        "score_return_minus_0p15_dd": 197.60317971806356
+      },
+      {
+        "rank": 21,
+        "config": "adapt_t12_tr4_rv14_b70_m8_M30",
+        "avg_cpu_return_pct": 182.44012684252098,
+        "avg_cpu_final_equity": 28244.0126842521,
+        "avg_cpu_max_drawdown_pct": 69.33603062451603,
+        "score_return_minus_0p15_dd": 172.0397222488436
+      },
+      {
+        "rank": 22,
+        "config": "adapt_t12_tr4_rv14_b85_m10_M35",
+        "avg_cpu_return_pct": 153.7439808178394,
+        "avg_cpu_final_equity": 25374.398081783944,
+        "avg_cpu_max_drawdown_pct": 69.45708529008657,
+        "score_return_minus_0p15_dd": 143.3254180243264
+      },
+      {
+        "rank": 23,
+        "config": "trailing_11_4",
+        "avg_cpu_return_pct": 147.70335625094268,
+        "avg_cpu_final_equity": 24770.33562509427,
+        "avg_cpu_max_drawdown_pct": 69.74672700303704,
+        "score_return_minus_0p15_dd": 137.24134720048713
+      },
+      {
+        "rank": 24,
+        "config": "trailing_12_4",
+        "avg_cpu_return_pct": 142.6305362019398,
+        "avg_cpu_final_equity": 24263.05362019398,
+        "avg_cpu_max_drawdown_pct": 70.15115664283732,
+        "score_return_minus_0p15_dd": 132.1078627055142
+      },
+      {
+        "rank": 25,
+        "config": "trailing_13_4",
+        "avg_cpu_return_pct": 139.85166376160393,
+        "avg_cpu_final_equity": 23985.16637616039,
+        "avg_cpu_max_drawdown_pct": 70.35487359016338,
+        "score_return_minus_0p15_dd": 129.29843272307943
+      },
+      {
+        "rank": 26,
+        "config": "trailing_12_5",
+        "avg_cpu_return_pct": 126.5547683728489,
+        "avg_cpu_final_equity": 22655.476837284892,
+        "avg_cpu_max_drawdown_pct": 70.35385806987848,
+        "score_return_minus_0p15_dd": 116.00168966236713
+      },
+      {
+        "rank": 27,
+        "config": "adapt_t12_tr5_rv14_b85_m8_M30",
+        "avg_cpu_return_pct": 125.20104361211737,
+        "avg_cpu_final_equity": 22520.104361211736,
+        "avg_cpu_max_drawdown_pct": 85.60351775654867,
+        "score_return_minus_0p15_dd": 112.36051594863507
+      },
+      {
+        "rank": 28,
+        "config": "original_no_lock",
+        "avg_cpu_return_pct": 104.24472461961274,
+        "avg_cpu_final_equity": 20424.47246196127,
+        "avg_cpu_max_drawdown_pct": 70.64318818800736,
+        "score_return_minus_0p15_dd": 93.64824639141163
+      }
+    ],
+    "by_score_return_minus_0p15_dd": [
+      {
+        "rank": 1,
+        "config": "adapt_t11_tr3_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 386.5404904480579,
+        "avg_cpu_return_pct": 396.70081647061016,
+        "avg_cpu_max_drawdown_pct": 67.73550681701505,
+        "avg_cpu_final_equity": 49670.08164706102
+      },
+      {
+        "rank": 2,
+        "config": "adapt_t11_tr3_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 382.0566383220271,
+        "avg_cpu_return_pct": 392.2169641361392,
+        "avg_cpu_max_drawdown_pct": 67.73550542741405,
+        "avg_cpu_final_equity": 49221.696413613914
+      },
+      {
+        "rank": 3,
+        "config": "adapt_t12_tr3_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 362.96801726321536,
+        "avg_cpu_return_pct": 373.12834368683497,
+        "avg_cpu_max_drawdown_pct": 67.73550949079737,
+        "avg_cpu_final_equity": 47312.83436868349
+      },
+      {
+        "rank": 4,
+        "config": "adapt_t13_tr3_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 362.16308744332855,
+        "avg_cpu_return_pct": 372.32875452215654,
+        "avg_cpu_max_drawdown_pct": 67.77111385885324,
+        "avg_cpu_final_equity": 47232.87545221566
+      },
+      {
+        "rank": 5,
+        "config": "adapt_t12_tr3_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 348.7470620267478,
+        "avg_cpu_return_pct": 358.9073884816062,
+        "avg_cpu_max_drawdown_pct": 67.73550969905574,
+        "avg_cpu_final_equity": 45890.738848160625
+      },
+      {
+        "rank": 6,
+        "config": "adapt_t13_tr3_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 343.565261351903,
+        "avg_cpu_return_pct": 353.7309286062027,
+        "avg_cpu_max_drawdown_pct": 67.77111502866485,
+        "avg_cpu_final_equity": 45373.09286062027
+      },
+      {
+        "rank": 7,
+        "config": "adapt_t12_tr4_rv14_b100_m8_M30",
+        "score_return_minus_0p15_dd": 304.4306192226529,
+        "avg_cpu_return_pct": 314.7268522185088,
+        "avg_cpu_max_drawdown_pct": 68.64155330570584,
+        "avg_cpu_final_equity": 41472.68522185088
+      },
+      {
+        "rank": 8,
+        "config": "adapt_t12_tr4_rv14_b85_m6_M25",
+        "score_return_minus_0p15_dd": 290.60312102279516,
+        "avg_cpu_return_pct": 300.9080298833897,
+        "avg_cpu_max_drawdown_pct": 68.6993924039635,
+        "avg_cpu_final_equity": 40090.802988338975
+      },
+      {
+        "rank": 9,
+        "config": "adapt_t11_tr4_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 276.2739642650553,
+        "avg_cpu_return_pct": 286.5701969436561,
+        "avg_cpu_max_drawdown_pct": 68.64155119067163,
+        "avg_cpu_final_equity": 38657.019694365605
+      },
+      {
+        "rank": 10,
+        "config": "adapt_t11_tr4_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 273.8069557969273,
+        "avg_cpu_return_pct": 284.1152432740242,
+        "avg_cpu_max_drawdown_pct": 68.72191651397924,
+        "avg_cpu_final_equity": 38411.52432740242
+      },
+      {
+        "rank": 11,
+        "config": "adapt_t12_tr4_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 263.5569904663994,
+        "avg_cpu_return_pct": 273.88695578230056,
+        "avg_cpu_max_drawdown_pct": 68.86643543934132,
+        "avg_cpu_final_equity": 37388.69557823006
+      },
+      {
+        "rank": 12,
+        "config": "adapt_t13_tr4_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 263.55699009287383,
+        "avg_cpu_return_pct": 273.8869557387212,
+        "avg_cpu_max_drawdown_pct": 68.86643763898253,
+        "avg_cpu_final_equity": 37388.69557387212
+      },
+      {
+        "rank": 13,
+        "config": "trailing12_4_adapt_locked_profile",
+        "score_return_minus_0p15_dd": 263.5569428307629,
+        "avg_cpu_return_pct": 273.8869094211197,
+        "avg_cpu_max_drawdown_pct": 68.86644393571173,
+        "avg_cpu_final_equity": 37388.69094211196
+      },
+      {
+        "rank": 14,
+        "config": "adapt_t12_tr4_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 254.0294018324146,
+        "avg_cpu_return_pct": 264.3376881008824,
+        "avg_cpu_max_drawdown_pct": 68.72190845645203,
+        "avg_cpu_final_equity": 36433.768810088244
+      },
+      {
+        "rank": 15,
+        "config": "adapt_t13_tr4_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 254.0291137490061,
+        "avg_cpu_return_pct": 264.33740189426084,
+        "avg_cpu_max_drawdown_pct": 68.72192096836497,
+        "avg_cpu_final_equity": 36433.74018942609
+      },
+      {
+        "rank": 16,
+        "config": "adapt_t11_tr5_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 210.52020714439607,
+        "avg_cpu_return_pct": 220.9387732801615,
+        "avg_cpu_max_drawdown_pct": 69.45710757176971,
+        "avg_cpu_final_equity": 32093.877328016155
+      },
+      {
+        "rank": 17,
+        "config": "adapt_t11_tr5_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 209.00388973670684,
+        "avg_cpu_return_pct": 219.4331887731646,
+        "avg_cpu_max_drawdown_pct": 69.52866024305172,
+        "avg_cpu_final_equity": 31943.318877316462
+      },
+      {
+        "rank": 18,
+        "config": "adapt_t13_tr5_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 203.61360018554615,
+        "avg_cpu_return_pct": 214.05500476998998,
+        "avg_cpu_max_drawdown_pct": 69.60936389629221,
+        "avg_cpu_final_equity": 31405.500476998994
+      },
+      {
+        "rank": 19,
+        "config": "adapt_t13_tr5_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 197.60321279846977,
+        "avg_cpu_return_pct": 208.03251100057733,
+        "avg_cpu_max_drawdown_pct": 69.52865468071711,
+        "avg_cpu_final_equity": 30803.251100057736
+      },
+      {
+        "rank": 20,
+        "config": "adapt_t12_tr5_rv10_b85_m8_M30",
+        "score_return_minus_0p15_dd": 197.60317971806356,
+        "avg_cpu_return_pct": 208.03247745656645,
+        "avg_cpu_max_drawdown_pct": 69.52865159001927,
+        "avg_cpu_final_equity": 30803.247745656645
+      },
+      {
+        "rank": 21,
+        "config": "adapt_t12_tr4_rv14_b70_m8_M30",
+        "score_return_minus_0p15_dd": 172.0397222488436,
+        "avg_cpu_return_pct": 182.44012684252098,
+        "avg_cpu_max_drawdown_pct": 69.33603062451603,
+        "avg_cpu_final_equity": 28244.0126842521
+      },
+      {
+        "rank": 22,
+        "config": "adapt_t12_tr4_rv14_b85_m10_M35",
+        "score_return_minus_0p15_dd": 143.3254180243264,
+        "avg_cpu_return_pct": 153.7439808178394,
+        "avg_cpu_max_drawdown_pct": 69.45708529008657,
+        "avg_cpu_final_equity": 25374.398081783944
+      },
+      {
+        "rank": 23,
+        "config": "trailing_11_4",
+        "score_return_minus_0p15_dd": 137.24134720048713,
+        "avg_cpu_return_pct": 147.70335625094268,
+        "avg_cpu_max_drawdown_pct": 69.74672700303704,
+        "avg_cpu_final_equity": 24770.33562509427
+      },
+      {
+        "rank": 24,
+        "config": "trailing_12_4",
+        "score_return_minus_0p15_dd": 132.1078627055142,
+        "avg_cpu_return_pct": 142.6305362019398,
+        "avg_cpu_max_drawdown_pct": 70.15115664283732,
+        "avg_cpu_final_equity": 24263.05362019398
+      },
+      {
+        "rank": 25,
+        "config": "trailing_13_4",
+        "score_return_minus_0p15_dd": 129.29843272307943,
+        "avg_cpu_return_pct": 139.85166376160393,
+        "avg_cpu_max_drawdown_pct": 70.35487359016338,
+        "avg_cpu_final_equity": 23985.16637616039
+      },
+      {
+        "rank": 26,
+        "config": "trailing_12_5",
+        "score_return_minus_0p15_dd": 116.00168966236713,
+        "avg_cpu_return_pct": 126.5547683728489,
+        "avg_cpu_max_drawdown_pct": 70.35385806987848,
+        "avg_cpu_final_equity": 22655.476837284892
+      },
+      {
+        "rank": 27,
+        "config": "adapt_t12_tr5_rv14_b85_m8_M30",
+        "score_return_minus_0p15_dd": 112.36051594863507,
+        "avg_cpu_return_pct": 125.20104361211737,
+        "avg_cpu_max_drawdown_pct": 85.60351775654867,
+        "avg_cpu_final_equity": 22520.104361211736
+      },
+      {
+        "rank": 28,
+        "config": "original_no_lock",
+        "score_return_minus_0p15_dd": 93.64824639141163,
+        "avg_cpu_return_pct": 104.24472461961274,
+        "avg_cpu_max_drawdown_pct": 70.64318818800736,
+        "avg_cpu_final_equity": 20424.47246196127
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "review_pass": 3,
+  "name": "document_completeness",
+  "status": "pass",
+  "doc": "/home/chewy/projects/trading-compose-dev/composer_original/docs/PAPER_LIVE_STYLE_OPTIMISTIC_AGGR_DEEP_DIVE.md",
+  "table_count": 20,
+  "required_sections_present": 9
+}
