@@ -1,0 +1,45 @@
+{
+  "engine": "gpu_native_daily_batch",
+  "window": {
+    "start_date": "2026-03-20",
+    "end_date": "2026-03-26"
+  },
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "combo_index": 13,
+  "combo": {
+    "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "profit_lock_exec_model": "synthetic",
+    "runtime_profit_lock_order_type": "market_order",
+    "rebalance_time_ny": "15:55",
+    "slippage_bps": 1.0,
+    "sell_fee_bps": 0.0,
+    "warmup_days": 260,
+    "daily_lookback_days": 800,
+    "anchor_window_start_equity": false,
+    "daily_synthetic_parity": false
+  },
+  "cpu": {
+    "final_equity": 10585.664196120282,
+    "total_return_pct": 5.856641961202813,
+    "max_drawdown_pct": 7.389050243857073,
+    "max_drawdown_usd": 738.9050243857073,
+    "elapsed_sec": 0.0004401206970214844
+  },
+  "gpu": {
+    "final_equity": 10585.664196120282,
+    "total_return_pct": 5.856641961202813,
+    "max_drawdown_pct": 7.389050243857073,
+    "max_drawdown_usd": 738.9050243857073,
+    "elapsed_sec": 1.966104507446289,
+    "backend": "cupy_gpu:0",
+    "probe_reason": "ok"
+  },
+  "parity": {
+    "final_equity_diff_bps_vs_cpu": 0.0
+  },
+  "notes": {
+    "runtime_profit_lock_order_type": "market_order",
+    "engine_note": "",
+    "daily_synthetic_mechanics": true
+  }
+}

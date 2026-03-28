@@ -1,0 +1,41 @@
+{
+  "strategy_profile": [
+    "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m"
+  ],
+  "profit_lock_exec_model": [
+    "paper_live_style_optimistic",
+    "synthetic",
+    "market_close"
+  ],
+  "runtime_profit_lock_order_type": [
+    "market_order",
+    "close_position",
+    "trailing_stop"
+  ],
+  "rebalance_time_ny": [
+    "15:55",
+    "15:56"
+  ],
+  "slippage_bps": [
+    0.0,
+    1.0
+  ],
+  "sell_fee_bps": [
+    0.0,
+    0.5
+  ],
+  "warmup_days": [
+    260
+  ],
+  "daily_lookback_days": [
+    800
+  ],
+  "daily_synthetic_parity_split_adjustment": [
+    false,
+    true
+  ],
+  "rebalance_min_trade_weight_delta": [
+    0.0,
+    0.0005
+  ]
+}

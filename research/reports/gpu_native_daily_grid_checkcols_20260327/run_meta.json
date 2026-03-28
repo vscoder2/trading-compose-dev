@@ -1,0 +1,24 @@
+{
+  "run_name": "gpu_native_daily_grid_checkcols_20260327",
+  "created_at": "2026-03-27T01:45:12.014676",
+  "grid_config": "/home/chewy/projects/trading-compose-dev/research/configs/gpu_native_daily_grid.json",
+  "engine": "gpu_native_daily_batch",
+  "combo_count": 288,
+  "max_workers": 32,
+  "start_date": "2026-03-20",
+  "end_date": "2026-03-26",
+  "initial_equity": 10000.0,
+  "initial_principal": 10000.0,
+  "engine_meta": {
+    "engine": "gpu_native_daily_batch",
+    "backend": "cpu_fallback",
+    "gpu_probe_enabled": false,
+    "gpu_probe_reason": "cupy_runtime_failed: Failed to auto-detect CUDA root directory. Please specify `CUDA_PATH` environment variable if you are using CUDA versions not yet supported by CuPy.",
+    "combo_count": 288,
+    "symbol_count": 8,
+    "aligned_days": 554,
+    "window_days": 5,
+    "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "elapsed_sec_total": 1.1127
+  }
+}

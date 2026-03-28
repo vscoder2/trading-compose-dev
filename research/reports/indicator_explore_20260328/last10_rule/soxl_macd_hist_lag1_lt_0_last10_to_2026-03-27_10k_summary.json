@@ -1,0 +1,14 @@
+{
+  "window_start": "2026-03-16",
+  "window_end": "2026-03-27",
+  "note": "2026-03-28 is Saturday (no US trading session)",
+  "initial_equity": 10000.0,
+  "initial_principal": 10000.0,
+  "rule": "SOXL_MACD_hist_lag1_lt_0",
+  "active_days": 8,
+  "total_days": 10,
+  "final_equity": 9609.608326365156,
+  "total_pnl": -390.39167363484376,
+  "total_return_pct": -3.903916736348434,
+  "max_drawdown_pct": 7.719585379159866
+}

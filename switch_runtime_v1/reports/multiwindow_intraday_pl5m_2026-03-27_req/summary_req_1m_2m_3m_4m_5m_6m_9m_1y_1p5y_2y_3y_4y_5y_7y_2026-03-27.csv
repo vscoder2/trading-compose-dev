@@ -1,0 +1,15 @@
+window,start,end,cpu_final_equity,cpu_return_pct,cpu_pnl,cpu_maxdd_pct,cpu_days,gpu_final_equity,gpu_return_pct,gpu_pnl,gpu_maxdd_pct,gpu_days,gpu_backend,cpu_gpu_diff_bps,summary_json,ok,error
+1m,2026-02-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+2m,2026-01-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+3m,2025-12-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+4m,2025-11-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+5m,2025-10-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+6m,2025-09-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+9m,2025-06-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+1y,2025-03-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+1.5y,2024-09-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+2y,2024-03-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+3y,2023-03-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+4y,2022-03-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+5y,2021-03-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing
+7y,2019-03-27,2026-03-27,,,,,,,,,,,,,,False,summary_json missing

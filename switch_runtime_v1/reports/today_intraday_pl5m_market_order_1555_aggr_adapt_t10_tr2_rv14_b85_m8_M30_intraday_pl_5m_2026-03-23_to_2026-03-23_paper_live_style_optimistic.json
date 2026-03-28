@@ -1,0 +1,88 @@
+{
+  "anchor_window_start_equity": false,
+  "cpu": {
+    "days": 1,
+    "event_count": 1,
+    "final_equity": 9999.00009999,
+    "initial_equity": 10000.0,
+    "max_drawdown_pct": 0.00999900009999692,
+    "max_drawdown_usd": 0.999900009999692,
+    "total_return_pct": -0.009999000099991662
+  },
+  "daily_lookback_days_effective": 800,
+  "daily_lookback_days_requested": 800,
+  "daily_rows": [
+    {
+      "date": "2026-03-23",
+      "drawdown_pct": 0.00999900009999692,
+      "drawdown_usd": 0.999900009999692,
+      "equity": 9999.00009999,
+      "fell_pct": 0.00999900009999692,
+      "fell_usd": 0.999900009999692,
+      "new_purchase_time_stock": "15:55 | SOXS",
+      "pnl": -0.999900009999692,
+      "return_pct": -0.009999000099991662,
+      "sale_time_stock": "no change"
+    }
+  ],
+  "daily_synthetic_parity": {
+    "enabled": false,
+    "rebalance_min_trade_weight_delta": 0.05,
+    "rebalance_price_model": "minute_close_raw",
+    "split_adjustment_override": false,
+    "strict_mode": false,
+    "trigger_model": "intraday_minute_high_low"
+  },
+  "data_feed": "sip",
+  "events": [
+    {
+      "day": "2026-03-23",
+      "event_type": "rebalance_buy",
+      "price": 38.943894,
+      "qty": 256.7796635847458,
+      "reason": "baseline_rebalance",
+      "side": "buy",
+      "symbol": "SOXS",
+      "timestamp": "2026-03-23T15:55:00-04:00",
+      "trail_stop_price": 0.0,
+      "trigger_price": 0.0
+    }
+  ],
+  "gpu": {
+    "backend": "cupy_available_cpu_logic",
+    "days": 1,
+    "event_count": 1,
+    "final_equity": 9999.00009999,
+    "initial_equity": 10000.0,
+    "max_drawdown_pct": 0.00999900009999692,
+    "max_drawdown_usd": 0.999900009999692,
+    "total_return_pct": -0.009999000099991662
+  },
+  "initial_equity": 10000.0,
+  "initial_principal": 10000.0,
+  "outputs": {
+    "daily_csv": "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/reports/today_intraday_pl5m_market_order_1555_aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_2026-03-23_to_2026-03-23_paper_live_style_optimistic_daily.csv",
+    "summary_json": "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/reports/today_intraday_pl5m_market_order_1555_aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_2026-03-23_to_2026-03-23_paper_live_style_optimistic.json"
+  },
+  "paper_live_style_daily_synth_profile": false,
+  "parity": {
+    "final_equity_abs_diff": 0.0,
+    "final_equity_diff_bps_vs_cpu": 0.0
+  },
+  "profit_lock_exec_model_effective": "synthetic",
+  "profit_lock_exec_model_requested": "paper_live_style_optimistic",
+  "rebalance_time_ny": "15:55",
+  "runtime_profit_lock_order_type": "market_order",
+  "runtime_stop_price_offset_bps": 2.0,
+  "split_adjustment": {
+    "enabled": true,
+    "method": "holdings_scaled_by_adjusted_raw_factor_ratio"
+  },
+  "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "warmup_days_effective": 260,
+  "warmup_days_requested": 260,
+  "window": {
+    "end_date": "2026-03-23",
+    "start_date": "2026-03-23"
+  }
+}

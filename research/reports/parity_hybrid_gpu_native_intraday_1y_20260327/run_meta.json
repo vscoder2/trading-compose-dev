@@ -1,0 +1,24 @@
+{
+  "run_name": "parity_hybrid_gpu_native_intraday_1y_20260327",
+  "created_at": "2026-03-27T13:33:33.948927",
+  "grid_config": "/home/chewy/projects/trading-compose-dev/research/configs/parity_hybrid_gpu_native_intraday.json",
+  "engine": "gpu_native_daily_batch",
+  "combo_count": 1152,
+  "max_workers": 32,
+  "start_date": "2025-03-26",
+  "end_date": "2026-03-26",
+  "initial_equity": 10000.0,
+  "initial_principal": 10000.0,
+  "engine_meta": {
+    "engine": "gpu_native_daily_batch",
+    "backend": "cupy_gpu:0",
+    "gpu_probe_enabled": true,
+    "gpu_probe_reason": "ok",
+    "combo_count": 1152,
+    "symbol_count": 8,
+    "aligned_days": 802,
+    "window_days": 252,
+    "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "elapsed_sec_total": 2.394
+  }
+}

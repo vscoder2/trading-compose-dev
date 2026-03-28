@@ -1,0 +1,8 @@
+{"ts_ny": "2026-03-23T00:40:29.371781-04:00", "user": "demo_trader", "role": "operator", "action": "logout", "meta": {}}
+{"ts_ny": "2026-03-23T03:05:38.353194-04:00", "user": "demo_trader", "role": "operator", "action": "logout", "meta": {}}
+{"ts_ny": "2026-03-23T03:13:45.362409-04:00", "user": "demo_trader", "role": "operator", "action": "palette_run", "meta": {"action": "Refresh Data Now", "selected_symbol": "SOXL"}}
+{"ts_ny": "2026-03-23T03:34:20.010047-04:00", "user": "demo_trader", "role": "operator", "action": "logout", "meta": {}}
+{"ts_ny": "2026-03-23T03:35:15.587302-04:00", "user": "demo_trader", "role": "operator", "action": "palette_run", "meta": {"action": "Refresh Data Now", "selected_symbol": "SOXL"}}
+{"ts_ny": "2026-03-23T03:35:19.540313-04:00", "user": "demo_trader", "role": "operator", "action": "palette_run", "meta": {"action": "Refresh Data Now", "selected_symbol": "SOXL"}}
+{"ts_ny": "2026-03-23T12:00:31.622939-04:00", "user": "demo_trader", "role": "operator", "action": "logout", "meta": {}}
+{"ts_ny": "2026-03-23T13:34:01.113960-04:00", "user": "demo_trader", "role": "operator", "action": "logout", "meta": {}}

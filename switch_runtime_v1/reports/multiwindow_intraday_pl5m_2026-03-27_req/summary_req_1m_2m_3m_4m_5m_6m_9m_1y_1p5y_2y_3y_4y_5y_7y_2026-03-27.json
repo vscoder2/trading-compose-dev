@@ -1,0 +1,100 @@
+[
+  {
+    "window": "1m",
+    "start": "2026-02-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "2m",
+    "start": "2026-01-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "3m",
+    "start": "2025-12-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "4m",
+    "start": "2025-11-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "5m",
+    "start": "2025-10-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "6m",
+    "start": "2025-09-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "9m",
+    "start": "2025-06-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "1y",
+    "start": "2025-03-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "1.5y",
+    "start": "2024-09-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "2y",
+    "start": "2024-03-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "3y",
+    "start": "2023-03-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "4y",
+    "start": "2022-03-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "5y",
+    "start": "2021-03-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  },
+  {
+    "window": "7y",
+    "start": "2019-03-27",
+    "end": "2026-03-27",
+    "ok": false,
+    "error": "summary_json missing"
+  }
+]

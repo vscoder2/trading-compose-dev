@@ -1,0 +1,45 @@
+{
+  "engine": "gpu_native_daily_batch",
+  "window": {
+    "start_date": "2026-03-13",
+    "end_date": "2026-03-26"
+  },
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "combo_index": 15,
+  "combo": {
+    "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "profit_lock_exec_model": "paper_live_style_optimistic",
+    "runtime_profit_lock_order_type": "market_order",
+    "rebalance_time_ny": "15:55",
+    "slippage_bps": 1.0,
+    "sell_fee_bps": 0.5,
+    "warmup_days": 260,
+    "daily_lookback_days": 800,
+    "daily_synthetic_parity_split_adjustment": true,
+    "rebalance_min_trade_weight_delta": 0.0005
+  },
+  "cpu": {
+    "final_equity": 11058.153263498634,
+    "total_return_pct": 10.581532634986335,
+    "max_drawdown_pct": 6.933575978161969,
+    "max_drawdown_usd": 709.558397857365,
+    "elapsed_sec": 0.0016062259674072266
+  },
+  "gpu": {
+    "final_equity": 11058.153263498634,
+    "total_return_pct": 10.581532634986335,
+    "max_drawdown_pct": 6.933575978161969,
+    "max_drawdown_usd": 709.558397857365,
+    "elapsed_sec": 0.0016062259674072266,
+    "backend": "cpu_fallback",
+    "probe_reason": "cupy_runtime_failed: Failed to auto-detect CUDA root directory. Please specify `CUDA_PATH` environment variable if you are using CUDA versions not yet supported by CuPy."
+  },
+  "parity": {
+    "final_equity_diff_bps_vs_cpu": 0.0
+  },
+  "notes": {
+    "runtime_profit_lock_order_type": "market_order",
+    "engine_note": "",
+    "daily_synthetic_mechanics": true
+  }
+}

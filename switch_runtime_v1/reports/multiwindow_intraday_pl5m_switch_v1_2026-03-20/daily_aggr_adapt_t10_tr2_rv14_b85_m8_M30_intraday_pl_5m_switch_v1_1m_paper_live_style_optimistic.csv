@@ -1,0 +1,25 @@
+Date,Start Equity,End Equity,PnL,Return %,Drawdown %,Holdings,Notes
+2026-02-17,21559.63,22795.05,1235.42,5.7303,6.6478,"{""SOXS"": 643.9280667377138}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-18,22022.34,22022.34,0.0,0.0,9.8123,"{""SOXS"": 643.9280667377138}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-19,22537.48,22532.98,-4.51,-0.02,7.7211,"{""SOXL"": 345.438836272534}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-20,23182.4,23177.76,-4.64,-0.02,5.0805,"{""SOXS"": 681.6989495820868}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-23,23723.12,23723.12,0.0,0.0,2.8471,"{""SOXS"": 681.6989495820868}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-24,22632.41,22632.41,0.0,0.0,7.3139,"{""SOXS"": 681.6989495820868}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-25,21678.03,21678.03,0.0,0.0,11.2224,"{""SOXS"": 681.6989495820868}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-26,23450.44,24179.12,728.67,3.1073,0.9797,"{""SOXS"": 702.8812682737708}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-02-27,25163.15,25163.15,0.0,0.0,0.0,"{""SOXS"": 702.8812682737708}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-02,25163.15,25163.15,0.0,0.0,0.0,"{""SOXS"": 702.8812682737708}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-03,28958.71,29200.28,241.57,0.8342,0.0,"{""SOXS"": 708.7447043418423}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-04,27357.55,27357.55,0.0,0.0,6.3107,"{""SOXS"": 708.7447043418423}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-05,28413.58,29513.31,1099.74,3.8705,0.0,"{""SOXS"": 736.1764450679938}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-06,33253.09,33107.92,-145.17,-0.4366,0.0,"{""SOXL"": 691.3326856291008}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-09,36861.86,36428.99,-432.87,-1.1743,0.0,"{""SOXL"": 683.2143261486066}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-10,37296.67,38678.86,1382.19,3.7059,0.0,"{""SOXL"": 708.533884282211}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-11,39741.67,39733.72,-7.95,-0.02,0.0,"{""SOXS"": 1053.1067593699756}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-12,43967.21,43646.76,-320.45,-0.7288,0.0,"{""SOXL"": 868.0739335406687}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-13,44028.71,44028.71,0.0,0.0,0.0,"{""SOXL"": 868.0739335406687}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-16,46606.89,47358.2,751.31,1.612,0.0,"{""SOXL"": 882.0673663720391}",variant=baseline;variant_reason=override_dd20_ge_12;optimistic_trail_touch;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-17,48469.6,48469.6,0.0,0.0,0.0,"{""SOXL"": 882.0673663720391}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-18,47649.28,47649.28,0.0,0.0,1.6924,"{""SOXL"": 882.0673663720391}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-19,48381.4,48381.4,0.0,0.0,0.182,"{""SOXL"": 882.0673663720391}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off
+2026-03-20,45108.93,45108.93,0.0,0.0,6.9336,"{""SOXL"": 882.0673663720391}",variant=baseline;variant_reason=override_dd20_ge_12;vol_target_off;persistence_off;inverse_blocker_off

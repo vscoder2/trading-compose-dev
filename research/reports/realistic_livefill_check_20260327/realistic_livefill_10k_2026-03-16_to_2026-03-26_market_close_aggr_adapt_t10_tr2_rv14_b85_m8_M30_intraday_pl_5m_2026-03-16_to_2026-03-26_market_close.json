@@ -1,0 +1,244 @@
+{
+  "anchor_window_start_equity": false,
+  "cpu": {
+    "days": 9,
+    "event_count": 6,
+    "final_equity": 10447.35270392571,
+    "initial_equity": 10000.0,
+    "max_drawdown_pct": 7.100576213398348,
+    "max_drawdown_usd": 741.8222410247781,
+    "total_return_pct": 4.473527039257097
+  },
+  "daily_lookback_days_effective": 800,
+  "daily_lookback_days_requested": 800,
+  "daily_rows": [
+    {
+      "date": "2026-03-16",
+      "drawdown_pct": 0.00999900009999692,
+      "drawdown_usd": 0.999900009999692,
+      "equity": 9999.00009999,
+      "fell_pct": 0.00999900009999692,
+      "fell_usd": 0.999900009999692,
+      "new_purchase_time_stock": "15:56 | SOXL",
+      "pnl": -0.999900009999692,
+      "return_pct": -0.009999000099991662,
+      "sale_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-17",
+      "drawdown_pct": 0.0,
+      "drawdown_usd": 0.0,
+      "equity": 10217.86793004753,
+      "fell_pct": 0.0,
+      "fell_usd": 0.0,
+      "new_purchase_time_stock": "no change",
+      "pnl": 218.86783005753023,
+      "return_pct": 2.188897168405357,
+      "sale_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-18",
+      "drawdown_pct": 0.865919241637032,
+      "drawdown_usd": 88.47848449134108,
+      "equity": 10129.38944555619,
+      "fell_pct": 0.865919241637032,
+      "fell_usd": 88.47848449134108,
+      "new_purchase_time_stock": "no change",
+      "pnl": -88.47848449134108,
+      "return_pct": -0.8659192416370365,
+      "sale_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-19",
+      "drawdown_pct": 0.08203445447086341,
+      "drawdown_usd": 8.382172214967795,
+      "equity": 10209.485757832563,
+      "fell_pct": 0.0,
+      "fell_usd": 0.0,
+      "new_purchase_time_stock": "no change",
+      "pnl": 80.09631227637328,
+      "return_pct": 0.7907318867230728,
+      "sale_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-20",
+      "drawdown_pct": 7.260049220672666,
+      "drawdown_usd": 741.8222410247781,
+      "equity": 9476.045689022752,
+      "fell_pct": 7.1839080459770095,
+      "fell_usd": 733.4400688098103,
+      "new_purchase_time_stock": "no change",
+      "pnl": -733.4400688098103,
+      "return_pct": -7.183908045977006,
+      "sale_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-23",
+      "drawdown_pct": 0.0,
+      "drawdown_usd": 0.0,
+      "equity": 10316.289946224906,
+      "fell_pct": 0.0,
+      "fell_usd": 0.0,
+      "new_purchase_time_stock": "15:56 | SOXS",
+      "pnl": 840.2442572021537,
+      "return_pct": 8.867034676452757,
+      "sale_time_stock": "07:13 | SOXL"
+    },
+    {
+      "date": "2026-03-24",
+      "drawdown_pct": 3.024953479032943,
+      "drawdown_usd": 312.06297163545605,
+      "equity": 10004.22697458945,
+      "fell_pct": 3.024953479032943,
+      "fell_usd": 312.06297163545605,
+      "new_purchase_time_stock": "no change",
+      "pnl": -312.06297163545605,
+      "return_pct": -3.0249534790329435,
+      "sale_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-25",
+      "drawdown_pct": 6.924874058295569,
+      "drawdown_usd": 714.3900862646824,
+      "equity": 9601.899859960224,
+      "fell_pct": 4.021571238348847,
+      "fell_usd": 402.32711462922634,
+      "new_purchase_time_stock": "no change",
+      "pnl": -402.32711462922634,
+      "return_pct": -4.021571238348843,
+      "sale_time_stock": "no change"
+    },
+    {
+      "date": "2026-03-26",
+      "drawdown_pct": 0.0,
+      "drawdown_usd": 0.0,
+      "equity": 10447.35270392571,
+      "fell_pct": 0.0,
+      "fell_usd": 0.0,
+      "new_purchase_time_stock": "15:56 | SOXL",
+      "pnl": 845.452843965486,
+      "return_pct": 8.805057918704318,
+      "sale_time_stock": "11:05 | SOXS"
+    }
+  ],
+  "daily_synthetic_parity": {
+    "enabled": false,
+    "rebalance_min_trade_weight_delta": 0.05,
+    "rebalance_price_model": "minute_close_raw",
+    "split_adjustment_override": false,
+    "strict_mode": false,
+    "trigger_model": "intraday_minute_high_low"
+  },
+  "data_feed": "sip",
+  "events": [
+    {
+      "day": "2026-03-16",
+      "event_type": "rebalance_buy",
+      "price": 53.685368,
+      "qty": 186.27049366598362,
+      "reason": "baseline_rebalance",
+      "side": "buy",
+      "symbol": "SOXL",
+      "timestamp": "2026-03-16T15:56:00-04:00",
+      "trail_stop_price": 0.0,
+      "trigger_price": 0.0
+    },
+    {
+      "day": "2026-03-23",
+      "event_type": "profit_lock_sell",
+      "price": 55.39446,
+      "qty": 186.27049366598362,
+      "reason": "intraday_profit_lock",
+      "side": "sell",
+      "symbol": "SOXL",
+      "timestamp": "2026-03-23T07:13:00-04:00",
+      "trail_stop_price": 54.291999999999994,
+      "trigger_price": 55.2312
+    },
+    {
+      "day": "2026-03-23",
+      "event_type": "rebalance_buy",
+      "price": 39.023902,
+      "qty": 264.38467314774226,
+      "reason": "baseline_rebalance",
+      "side": "buy",
+      "symbol": "SOXS",
+      "timestamp": "2026-03-23T15:56:00-04:00",
+      "trail_stop_price": 0.0,
+      "trigger_price": 0.0
+    },
+    {
+      "day": "2026-03-24",
+      "event_type": "split_adjustment",
+      "price": 0.0,
+      "qty": 2.0394806362643862,
+      "reason": "overnight_ratio=1.0077140653",
+      "side": "none",
+      "symbol": "SOXS",
+      "timestamp": null,
+      "trail_stop_price": 0.0,
+      "trigger_price": 0.0
+    },
+    {
+      "day": "2026-03-26",
+      "event_type": "profit_lock_sell",
+      "price": 39.2210775,
+      "qty": 266.42415378400665,
+      "reason": "intraday_profit_lock",
+      "side": "sell",
+      "symbol": "SOXS",
+      "timestamp": "2026-03-26T11:05:00-04:00",
+      "trail_stop_price": 39.151,
+      "trigger_price": 38.90160000000001
+    },
+    {
+      "day": "2026-03-26",
+      "event_type": "rebalance_buy",
+      "price": 48.94499401,
+      "qty": 213.47223859219145,
+      "reason": "baseline_rebalance",
+      "side": "buy",
+      "symbol": "SOXL",
+      "timestamp": "2026-03-26T15:56:00-04:00",
+      "trail_stop_price": 0.0,
+      "trigger_price": 0.0
+    }
+  ],
+  "gpu": {
+    "backend": "cupy_available_cpu_logic",
+    "days": 9,
+    "event_count": 6,
+    "final_equity": 10447.35270392571,
+    "initial_equity": 10000.0,
+    "max_drawdown_pct": 7.100576213398348,
+    "max_drawdown_usd": 741.8222410247781,
+    "total_return_pct": 4.473527039257097
+  },
+  "initial_equity": 10000.0,
+  "initial_principal": 10000.0,
+  "outputs": {
+    "daily_csv": "/home/chewy/projects/trading-compose-dev/research/reports/realistic_livefill_check_20260327/realistic_livefill_10k_2026-03-16_to_2026-03-26_market_close_aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_2026-03-16_to_2026-03-26_market_close_daily.csv",
+    "summary_json": "/home/chewy/projects/trading-compose-dev/research/reports/realistic_livefill_check_20260327/realistic_livefill_10k_2026-03-16_to_2026-03-26_market_close_aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_2026-03-16_to_2026-03-26_market_close.json"
+  },
+  "paper_live_style_daily_synth_profile": false,
+  "parity": {
+    "final_equity_abs_diff": 0.0,
+    "final_equity_diff_bps_vs_cpu": 0.0
+  },
+  "profit_lock_exec_model_effective": "market_close",
+  "profit_lock_exec_model_requested": "market_close",
+  "rebalance_time_ny": "15:56",
+  "runtime_profit_lock_order_type": "market_order",
+  "runtime_stop_price_offset_bps": 2.0,
+  "split_adjustment": {
+    "enabled": true,
+    "method": "holdings_scaled_by_adjusted_raw_factor_ratio"
+  },
+  "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "warmup_days_effective": 260,
+  "warmup_days_requested": 260,
+  "window": {
+    "end_date": "2026-03-26",
+    "start_date": "2026-03-16"
+  }
+}

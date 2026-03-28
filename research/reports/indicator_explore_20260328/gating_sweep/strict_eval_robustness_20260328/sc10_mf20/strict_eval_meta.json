@@ -1,0 +1,10 @@
+{
+  "daylevel_csv": "/home/chewy/projects/trading-compose-dev/research/reports/indicator_explore_20260328/indicator_daylevel_1y.csv",
+  "ranked_csv": "/home/chewy/projects/trading-compose-dev/research/reports/indicator_explore_20260328/gating_sweep/indicator_gating_ranked.csv",
+  "initial_equity": 10000.0,
+  "top_n": 5,
+  "max_rule_size": 3,
+  "switch_cost_bps": 10.0,
+  "missed_fill_penalty_bps": 20.0,
+  "output_csv": "/home/chewy/projects/trading-compose-dev/research/reports/indicator_explore_20260328/gating_sweep/strict_eval_robustness_20260328/sc10_mf20/strict_eval_top_rules.csv"
+}

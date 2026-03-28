@@ -681,7 +681,7 @@ def _build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--execute-orders", action="store_true", help="Submit live/paper market orders.")
     parser.add_argument("--state-db", default="composer_original_parity_runtime.db")
-    parser.add_argument("--eval-time", default="15:55", help="Daily NY time to run the parity cycle (HH:MM).")
+    parser.add_argument("--eval-time", default="15:56", help="Daily NY time to run the parity cycle (HH:MM).")
     parser.add_argument("--loop-sleep-seconds", type=int, default=30)
     parser.add_argument("--data-feed", default="sip", help="Alpaca data feed: sip or iex.")
     parser.add_argument("--daily-lookback-days", type=int, default=800)

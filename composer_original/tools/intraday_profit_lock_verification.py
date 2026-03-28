@@ -342,6 +342,43 @@ def _synthetic_close_ts(day: date) -> datetime:
     return datetime.combine(day, dt_time(15, 59), tzinfo=NY)
 
 
+def _parse_hhmm(value: str) -> dt_time:
+    raw = str(value or "").strip()
+    try:
+        hh, mm = raw.split(":", 1)
+        h = int(hh)
+        m = int(mm)
+    except Exception as exc:
+        raise ValueError(f"Invalid HH:MM time value: {value!r}") from exc
+    if h < 0 or h > 23 or m < 0 or m > 59:
+        raise ValueError(f"Invalid HH:MM time value: {value!r}")
+    return dt_time(h, m)
+
+
+def _minute_close_at_or_before(
+    minutes: list[tuple[datetime, float, float, float, float]],
+    cutoff: dt_time,
+) -> tuple[datetime | None, float]:
+    """Return close timestamp/price at or before cutoff (NY time) for a symbol/day."""
+    if not minutes:
+        return None, 0.0
+    chosen_ts: datetime | None = None
+    chosen_close = 0.0
+    for ts, _o, _h, _l, close in minutes:
+        ts_ny = ts.astimezone(NY)
+        if ts_ny.time() <= cutoff:
+            chosen_ts = ts_ny
+            chosen_close = float(close)
+        else:
+            # list is sorted; once cutoff exceeded, remaining rows are later
+            break
+    if chosen_ts is not None:
+        return chosen_ts, chosen_close
+    # If cutoff is before first available bar, fall back to first available bar.
+    ts0, _o0, _h0, _l0, c0 = minutes[0]
+    return ts0.astimezone(NY), float(c0)
+
+
 def _simulate_intraday_verification(
     *,
     symbols: list[str],
@@ -362,6 +399,7 @@ def _simulate_intraday_verification(
     runtime_stop_price_offset_bps: float = 2.0,
     daily_synthetic_parity: bool = False,
     rebalance_min_trade_weight_delta: float = 0.0,
+    rebalance_time_ny: dt_time = dt_time(15, 56),
     split_ratio_by_day_symbol: dict[date, dict[str, float]] | None = None,
 ) -> SimulationResult:
     symbol_to_idx = {s: i for i, s in enumerate(symbols)}
@@ -586,15 +624,24 @@ def _simulate_intraday_verification(
                 )
 
         last_prices: dict[str, float] = {}
+        rebalance_ts_by_symbol: dict[str, datetime] = {}
         for sym in symbols:
             if daily_synthetic_parity:
                 last_prices[sym] = float(close_map_by_symbol[sym][d])
+                rebalance_ts_by_symbol[sym] = _synthetic_close_ts(d)
             else:
                 minutes = day_minutes.get(sym, [])
                 if minutes:
-                    last_prices[sym] = float(minutes[-1][4])
+                    reb_ts, reb_px = _minute_close_at_or_before(minutes, rebalance_time_ny)
+                    if reb_ts is not None and reb_px > 0.0:
+                        last_prices[sym] = float(reb_px)
+                        rebalance_ts_by_symbol[sym] = reb_ts
+                    else:
+                        last_prices[sym] = float(minutes[-1][4])
+                        rebalance_ts_by_symbol[sym] = minutes[-1][0].astimezone(NY)
                 else:
                     last_prices[sym] = float(close_map_by_symbol[sym][d])
+                    rebalance_ts_by_symbol[sym] = _synthetic_close_ts(d)
 
         equity_before = cash + sum(float(holdings[s]) * float(last_prices[s]) for s in symbols)
         target = dict(baseline_target_by_day.get(d, {}))
@@ -611,8 +658,8 @@ def _simulate_intraday_verification(
             close_ts: datetime | None = None
             if daily_synthetic_parity:
                 close_ts = _synthetic_close_ts(d)
-            elif day_minutes:
-                latest = [rows[-1][0] for rows in day_minutes.values() if rows]
+            else:
+                latest = [rebalance_ts_by_symbol.get(s) for s in symbols if rebalance_ts_by_symbol.get(s) is not None]
                 close_ts = max(latest) if latest else None
 
             for intent in intents:
@@ -866,6 +913,11 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--slippage-bps", type=float, default=1.0)
     parser.add_argument("--sell-fee-bps", type=float, default=0.0)
     parser.add_argument(
+        "--rebalance-time-ny",
+        default="15:56",
+        help="Rebalance price/time cutoff in NY timezone for minute-based runs (HH:MM). Default: 15:56.",
+    )
+    parser.add_argument(
         "--runtime-profit-lock-order-type",
         choices=["close_position", "market_order", "stop_order", "trailing_stop"],
         default="market_order",
@@ -918,6 +970,7 @@ def main(argv: list[str] | None = None) -> int:
         raise ValueError("start-date must be <= end-date")
     if abs(float(args.initial_principal) - float(args.initial_equity)) > 1e-9:
         raise ValueError("initial-principal and initial-equity must match for this parity verification run")
+    rebalance_time_ny = _parse_hhmm(args.rebalance_time_ny)
 
     if args.env_file:
         loaded = _load_env_file(args.env_file, override=bool(args.env_override))
@@ -1028,6 +1081,7 @@ def main(argv: list[str] | None = None) -> int:
         runtime_stop_price_offset_bps=float(args.runtime_stop_price_offset_bps),
         daily_synthetic_parity=effective_daily_synthetic_parity,
         rebalance_min_trade_weight_delta=rebalance_min_trade_weight_delta,
+        rebalance_time_ny=rebalance_time_ny,
         split_ratio_by_day_symbol=split_ratio_by_day_symbol if split_ratio_by_day_symbol else None,
     )
 
@@ -1057,6 +1111,7 @@ def main(argv: list[str] | None = None) -> int:
         runtime_stop_price_offset_bps=float(args.runtime_stop_price_offset_bps),
         daily_synthetic_parity=effective_daily_synthetic_parity,
         rebalance_min_trade_weight_delta=rebalance_min_trade_weight_delta,
+        rebalance_time_ny=rebalance_time_ny,
         split_ratio_by_day_symbol=split_ratio_by_day_symbol if split_ratio_by_day_symbol else None,
     )
 
@@ -1082,6 +1137,7 @@ def main(argv: list[str] | None = None) -> int:
         ),
         "runtime_profit_lock_order_type": str(args.runtime_profit_lock_order_type),
         "runtime_stop_price_offset_bps": float(args.runtime_stop_price_offset_bps),
+        "rebalance_time_ny": args.rebalance_time_ny,
         "window": {
             "start_date": args.start_date.isoformat(),
             "end_date": args.end_date.isoformat(),

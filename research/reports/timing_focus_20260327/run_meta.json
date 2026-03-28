@@ -1,0 +1,11 @@
+{
+  "run_name": "timing_focus_20260327",
+  "created_at": "2026-03-27T01:21:44.858345",
+  "grid_config": "/home/chewy/projects/trading-compose-dev/research/configs/timing_focus_grid.json",
+  "combo_count": 336,
+  "max_workers": 32,
+  "start_date": "2026-03-13",
+  "end_date": "2026-03-26",
+  "initial_equity": 10000.0,
+  "initial_principal": 10000.0
+}

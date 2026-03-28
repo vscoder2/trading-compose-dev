@@ -13,6 +13,7 @@ import difflib
 import zipfile
 import smtplib
 import ssl
+import re
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
@@ -29,6 +30,73 @@ import streamlit.components.v1 as components
 NY_TZ = "America/New_York"
 APP_TITLE = "Automated Trading Dashboard"
 APP_SUBTITLE = "Operator console for switch-runtime strategy execution, risk controls, and broker-facing decision flow"
+
+
+def _arrow_safe_scalar(value: Any) -> Any:
+    if value is None:
+        return None
+    try:
+        if pd.isna(value):
+            return None
+    except Exception:
+        pass
+    if isinstance(value, (dict, list, tuple, set)):
+        try:
+            return json.dumps(value, sort_keys=True, default=str)
+        except Exception:
+            return str(value)
+    if isinstance(value, bytes):
+        try:
+            return value.decode("utf-8", errors="replace")
+        except Exception:
+            return str(value)
+    if isinstance(value, (datetime, pd.Timestamp)):
+        try:
+            return pd.Timestamp(value).isoformat()
+        except Exception:
+            return str(value)
+    return value
+
+
+def _sanitize_dataframe_for_streamlit(df: pd.DataFrame) -> pd.DataFrame:
+    if not isinstance(df, pd.DataFrame) or df.empty:
+        return df
+    out = df.copy()
+    obj_cols = out.select_dtypes(include=["object"]).columns.tolist()
+    for col in obj_cols:
+        series = out[col].map(_arrow_safe_scalar)
+        non_null = [v for v in series.head(500).tolist() if v is not None]
+        if non_null:
+            types = {type(v) for v in non_null}
+            # Arrow conversion is brittle for mixed object columns; stringify to keep UI stable.
+            if len(types) > 1:
+                series = series.map(lambda v: None if v is None else str(v))
+        out[col] = series
+    return out
+
+
+_ORIGINAL_ST_DATAFRAME = st.dataframe
+
+
+def _safe_st_dataframe(data: Any = None, *args: Any, **kwargs: Any) -> Any:
+    if isinstance(data, pd.DataFrame):
+        data = _sanitize_dataframe_for_streamlit(data)
+    elif isinstance(data, pd.Series):
+        data = _sanitize_dataframe_for_streamlit(data.to_frame(name=data.name or "value"))
+    elif isinstance(data, list) and data and isinstance(data[0], dict):
+        data = _sanitize_dataframe_for_streamlit(pd.DataFrame(data))
+    try:
+        return _ORIGINAL_ST_DATAFRAME(data, *args, **kwargs)
+    except Exception:
+        if isinstance(data, pd.DataFrame):
+            fallback = data.copy()
+            for col in fallback.columns:
+                fallback[col] = fallback[col].map(_arrow_safe_scalar).map(lambda v: None if v is None else str(v))
+            return _ORIGINAL_ST_DATAFRAME(fallback, *args, **kwargs)
+        raise
+
+
+st.dataframe = _safe_st_dataframe
 
 
 @dataclass(frozen=True)
@@ -69,13 +137,99 @@ TIME_WINDOW_DELTAS: dict[str, pd.Timedelta] = {
     "3M": pd.Timedelta(days=90),
 }
 STREAM_TRANSPORT_OPTIONS = ("Polling", "SSE (experimental)")
+WORKSPACE_ORDER = [
+    "Command Center",
+    "Tradeboard",
+    "Multi-Chart",
+    "Portfolio Pulse",
+    "Execution Journal",
+    "Strategy Lab",
+    "P&L Monitor",
+    "Notifications",
+    "Ops Health",
+    "UI Diagnostics",
+    "Audit Trail",
+    "Operator Guide",
+    "Backtest Hub",
+    "UI Changelog",
+]
+THEME_PRESETS: dict[str, dict[str, str]] = {
+    "Neo Green": {
+        "accent": "#00c805",
+        "accent2": "#3cd95b",
+        "accent3": "#99ec5b",
+        "link": "#5eead4",
+    },
+    "Ocean Blue": {
+        "accent": "#3b82f6",
+        "accent2": "#60a5fa",
+        "accent3": "#93c5fd",
+        "link": "#67e8f9",
+    },
+    "Amber Pro": {
+        "accent": "#f59e0b",
+        "accent2": "#fbbf24",
+        "accent3": "#fcd34d",
+        "link": "#fde68a",
+    },
+    "Mono Slate": {
+        "accent": "#94a3b8",
+        "accent2": "#cbd5e1",
+        "accent3": "#e2e8f0",
+        "link": "#c7d2fe",
+    },
+    "Pro Dark": {
+        "accent": "#22c55e",
+        "accent2": "#4ade80",
+        "accent3": "#86efac",
+        "link": "#67e8f9",
+    },
+    "Institutional Slate": {
+        "accent": "#38bdf8",
+        "accent2": "#7dd3fc",
+        "accent3": "#bae6fd",
+        "link": "#c4b5fd",
+    },
+    "Neon Grid": {
+        "accent": "#00e5ff",
+        "accent2": "#00ffa8",
+        "accent3": "#ccff00",
+        "link": "#7dd3fc",
+    },
+    "Robinhood Terminal": {
+        "accent": "#00c805",
+        "accent2": "#42d66a",
+        "accent3": "#8be88f",
+        "link": "#93f5b0",
+    },
+    "Webull Slate": {
+        "accent": "#2ea7ff",
+        "accent2": "#6dc5ff",
+        "accent3": "#a8dcff",
+        "link": "#8fd6ff",
+    },
+    "Kraken Pro": {
+        "accent": "#6f54ff",
+        "accent2": "#9a86ff",
+        "accent3": "#c8bfff",
+        "link": "#8eb3ff",
+    },
+}
+DENSITY_MODES = ("Comfortable", "Compact", "Ultra Compact")
 USER_UI_PREF_KEYS = (
     "ui_watchlist_pins",
     "ui_watchlist_pinned_only",
+    "ui_watchlist_min_events",
+    "ui_watchlist_sort_mode",
+    "ui_watchlist_card_density",
+    "ui_watchlist_quick_actions",
     "ui_time_window",
+    "ui_eval_time",
     "ui_sync_charts",
     "ui_symbol_view_mode",
     "ui_symbol_chart_type",
+    "ui_linked_cursor_enabled",
+    "ui_linked_cursor_ts",
     "ui_auto_refresh_enabled",
     "ui_auto_refresh_interval_sec",
     "ui_strict_user_db",
@@ -87,14 +241,62 @@ USER_UI_PREF_KEYS = (
     "ui_global_variants",
     "ui_global_sides",
     "ui_global_order_types",
+    "ui_global_filter_presets",
     "ui_saved_workspace",
+    "ui_workspace_view_mode",
+    "ui_workspace_nav_selection",
     "ui_live_stream_enabled",
     "ui_live_stream_transport",
     "ui_live_stream_interval_sec",
     "ui_live_stream_sse_url",
     "ui_mobile_compact_mode",
     "ui_alert_rules",
+    "ui_theme_preset",
+    "ui_density_mode",
+    "ui_font_scale_pct",
+    "ui_high_contrast",
+    "ui_focus_mode",
+    "ui_keyboard_shortcuts_enabled",
+    "ui_tradeboard_split",
+    "ui_execution_split",
+    "ui_tradeboard_custom_weights",
+    "ui_execution_custom_weights",
+    "ui_incident_mode",
+    "ui_mobile_bottom_nav",
+    "ui_workspace_preset",
+    "ui_workspace_visible_tabs",
+    "ui_command_history",
+    "ui_command_favorites",
+    "ui_layout_editor_enabled",
+    "ui_panel_layout_locked",
+    "ui_popout_panel",
+    "ui_accessibility_preset",
+    "ui_reduced_motion",
+    "ui_perf_mode_enabled",
+    "ui_perf_max_rows",
+    "ui_persona_mode",
+    "ui_home_tiles",
+    "ui_show_onboarding",
+    "ui_saved_views",
+    "ui_fast_widget_cadence_sec",
+    "ui_heavy_widget_cadence_sec",
+    "ui_minimal_mode",
 )
+
+
+def _normalize_eval_time(value: Any, default: str = "15:55") -> str:
+    raw = str(value or "").strip()
+    if not re.fullmatch(r"\d{2}:\d{2}", raw):
+        return default
+    hh_txt, mm_txt = raw.split(":", 1)
+    try:
+        hh = int(hh_txt)
+        mm = int(mm_txt)
+    except Exception:
+        return default
+    if 0 <= hh <= 23 and 0 <= mm <= 59:
+        return f"{hh:02d}:{mm:02d}"
+    return default
 
 
 def _set_auth_notice(kind: str, message: str) -> None:
@@ -400,7 +602,9 @@ def _runtime_command_lines(
     state_db: str,
     execute_orders: bool,
     strategy_profile: str = "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    eval_time: str | None = None,
 ) -> list[str]:
+    eval_time_txt = _normalize_eval_time(eval_time if eval_time is not None else st.session_state.get("ui_eval_time", "15:55"))
     lines = [
         "/home/chewy/projects/trading-compose-dev/composer_original/.venv/bin/python \\",
         "  /home/chewy/projects/trading-compose-dev/switch_runtime_v1/runtime_switch_loop.py \\",
@@ -409,7 +613,7 @@ def _runtime_command_lines(
         f"  --mode {str(mode).strip()} \\",
         f"  --strategy-profile {strategy_profile} \\",
         "  --data-feed sip \\",
-        "  --eval-time 15:55 \\",
+        f"  --eval-time {eval_time_txt} \\",
         "  --profit-lock-order-type market_order \\",
         "  --rebalance-order-type market \\",
         f"  --state-db {state_db}" + (" \\" if execute_orders else ""),
@@ -455,13 +659,27 @@ def _sanitize_user_ui_prefs(ui: dict[str, Any]) -> dict[str, Any]:
         pins = [str(s).strip().upper() for s in raw_pins if str(s).strip()]
         out["ui_watchlist_pins"] = sorted(set(pins))
     out["ui_watchlist_pinned_only"] = bool(ui.get("ui_watchlist_pinned_only", False))
+    try:
+        min_ev = int(pd.to_numeric(ui.get("ui_watchlist_min_events", 0), errors="coerce") or 0)
+    except Exception:
+        min_ev = 0
+    out["ui_watchlist_min_events"] = max(0, min(5000, min_ev))
+    sort_mode = str(ui.get("ui_watchlist_sort_mode", "Activity") or "Activity")
+    out["ui_watchlist_sort_mode"] = sort_mode if sort_mode in {"Activity", "Target Weight", "Alphabetical"} else "Activity"
+    card_density = str(ui.get("ui_watchlist_card_density", "Standard") or "Standard")
+    out["ui_watchlist_card_density"] = card_density if card_density in {"Compact", "Standard", "Expanded"} else "Standard"
+    out["ui_watchlist_quick_actions"] = bool(ui.get("ui_watchlist_quick_actions", True))
     tw = str(ui.get("ui_time_window", "1D") or "1D")
     out["ui_time_window"] = tw if tw in TIME_WINDOW_OPTIONS else "1D"
+    out["ui_eval_time"] = _normalize_eval_time(ui.get("ui_eval_time", "15:55"), default="15:55")
     out["ui_sync_charts"] = bool(ui.get("ui_sync_charts", True))
     view = str(ui.get("ui_symbol_view_mode", "Intraday Activity") or "Intraday Activity")
     out["ui_symbol_view_mode"] = view if view in {"Intraday Activity", "Lifecycle", "Event Mix"} else "Intraday Activity"
     chart_type = str(ui.get("ui_symbol_chart_type", "Line") or "Line")
     out["ui_symbol_chart_type"] = chart_type if chart_type in {"Line", "Bar", "Candles"} else "Line"
+    out["ui_linked_cursor_enabled"] = bool(ui.get("ui_linked_cursor_enabled", True))
+    cursor_ts = str(ui.get("ui_linked_cursor_ts", "") or "")
+    out["ui_linked_cursor_ts"] = cursor_ts
     out["ui_auto_refresh_enabled"] = bool(ui.get("ui_auto_refresh_enabled", False))
     interval = int(ui.get("ui_auto_refresh_interval_sec", 30) or 30)
     out["ui_auto_refresh_interval_sec"] = interval if interval in {5, 15, 30, 60, 120} else 30
@@ -473,7 +691,13 @@ def _sanitize_user_ui_prefs(ui: dict[str, Any]) -> dict[str, Any]:
     for key in ["ui_global_symbols", "ui_global_event_types", "ui_global_variants", "ui_global_sides", "ui_global_order_types"]:
         raw = ui.get(key, [])
         out[key] = list(raw) if isinstance(raw, list) else []
+    raw_presets = ui.get("ui_global_filter_presets", {})
+    out["ui_global_filter_presets"] = raw_presets if isinstance(raw_presets, dict) else {}
     out["ui_saved_workspace"] = str(ui.get("ui_saved_workspace", "Tradeboard") or "Tradeboard")
+    vm = str(ui.get("ui_workspace_view_mode", "Single Workspace") or "Single Workspace")
+    out["ui_workspace_view_mode"] = vm if vm in {"Single Workspace", "Tabbed Workspace"} else "Single Workspace"
+    nav = str(ui.get("ui_workspace_nav_selection", out["ui_saved_workspace"]) or out["ui_saved_workspace"])
+    out["ui_workspace_nav_selection"] = nav if nav in WORKSPACE_ORDER else out["ui_saved_workspace"]
     out["ui_live_stream_enabled"] = bool(ui.get("ui_live_stream_enabled", False))
     tr = str(ui.get("ui_live_stream_transport", "Polling") or "Polling")
     out["ui_live_stream_transport"] = tr if tr in STREAM_TRANSPORT_OPTIONS else "Polling"
@@ -483,6 +707,74 @@ def _sanitize_user_ui_prefs(ui: dict[str, Any]) -> dict[str, Any]:
     out["ui_mobile_compact_mode"] = bool(ui.get("ui_mobile_compact_mode", False))
     raw_rules = ui.get("ui_alert_rules", [])
     out["ui_alert_rules"] = raw_rules if isinstance(raw_rules, list) else []
+    theme = str(ui.get("ui_theme_preset", "Neo Green") or "Neo Green")
+    out["ui_theme_preset"] = theme if theme in THEME_PRESETS else "Neo Green"
+    density = str(ui.get("ui_density_mode", "Comfortable") or "Comfortable")
+    out["ui_density_mode"] = density if density in DENSITY_MODES else "Comfortable"
+    try:
+        fscale = int(pd.to_numeric(ui.get("ui_font_scale_pct", 100), errors="coerce") or 100)
+    except Exception:
+        fscale = 100
+    out["ui_font_scale_pct"] = max(85, min(130, fscale))
+    out["ui_high_contrast"] = bool(ui.get("ui_high_contrast", False))
+    out["ui_focus_mode"] = bool(ui.get("ui_focus_mode", False))
+    out["ui_keyboard_shortcuts_enabled"] = bool(ui.get("ui_keyboard_shortcuts_enabled", True))
+    tb_split = str(ui.get("ui_tradeboard_split", "Balanced") or "Balanced")
+    out["ui_tradeboard_split"] = tb_split if tb_split in {"Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"} else "Balanced"
+    ex_split = str(ui.get("ui_execution_split", "Balanced") or "Balanced")
+    out["ui_execution_split"] = ex_split if ex_split in {"Balanced", "Blotter Focus", "Analytics Focus", "Custom"} else "Balanced"
+    raw_tbw = ui.get("ui_tradeboard_custom_weights", [0.8, 1.95, 0.75])
+    if isinstance(raw_tbw, list) and len(raw_tbw) == 3:
+        out["ui_tradeboard_custom_weights"] = [float(pd.to_numeric(v, errors="coerce") or 1.0) for v in raw_tbw]
+    else:
+        out["ui_tradeboard_custom_weights"] = [0.8, 1.95, 0.75]
+    raw_exw = ui.get("ui_execution_custom_weights", [1.15, 1.0])
+    if isinstance(raw_exw, list) and len(raw_exw) == 2:
+        out["ui_execution_custom_weights"] = [float(pd.to_numeric(v, errors="coerce") or 1.0) for v in raw_exw]
+    else:
+        out["ui_execution_custom_weights"] = [1.15, 1.0]
+    out["ui_incident_mode"] = bool(ui.get("ui_incident_mode", False))
+    out["ui_mobile_bottom_nav"] = bool(ui.get("ui_mobile_bottom_nav", False))
+    preset = str(ui.get("ui_workspace_preset", "Custom") or "Custom")
+    out["ui_workspace_preset"] = preset if preset in {"Custom", "Open", "Close", "Forensics", "Risk", "Execution", "Monitor"} else "Custom"
+    raw_tabs = ui.get("ui_workspace_visible_tabs", [])
+    if isinstance(raw_tabs, list):
+        out["ui_workspace_visible_tabs"] = [str(t) for t in raw_tabs if str(t) in WORKSPACE_ORDER]
+    else:
+        out["ui_workspace_visible_tabs"] = []
+    raw_hist = ui.get("ui_command_history", [])
+    out["ui_command_history"] = raw_hist if isinstance(raw_hist, list) else []
+    raw_fav = ui.get("ui_command_favorites", [])
+    out["ui_command_favorites"] = raw_fav if isinstance(raw_fav, list) else []
+    out["ui_layout_editor_enabled"] = bool(ui.get("ui_layout_editor_enabled", False))
+    out["ui_panel_layout_locked"] = bool(ui.get("ui_panel_layout_locked", False))
+    out["ui_popout_panel"] = str(ui.get("ui_popout_panel", "") or "")
+    ap = str(ui.get("ui_accessibility_preset", "Default") or "Default")
+    out["ui_accessibility_preset"] = ap if ap in {"Default", "High Contrast", "Large Text", "Reduced Motion"} else "Default"
+    out["ui_reduced_motion"] = bool(ui.get("ui_reduced_motion", False))
+    out["ui_perf_mode_enabled"] = bool(ui.get("ui_perf_mode_enabled", False))
+    try:
+        out["ui_perf_max_rows"] = int(pd.to_numeric(ui.get("ui_perf_max_rows", 3000), errors="coerce") or 3000)
+    except Exception:
+        out["ui_perf_max_rows"] = 3000
+    pm = str(ui.get("ui_persona_mode", "Operator") or "Operator")
+    out["ui_persona_mode"] = pm if pm in {"Viewer", "Operator", "Admin"} else "Operator"
+    raw_tiles = ui.get("ui_home_tiles", [])
+    out["ui_home_tiles"] = raw_tiles if isinstance(raw_tiles, list) else []
+    out["ui_show_onboarding"] = bool(ui.get("ui_show_onboarding", True))
+    out["ui_minimal_mode"] = bool(ui.get("ui_minimal_mode", False))
+    try:
+        fast_sec = int(pd.to_numeric(ui.get("ui_fast_widget_cadence_sec", 5), errors="coerce") or 5)
+    except Exception:
+        fast_sec = 5
+    try:
+        heavy_sec = int(pd.to_numeric(ui.get("ui_heavy_widget_cadence_sec", 30), errors="coerce") or 30)
+    except Exception:
+        heavy_sec = 30
+    out["ui_fast_widget_cadence_sec"] = max(1, min(30, fast_sec))
+    out["ui_heavy_widget_cadence_sec"] = max(5, min(300, heavy_sec))
+    raw_views = ui.get("ui_saved_views", {})
+    out["ui_saved_views"] = raw_views if isinstance(raw_views, dict) else {}
     return out
 
 
@@ -784,6 +1076,146 @@ def _inject_theme_css() -> None:
             flex-wrap: wrap;
             margin-bottom: 0.9rem;
           }
+          .sticky-global {
+            position: sticky;
+            top: 0.35rem;
+            z-index: 15;
+            backdrop-filter: blur(10px);
+          }
+          .top-command-bar {
+            border: 1px solid rgba(121, 149, 193, 0.3);
+            border-radius: 12px;
+            background: linear-gradient(180deg, rgba(10, 18, 28, 0.84), rgba(9, 14, 24, 0.88));
+            padding: 0.52rem 0.62rem;
+            margin-bottom: 0.66rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.28);
+          }
+          .command-palette-modal {
+            border: 1px solid rgba(107, 134, 180, 0.34);
+            box-shadow: 0 18px 26px rgba(0, 0, 0, 0.34);
+            background: linear-gradient(180deg, rgba(8, 14, 24, 0.95), rgba(9, 13, 20, 0.96));
+          }
+          .quick-nav-block {
+            padding-top: 0.5rem;
+            padding-bottom: 0.5rem;
+          }
+          .realtime-ribbon {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+            border: 1px solid rgba(130, 146, 170, 0.28);
+            border-radius: 10px;
+            background: rgba(8, 12, 20, 0.78);
+            padding: 0.42rem 0.52rem;
+            margin-bottom: 0.58rem;
+            font-size: 0.76rem;
+          }
+          .realtime-ribbon span {
+            background: rgba(19, 26, 40, 0.72);
+            border: 1px solid rgba(119, 132, 153, 0.35);
+            border-radius: 999px;
+            padding: 0.2rem 0.48rem;
+          }
+          .toast-center {
+            border: 1px solid rgba(139, 154, 176, 0.26);
+            border-radius: 11px;
+            background: rgba(10, 16, 24, 0.76);
+            padding: 0.45rem 0.56rem;
+            margin-bottom: 0.7rem;
+          }
+          .toast-center-title {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: #b7cae8;
+            font-size: 0.72rem;
+            font-weight: 700;
+            margin-bottom: 0.24rem;
+          }
+          .mobile-bottom-nav {
+            position: sticky;
+            bottom: 0.35rem;
+            z-index: 14;
+            border: 1px solid rgba(119, 137, 167, 0.34);
+            border-radius: 12px;
+            background: rgba(8, 12, 19, 0.86);
+            padding: 0.35rem 0.45rem;
+            margin-top: 0.5rem;
+            backdrop-filter: blur(12px);
+          }
+          .left-nav-card {
+            border: 1px solid rgba(122, 132, 142, 0.2);
+            border-radius: 12px;
+            background: rgba(10, 15, 22, 0.72);
+            padding: 0.58rem 0.62rem;
+            margin-bottom: 0.55rem;
+          }
+          .risk-strip {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.45rem;
+            margin-bottom: 0.8rem;
+          }
+          .risk-pill {
+            border: 1px solid rgba(122, 132, 142, 0.24);
+            border-radius: 11px;
+            background: rgba(10, 15, 22, 0.78);
+            padding: 0.46rem 0.55rem;
+          }
+          .risk-pill-k {
+            color: #a9bad7;
+            font-size: 0.72rem;
+            margin-bottom: 0.11rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+          .risk-pill-v {
+            font-family: "IBM Plex Mono", monospace;
+            font-size: 0.83rem;
+            color: #edf6ff;
+            font-weight: 600;
+          }
+          .risk-dot {
+            display: inline-block;
+            width: 0.56rem;
+            height: 0.56rem;
+            border-radius: 999px;
+            margin-right: 0.36rem;
+          }
+          .risk-dot.ok { background: #00c805; box-shadow: 0 0 0 3px rgba(0, 200, 5, 0.15); }
+          .risk-dot.warn { background: #f3b13c; box-shadow: 0 0 0 3px rgba(243, 177, 60, 0.15); }
+          .risk-dot.bad { background: #ff5d7a; box-shadow: 0 0 0 3px rgba(255, 93, 122, 0.16); }
+          .alert-action-center {
+            border: 1px solid rgba(107, 134, 180, 0.3);
+            border-radius: 12px;
+            background: rgba(12, 18, 28, 0.8);
+            padding: 0.6rem 0.66rem 0.52rem 0.66rem;
+            margin-bottom: 0.85rem;
+          }
+          .alert-center-title {
+            font-size: 0.78rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: #b5c8e5;
+            margin-bottom: 0.2rem;
+            font-weight: 700;
+          }
+          .empty-state-card {
+            border: 1px dashed rgba(122, 132, 142, 0.4);
+            border-radius: 12px;
+            background: rgba(12, 17, 25, 0.62);
+            padding: 0.95rem 0.86rem;
+            margin: 0.35rem 0 0.4rem 0;
+          }
+          .empty-title {
+            color: #e8f2ff;
+            font-weight: 700;
+            margin-bottom: 0.18rem;
+          }
+          .empty-text {
+            color: #a9bedf;
+            font-size: 0.84rem;
+            line-height: 1.32;
+          }
           .status-badge {
             border-radius: 999px;
             padding: 0.17rem 0.58rem;
@@ -847,18 +1279,57 @@ def _inject_theme_css() -> None:
           }
           .watch-item-top {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: flex-start;
+            flex-wrap: wrap;
+            gap: 0.24rem;
             font-family: "IBM Plex Mono", monospace;
             font-size: 0.77rem;
             color: #e6f0ff;
             font-weight: 600;
           }
+          .watch-item-symbol {
+            margin-right: auto;
+          }
           .watch-item-sub {
             margin-top: 0.14rem;
             color: #9fb3d5;
-            font-size: 0.72rem;
+            font-size: 0.68rem;
+            letter-spacing: 0.01em;
             font-family: "IBM Plex Mono", monospace;
+          }
+          .watch-item-badge {
+            border: 1px solid rgba(134, 156, 189, 0.38);
+            border-radius: 999px;
+            padding: 0.04rem 0.35rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-left: 0.18rem;
+            background: rgba(11, 17, 27, 0.85);
+            color: #cde1ff;
+          }
+          .watch-item.compact {
+            padding: 0.24rem 0.42rem;
+          }
+          .watch-item.expanded {
+            padding: 0.42rem 0.54rem;
+          }
+          .watch-item-spark-wrap {
+            margin-top: 0.12rem;
+            border-top: 1px solid rgba(122, 132, 142, 0.14);
+            padding-top: 0.12rem;
+          }
+          .watch-item-spark-caption {
+            color: #8ea6cd;
+            font-size: 0.65rem;
+            font-family: "IBM Plex Mono", monospace;
+            margin-top: 0.05rem;
+          }
+          .quick-action-row {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 0.38rem;
+            margin-bottom: 0.44rem;
           }
           .terminal-title {
             font-size: 0.83rem;
@@ -1015,6 +1486,18 @@ def _inject_theme_css() -> None:
           .muted {
             color: var(--muted);
           }
+          .skeleton-line {
+            height: 0.78rem;
+            border-radius: 999px;
+            background: linear-gradient(90deg, rgba(132, 148, 171, 0.16), rgba(188, 204, 228, 0.3), rgba(132, 148, 171, 0.16));
+            background-size: 300% 100%;
+            animation: skeletonPulse 1.6s ease-in-out infinite;
+            margin-bottom: 0.33rem;
+          }
+          @keyframes skeletonPulse {
+            0% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
 
           .ok-pill, .warn-pill, .err-pill {
             display: inline-block;
@@ -1070,6 +1553,12 @@ def _inject_theme_css() -> None:
             padding: 0.7rem 0.8rem 0.5rem 0.8rem;
             box-shadow: var(--shadow-soft);
             margin-bottom: 0.8rem;
+            transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+          }
+          .desk-block:hover {
+            transform: translateY(-1px);
+            border-color: rgba(122, 132, 142, 0.3);
+            box-shadow: 0 14px 24px rgba(0, 0, 0, 0.3);
           }
 
           .stDataFrame, .stTable {
@@ -1108,6 +1597,12 @@ def _inject_theme_css() -> None:
             font-weight: 700;
             letter-spacing: 0.01em;
             border-radius: 12px;
+            transition: transform 110ms ease, box-shadow 110ms ease, filter 110ms ease;
+          }
+          .stButton button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 18px rgba(0, 0, 0, 0.26);
+            filter: saturate(1.08);
           }
 
           code, .stCodeBlock pre, .stCode {
@@ -1130,6 +1625,9 @@ def _inject_theme_css() -> None:
             .status-bar {
               flex-wrap: wrap;
             }
+            .risk-strip {
+              grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
             .rh-stats-grid {
               grid-template-columns: 1fr 1fr;
             }
@@ -1139,14 +1637,24 @@ def _inject_theme_css() -> None:
               padding-left: 0.6rem !important;
               padding-right: 0.6rem !important;
             }
+            h1, h2, h3 {
+              line-height: 1.18 !important;
+              letter-spacing: -0.01em !important;
+            }
             .desk-block {
               padding: 0.55rem 0.55rem 0.4rem 0.55rem;
               border-radius: 12px;
+            }
+            .top-command-bar {
+              padding: 0.45rem 0.45rem;
             }
             .rh-hero-symbol {
               font-size: 1.2rem !important;
             }
             .rh-stats-grid {
+              grid-template-columns: 1fr;
+            }
+            .risk-strip {
               grid-template-columns: 1fr;
             }
             .stButton button {
@@ -1187,6 +1695,1078 @@ def _inject_compact_mode_css(enabled: bool) -> None:
         """,
         unsafe_allow_html=True,
     )
+
+
+def _inject_dynamic_theme_css() -> None:
+    preset = str(st.session_state.get("ui_theme_preset", "Neo Green") or "Neo Green")
+    colors = THEME_PRESETS.get(preset, THEME_PRESETS["Neo Green"])
+    accessibility_preset = str(st.session_state.get("ui_accessibility_preset", "Default") or "Default")
+    reduced_motion_pref = bool(st.session_state.get("ui_reduced_motion", False))
+    density = str(st.session_state.get("ui_density_mode", "Comfortable") or "Comfortable")
+    font_scale_pct = int(pd.to_numeric(st.session_state.get("ui_font_scale_pct", 100), errors="coerce") or 100)
+    font_scale_pct = max(85, min(130, font_scale_pct))
+    high_contrast = bool(st.session_state.get("ui_high_contrast", False))
+    focus_mode = bool(st.session_state.get("ui_focus_mode", False))
+    minimal_mode = bool(st.session_state.get("ui_minimal_mode", False))
+    incident_mode = bool(st.session_state.get("ui_incident_mode", False))
+    if accessibility_preset == "High Contrast":
+        high_contrast = True
+    if accessibility_preset == "Large Text":
+        font_scale_pct = max(font_scale_pct, 115)
+    reduced_motion = reduced_motion_pref or accessibility_preset == "Reduced Motion"
+
+    density_css = {
+        "Comfortable": """
+          .stDataFrame [role="grid"] [role="row"] {
+            min-height: 2rem;
+          }
+        """,
+        "Compact": """
+          .stDataFrame [role="grid"] [role="row"] {
+            min-height: 1.6rem;
+          }
+          .desk-block {
+            padding-top: 0.52rem !important;
+            padding-bottom: 0.42rem !important;
+          }
+        """,
+        "Ultra Compact": """
+          .stDataFrame [role="grid"] [role="row"] {
+            min-height: 1.35rem;
+          }
+          .desk-block {
+            padding-top: 0.42rem !important;
+            padding-bottom: 0.34rem !important;
+          }
+          .section-caption {
+            margin-bottom: 0.25rem !important;
+          }
+        """,
+    }.get(density, "")
+    contrast_css = """
+      .desk-block, .terminal-shell, .terminal-shell-hero, .left-nav-card {
+        border-color: rgba(204, 214, 226, 0.68) !important;
+      }
+      .status-badge, .risk-pill {
+        box-shadow: inset 0 0 0 1px rgba(220, 231, 245, 0.34);
+      }
+    """ if high_contrast else ""
+    focus_css = """
+      .section-caption, .stCaption {
+        opacity: 0.55 !important;
+      }
+    """ if focus_mode else ""
+    incident_css = """
+      .top-banner, .desk-block {
+        border-color: rgba(255, 93, 122, 0.48) !important;
+      }
+      .section-caption::before {
+        content: "INCIDENT MODE ";
+        color: #ff8ba1;
+        font-weight: 800;
+        margin-right: 0.22rem;
+      }
+      .status-bar, .realtime-ribbon {
+        box-shadow: inset 0 0 0 1px rgba(255, 93, 122, 0.22);
+      }
+    """ if incident_mode else ""
+    reduced_motion_css = """
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    """ if reduced_motion else ""
+    minimal_css = """
+      .top-command-bar,
+      .quick-nav-block,
+      .toast-center,
+      .event-tape,
+      .section-caption {
+        display: none !important;
+      }
+      .desk-block {
+        margin-bottom: 0.5rem !important;
+        padding-top: 0.46rem !important;
+        padding-bottom: 0.4rem !important;
+      }
+      .stCaption {
+        opacity: 0.75 !important;
+      }
+    """ if minimal_mode else ""
+    st.markdown(
+        f"""
+        <style>
+          :root {{
+            --accent: {colors["accent"]};
+            --accent-2: {colors["accent2"]};
+            --accent-3: {colors["accent3"]};
+          }}
+          html, body, .stApp {{
+            font-size: {font_scale_pct}%;
+          }}
+          a {{
+            color: {colors["link"]} !important;
+          }}
+          .stButton button, [data-testid="stSidebar"] .stButton button {{
+            background: linear-gradient(90deg, {colors["accent"]}, {colors["accent2"]}) !important;
+          }}
+          .status-good {{
+            border-color: {colors["accent2"]} !important;
+          }}
+          .status-bar .mode-chip {{
+            border-color: {colors["accent3"]} !important;
+          }}
+          {density_css}
+          {contrast_css}
+          {focus_css}
+          {incident_css}
+          {reduced_motion_css}
+          {minimal_css}
+        </style>
+        """,
+        unsafe_allow_html=True,
+    )
+
+
+def _query_param_first(name: str) -> str:
+    try:
+        value = st.query_params.get(name, "")
+        if isinstance(value, list):
+            return str(value[0] if value else "").strip()
+        return str(value or "").strip()
+    except Exception:
+        return ""
+
+
+def _clear_query_params_keys(*names: str) -> None:
+    try:
+        for name in names:
+            try:
+                st.query_params.pop(name)  # type: ignore[arg-type]
+            except Exception:
+                try:
+                    del st.query_params[name]
+                except Exception:
+                    pass
+    except Exception:
+        pass
+
+
+def _inject_keyboard_shortcuts_js(enabled: bool) -> None:
+    if not enabled:
+        return
+    components.html(
+        """
+        <script>
+          (function () {
+            if (window.__switchUiShortcutsBound) return;
+            window.__switchUiShortcutsBound = true;
+            function emit(code) {
+              try {
+                const u = new URL(window.parent.location.href);
+                u.searchParams.set("ui_kb", code);
+                window.parent.location.href = u.toString();
+              } catch (e) {}
+            }
+            window.addEventListener("keydown", function (ev) {
+              const key = String(ev.key || "").toLowerCase();
+              if ((ev.ctrlKey || ev.metaKey) && key === "k") {
+                ev.preventDefault();
+                emit("palette");
+                return;
+              }
+              if (ev.altKey && key === "r") {
+                ev.preventDefault();
+                emit("refresh");
+                return;
+              }
+              if (ev.altKey && ["1","2","3","4","5","6"].includes(key)) {
+                ev.preventDefault();
+                emit("ws:" + key);
+                return;
+              }
+              if (ev.altKey && key === "t") {
+                ev.preventDefault();
+                emit("jump:tradeboard");
+                return;
+              }
+              if (ev.altKey && key === "e") {
+                ev.preventDefault();
+                emit("jump:execution");
+                return;
+              }
+              if (ev.altKey && key === "n") {
+                ev.preventDefault();
+                emit("jump:notifications");
+                return;
+              }
+              if (ev.altKey && key === "a") {
+                ev.preventDefault();
+                emit("jump:audit");
+                return;
+              }
+              if (ev.altKey && key === "h") {
+                ev.preventDefault();
+                emit("jump:home");
+              }
+            }, true);
+          })();
+        </script>
+        """,
+        height=0,
+        width=0,
+    )
+
+
+def _handle_keyboard_shortcut_event(user_role: str) -> None:
+    code = _query_param_first("ui_kb")
+    if not code:
+        return
+    _clear_query_params_keys("ui_kb")
+    if code == "palette":
+        st.session_state["ui_global_palette_open"] = True
+        st.session_state["ui_palette_status"] = "Shortcut: opened global command palette."
+        st.rerun()
+    if code == "refresh":
+        _load_runtime_db.clear()
+        st.session_state["ui_palette_status"] = "Shortcut: runtime data refreshed."
+        st.rerun()
+    if code.startswith("ws:"):
+        idx_raw = code.split(":", 1)[1].strip()
+        try:
+            idx = int(idx_raw)
+        except Exception:
+            return
+        tabs = _workspace_nav_options(user_role)
+        if 1 <= idx <= len(tabs):
+            target = str(tabs[idx - 1])
+            _queue_workspace_switch(target)
+            st.session_state["ui_palette_status"] = f"Shortcut: switched workspace to {target}."
+            st.rerun()
+    if code.startswith("jump:"):
+        token = code.split(":", 1)[1].strip().lower()
+        target_map = {
+            "home": "Command Center",
+            "tradeboard": "Tradeboard",
+            "execution": "Execution Journal",
+            "notifications": "Notifications",
+            "audit": "Audit Trail",
+        }
+        target = target_map.get(token, "")
+        if target and target in _workspace_nav_options(user_role):
+            _queue_workspace_switch(target)
+            st.session_state["ui_palette_status"] = f"Shortcut: switched workspace to {target}."
+            st.rerun()
+
+
+def _sparkline(values: list[float]) -> str:
+    if not values:
+        return "-"
+    ticks = "▁▂▃▄▅▆▇█"
+    lo = min(values)
+    hi = max(values)
+    if hi <= lo:
+        return ticks[0] * min(24, len(values))
+    out: list[str] = []
+    for v in values[-24:]:
+        idx = int((float(v) - lo) / (hi - lo) * (len(ticks) - 1))
+        idx = max(0, min(len(ticks) - 1, idx))
+        out.append(ticks[idx])
+    return "".join(out)
+
+
+def _symbol_position_sparkline(events_df: pd.DataFrame, symbol: str, points: int = 20) -> str:
+    try:
+        frame = _symbol_activity_df(events_df, symbol)  # type: ignore[name-defined]
+    except Exception:
+        return "-"
+    if frame.empty:
+        return "-"
+    vals = pd.to_numeric(frame.get("cum_position"), errors="coerce").dropna().astype(float).tolist()
+    if not vals:
+        return "-"
+    return _sparkline(vals[-max(8, int(points)):])
+
+
+def _apply_workspace_preset(preset: str) -> None:
+    p = str(preset or "Custom").strip()
+    st.session_state["ui_workspace_preset"] = p
+    if p == "Open":
+        st.session_state["ui_pending_saved_workspace"] = "Tradeboard"
+        st.session_state["ui_pending_time_window"] = "1D"
+        st.session_state["ui_palette_status"] = "Preset applied: Open."
+    elif p == "Close":
+        st.session_state["ui_pending_saved_workspace"] = "Execution Journal"
+        st.session_state["ui_pending_time_window"] = "1D"
+        st.session_state["ui_palette_status"] = "Preset applied: Close."
+    elif p == "Forensics":
+        st.session_state["ui_pending_saved_workspace"] = "Audit Trail"
+        st.session_state["ui_pending_time_window"] = "1W"
+        st.session_state["ui_palette_status"] = "Preset applied: Forensics."
+    elif p == "Risk":
+        st.session_state["ui_pending_saved_workspace"] = "Ops Health"
+        st.session_state["ui_pending_time_window"] = "1W"
+        st.session_state["ui_incident_mode"] = True
+        st.session_state["ui_palette_status"] = "Preset applied: Risk."
+    elif p == "Execution":
+        st.session_state["ui_pending_saved_workspace"] = "Execution Journal"
+        st.session_state["ui_pending_time_window"] = "1D"
+        st.session_state["ui_symbol_view_mode"] = "Lifecycle"
+        st.session_state["ui_palette_status"] = "Preset applied: Execution."
+    elif p == "Monitor":
+        st.session_state["ui_pending_saved_workspace"] = "Portfolio Pulse"
+        st.session_state["ui_pending_time_window"] = "1W"
+        st.session_state["ui_palette_status"] = "Preset applied: Monitor."
+    else:
+        st.session_state["ui_palette_status"] = "Preset switched to Custom."
+
+
+def _queue_workspace_switch(target: str) -> None:
+    selected = str(target or "").strip()
+    if not selected:
+        return
+    st.session_state["ui_pending_workspace_nav_selection"] = selected
+    st.session_state["ui_pending_saved_workspace"] = selected
+
+
+def _render_workspace_preset_chips() -> None:
+    st.markdown("<div class='sticky-global'><div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown("<div class='section-caption'>Workspace Presets</div>", unsafe_allow_html=True)
+    c1, c2, c3, c4, c5, c6, c7 = st.columns(7)
+    with c1:
+        if st.button("Open", use_container_width=True, key="ws_preset_open"):
+            _apply_workspace_preset("Open")
+            st.rerun()
+    with c2:
+        if st.button("Close", use_container_width=True, key="ws_preset_close"):
+            _apply_workspace_preset("Close")
+            st.rerun()
+    with c3:
+        if st.button("Forensics", use_container_width=True, key="ws_preset_forensics"):
+            _apply_workspace_preset("Forensics")
+            st.rerun()
+    with c4:
+        if st.button("Risk", use_container_width=True, key="ws_preset_risk"):
+            _apply_workspace_preset("Risk")
+            st.rerun()
+    with c5:
+        if st.button("Execution", use_container_width=True, key="ws_preset_execution"):
+            _apply_workspace_preset("Execution")
+            st.rerun()
+    with c6:
+        if st.button("Monitor", use_container_width=True, key="ws_preset_monitor"):
+            _apply_workspace_preset("Monitor")
+            st.rerun()
+    with c7:
+        if st.button("Custom", use_container_width=True, key="ws_preset_custom"):
+            _apply_workspace_preset("Custom")
+            st.rerun()
+    st.markdown("</div></div>", unsafe_allow_html=True)
+
+
+def _sync_toast_history(notices_df: pd.DataFrame) -> None:
+    if notices_df is None or notices_df.empty:
+        return
+    seen_raw = st.session_state.get("ui_toast_seen_keys", [])
+    seen = [str(x) for x in (seen_raw if isinstance(seen_raw, list) else [])]
+    seen_set = set(seen)
+    hist_raw = st.session_state.get("ui_toast_history", [])
+    hist = list(hist_raw) if isinstance(hist_raw, list) else []
+    last_by_title_raw = st.session_state.get("ui_toast_last_by_title", {})
+    last_by_title = dict(last_by_title_raw) if isinstance(last_by_title_raw, dict) else {}
+    muted_raw = st.session_state.get("notice_muted_until", {})
+    muted_map = muted_raw if isinstance(muted_raw, dict) else {}
+    new_count = 0
+    for _, row in notices_df.head(20).iterrows():
+        key_source = str(row.get("alert_key", "") or "").strip()
+        if key_source:
+            key = key_source
+        else:
+            key = hashlib.sha1(
+                f"{row.get('ts')}|{row.get('severity')}|{row.get('title')}|{row.get('detail')}|{row.get('source')}".encode("utf-8")
+            ).hexdigest()[:16]
+        mute_until = muted_map.get(key)
+        if mute_until:
+            mts = pd.to_datetime(mute_until, errors="coerce")
+            if not pd.isna(mts):
+                if mts.tzinfo is None:
+                    mts = mts.tz_localize(NY_TZ)
+                if pd.Timestamp.now(tz=NY_TZ) < mts:
+                    continue
+        if key in seen_set:
+            continue
+        seen.append(key)
+        seen_set.add(key)
+        sev = str(row.get("severity", "info")).lower()
+        title = str(row.get("title", "Alert"))
+        detail = str(row.get("detail", "") or "")
+        item = {
+            "ts_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+            "key": key,
+            "severity": sev,
+            "title": title,
+            "detail": detail[:300],
+        }
+        hist.insert(0, item)
+        new_count += 1
+        if hasattr(st, "toast") and sev in {"high", "medium"}:
+            is_profit_lock = title.lower().startswith("profit-lock execution")
+            if is_profit_lock:
+                # Deduplicate noisy profit-lock warnings across symbol/title variations.
+                dedupe_key = "profit-lock execution"
+                last_ts_raw = last_by_title.get(dedupe_key)
+                last_ts = pd.to_datetime(last_ts_raw, errors="coerce") if last_ts_raw else pd.NaT
+                now_ts = pd.Timestamp.now(tz=NY_TZ)
+                if pd.isna(last_ts) or ((now_ts - last_ts).total_seconds() >= 1800):
+                    icon = "⚠️"
+                    st.toast(f"{title}", icon=icon)
+                    last_by_title[dedupe_key] = now_ts.isoformat()
+            else:
+                icon = "🚨" if sev == "high" else "⚠️"
+                st.toast(f"{title}", icon=icon)
+    st.session_state["ui_toast_history"] = hist[:400]
+    st.session_state["ui_toast_seen_keys"] = seen[-1200:]
+    st.session_state["ui_toast_last_by_title"] = last_by_title
+    if new_count > 0:
+        st.session_state["ui_palette_status"] = f"{new_count} new alert toast(s)."
+
+
+def _render_toast_center() -> None:
+    hist_raw = st.session_state.get("ui_toast_history", [])
+    hist = list(hist_raw) if isinstance(hist_raw, list) else []
+    st.markdown("<div class='toast-center'>", unsafe_allow_html=True)
+    st.markdown("<div class='toast-center-title'>Realtime Alerts</div>", unsafe_allow_html=True)
+    if not hist:
+        st.caption("No recent alert toasts.")
+        st.markdown("</div>", unsafe_allow_html=True)
+        return
+    sev_filter = st.selectbox(
+        "Toast Severity",
+        options=["all", "high", "medium", "info"],
+        index=0,
+        key="ui_toast_filter",
+    )
+    frame = pd.DataFrame(hist)
+    if not frame.empty and sev_filter != "all":
+        frame = frame[frame["severity"].astype(str).str.lower() == sev_filter].copy()
+    preview = frame.head(6).copy() if not frame.empty else pd.DataFrame()
+    if preview.empty:
+        st.caption("No alerts for selected severity.")
+    else:
+        cols = ["ts_ny", "severity", "title", "detail"]
+        for col in cols:
+            if col not in preview.columns:
+                preview[col] = None
+        st.dataframe(preview[cols], use_container_width=True, hide_index=True, height=190)
+    with st.expander("Toast History", expanded=False):
+        if frame.empty:
+            st.caption("No historical toasts available.")
+        else:
+            st.dataframe(
+                _paged_view(frame, key="toast_hist", default_page_size=50),  # type: ignore[name-defined]
+                use_container_width=True,
+                hide_index=True,
+            )
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_realtime_status_ribbon(events_df: pd.DataFrame, state_df: pd.DataFrame, current_user: str, user_role: str) -> None:
+    hs = _health_snapshot(events_df, state_df)  # type: ignore[name-defined]
+    fresh = hs.get("freshness_min")
+    fresh_txt = "-" if fresh is None else f"{float(fresh):.1f}m"
+    live_mode = "ON" if bool(st.session_state.get("ui_live_stream_enabled", False)) else "OFF"
+    auto_mode = "ON" if bool(st.session_state.get("ui_auto_refresh_enabled", False)) else "OFF"
+    profile = str(_state_value(state_df, "switch_last_profile", "-"))  # type: ignore[name-defined]
+    now_ny = pd.Timestamp.now(tz=NY_TZ).strftime("%Y-%m-%d %H:%M:%S %Z")
+    st.markdown(
+        (
+            "<div class='realtime-ribbon'>"
+            f"<span>User: <b>{current_user}</b> ({user_role})</span>"
+            f"<span>Freshness: <b>{fresh_txt}</b></span>"
+            f"<span>Events 1h: <b>{int(hs.get('events_1h', 0))}</b></span>"
+            f"<span>Cycles 24h: <b>{int(hs.get('cycles_24h', 0))}</b></span>"
+            f"<span>Live: <b>{live_mode}</b></span>"
+            f"<span>Auto: <b>{auto_mode}</b></span>"
+            f"<span>Profile: <b>{profile}</b></span>"
+            f"<span>Now: <b>{now_ny}</b></span>"
+            "</div>"
+        ),
+        unsafe_allow_html=True,
+    )
+
+
+def _render_active_context_bar(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
+    hs = _health_snapshot(events_df, state_df)
+    selected_symbol = str(st.session_state.get("ui_selected_symbol", "-") or "-")
+    tw = str(st.session_state.get("ui_time_window", "1D") or "1D")
+    view = str(st.session_state.get("ui_symbol_view_mode", "Intraday Activity") or "Intraday Activity")
+    chart = str(st.session_state.get("ui_symbol_chart_type", "Line") or "Line")
+    filters_on = bool(st.session_state.get("ui_global_filters_enabled", False))
+    gq = str(st.session_state.get("ui_global_filter_query", "") or "").strip()
+    gq_txt = gq if gq else "-"
+    fresh = hs.get("freshness_min")
+    if fresh is None:
+        conf = "LOW"
+        conf_color = "#ff8ba1"
+    elif float(fresh) <= 10 and int(hs.get("error_events_24h", 0)) == 0:
+        conf = "HIGH"
+        conf_color = "#7fffb0"
+    elif float(fresh) <= 30:
+        conf = "MEDIUM"
+        conf_color = "#f3df90"
+    else:
+        conf = "LOW"
+        conf_color = "#ff8ba1"
+    st.markdown(
+        (
+            "<div class='status-bar'>"
+            f"<span class='mode-chip'>Symbol <b>{selected_symbol}</b></span>"
+            f"<span class='mode-chip'>Window <b>{tw}</b></span>"
+            f"<span class='mode-chip'>View <b>{view}</b></span>"
+            f"<span class='mode-chip'>Chart <b>{chart}</b></span>"
+            f"<span class='mode-chip'>Global Filters <b>{'ON' if filters_on else 'OFF'}</b></span>"
+            f"<span class='mode-chip'>Query <b>{gq_txt}</b></span>"
+            f"<span class='mode-chip'>Freshness Confidence <b style='color:{conf_color}'>{conf}</b></span>"
+            "</div>"
+        ),
+        unsafe_allow_html=True,
+    )
+
+
+def _render_activity_timeline_strip(events_df: pd.DataFrame) -> None:
+    if events_df.empty:
+        return
+    frame = events_df.copy()
+    col = _events_time_col(frame)
+    if not col or col not in frame.columns:
+        return
+    frame[col] = pd.to_datetime(frame[col], errors="coerce")
+    frame = frame.dropna(subset=[col]).sort_values(col, ascending=False).head(20)
+    if frame.empty:
+        return
+    parts: list[str] = []
+    for _, row in frame.iterrows():
+        ts = pd.to_datetime(row.get(col), errors="coerce")
+        ts_txt = "-" if pd.isna(ts) else ts.strftime("%H:%M")
+        evt = str(row.get("event_type", "") or "-")
+        sym = str(row.get("symbol", "") or "-")
+        parts.append(f"{ts_txt} <b>{sym}</b> {evt}")
+    tape = "  |  ".join(parts)
+    st.markdown(f"<div class='event-tape'>{tape}</div>", unsafe_allow_html=True)
+
+
+def _record_ui_command_event(action_name: str, query_text: str = "") -> None:
+    hist_raw = st.session_state.get("ui_command_history", [])
+    hist = list(hist_raw) if isinstance(hist_raw, list) else []
+    hist.insert(
+        0,
+        {
+            "ts_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+            "action": str(action_name or "").strip(),
+            "query": str(query_text or "").strip(),
+        },
+    )
+    st.session_state["ui_command_history"] = hist[:300]
+
+
+def _render_top_command_bar(events_df: pd.DataFrame, state_df: pd.DataFrame, user_role: str) -> None:
+    st.markdown("<div class='sticky-global'><div class='top-command-bar'>", unsafe_allow_html=True)
+    c1, c2, c3, c4 = st.columns([1.65, 1.25, 1.1, 1.0])
+    with c1:
+        q = st.text_input(
+            "Command Search",
+            value=str(st.session_state.get("ui_top_cmd_search", "") or ""),
+            key="ui_top_cmd_search",
+            placeholder="search events/symbols and apply globally...",
+            label_visibility="collapsed",
+        )
+    with c2:
+        action = st.selectbox(
+            "Quick Action",
+            options=[
+                "Refresh Runtime Data",
+                "Open Command Center",
+                "Open Tradeboard",
+                "Open Multi-Chart",
+                "Open Execution Journal",
+                "Open Audit Trail",
+                "Open Notifications",
+                "Open UI Diagnostics",
+                "Open Pop-out: Tradeboard Chart",
+                "Open Pop-out: Execution Blotter",
+                "Open Pop-out: Alerts",
+                "Close Pop-out",
+                "Open Global Command Palette",
+                "Toggle Incident Mode",
+                "Toggle Auto Refresh",
+                "Set Global Window: 1D",
+                "Set Global Window: 1W",
+                "Set Global Window: 1M",
+            ],
+            key="ui_top_cmd_action",
+            label_visibility="collapsed",
+        )
+    with c3:
+        if st.button("Run Action", use_container_width=True, key="ui_top_cmd_run"):
+            if q.strip():
+                st.session_state["ui_global_filters_enabled"] = True
+                st.session_state["ui_global_filter_query"] = q.strip()
+            if action == "Refresh Runtime Data":
+                _load_runtime_db.clear()  # type: ignore[name-defined]
+            elif action == "Open Command Center":
+                _queue_workspace_switch("Command Center")
+            elif action == "Open Tradeboard":
+                _queue_workspace_switch("Tradeboard")
+            elif action == "Open Multi-Chart":
+                _queue_workspace_switch("Multi-Chart")
+            elif action == "Open Execution Journal":
+                _queue_workspace_switch("Execution Journal")
+            elif action == "Open Audit Trail":
+                _queue_workspace_switch("Audit Trail")
+            elif action == "Open Notifications":
+                _queue_workspace_switch("Notifications")
+            elif action == "Open UI Diagnostics":
+                _queue_workspace_switch("UI Diagnostics")
+            elif action == "Open Pop-out: Tradeboard Chart":
+                st.session_state["ui_popout_panel"] = "tradeboard_chart"
+            elif action == "Open Pop-out: Execution Blotter":
+                st.session_state["ui_popout_panel"] = "execution_blotter"
+            elif action == "Open Pop-out: Alerts":
+                st.session_state["ui_popout_panel"] = "alerts"
+            elif action == "Close Pop-out":
+                st.session_state["ui_popout_panel"] = ""
+            elif action == "Open Global Command Palette":
+                st.session_state["ui_global_palette_open"] = True
+            elif action == "Toggle Incident Mode":
+                st.session_state["ui_incident_mode"] = not bool(st.session_state.get("ui_incident_mode", False))
+            elif action == "Toggle Auto Refresh":
+                st.session_state["ui_pending_auto_refresh_enabled"] = not bool(st.session_state.get("ui_auto_refresh_enabled", False))
+            elif action.endswith("1D"):
+                st.session_state["ui_global_filters_enabled"] = True
+                st.session_state["ui_global_time_window"] = "1D"
+            elif action.endswith("1W"):
+                st.session_state["ui_global_filters_enabled"] = True
+                st.session_state["ui_global_time_window"] = "1W"
+            elif action.endswith("1M"):
+                st.session_state["ui_global_filters_enabled"] = True
+                st.session_state["ui_global_time_window"] = "1M"
+            st.session_state["ui_palette_status"] = f"Top action executed: {action}"
+            _record_ui_command_event(action, q.strip())
+            _append_ui_audit("top_command_action", {"action": action, "query": q.strip()})
+            st.rerun()
+    with c4:
+        prof = str(_state_value(state_df, "switch_last_profile", "-"))  # type: ignore[name-defined]
+        st.caption("Profile")
+        st.code(prof, language="text")
+
+    q1, q2, q3, q4, q5, q6 = st.columns(6)
+    with q1:
+        if st.button("Tradeboard", use_container_width=True, key="ui_top_quick_tradeboard"):
+            _queue_workspace_switch("Tradeboard")
+            _record_ui_command_event("Quick: Tradeboard")
+            st.session_state["ui_palette_status"] = "Quick action: Tradeboard."
+            st.rerun()
+    with q2:
+        if st.button("Execution", use_container_width=True, key="ui_top_quick_execution"):
+            _queue_workspace_switch("Execution Journal")
+            _record_ui_command_event("Quick: Execution")
+            st.session_state["ui_palette_status"] = "Quick action: Execution Journal."
+            st.rerun()
+    with q3:
+        if st.button("Notifications", use_container_width=True, key="ui_top_quick_notifications"):
+            _queue_workspace_switch("Notifications")
+            _record_ui_command_event("Quick: Notifications")
+            st.session_state["ui_palette_status"] = "Quick action: Notifications."
+            st.rerun()
+    with q4:
+        if st.button("Audit", use_container_width=True, key="ui_top_quick_audit"):
+            _queue_workspace_switch("Audit Trail")
+            _record_ui_command_event("Quick: Audit")
+            st.session_state["ui_palette_status"] = "Quick action: Audit Trail."
+            st.rerun()
+    with q5:
+        if st.button("Refresh", use_container_width=True, key="ui_top_quick_refresh"):
+            _load_runtime_db.clear()
+            _record_ui_command_event("Quick: Refresh")
+            st.session_state["ui_palette_status"] = "Quick action: runtime data refreshed."
+            st.rerun()
+    with q6:
+        if st.button("Auto Refresh", use_container_width=True, key="ui_top_quick_autoref"):
+            next_auto = not bool(st.session_state.get("ui_auto_refresh_enabled", False))
+            st.session_state["ui_pending_auto_refresh_enabled"] = next_auto
+            _record_ui_command_event("Quick: Toggle Auto Refresh")
+            st.session_state["ui_palette_status"] = f"Quick action: auto refresh {'enabled' if next_auto else 'disabled'}."
+            st.rerun()
+
+    lr1, lr2, lr3 = st.columns([1.35, 1.25, 1.4])
+    with lr1:
+        fav_raw = st.session_state.get("ui_command_favorites", [])
+        favs = [str(x) for x in fav_raw] if isinstance(fav_raw, list) else []
+        if action not in favs and st.button("Add Action To Favorites", use_container_width=True, key="ui_top_cmd_fav_add"):
+            favs.insert(0, str(action))
+            st.session_state["ui_command_favorites"] = sorted(set(favs))
+            st.session_state["ui_palette_status"] = f"Favorite saved: {action}"
+            st.rerun()
+        if favs:
+            fav_pick = st.selectbox("Favorites", options=favs, index=0, key="ui_top_cmd_fav_pick")
+            if st.button("Run Favorite", use_container_width=True, key="ui_top_cmd_fav_run"):
+                st.session_state["ui_top_cmd_action"] = fav_pick
+                _record_ui_command_event(fav_pick, q.strip())
+                st.session_state["ui_palette_status"] = f"Favorite queued: {fav_pick}"
+                st.rerun()
+    with lr2:
+        recent_raw = st.session_state.get("ui_command_history", [])
+        recent = list(recent_raw) if isinstance(recent_raw, list) else []
+        if recent:
+            recent_opts = [f"{str(r.get('action',''))} | {str(r.get('ts_ny',''))[:19]}" for r in recent[:20] if isinstance(r, dict)]
+            if recent_opts:
+                st.selectbox("Recent Commands", options=recent_opts, index=0, key="ui_top_cmd_recent")
+        if st.button("Clear History", use_container_width=True, key="ui_top_cmd_clear_history"):
+            st.session_state["ui_command_history"] = []
+            st.session_state["ui_palette_status"] = "Command history cleared."
+            st.rerun()
+    with lr3:
+        match_rows: list[str] = []
+        needle = str(q or "").strip().lower()
+        if needle and (not events_df.empty):
+            for _, row in events_df.head(1200).iterrows():
+                txt = " | ".join(
+                    [
+                        str(row.get("symbol", "")),
+                        str(row.get("event_type", "")),
+                        str(row.get("variant", "")),
+                        str(row.get("order_type", "")),
+                    ]
+                ).strip()
+                if needle in txt.lower():
+                    match_rows.append(txt)
+                if len(match_rows) >= 40:
+                    break
+        if match_rows:
+            pick = st.selectbox("Search Jump", options=match_rows, index=0, key="ui_top_cmd_search_jump")
+            if st.button("Open Match In Tradeboard", use_container_width=True, key="ui_top_cmd_search_open"):
+                parts = [p.strip() for p in str(pick).split("|")]
+                symbol = str(parts[0] if parts else "").upper()
+                if symbol:
+                    st.session_state["ui_pending_selected_symbol"] = symbol
+                    _queue_workspace_switch("Tradeboard")
+                st.session_state["ui_global_filters_enabled"] = True
+                st.session_state["ui_global_filter_query"] = needle
+                _record_ui_command_event("Search Jump", needle)
+                st.session_state["ui_palette_status"] = f"Opened match in Tradeboard: {symbol or '-'}"
+                st.rerun()
+        else:
+            st.caption("Search Jump: no results in current scope.")
+
+    with st.expander("Keyboard Shortcuts", expanded=False):
+        st.markdown("`Ctrl/Cmd+K` command palette context")
+        st.markdown("`Alt+R` runtime data refresh")
+        st.markdown("`Alt+1..6` workspace quick jump")
+        st.markdown("`Alt+H/T/E/N/A` quick workspace hops (home/tradeboard/execution/notifications/audit)")
+    st.markdown("</div></div>", unsafe_allow_html=True)
+
+
+def _render_workspace_quick_nav(allowed_tabs: list[str]) -> None:
+    if not allowed_tabs:
+        return
+    st.markdown("<div class='desk-block quick-nav-block'>", unsafe_allow_html=True)
+    st.markdown("<div class='section-caption'>Quick Jump</div>", unsafe_allow_html=True)
+    top = allowed_tabs[:10]
+    cols = st.columns(len(top))
+    for i, name in enumerate(top):
+        with cols[i]:
+            if st.button(name, use_container_width=True, key=f"ui_quick_nav_{name.replace(' ', '_').lower()}"):
+                _queue_workspace_switch(name)
+                st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_keyboard_cheatsheet() -> None:
+    with st.expander("Keyboard & Command Cheatsheet", expanded=False):
+        st.markdown("`Ctrl/Cmd + K` open command palette context")
+        st.markdown("`Alt + R` refresh runtime data")
+        st.markdown("`Alt + 1..6` workspace quick jump")
+        st.markdown("`Alt + H/T/E/N/A` workspace hop (home/tradeboard/execution/notifications/audit)")
+        st.markdown("Use top command bar `Search Jump` for symbol/event drill-in.")
+        st.caption("If shortcuts are not working, enable `Keyboard Shortcuts` in Preferences.")
+
+
+def _run_global_palette_action(action: str, query: str, user_role: str) -> None:
+    if str(query or "").strip():
+        st.session_state["ui_global_filters_enabled"] = True
+        st.session_state["ui_global_filter_query"] = str(query).strip()
+    if action == "Refresh Runtime Data":
+        _load_runtime_db.clear()
+    elif action == "Open Command Center":
+        _queue_workspace_switch("Command Center")
+    elif action == "Open Tradeboard":
+        _queue_workspace_switch("Tradeboard")
+    elif action == "Open Multi-Chart":
+        _queue_workspace_switch("Multi-Chart")
+    elif action == "Open Execution Journal":
+        _queue_workspace_switch("Execution Journal")
+    elif action == "Open Notifications":
+        _queue_workspace_switch("Notifications")
+    elif action == "Open Audit Trail":
+        _queue_workspace_switch("Audit Trail")
+    elif action == "Open UI Diagnostics":
+        _queue_workspace_switch("UI Diagnostics")
+    elif action == "Toggle Auto Refresh":
+        st.session_state["ui_pending_auto_refresh_enabled"] = not bool(st.session_state.get("ui_auto_refresh_enabled", False))
+    elif action == "Toggle Incident Mode":
+        st.session_state["ui_incident_mode"] = not bool(st.session_state.get("ui_incident_mode", False))
+    elif action == "Apply Preset: Open":
+        _apply_workspace_preset("Open")
+    elif action == "Apply Preset: Close":
+        _apply_workspace_preset("Close")
+    elif action == "Apply Preset: Forensics":
+        _apply_workspace_preset("Forensics")
+    elif action == "Apply Preset: Risk":
+        _apply_workspace_preset("Risk")
+    elif action == "Apply Preset: Execution":
+        _apply_workspace_preset("Execution")
+    elif action == "Apply Preset: Monitor":
+        _apply_workspace_preset("Monitor")
+    elif action == "Pop-out: Tradeboard Chart":
+        st.session_state["ui_popout_panel"] = "tradeboard_chart"
+    elif action == "Pop-out: Execution Blotter":
+        st.session_state["ui_popout_panel"] = "execution_blotter"
+    elif action == "Pop-out: Alerts":
+        st.session_state["ui_popout_panel"] = "alerts"
+    elif action == "Close Pop-out":
+        st.session_state["ui_popout_panel"] = ""
+    elif action == "Jump Highest Activity Symbol":
+        watch = _watchlist_df(events_df=st.session_state.get("ui_cached_events_for_palette", pd.DataFrame()), state_df=st.session_state.get("ui_cached_state_for_palette", pd.DataFrame()))
+        if not watch.empty:
+            top = str(watch.iloc[0]["symbol"]).strip().upper()
+            if top:
+                st.session_state["ui_pending_selected_symbol"] = top
+                _queue_workspace_switch("Tradeboard")
+    if action.startswith("Open ") and (action.replace("Open ", "") not in _workspace_nav_options(user_role)):
+        st.session_state["ui_palette_status"] = f"Action blocked by role: {action}"
+    else:
+        st.session_state["ui_palette_status"] = f"Palette action executed: {action}"
+        _record_ui_command_event(action, str(query or ""))
+        _append_ui_audit("global_palette_run", {"action": action, "query": str(query or "")[:120]})
+    st.rerun()
+
+
+def _render_global_command_palette_modal(events_df: pd.DataFrame, state_df: pd.DataFrame, user_role: str) -> None:
+    open_now = bool(st.session_state.get("ui_global_palette_open", False))
+    toggled = st.button("Command Palette", use_container_width=False, key="ui_global_palette_toggle")
+    if toggled:
+        st.session_state["ui_global_palette_open"] = not open_now
+        open_now = bool(st.session_state["ui_global_palette_open"])
+        st.rerun()
+    if not open_now:
+        return
+    st.session_state["ui_cached_events_for_palette"] = events_df
+    st.session_state["ui_cached_state_for_palette"] = state_df
+    st.markdown("<div class='desk-block command-palette-modal'>", unsafe_allow_html=True)
+    st.markdown("<div class='section-caption'>Global Command Palette</div>", unsafe_allow_html=True)
+    actions = [
+        "Refresh Runtime Data",
+        "Open Command Center",
+        "Open Tradeboard",
+        "Open Multi-Chart",
+        "Open Execution Journal",
+        "Open Notifications",
+        "Open Audit Trail",
+        "Open UI Diagnostics",
+        "Toggle Auto Refresh",
+        "Toggle Incident Mode",
+        "Apply Preset: Open",
+        "Apply Preset: Close",
+        "Apply Preset: Forensics",
+        "Apply Preset: Risk",
+        "Apply Preset: Execution",
+        "Apply Preset: Monitor",
+        "Pop-out: Tradeboard Chart",
+        "Pop-out: Execution Blotter",
+        "Pop-out: Alerts",
+        "Close Pop-out",
+        "Jump Highest Activity Symbol",
+    ]
+    query = st.text_input(
+        "Find Action",
+        value=str(st.session_state.get("ui_global_palette_query", "") or ""),
+        key="ui_global_palette_query",
+        placeholder="Type action, symbol, or command...",
+    )
+    needle = str(query or "").strip().lower()
+    filtered = [a for a in actions if needle in a.lower()] if needle else actions
+    if needle and not filtered:
+        filtered = difflib.get_close_matches(needle, actions, n=12, cutoff=0.2) or actions
+    choice = st.selectbox("Action", options=filtered, index=0, key="ui_global_palette_action")
+    c1, c2 = st.columns([1.0, 1.0])
+    with c1:
+        if st.button("Run Action", use_container_width=True, key="ui_global_palette_run"):
+            _run_global_palette_action(choice, query, user_role=user_role)
+    with c2:
+        if st.button("Close Palette", use_container_width=True, key="ui_global_palette_close"):
+            st.session_state["ui_global_palette_open"] = False
+            st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _market_session_snapshot(eval_time_text: str) -> dict[str, Any]:
+    now = pd.Timestamp.now(tz=NY_TZ)
+    today = now.normalize()
+    open_ts = today + pd.Timedelta(hours=9, minutes=30)
+    close_ts = today + pd.Timedelta(hours=16)
+    ext_close_ts = today + pd.Timedelta(hours=20)
+    eval_txt = _normalize_eval_time(eval_time_text, default="15:55")
+    hh, mm = [int(x) for x in eval_txt.split(":")]
+    eval_today = today + pd.Timedelta(hours=hh, minutes=mm)
+
+    weekday = int(now.weekday())
+    if weekday >= 5:
+        session = "Weekend Closed"
+    elif now < open_ts:
+        session = "Pre-Market"
+    elif now <= close_ts:
+        session = "Regular"
+    elif now <= ext_close_ts:
+        session = "After-Hours"
+    else:
+        session = "Post-Market"
+
+    next_eval = eval_today
+    if (weekday >= 5) or (now > eval_today):
+        next_eval = eval_today + pd.Timedelta(days=1)
+        while int(next_eval.weekday()) >= 5:
+            next_eval += pd.Timedelta(days=1)
+    mins_to_eval = max(0.0, float((next_eval - now).total_seconds() / 60.0))
+    return {
+        "session": session,
+        "now_ny": now,
+        "next_eval": next_eval,
+        "eval_time": eval_txt,
+        "mins_to_eval": mins_to_eval,
+    }
+
+
+def _render_change_since_refresh_strip(events_df: pd.DataFrame, notices_df: pd.DataFrame) -> None:
+    now = pd.Timestamp.now(tz=NY_TZ)
+    fresh_ts = None
+    if (not events_df.empty) and ("ts_ny" in events_df.columns):
+        ts = pd.to_datetime(events_df["ts_ny"], errors="coerce").dropna()
+        if not ts.empty:
+            fresh_ts = ts.max()
+    evt_counts: dict[str, int] = {}
+    if (not events_df.empty) and ("event_type" in events_df.columns):
+        vc = events_df["event_type"].astype(str).value_counts().head(12)
+        evt_counts = {str(k): int(v) for k, v in vc.items()}
+    snap = {
+        "events": int(len(events_df)),
+        "alerts": int(len(notices_df)),
+        "cycles": int((events_df["event_type"] == "switch_cycle_complete").sum()) if ("event_type" in events_df.columns and not events_df.empty) else 0,
+        "latest_ts": str(fresh_ts) if fresh_ts is not None else "-",
+        "captured_at": str(now),
+        "event_type_counts": evt_counts,
+    }
+    prev = st.session_state.get("ui_last_refresh_snapshot", {})
+    if not isinstance(prev, dict) or not prev:
+        prev = {
+            "events": snap["events"],
+            "alerts": snap["alerts"],
+            "cycles": snap["cycles"],
+            "latest_ts": snap["latest_ts"],
+        }
+    d_events = int(snap["events"]) - int(pd.to_numeric(prev.get("events", 0), errors="coerce") or 0)
+    d_alerts = int(snap["alerts"]) - int(pd.to_numeric(prev.get("alerts", 0), errors="coerce") or 0)
+    d_cycles = int(snap["cycles"]) - int(pd.to_numeric(prev.get("cycles", 0), errors="coerce") or 0)
+    market = _market_session_snapshot(str(st.session_state.get("ui_eval_time", "15:55")))
+    st.markdown(
+        (
+            "<div class='desk-block'>"
+            "<div class='section-caption'>Changed Since Last Refresh</div>"
+            f"<span class='stat-chip'>Events Δ {d_events:+d}</span> "
+            f"<span class='stat-chip'>Alerts Δ {d_alerts:+d}</span> "
+            f"<span class='stat-chip'>Cycles Δ {d_cycles:+d}</span> "
+            f"<span class='stat-chip'>Session {market['session']}</span> "
+            f"<span class='stat-chip'>Eval {market['eval_time']} ET in {market['mins_to_eval']:.1f}m</span> "
+            f"<span class='stat-chip'>Latest {snap['latest_ts']}</span>"
+            "</div>"
+        ),
+        unsafe_allow_html=True,
+    )
+    with st.expander("Detailed Delta", expanded=False):
+        prev_counts_raw = prev.get("event_type_counts", {}) if isinstance(prev, dict) else {}
+        prev_counts = prev_counts_raw if isinstance(prev_counts_raw, dict) else {}
+        keys = sorted(set(prev_counts.keys()) | set(evt_counts.keys()))
+        rows: list[dict[str, Any]] = []
+        for k in keys:
+            old = int(pd.to_numeric(prev_counts.get(k, 0), errors="coerce") or 0)
+            new = int(pd.to_numeric(evt_counts.get(k, 0), errors="coerce") or 0)
+            delta = new - old
+            if delta != 0:
+                rows.append({"event_type": k, "prev": old, "now": new, "delta": delta})
+        if rows:
+            dd = pd.DataFrame(rows).sort_values("delta", ascending=False)
+            st.dataframe(dd, use_container_width=True, hide_index=True)
+        else:
+            st.caption("No event-type count changes detected since previous refresh.")
+    st.session_state["ui_last_refresh_snapshot"] = snap
+
+
+def _apply_widget_cadence(df: pd.DataFrame, *, key: str, cadence_sec: int) -> pd.DataFrame:
+    sec = max(1, int(cadence_sec))
+    now = pd.Timestamp.now(tz=NY_TZ)
+    cache_key = f"ui_widget_cadence_cache_{key}"
+    rec = st.session_state.get(cache_key, {})
+    if not isinstance(rec, dict):
+        rec = {}
+    last_ts = pd.to_datetime(rec.get("ts"), errors="coerce")
+    cached_df = rec.get("df")
+    if isinstance(cached_df, pd.DataFrame) and (last_ts is not None) and (not pd.isna(last_ts)):
+        age = (now - last_ts).total_seconds()
+        st.session_state[f"ui_{key}_widget_last_age_min"] = max(0.0, age / 60.0)
+        if age < sec:
+            return cached_df
+    st.session_state[f"ui_{key}_widget_last_age_min"] = 0.0
+    st.session_state[cache_key] = {"ts": now.isoformat(), "df": df}
+    return df
+
+
+def _render_onboarding_guide() -> None:
+    if not bool(st.session_state.get("ui_show_onboarding", True)):
+        return
+    with st.expander("Onboarding Tour", expanded=False):
+        st.markdown("1. **Check Runtime Health**: Ensure banner shows healthy freshness and DB status.")
+        st.markdown("2. **Use Workspace Presets**: Open/Close/Forensics/Risk for quick context switches.")
+        st.markdown("3. **Inspect Tradeboard**: Validate symbol focus, event markers, and position lens.")
+        st.markdown("4. **Execution Journal**: Verify lifecycle, slippage, and drift guardrails.")
+        st.markdown("5. **Audit Trail**: Replay day timeline, bookmark key events, and export CSV.")
+        st.markdown("6. **Notifications**: Acknowledge/snooze/escalate and monitor incident timeline.")
+        st.checkbox("Hide onboarding next time", value=False, key="ui_hide_onboarding_once")
+        if st.button("Apply Onboarding Preference", use_container_width=True, key="ui_apply_onboarding_pref"):
+            st.session_state["ui_show_onboarding"] = not bool(st.session_state.get("ui_hide_onboarding_once", False))
+            st.rerun()
+
+
+def _render_mobile_bottom_nav(allowed_tabs: list[str]) -> None:
+    if not bool(st.session_state.get("ui_mobile_bottom_nav", False)):
+        return
+    if not allowed_tabs:
+        return
+    st.markdown("<div class='mobile-bottom-nav'>", unsafe_allow_html=True)
+    nav_default = str(st.session_state.get("ui_workspace_nav_selection", allowed_tabs[0]) or allowed_tabs[0])
+    if nav_default not in allowed_tabs:
+        nav_default = allowed_tabs[0]
+    picked = st.radio(
+        "Bottom Nav",
+        options=allowed_tabs,
+        index=allowed_tabs.index(nav_default),
+        horizontal=True,
+        key="ui_mobile_bottom_nav_pick",
+        label_visibility="collapsed",
+    )
+    if str(picked) != str(st.session_state.get("ui_workspace_nav_selection", "")):
+        _queue_workspace_switch(str(picked))
+        st.rerun()
+    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def _build_auth_config() -> AuthConfig:
@@ -1402,6 +2982,67 @@ def _disable_persistent_session(cfg: AuthConfig, token: str) -> None:
     try:
         conn.execute("UPDATE ui_sessions SET is_active = 0 WHERE token_hash = ?", (token_hash,))
         conn.commit()
+    finally:
+        conn.close()
+
+
+def _list_user_sessions(cfg: AuthConfig, username: str) -> pd.DataFrame:
+    user = str(username or "").strip()
+    if not user:
+        return pd.DataFrame()
+    _init_users_db(cfg)
+    now = pd.Timestamp.now(tz="UTC")
+    conn = sqlite3.connect(str(Path(cfg.users_db_path)))
+    try:
+        df = pd.read_sql_query(
+            """
+            SELECT token_hash, username, auth_method, created_at, last_seen_at, expires_at, is_active
+            FROM ui_sessions
+            WHERE username = ?
+            ORDER BY last_seen_at DESC
+            """,
+            conn,
+            params=(user,),
+        )
+    except Exception:
+        df = pd.DataFrame()
+    finally:
+        conn.close()
+    if df.empty:
+        return df
+    for col in ["created_at", "last_seen_at", "expires_at"]:
+        df[col] = pd.to_datetime(df[col], errors="coerce", utc=True)
+        df[f"{col}_ny"] = df[col].dt.tz_convert(NY_TZ)
+    df["is_active"] = pd.to_numeric(df["is_active"], errors="coerce").fillna(0).astype(int)
+    df["expired"] = df["expires_at"] < now
+    df["status"] = df.apply(
+        lambda r: "expired"
+        if bool(r.get("expired"))
+        else ("active" if int(r.get("is_active", 0)) == 1 else "revoked"),
+        axis=1,
+    )
+    df["token_tail"] = df["token_hash"].astype(str).map(lambda s: s[-8:] if len(s) >= 8 else s)
+    return df.reset_index(drop=True)
+
+
+def _revoke_user_session(cfg: AuthConfig, username: str, token_hash: str) -> tuple[bool, str]:
+    user = str(username or "").strip()
+    token = str(token_hash or "").strip()
+    if not user or not token:
+        return False, "Missing username or token."
+    _init_users_db(cfg)
+    conn = sqlite3.connect(str(Path(cfg.users_db_path)))
+    try:
+        cur = conn.execute(
+            "UPDATE ui_sessions SET is_active = 0 WHERE username = ? AND token_hash = ?",
+            (user, token),
+        )
+        conn.commit()
+        if int(cur.rowcount or 0) <= 0:
+            return False, "No matching active session found."
+        return True, "Session revoked."
+    except Exception as exc:
+        return False, f"Failed to revoke session: {exc}"
     finally:
         conn.close()
 
@@ -1955,6 +3596,61 @@ def _render_admin_sidebar(cfg: AuthConfig, current_user: str) -> None:
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+def _render_session_sidebar_tools(cfg: AuthConfig, current_user: str) -> None:
+    stats = _session_idle_stats(cfg)
+    idle_min = float(stats["idle_sec"]) / 60.0
+    rem_min = float(stats["remaining_sec"]) / 60.0
+    ttl_min = max(1.0, float(stats["ttl_sec"]) / 60.0)
+    ratio = max(0.0, min(1.0, rem_min / ttl_min))
+    st.progress(ratio, text=f"Session remaining: {rem_min:.1f}m / {ttl_min:.0f}m")
+    st.caption(f"Idle: {idle_min:.1f}m")
+    if rem_min <= 5:
+        st.warning("Session will expire soon. Any action refreshes activity timer.")
+    with st.expander("Active Sessions", expanded=False):
+        sessions = _list_user_sessions(cfg, current_user)
+        if sessions.empty:
+            st.caption("No active sessions for this account.")
+            return
+        current_token = str(st.session_state.get("auth_session_token", "") or "").strip()
+        current_hash = _hash_session_token(current_token) if current_token else ""
+        sessions["current"] = sessions["token_hash"].astype(str).map(lambda h: "yes" if h == current_hash else "no")
+        preview_cols = ["current", "status", "auth_method", "created_at_ny", "last_seen_at_ny", "expires_at_ny", "token_tail"]
+        for col in preview_cols:
+            if col not in sessions.columns:
+                sessions[col] = None
+        st.dataframe(sessions[preview_cols], use_container_width=True, hide_index=True, height=220)
+        revokable = sessions[(sessions["current"] == "no") & (sessions["status"] == "active")].copy()
+        if revokable.empty:
+            st.caption("No revokable active sessions besides this one.")
+            return
+        opts = [
+            f"{str(r.get('token_tail'))} | last_seen={pd.to_datetime(r.get('last_seen_at_ny'), errors='coerce')} | {str(r.get('auth_method'))}"
+            for _, r in revokable.iterrows()
+        ]
+        pick = st.selectbox("Session To Revoke", options=opts, index=0, key="session_revoke_pick")
+        b1, b2 = st.columns(2)
+        with b1:
+            if st.button("Revoke Selected", use_container_width=True, key="session_revoke_selected"):
+                idx = max(0, opts.index(pick))
+                token_hash = str(revokable.iloc[idx]["token_hash"])
+                ok, msg = _revoke_user_session(cfg, current_user, token_hash=token_hash)
+                _append_ui_audit("session_revoke_selected", {"ok": ok, "token_tail": str(token_hash)[-8:]})
+                (st.success if ok else st.error)(msg)
+                if ok:
+                    st.rerun()
+        with b2:
+            if st.button("Revoke All Others", use_container_width=True, key="session_revoke_all_others"):
+                ok_count = 0
+                for _, row in revokable.iterrows():
+                    ok, _ = _revoke_user_session(cfg, current_user, token_hash=str(row.get("token_hash")))
+                    if ok:
+                        ok_count += 1
+                _append_ui_audit("session_revoke_all_others", {"count": ok_count})
+                st.success(f"Revoked {ok_count} session(s).")
+                if ok_count > 0:
+                    st.rerun()
+
+
 def _init_session_state() -> None:
     st.session_state.setdefault("auth_ok", False)
     st.session_state.setdefault("auth_user", "")
@@ -1986,12 +3682,22 @@ def _init_session_state() -> None:
     st.session_state.setdefault("ui_strict_user_db", True)
     st.session_state.setdefault("ui_watchlist_pins", [])
     st.session_state.setdefault("ui_watchlist_pinned_only", False)
+    st.session_state.setdefault("ui_watchlist_min_events", 0)
+    st.session_state.setdefault("ui_watchlist_sort_mode", "Activity")
+    st.session_state.setdefault("ui_watchlist_card_density", "Standard")
+    st.session_state.setdefault("ui_watchlist_quick_actions", True)
     st.session_state.setdefault("ui_time_window", "1D")
+    st.session_state.setdefault("ui_eval_time", "15:55")
     st.session_state.setdefault("ui_sync_charts", True)
     st.session_state.setdefault("ui_symbol_view_mode", "Intraday Activity")
     st.session_state.setdefault("ui_symbol_chart_type", "Line")
+    st.session_state.setdefault("ui_linked_cursor_enabled", True)
+    st.session_state.setdefault("ui_linked_cursor_ts", "")
     st.session_state.setdefault("ui_command_palette_action", "Refresh Data Now")
     st.session_state.setdefault("ui_command_palette_search", "")
+    st.session_state.setdefault("ui_global_palette_open", False)
+    st.session_state.setdefault("ui_global_palette_query", "")
+    st.session_state.setdefault("ui_global_palette_action", "Refresh Runtime Data")
     st.session_state.setdefault("ui_palette_status", "")
     st.session_state.setdefault("ui_pending_auto_refresh_enabled", None)
     st.session_state.setdefault("ui_pending_symbol_view_mode", "")
@@ -2013,7 +3719,13 @@ def _init_session_state() -> None:
     st.session_state.setdefault("ui_global_variants", [])
     st.session_state.setdefault("ui_global_sides", [])
     st.session_state.setdefault("ui_global_order_types", [])
+    st.session_state.setdefault("ui_global_filter_presets", {})
+    st.session_state.setdefault("ui_global_preset_pending_apply", {})
+    st.session_state.setdefault("ui_pending_saved_workspace", "")
+    st.session_state.setdefault("ui_pending_workspace_nav_selection", "")
     st.session_state.setdefault("ui_saved_workspace", "Tradeboard")
+    st.session_state.setdefault("ui_workspace_view_mode", "Single Workspace")
+    st.session_state.setdefault("ui_workspace_nav_selection", "Tradeboard")
     st.session_state.setdefault("ui_custom_alert_stale_enabled", False)
     st.session_state.setdefault("ui_custom_alert_stale_min", 10)
     st.session_state.setdefault("ui_custom_alert_min_cycles_enabled", False)
@@ -2022,6 +3734,47 @@ def _init_session_state() -> None:
     st.session_state.setdefault("ui_custom_alert_error_max_24h", 0)
     st.session_state.setdefault("audit_replay_playing", False)
     st.session_state.setdefault("audit_replay_speed_sec", 2)
+    st.session_state.setdefault("audit_replay_pending_speed_sec", None)
+    st.session_state.setdefault("audit_replay_pending_idx", None)
+    st.session_state.setdefault("audit_replay_pending_minute_idx", None)
+    st.session_state.setdefault("ui_theme_preset", "Neo Green")
+    st.session_state.setdefault("ui_density_mode", "Comfortable")
+    st.session_state.setdefault("ui_font_scale_pct", 100)
+    st.session_state.setdefault("ui_high_contrast", False)
+    st.session_state.setdefault("ui_focus_mode", False)
+    st.session_state.setdefault("ui_keyboard_shortcuts_enabled", True)
+    st.session_state.setdefault("ui_tradeboard_split", "Balanced")
+    st.session_state.setdefault("ui_execution_split", "Balanced")
+    st.session_state.setdefault("ui_tradeboard_custom_weights", [0.8, 1.95, 0.75])
+    st.session_state.setdefault("ui_execution_custom_weights", [1.15, 1.0])
+    st.session_state.setdefault("auth_forgot_requested", "")
+    st.session_state.setdefault("ui_incident_mode", False)
+    st.session_state.setdefault("ui_mobile_bottom_nav", False)
+    st.session_state.setdefault("ui_workspace_preset", "Custom")
+    st.session_state.setdefault("ui_workspace_visible_tabs", [])
+    st.session_state.setdefault("ui_command_history", [])
+    st.session_state.setdefault("ui_command_favorites", [])
+    st.session_state.setdefault("ui_layout_editor_enabled", False)
+    st.session_state.setdefault("ui_panel_layout_locked", False)
+    st.session_state.setdefault("ui_popout_panel", "")
+    st.session_state.setdefault("ui_accessibility_preset", "Default")
+    st.session_state.setdefault("ui_reduced_motion", False)
+    st.session_state.setdefault("ui_perf_mode_enabled", False)
+    st.session_state.setdefault("ui_perf_max_rows", 3000)
+    st.session_state.setdefault("ui_persona_mode", "Operator")
+    st.session_state.setdefault("ui_home_tiles", [])
+    st.session_state.setdefault("ui_show_onboarding", True)
+    st.session_state.setdefault("ui_minimal_mode", False)
+    st.session_state.setdefault("ui_fast_widget_cadence_sec", 5)
+    st.session_state.setdefault("ui_heavy_widget_cadence_sec", 30)
+    st.session_state.setdefault("ui_saved_views", {})
+    st.session_state.setdefault("ui_last_refresh_snapshot", {})
+    st.session_state.setdefault("ui_render_timings", [])
+    st.session_state.setdefault("ui_toast_history", [])
+    st.session_state.setdefault("ui_toast_seen_keys", [])
+    st.session_state.setdefault("ui_toast_last_by_title", {})
+    st.session_state.setdefault("audit_replay_bookmarks", {})
+    st.session_state.setdefault("notice_muted_until", {})
 
 
 def _apply_global_pending_ui_state() -> None:
@@ -2047,6 +3800,33 @@ def _apply_global_pending_ui_state() -> None:
         except Exception:
             pass
         st.session_state["ui_pending_sidebar_event_limit"] = None
+
+    pending_preset = st.session_state.get("ui_global_preset_pending_apply", {})
+    if isinstance(pending_preset, dict) and pending_preset:
+        key_map = {
+            "window": "ui_global_time_window",
+            "query": "ui_global_filter_query",
+            "symbols": "ui_global_symbols",
+            "event_types": "ui_global_event_types",
+            "variants": "ui_global_variants",
+            "sides": "ui_global_sides",
+            "order_types": "ui_global_order_types",
+            "enabled": "ui_global_filters_enabled",
+        }
+        for src, dst in key_map.items():
+            if src in pending_preset:
+                st.session_state[dst] = pending_preset.get(src)
+        st.session_state["ui_global_preset_pending_apply"] = {}
+
+    pending_workspace = str(st.session_state.get("ui_pending_saved_workspace", "") or "").strip()
+    if pending_workspace:
+        st.session_state["ui_saved_workspace"] = pending_workspace
+        st.session_state["ui_pending_saved_workspace"] = ""
+
+    pending_nav_workspace = str(st.session_state.get("ui_pending_workspace_nav_selection", "") or "").strip()
+    if pending_nav_workspace:
+        st.session_state["ui_workspace_nav_selection"] = pending_nav_workspace
+        st.session_state["ui_pending_workspace_nav_selection"] = ""
 
 
 def _apply_terminal_pending_ui_state(symbols: list[str]) -> None:
@@ -2091,6 +3871,18 @@ def _clear_auth_session(cfg: AuthConfig | None = None) -> None:
 
 def _touch_session_activity() -> None:
     st.session_state.session_last_activity_ts = float(datetime.now(tz=timezone.utc).timestamp())
+
+
+def _session_idle_stats(cfg: AuthConfig) -> dict[str, float]:
+    now_ts = float(datetime.now(tz=timezone.utc).timestamp())
+    last_ts = float(st.session_state.get("session_last_activity_ts", 0.0) or 0.0)
+    if last_ts <= 0:
+        last_ts = now_ts
+        st.session_state["session_last_activity_ts"] = now_ts
+    idle_sec = max(0.0, now_ts - last_ts)
+    ttl_sec = float(max(60, int(cfg.session_timeout_min) * 60))
+    remaining_sec = max(0.0, ttl_sec - idle_sec)
+    return {"idle_sec": idle_sec, "remaining_sec": remaining_sec, "ttl_sec": ttl_sec}
 
 
 def _enforce_session_timeout(cfg: AuthConfig) -> bool:
@@ -2383,6 +4175,25 @@ def _render_login(cfg: AuthConfig) -> None:
                     if cfg.totp_enabled:
                         totp_code = st.text_input("Authenticator Code", placeholder="6-digit code", key="login_totp_input")
                     submit = st.form_submit_button("Sign In", use_container_width=True)
+                with st.expander("Forgot Password", expanded=False):
+                    st.caption("Password reset requests are handled by admin/operator.")
+                    reset_user = st.text_input(
+                        "Username for Reset",
+                        value=str(st.session_state.get("auth_forgot_requested", "") or ""),
+                        key="auth_forgot_username",
+                    )
+                    if st.button("Request Password Reset", use_container_width=True, key="auth_forgot_submit"):
+                        request_user = str(reset_user or "").strip()
+                        if not request_user:
+                            _set_auth_notice("error", "Enter your username to request password reset.")
+                        else:
+                            st.session_state["auth_forgot_requested"] = request_user
+                            _append_ui_audit("password_reset_requested", {"username": request_user})
+                            _set_auth_notice(
+                                "info",
+                                "Password reset request logged. Contact your admin to complete reset.",
+                            )
+                        st.rerun()
                 if submit:
                     user = username.strip()
                     if not user or not password:
@@ -2739,14 +4550,31 @@ def _render_kpis(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
 
     orders_submitted = int(latest_cycle.get("orders_submitted", 0)) if latest_cycle else 0
     threshold_pct = latest_cycle.get("threshold_pct", None) if latest_cycle else None
+    snap_row = {
+        "ts_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+        "total_events": int(total_events),
+        "events_24h": int(events_24h),
+        "orders_submitted": int(orders_submitted),
+        "threshold_pct": float(pd.to_numeric(threshold_pct, errors="coerce") or 0.0) if threshold_pct is not None else None,
+    }
+    hist_raw = st.session_state.get("ui_kpi_history", [])
+    hist = list(hist_raw) if isinstance(hist_raw, list) else []
+    hist.append(snap_row)
+    hist = hist[-360:]
+    st.session_state["ui_kpi_history"] = hist
+    hist_df = pd.DataFrame(hist)
+    ev_sp = _sparkline(pd.to_numeric(hist_df.get("total_events", pd.Series(dtype=float)), errors="coerce").dropna().astype(float).tolist()) if not hist_df.empty else "-"
+    e24_sp = _sparkline(pd.to_numeric(hist_df.get("events_24h", pd.Series(dtype=float)), errors="coerce").dropna().astype(float).tolist()) if not hist_df.empty else "-"
+    ord_sp = _sparkline(pd.to_numeric(hist_df.get("orders_submitted", pd.Series(dtype=float)), errors="coerce").dropna().astype(float).tolist()) if not hist_df.empty else "-"
+    thr_sp = _sparkline(pd.to_numeric(hist_df.get("threshold_pct", pd.Series(dtype=float)), errors="coerce").dropna().astype(float).tolist()) if not hist_df.empty else "-"
 
     kpi_data = [
-        ("Events Loaded", f"{total_events:,}", "Database rows in memory"),
-        ("Events (24h)", f"{events_24h:,}", "Recent runtime activity"),
+        ("Events Loaded", f"{total_events:,}", f"Database rows in memory  {ev_sp}"),
+        ("Events (24h)", f"{events_24h:,}", f"Recent runtime activity  {e24_sp}"),
         ("Current Variant", str(current_variant), "Active switch state"),
         ("Last Cycle Day", str(last_day), "Cycle completion marker"),
-        ("Orders (Last Cycle)", f"{orders_submitted}", "Submitted intents"),
-        ("Threshold %", "-" if threshold_pct is None else f"{float(threshold_pct):.2f}", "Adaptive profit-lock"),
+        ("Orders (Last Cycle)", f"{orders_submitted}", f"Submitted intents  {ord_sp}"),
+        ("Threshold %", "-" if threshold_pct is None else f"{float(threshold_pct):.2f}", f"Adaptive profit-lock  {thr_sp}"),
     ]
     cols = st.columns(6)
     for col, (label, value, sub) in zip(cols, kpi_data, strict=False):
@@ -3406,7 +5234,7 @@ def _notification_center_table(events_df: pd.DataFrame, state_df: pd.DataFrame) 
     now = pd.Timestamp.now(tz=NY_TZ)
     recent_cutoff = now - pd.Timedelta(hours=24)
 
-    def _push(ts: Any, severity: str, title: str, detail: str, source: str) -> None:
+    def _push(ts: Any, severity: str, title: str, detail: str, source: str, symbol: str = "") -> None:
         notices.append(
             {
                 "ts": ts,
@@ -3414,6 +5242,7 @@ def _notification_center_table(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 "title": title,
                 "detail": detail,
                 "source": source,
+                "symbol": str(symbol or "").strip().upper(),
             }
         )
 
@@ -3436,16 +5265,37 @@ def _notification_center_table(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 f"Variant changed: {payload.get('from', '?')} -> {payload.get('to', '?')}",
                 f"Reason: {payload.get('reason', '-')}",
                 "switch_variant_changed",
+                symbol=str(row.get("symbol", "") or ""),
             )
 
-        # Profit-lock events
-        pl = events_df[events_df["event_type"].isin(["switch_profit_lock_close", "switch_profit_lock_intraday_close"])].copy().head(30)
-        for _, row in pl.iterrows():
-            sym = row.get("symbol") or "-"
-            side = row.get("side") or "-"
-            qty = row.get("qty")
-            detail = f"{sym} {side} qty={qty}"
-            _push(row.get("ts_ny"), "medium", "Profit-lock execution", detail, str(row.get("event_type")))
+        # Profit-lock events (collapsed to reduce duplicate-warning spam).
+        pl = events_df[events_df["event_type"].isin(["switch_profit_lock_close", "switch_profit_lock_intraday_close"])].copy()
+        if not pl.empty:
+            pl["ts_ny"] = pd.to_datetime(pl["ts_ny"], errors="coerce")
+            pl = pl.dropna(subset=["ts_ny"]).copy()
+            pl["symbol_norm"] = pl["symbol"].astype(str).str.upper().fillna("-")
+            pl["side_norm"] = pl["side"].astype(str).str.lower().fillna("-")
+            pl["qty_num"] = pd.to_numeric(pl["qty"], errors="coerce").fillna(0.0)
+            pl["day_ny"] = pl["ts_ny"].dt.strftime("%Y-%m-%d")
+            grp = (
+                pl.groupby(["day_ny", "symbol_norm", "side_norm", "event_type"], as_index=False)
+                .agg(
+                    ts_latest=("ts_ny", "max"),
+                    qty_total=("qty_num", "sum"),
+                    hits=("id", "count"),
+                )
+                .sort_values("ts_latest", ascending=False)
+                .head(40)
+            )
+            for _, row in grp.iterrows():
+                sym = str(row.get("symbol_norm", "-") or "-")
+                side = str(row.get("side_norm", "-") or "-")
+                qty_total = float(pd.to_numeric(row.get("qty_total"), errors="coerce") or 0.0)
+                hits = int(pd.to_numeric(row.get("hits"), errors="coerce") or 0)
+                day_ny = str(row.get("day_ny", "") or "")
+                title = "Profit-lock execution" if hits <= 1 else f"Profit-lock execution x{hits}"
+                detail = f"{sym} {side} qty_total={qty_total:.4f} day={day_ny}"
+                _push(row.get("ts_latest"), "medium", title, detail, str(row.get("event_type")), symbol=sym)
 
         # Reject/failure scans in last 24h
         err = events_df[
@@ -3459,12 +5309,15 @@ def _notification_center_table(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 f"Error event: {row.get('event_type')}",
                 str(row.get("payload_text", ""))[:240],
                 "runtime",
+                symbol=str(row.get("symbol", "") or ""),
             )
 
     out = pd.DataFrame(notices)
     if out.empty:
         return out
     out["ts"] = pd.to_datetime(out["ts"], errors="coerce")
+    out["symbol"] = out.get("symbol", "").astype(str).str.upper()
+    out = out.drop_duplicates(subset=["ts", "severity", "title", "detail", "source"], keep="first")
     out = out.sort_values("ts", ascending=False).reset_index(drop=True)
     return out
 
@@ -3493,6 +5346,220 @@ def _notification_severity_chart(notices: pd.DataFrame) -> alt.Chart | None:
         .properties(height=220)
         .configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)")
         .configure_view(strokeOpacity=0)
+    )
+
+
+def _render_empty_state(title: str, detail: str, hint: str = "") -> None:
+    extra = f"<div class='empty-text' style='margin-top:0.3rem'>{hint}</div>" if str(hint or "").strip() else ""
+    box_key = hashlib.sha1(f"{title}|{detail}|{hint}".encode("utf-8")).hexdigest()[:10]
+    st.markdown(
+        (
+            "<div class='empty-state-card'>"
+            f"<div class='empty-title'>{title}</div>"
+            f"<div class='empty-text'>{detail}</div>"
+            f"{extra}"
+            "</div>"
+        ),
+        unsafe_allow_html=True,
+    )
+    a1, a2 = st.columns(2)
+    with a1:
+        if st.button("Refresh Runtime Data", use_container_width=True, key=f"empty_refresh_{box_key}"):
+            _load_runtime_db.clear()
+            st.session_state["ui_palette_status"] = f"Refresh requested from empty state: {title}"
+            st.rerun()
+    with a2:
+        if st.button("Open Tradeboard", use_container_width=True, key=f"empty_tradeboard_{box_key}"):
+            _queue_workspace_switch("Tradeboard")
+            st.session_state["ui_palette_status"] = "Opened Tradeboard from empty state."
+            st.rerun()
+
+
+def _render_skeleton(lines: int = 5) -> None:
+    parts = ["<div class='desk-block'>"]
+    for _ in range(max(1, int(lines))):
+        parts.append("<div class='skeleton-line'></div>")
+    parts.append("</div>")
+    st.markdown("".join(parts), unsafe_allow_html=True)
+
+
+def _workspace_nav_options(user_role: str) -> list[str]:
+    tab_specs: list[tuple[str, str]] = [
+        ("Command Center", ROLE_VIEWER),
+        ("Tradeboard", ROLE_VIEWER),
+        ("Multi-Chart", ROLE_VIEWER),
+        ("Portfolio Pulse", ROLE_VIEWER),
+        ("Execution Journal", ROLE_OPERATOR),
+        ("Strategy Lab", ROLE_VIEWER),
+        ("P&L Monitor", ROLE_VIEWER),
+        ("Notifications", ROLE_VIEWER),
+        ("Ops Health", ROLE_OPERATOR),
+        ("UI Diagnostics", ROLE_OPERATOR),
+        ("Audit Trail", ROLE_ADMIN),
+        ("Operator Guide", ROLE_VIEWER),
+        ("Backtest Hub", ROLE_VIEWER),
+        ("UI Changelog", ROLE_VIEWER),
+    ]
+    allowed = [name for name, min_role in tab_specs if _role_at_least(user_role, min_role)]
+    persona = str(st.session_state.get("ui_persona_mode", "Operator") or "Operator")
+    if persona == "Viewer":
+        viewer_tabs = {
+            "Command Center",
+            "Tradeboard",
+            "Multi-Chart",
+            "Portfolio Pulse",
+            "P&L Monitor",
+            "Notifications",
+            "UI Diagnostics",
+            "Operator Guide",
+            "UI Changelog",
+            "Backtest Hub",
+        }
+        allowed = [name for name in allowed if name in viewer_tabs]
+    ranked = {name: idx for idx, name in enumerate(WORKSPACE_ORDER)}
+    return sorted(allowed, key=lambda x: ranked.get(x, 999))
+
+
+def _extract_symbols_from_notice_row(row: pd.Series) -> list[str]:
+    parts = [
+        str(row.get("title", "") or ""),
+        str(row.get("detail", "") or ""),
+        str(row.get("source", "") or ""),
+    ]
+    symbols: list[str] = []
+    for part in parts:
+        for token in re.findall(r"\b[A-Z]{3,5}\b", part.upper()):
+            if token not in {"ERROR", "ALERT", "RUNTIME", "HIGH", "INFO", "WARN", "OPEN"}:
+                symbols.append(token)
+    out: list[str] = []
+    seen: set[str] = set()
+    for sym in symbols:
+        if sym not in seen:
+            seen.add(sym)
+            out.append(sym)
+    return out
+
+
+def _render_actionable_alert_center(notices_df: pd.DataFrame) -> None:
+    if notices_df.empty:
+        return
+    open_notices = notices_df.copy()
+    if "status" in open_notices.columns:
+        open_notices = open_notices[open_notices["status"] != "acknowledged"].copy()
+    if open_notices.empty:
+        return
+    top = open_notices.head(8).copy().reset_index(drop=True)
+    st.markdown("<div class='alert-action-center'>", unsafe_allow_html=True)
+    st.markdown("<div class='alert-center-title'>Action Center</div>", unsafe_allow_html=True)
+    st.caption("Quick handling for active alerts from the current runtime scope.")
+    options = [f"{idx+1}. [{str(r.get('severity', '')).upper()}] {str(r.get('title', 'Alert'))}" for idx, (_, r) in enumerate(top.iterrows())]
+    selected = st.selectbox("Alert", options=options, index=0, key="ui_action_center_select")
+    idx = max(0, min(len(top) - 1, int(str(selected).split(".", 1)[0]) - 1))
+    row = top.iloc[idx]
+    st.caption(str(row.get("detail", "") or ""))
+    candidate_symbols = _extract_symbols_from_notice_row(row)
+    c1, c2, c3 = st.columns([1.0, 1.0, 1.0])
+    with c1:
+        if st.button("Acknowledge", use_container_width=True, key="ui_action_center_ack"):
+            actions = st.session_state.get("notice_actions", {})
+            if not isinstance(actions, dict):
+                actions = {}
+            key = hashlib.sha1(
+                f"{row.get('ts')}|{row.get('severity')}|{row.get('title')}|{row.get('source')}".encode("utf-8")
+            ).hexdigest()[:16]
+            actions[key] = {"status": "acknowledged", "updated_at": pd.Timestamp.now(tz=NY_TZ).isoformat()}
+            st.session_state["notice_actions"] = actions
+            st.session_state["ui_palette_status"] = "Alert acknowledged from Action Center."
+            st.rerun()
+    with c2:
+        if st.button("Mute 30m", use_container_width=True, key="ui_action_center_mute"):
+            actions = st.session_state.get("notice_actions", {})
+            if not isinstance(actions, dict):
+                actions = {}
+            key = hashlib.sha1(
+                f"{row.get('ts')}|{row.get('severity')}|{row.get('title')}|{row.get('source')}".encode("utf-8")
+            ).hexdigest()[:16]
+            actions[key] = {
+                "status": "snoozed",
+                "snooze_until": (pd.Timestamp.now(tz=NY_TZ) + pd.Timedelta(minutes=30)).isoformat(),
+                "updated_at": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+            }
+            st.session_state["notice_actions"] = actions
+            st.session_state["ui_palette_status"] = "Alert snoozed for 30 minutes."
+            st.rerun()
+    with c3:
+        if st.button("Open Symbol", use_container_width=True, key="ui_action_center_open_symbol"):
+            if candidate_symbols:
+                st.session_state["ui_pending_selected_symbol"] = candidate_symbols[0]
+                st.session_state["ui_pending_saved_workspace"] = "Tradeboard"
+                st.session_state["ui_palette_status"] = f"Focused symbol {candidate_symbols[0]} from alert."
+                st.rerun()
+            st.session_state["ui_palette_status"] = "No symbol found in selected alert."
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_risk_strip(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
+    hs = _health_snapshot(events_df, state_df)
+    curve = _equity_curve_frame(events_df, state_df)
+    snap = _pnl_snapshot(curve, state_df)
+    fresh = hs.get("freshness_min")
+    if fresh is None:
+        fresh_state, fresh_txt = "warn", "-"
+    elif float(fresh) <= 10:
+        fresh_state, fresh_txt = "ok", f"{float(fresh):.1f}m"
+    elif float(fresh) <= 60:
+        fresh_state, fresh_txt = "warn", f"{float(fresh):.1f}m"
+    else:
+        fresh_state, fresh_txt = "bad", f"{float(fresh):.1f}m"
+
+    err24 = int(hs.get("error_events_24h", 0))
+    err_state = "ok" if err24 == 0 else ("warn" if err24 <= 3 else "bad")
+    dd = float(pd.to_numeric(snap.get("max_drawdown_pct"), errors="coerce") or 0.0)
+    dd_state = "ok" if dd <= 15 else ("warn" if dd <= 30 else "bad")
+    cyc24 = int(hs.get("cycles_24h", 0))
+    cyc_state = "ok" if cyc24 >= 1 else "warn"
+    pos = _estimated_positions_table(events_df, state_df)
+    net_abs = float(pd.to_numeric(pos.get("net_qty_est"), errors="coerce").fillna(0.0).abs().sum()) if not pos.empty else 0.0
+    active_syms = int((pd.to_numeric(pos.get("net_qty_est"), errors="coerce").fillna(0.0).abs() > 0).sum()) if not pos.empty else 0
+    exposure_state = "ok" if net_abs <= 200 else ("warn" if net_abs <= 600 else "bad")
+    last_cycle_pnl = float(pd.to_numeric(snap.get("last_day_pnl"), errors="coerce") or 0.0)
+    pnl_state = "ok" if last_cycle_pnl >= 0 else ("warn" if last_cycle_pnl >= -250 else "bad")
+    ord_1h = int(hs.get("events_1h", 0))
+    ord_state = "ok" if ord_1h >= 10 else ("warn" if ord_1h >= 1 else "bad")
+    st.markdown(
+        (
+            "<div class='risk-strip'>"
+            "<div class='risk-pill'>"
+            "<div class='risk-pill-k'>Feed Freshness</div>"
+            f"<div class='risk-pill-v'><span class='risk-dot {fresh_state}'></span>{fresh_txt}</div>"
+            "</div>"
+            "<div class='risk-pill'>"
+            "<div class='risk-pill-k'>Error Events (24h)</div>"
+            f"<div class='risk-pill-v'><span class='risk-dot {err_state}'></span>{err24}</div>"
+            "</div>"
+            "<div class='risk-pill'>"
+            "<div class='risk-pill-k'>Max Drawdown</div>"
+            f"<div class='risk-pill-v'><span class='risk-dot {dd_state}'></span>{dd:.2f}%</div>"
+            "</div>"
+            "<div class='risk-pill'>"
+            "<div class='risk-pill-k'>Cycles (24h)</div>"
+            f"<div class='risk-pill-v'><span class='risk-dot {cyc_state}'></span>{cyc24}</div>"
+            "</div>"
+            "<div class='risk-pill'>"
+            "<div class='risk-pill-k'>Net Qty Exposure</div>"
+            f"<div class='risk-pill-v'><span class='risk-dot {exposure_state}'></span>{net_abs:,.2f} | syms {active_syms}</div>"
+            "</div>"
+            "<div class='risk-pill'>"
+            "<div class='risk-pill-k'>Last Cycle PnL</div>"
+            f"<div class='risk-pill-v'><span class='risk-dot {pnl_state}'></span>${last_cycle_pnl:,.2f}</div>"
+            "</div>"
+            "<div class='risk-pill'>"
+            "<div class='risk-pill-k'>Events (1h)</div>"
+            f"<div class='risk-pill-v'><span class='risk-dot {ord_state}'></span>{ord_1h}</div>"
+            "</div>"
+            "</div>"
+        ),
+        unsafe_allow_html=True,
     )
 
 
@@ -3640,11 +5707,106 @@ def _send_email_message(subject: str, body: str, to_addr: str) -> tuple[bool, st
 
 
 def _global_filter_toolbar(events_df: pd.DataFrame) -> pd.DataFrame:
-    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown("<div class='sticky-global'><div class='desk-block'>", unsafe_allow_html=True)
     st.markdown(
         "<div class='section-caption'>Global filters and workspace sync controls (applied to all tabs unless overridden).</div>",
         unsafe_allow_html=True,
     )
+    presets = st.session_state.get("ui_global_filter_presets", {})
+    if not isinstance(presets, dict):
+        presets = {}
+    default_presets: dict[str, dict[str, Any]] = {
+        "Today: High Priority": {
+            "enabled": True,
+            "window": "1D",
+            "query": "error|reject|fail|profit_lock",
+            "symbols": [],
+            "event_types": [],
+            "variants": [],
+            "sides": [],
+            "order_types": [],
+        },
+        "Week: Execution Focus": {
+            "enabled": True,
+            "window": "1W",
+            "query": "order|profit_lock|rebalance",
+            "symbols": [],
+            "event_types": [],
+            "variants": [],
+            "sides": [],
+            "order_types": [],
+        },
+        "Month: Full Scope": {
+            "enabled": True,
+            "window": "1M",
+            "query": "",
+            "symbols": [],
+            "event_types": [],
+            "variants": [],
+            "sides": [],
+            "order_types": [],
+        },
+    }
+    preset_all = {**default_presets, **presets}
+    top1, top2, top3, top4 = st.columns([1.45, 1.05, 0.9, 0.9])
+    with top1:
+        preset_name = st.selectbox(
+            "Filter Preset",
+            options=["(none)"] + sorted(preset_all.keys()),
+            index=0,
+            key="ui_global_preset_name",
+        )
+    with top2:
+        save_name = st.text_input("Save As", value=str(st.session_state.get("ui_global_preset_save_name", "") or ""), key="ui_global_preset_save_name")
+    with top3:
+        if st.button("Apply Preset", use_container_width=True, key="ui_global_preset_apply_btn"):
+            if preset_name != "(none)" and preset_name in preset_all:
+                st.session_state["ui_global_preset_pending_apply"] = preset_all[preset_name]
+                st.session_state["ui_palette_status"] = f"Applied global preset: {preset_name}"
+                st.rerun()
+    with top4:
+        if st.button("Save Current", use_container_width=True, key="ui_global_preset_save_btn"):
+            name = str(save_name or "").strip()
+            if name:
+                state_payload = {
+                    "enabled": bool(st.session_state.get("ui_global_filters_enabled", False)),
+                    "window": str(st.session_state.get("ui_global_time_window", "1M") or "1M"),
+                    "query": str(st.session_state.get("ui_global_filter_query", "") or ""),
+                    "symbols": list(st.session_state.get("ui_global_symbols", []) or []),
+                    "event_types": list(st.session_state.get("ui_global_event_types", []) or []),
+                    "variants": list(st.session_state.get("ui_global_variants", []) or []),
+                    "sides": list(st.session_state.get("ui_global_sides", []) or []),
+                    "order_types": list(st.session_state.get("ui_global_order_types", []) or []),
+                }
+                presets[name] = state_payload
+                st.session_state["ui_global_filter_presets"] = presets
+                st.session_state["ui_palette_status"] = f"Saved global preset: {name}"
+                st.rerun()
+            st.warning("Enter a preset name first.")
+
+    p1, p2, _ = st.columns([0.9, 0.9, 2.2])
+    with p1:
+        if st.button("Delete Preset", use_container_width=True, key="ui_global_preset_delete_btn"):
+            if preset_name in presets:
+                presets.pop(preset_name, None)
+                st.session_state["ui_global_filter_presets"] = presets
+                st.session_state["ui_palette_status"] = f"Deleted preset: {preset_name}"
+                st.rerun()
+    with p2:
+        if st.button("Reset Filters", use_container_width=True, key="ui_global_preset_reset_btn"):
+            st.session_state["ui_global_preset_pending_apply"] = {
+                "enabled": False,
+                "window": "1M",
+                "query": "",
+                "symbols": [],
+                "event_types": [],
+                "variants": [],
+                "sides": [],
+                "order_types": [],
+            }
+            st.session_state["ui_palette_status"] = "Global filters reset."
+            st.rerun()
+
     enabled = st.checkbox("Enable Global Filters", value=bool(st.session_state.get("ui_global_filters_enabled", False)), key="ui_global_filters_enabled")
     c1, c2, c3 = st.columns([1.0, 1.0, 2.0])
     with c1:
@@ -3696,7 +5858,7 @@ def _global_filter_toolbar(events_df: pd.DataFrame) -> pd.DataFrame:
     else:
         filtered = events_df.copy()
         st.caption("Global filters OFF")
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div></div>", unsafe_allow_html=True)
     return filtered
 
 
@@ -4218,6 +6380,179 @@ def _paged_view(df: pd.DataFrame, *, key: str, default_page_size: int = 100) -> 
     return df.iloc[start:end].copy()
 
 
+def _table_customize(df: pd.DataFrame, *, key: str, default_sort_col: str = "", default_desc: bool = True) -> pd.DataFrame:
+    if df.empty:
+        return df
+    cols = [str(c) for c in df.columns.tolist()]
+    sort_opts = ["(none)"] + cols
+    preferred_sort = default_sort_col if default_sort_col in cols else "(none)"
+
+    pending_view = st.session_state.get(f"{key}_table_pending_view", None)
+    if isinstance(pending_view, dict):
+        st.session_state[f"{key}_visible_cols"] = [c for c in list(pending_view.get("visible_cols", cols)) if c in cols] or cols
+        sort_pending = str(pending_view.get("sort_col", preferred_sort) or preferred_sort)
+        st.session_state[f"{key}_sort_col"] = sort_pending if sort_pending in sort_opts else preferred_sort
+        st.session_state[f"{key}_sort_desc"] = bool(pending_view.get("sort_desc", bool(default_desc)))
+        st.session_state[f"{key}_contains"] = str(pending_view.get("contains", "") or "")
+        st.session_state[f"{key}_pinned_cols"] = [c for c in list(pending_view.get("pinned_cols", [])) if c in cols]
+        st.session_state[f"{key}_table_pending_view"] = None
+
+    all_views_raw = st.session_state.get("ui_saved_views", {})
+    all_views = all_views_raw if isinstance(all_views_raw, dict) else {}
+    table_views_raw = all_views.get(key, {})
+    table_views = table_views_raw if isinstance(table_views_raw, dict) else {}
+
+    with st.expander("Table Controls", expanded=False):
+        c1, c2, c3 = st.columns([1.25, 1.0, 1.0])
+        with c1:
+            selected_cols = st.multiselect(
+                "Visible Columns",
+                options=cols,
+                default=cols,
+                key=f"{key}_visible_cols",
+            )
+        with c2:
+            sort_col = st.selectbox(
+                "Sort Column",
+                options=sort_opts,
+                index=sort_opts.index(preferred_sort),
+                key=f"{key}_sort_col",
+            )
+        with c3:
+            desc = st.checkbox(
+                "Sort Desc",
+                value=bool(default_desc),
+                key=f"{key}_sort_desc",
+            )
+        q = st.text_input(
+            "Contains Filter",
+            value="",
+            key=f"{key}_contains",
+            placeholder="text search across visible columns",
+        )
+        pinned_cols = st.multiselect(
+            "Pin Columns (left-first order)",
+            options=selected_cols if selected_cols else cols,
+            default=[c for c in list(st.session_state.get(f"{key}_pinned_cols", [])) if c in (selected_cols if selected_cols else cols)],
+            key=f"{key}_pinned_cols",
+        )
+
+        st.markdown("---")
+        v1, v2, v3 = st.columns([1.2, 1.1, 1.1])
+        with v1:
+            view_name = st.text_input(
+                "View Name",
+                value="",
+                key=f"{key}_table_view_name",
+                placeholder="save this table setup",
+            )
+        with v2:
+            available = sorted(table_views.keys())
+            chosen_view = st.selectbox(
+                "Saved Views",
+                options=["(none)"] + available,
+                index=0,
+                key=f"{key}_table_saved_pick",
+            )
+        with v3:
+            st.caption("Column scope for this table only.")
+            apply_clicked = st.button("Apply View", use_container_width=True, key=f"{key}_table_apply_view")
+            save_clicked = st.button("Save View", use_container_width=True, key=f"{key}_table_save_view")
+            delete_clicked = st.button("Delete View", use_container_width=True, key=f"{key}_table_delete_view")
+
+        if apply_clicked:
+            if chosen_view != "(none)" and chosen_view in table_views:
+                st.session_state[f"{key}_table_pending_view"] = table_views[chosen_view]
+                st.session_state["ui_palette_status"] = f"Applied table view: {chosen_view}"
+                st.rerun()
+            st.info("Select a saved view first.")
+        if save_clicked:
+            vname = str(view_name or "").strip()
+            if not vname:
+                st.warning("Enter view name.")
+            else:
+                payload = {
+                    "visible_cols": list(selected_cols) if selected_cols else cols,
+                    "sort_col": str(sort_col),
+                    "sort_desc": bool(desc),
+                    "contains": str(q or ""),
+                    "pinned_cols": list(pinned_cols) if pinned_cols else [],
+                }
+                table_views[vname] = payload
+                all_views[key] = table_views
+                st.session_state["ui_saved_views"] = all_views
+                st.session_state["ui_palette_status"] = f"Saved table view: {vname}"
+                st.rerun()
+        if delete_clicked:
+            if chosen_view != "(none)" and chosen_view in table_views:
+                table_views.pop(chosen_view, None)
+                all_views[key] = table_views
+                st.session_state["ui_saved_views"] = all_views
+                st.session_state["ui_palette_status"] = f"Deleted table view: {chosen_view}"
+                st.rerun()
+            st.info("Select a saved view first.")
+    out = df.copy()
+    chosen = [c for c in selected_cols if c in out.columns] if selected_cols else cols
+    pin_chosen = [c for c in (pinned_cols if pinned_cols else []) if c in chosen]
+    tail_cols = [c for c in chosen if c not in pin_chosen]
+    chosen = pin_chosen + tail_cols
+    out = out[chosen].copy()
+    needle = str(q or "").strip().lower()
+    if needle:
+        mask = pd.Series(False, index=out.index)
+        for col in out.columns:
+            mask = mask | out[col].astype(str).str.lower().str.contains(needle, na=False)
+        out = out[mask]
+    if sort_col != "(none)" and sort_col in out.columns:
+        out = out.sort_values(sort_col, ascending=(not bool(desc)))
+    rendered = out.reset_index(drop=True)
+    st.caption(
+        f"Table Rows: {len(rendered):,} / {len(df):,} | Columns: {len(rendered.columns):,}"
+        + (f" | Sorted: {sort_col} ({'desc' if bool(desc) else 'asc'})" if sort_col != "(none)" else "")
+    )
+    return rendered
+
+
+def _tradeboard_split_columns(split: str) -> list[float]:
+    mode = str(split or "Balanced").strip()
+    mapping: dict[str, list[float]] = {
+        "Balanced": [0.8, 1.95, 0.75],
+        "Chart Focus": [0.65, 2.35, 0.6],
+        "Watchlist Focus": [1.1, 1.75, 0.75],
+        "Stats Focus": [0.75, 1.7, 1.05],
+    }
+    if mode == "Custom":
+        raw = st.session_state.get("ui_tradeboard_custom_weights", [0.8, 1.95, 0.75])
+        if isinstance(raw, list) and len(raw) == 3:
+            vals = [max(0.2, float(pd.to_numeric(v, errors="coerce") or 1.0)) for v in raw]
+            return vals
+    return mapping.get(mode, mapping["Balanced"])
+
+
+def _chart_png_bytes(chart: alt.Chart) -> bytes | None:
+    try:
+        buf = io.BytesIO()
+        chart.save(buf, format="png")
+        return buf.getvalue()
+    except Exception:
+        return None
+
+
+def _execution_split_columns(split: str) -> list[float]:
+    mode = str(split or "Balanced").strip()
+    mapping: dict[str, list[float]] = {
+        "Balanced": [1.15, 1.0],
+        "Blotter Focus": [1.35, 0.8],
+        "Analytics Focus": [0.95, 1.2],
+    }
+    if mode == "Custom":
+        raw = st.session_state.get("ui_execution_custom_weights", [1.15, 1.0])
+        if isinstance(raw, list) and len(raw) == 2:
+            vals = [max(0.2, float(pd.to_numeric(v, errors="coerce") or 1.0)) for v in raw]
+            return vals
+    return mapping.get(mode, mapping["Balanced"])
+
+
 @st.cache_data(ttl=120, show_spinner=False)
 def _fetch_market_ohlcv(symbol: str, window: str, feed: str) -> tuple[pd.DataFrame, str]:
     sym = str(symbol or "").strip().upper()
@@ -4285,7 +6620,32 @@ def _fetch_market_ohlcv(symbol: str, window: str, feed: str) -> tuple[pd.DataFra
     return frame, "ok"
 
 
-def _market_candlestick_chart(symbol: str, window: str, feed: str = "sip") -> tuple[alt.Chart | None, str]:
+def _reference_rule_layer(reference_ts: Any, y_title: str = "Price") -> alt.Chart | None:
+    ref_ts = pd.to_datetime(reference_ts, errors="coerce")
+    if pd.isna(ref_ts):
+        return None
+    if ref_ts.tzinfo is None:
+        try:
+            ref_ts = ref_ts.tz_localize(NY_TZ)
+        except Exception:
+            return None
+    else:
+        ref_ts = ref_ts.tz_convert(NY_TZ)
+    ref_df = pd.DataFrame({"ts_ny": [ref_ts]})
+    return (
+        alt.Chart(ref_df)
+        .mark_rule(color="#d6def0", strokeDash=[4, 4], strokeWidth=1.2, opacity=0.85)
+        .encode(x=alt.X("ts_ny:T", title="Time (NY)"), tooltip=["ts_ny:T"])
+    )
+
+
+def _market_candlestick_chart(
+    symbol: str,
+    window: str,
+    feed: str = "sip",
+    events_df: pd.DataFrame | None = None,
+    reference_ts: Any = None,
+) -> tuple[alt.Chart | None, str]:
     frame, status = _fetch_market_ohlcv(symbol, window, feed)
     if frame.empty:
         return None, status
@@ -4327,7 +6687,47 @@ def _market_candlestick_chart(symbol: str, window: str, feed: str = "sip") -> tu
         )
         .properties(height=100)
     )
-    price_panel = (wick + body + vwap_line).properties(height=300)
+    layers: list[alt.Chart] = [wick, body, vwap_line]
+    if events_df is not None and isinstance(events_df, pd.DataFrame) and (not events_df.empty):
+        fills = _symbol_price_event_df(events_df, symbol)
+        if not fills.empty:
+            markers = fills.copy()
+            markers["ts_ny"] = pd.to_datetime(markers["ts"], errors="coerce")
+            markers = markers.dropna(subset=["ts_ny", "execution_price"]).copy()
+            if not markers.empty:
+                markers["side_norm"] = markers["side"].astype(str).str.lower().map(
+                    lambda s: "buy" if s == "buy" else ("sell" if s == "sell" else "other")
+                )
+                marker_layer = (
+                    alt.Chart(markers)
+                    .mark_point(size=68, filled=True, opacity=0.95)
+                    .encode(
+                        x=alt.X("ts_ny:T"),
+                        y=alt.Y("execution_price:Q", title="Price"),
+                        color=alt.Color(
+                            "side_norm:N",
+                            scale=alt.Scale(domain=["buy", "sell", "other"], range=["#00c805", "#ff5d7a", "#9fb3d5"]),
+                            legend=None,
+                        ),
+                        shape=alt.Shape(
+                            "side_norm:N",
+                            scale=alt.Scale(domain=["buy", "sell", "other"], range=["triangle-up", "triangle-down", "circle"]),
+                            legend=None,
+                        ),
+                        tooltip=[
+                            "ts_ny:T",
+                            "side:N",
+                            alt.Tooltip("qty:Q", format=",.4f"),
+                            alt.Tooltip("execution_price:Q", format=",.4f"),
+                            "event_type:N",
+                        ],
+                    )
+                )
+                layers.append(marker_layer)
+    ref_rule = _reference_rule_layer(reference_ts)
+    if ref_rule is not None:
+        layers.append(ref_rule)
+    price_panel = alt.layer(*layers).properties(height=300)
     return (
         alt.vconcat(price_panel, volume)
         .resolve_scale(x="shared")
@@ -4381,6 +6781,16 @@ def _watchlist_df(events_df: pd.DataFrame, state_df: pd.DataFrame) -> pd.DataFra
         net = buy_qty - sell_qty
         last_ts = "-" if sym_orders.empty else str(sym_orders["ts"].max())
         last_side = "-" if sym_orders.empty else str(sym_orders.iloc[0]["side"]).upper()
+        momentum_score = 0.0
+        risk_score = 0.0
+        sym_flow = _symbol_activity_df(events_df, sym)
+        if not sym_flow.empty:
+            cum = pd.to_numeric(sym_flow.get("cum_position"), errors="coerce").dropna().astype(float)
+            if len(cum) >= 2:
+                momentum_score = float(cum.iloc[-1] - cum.iloc[max(0, len(cum) - 6)])
+            signed = pd.to_numeric(sym_flow.get("signed_qty"), errors="coerce").dropna().astype(float)
+            if not signed.empty:
+                risk_score = float(signed.abs().rolling(window=min(6, len(signed))).mean().iloc[-1]) if len(signed) >= 2 else float(signed.abs().iloc[-1])
         rows.append(
             {
                 "symbol": sym,
@@ -4389,6 +6799,8 @@ def _watchlist_df(events_df: pd.DataFrame, state_df: pd.DataFrame) -> pd.DataFra
                 "order_events": 0 if sym_orders.empty else int(len(sym_orders)),
                 "last_side": last_side,
                 "last_event_ts": last_ts,
+                "momentum_score": momentum_score,
+                "risk_score": risk_score,
             }
         )
     out = pd.DataFrame(rows)
@@ -4406,7 +6818,64 @@ def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_row
     pin_set = set(pin_list)
     watch = watch.copy()
     watch["pinned"] = watch["symbol"].astype(str).str.upper().isin(pin_set)
-    watch = watch.sort_values(["pinned", "order_events", "symbol"], ascending=[False, False, True]).reset_index(drop=True)
+    max_ev = int(pd.to_numeric(watch.get("order_events"), errors="coerce").fillna(0.0).max()) if "order_events" in watch.columns else 0
+    ctl1, ctl2, ctl3, ctl4 = st.columns([1.0, 1.05, 1.0, 1.0])
+    with ctl1:
+        st.slider(
+            "Min Events",
+            min_value=0,
+            max_value=max(1, int(max_ev)),
+            value=min(int(pd.to_numeric(st.session_state.get("ui_watchlist_min_events", 0), errors="coerce") or 0), max(1, int(max_ev))),
+            step=1,
+            key="ui_watchlist_min_events",
+            help="Hide symbols with fewer execution events in current scope.",
+        )
+    with ctl2:
+        st.selectbox(
+            "Sort",
+            options=["Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"],
+            index=["Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"].index(str(st.session_state.get("ui_watchlist_sort_mode", "Activity")))
+            if str(st.session_state.get("ui_watchlist_sort_mode", "Activity")) in {"Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"}
+            else 0,
+            key="ui_watchlist_sort_mode",
+        )
+    with ctl3:
+        st.selectbox(
+            "Card Density",
+            options=["Compact", "Standard", "Expanded"],
+            index=["Compact", "Standard", "Expanded"].index(str(st.session_state.get("ui_watchlist_card_density", "Standard")))
+            if str(st.session_state.get("ui_watchlist_card_density", "Standard")) in {"Compact", "Standard", "Expanded"}
+            else 1,
+            key="ui_watchlist_card_density",
+        )
+    with ctl4:
+        st.checkbox(
+            "Quick Actions",
+            value=bool(st.session_state.get("ui_watchlist_quick_actions", True)),
+            key="ui_watchlist_quick_actions",
+            help="Show/hide watchlist quick action buttons to reduce clutter.",
+        )
+    min_events = int(pd.to_numeric(st.session_state.get("ui_watchlist_min_events", 0), errors="coerce") or 0)
+    if min_events > 0:
+        filtered = watch[pd.to_numeric(watch["order_events"], errors="coerce").fillna(0.0) >= float(min_events)].copy()
+        if not filtered.empty:
+            watch = filtered
+
+    sort_mode = str(st.session_state.get("ui_watchlist_sort_mode", "Activity") or "Activity")
+    if sort_mode == "Target Weight":
+        watch["_tw"] = pd.to_numeric(watch["target_wt_%"], errors="coerce").fillna(-1.0)
+        watch = watch.sort_values(["pinned", "_tw", "order_events", "symbol"], ascending=[False, False, False, True]).drop(columns=["_tw"])
+    elif sort_mode == "Momentum":
+        watch["_mom"] = pd.to_numeric(watch.get("momentum_score"), errors="coerce").fillna(0.0)
+        watch = watch.sort_values(["pinned", "_mom", "order_events", "symbol"], ascending=[False, False, False, True]).drop(columns=["_mom"])
+    elif sort_mode == "Risk":
+        watch["_risk"] = pd.to_numeric(watch.get("risk_score"), errors="coerce").fillna(0.0)
+        watch = watch.sort_values(["pinned", "_risk", "order_events", "symbol"], ascending=[False, True, False, True]).drop(columns=["_risk"])
+    elif sort_mode == "Alphabetical":
+        watch = watch.sort_values(["pinned", "symbol"], ascending=[False, True])
+    else:
+        watch = watch.sort_values(["pinned", "order_events", "symbol"], ascending=[False, False, True])
+    watch = watch.reset_index(drop=True)
 
     pinned_only = st.checkbox("Pinned Only", key="ui_watchlist_pinned_only")
     if pinned_only:
@@ -4418,7 +6887,7 @@ def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_row
     current = st.session_state.get("ui_selected_symbol", symbols[0])
     if current not in symbols:
         current = symbols[0]
-    st.session_state.ui_selected_symbol = current
+    st.session_state["ui_selected_symbol"] = current
 
     shown = watch.head(max_rows).copy()
     labels: dict[str, str] = {}
@@ -4439,7 +6908,7 @@ def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_row
         key="ui_watchlist_radio",
         label_visibility="collapsed",
     )
-    st.session_state.ui_selected_symbol = selected
+    st.session_state["ui_selected_symbol"] = selected
 
     pin_left, pin_right = st.columns([1.2, 1.0])
     selected_is_pinned = selected in pin_set
@@ -4453,12 +6922,85 @@ def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_row
             st.session_state["ui_watchlist_pins"] = []
             st.session_state["ui_palette_status"] = "Cleared watchlist pins."
             st.rerun()
+    if bool(st.session_state.get("ui_watchlist_quick_actions", True)):
+        qa1, qa2, qa3 = st.columns(3)
+        with qa1:
+            if st.button("Focus Selected", use_container_width=True, key=f"ui_watchlist_focus_{selected}"):
+                st.session_state["ui_pending_selected_symbol"] = selected
+                st.session_state["ui_palette_status"] = f"Focused {selected}."
+                st.rerun()
+        with qa2:
+            if st.button("Filter To Selected", use_container_width=True, key=f"ui_watchlist_filter_selected_{selected}"):
+                st.session_state["ui_global_filters_enabled"] = True
+                st.session_state["ui_global_symbols"] = [selected]
+                st.session_state["ui_palette_status"] = f"Global filter pinned to {selected}."
+                st.rerun()
+        with qa3:
+            if st.button("Snapshot", use_container_width=True, key=f"ui_watchlist_snapshot_{selected}"):
+                snaps_raw = st.session_state.get("ui_watchlist_snapshots", [])
+                snaps = list(snaps_raw) if isinstance(snaps_raw, list) else []
+                snaps.insert(
+                    0,
+                    {
+                        "ts_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+                        "symbol": selected,
+                        "sort_mode": sort_mode,
+                        "min_events": int(min_events),
+                    },
+                )
+                st.session_state["ui_watchlist_snapshots"] = snaps[:100]
+                st.session_state["ui_palette_status"] = f"Snapshot saved for {selected}."
+                st.rerun()
 
-    st.caption(f"Pinned: {len(pin_set)}")
+    card_density = str(st.session_state.get("ui_watchlist_card_density", "Standard") or "Standard")
+    st.caption(f"Pinned: {len(pin_set)} | Card Density: {card_density}")
+    st.markdown("<div class='section-caption'>Watchlist Cards</div>", unsafe_allow_html=True)
+    for _, row in shown.iterrows():
+        symbol = str(row["symbol"])
+        badge_w = "-" if pd.isna(row.get("target_wt_%")) else f"{float(pd.to_numeric(row.get('target_wt_%'), errors='coerce') or 0.0):.1f}%"
+        badge_e = int(pd.to_numeric(row.get("order_events"), errors="coerce") or 0)
+        last_side = str(row.get("last_side") or "-").upper()
+        net_qty = float(pd.to_numeric(row.get("net_qty_est"), errors="coerce") or 0.0)
+        last_evt_raw = str(row.get("last_event_ts") or "").strip()
+        last_evt_txt = "-"
+        if last_evt_raw and last_evt_raw != "-":
+            try:
+                last_evt = pd.to_datetime(last_evt_raw, errors="coerce", utc=True)
+                if not pd.isna(last_evt):
+                    last_evt_txt = last_evt.tz_convert(NY_TZ).strftime("%m-%d %H:%M")
+            except Exception:
+                last_evt_txt = "-"
+        net_txt = f"{net_qty:+.2f}"
+        pinned_cls = "★ " if bool(row.get("pinned", False)) else ""
+        active_cls = " (active)" if symbol == str(st.session_state.get("ui_selected_symbol", "")) else ""
+        density_cls = "compact" if card_density == "Compact" else ("expanded" if card_density == "Expanded" else "standard")
+        st.markdown(
+            (
+                f"<div class='watch-item {density_cls}'>"
+                f"<div class='watch-item-top'><span class='watch-item-symbol'>{pinned_cls}{symbol}{active_cls}</span>"
+                f"<span class='watch-item-badge'>wt {badge_w}</span> "
+                f"<span class='watch-item-badge'>ev {badge_e}</span> "
+                f"<span class='watch-item-badge'>{last_side}</span></div>"
+                + (f"<div class='watch-item-sub'>net {net_txt} | last {last_evt_txt} ET</div>" if card_density != "Compact" else "")
+                + "</div>"
+            ),
+            unsafe_allow_html=True,
+        )
+        if card_density != "Compact":
+            mini = _watchlist_card_spark_chart(events_df, symbol)
+            if mini is not None:
+                st.markdown("<div class='watch-item-spark-wrap'>", unsafe_allow_html=True)
+                st.altair_chart(mini, use_container_width=True)
+                if card_density == "Expanded":
+                    st.markdown(
+                        f"<div class='watch-item-spark-caption'>side={last_side} | net_qty={net_txt} | last={last_evt_txt} ET</div>",
+                        unsafe_allow_html=True,
+                    )
+                st.markdown("</div>", unsafe_allow_html=True)
     compact = shown[["pinned", "symbol", "target_wt_%", "net_qty_est", "order_events", "last_side"]].copy()
     compact["pinned"] = compact["pinned"].map(lambda v: "★" if bool(v) else "")
     st.dataframe(compact, use_container_width=True, hide_index=True, height=280)
-    return st.session_state.ui_selected_symbol
+    return str(st.session_state.get("ui_selected_symbol", ""))
 
 
 def _render_tradeboard_command_palette(events_df: pd.DataFrame, state_df: pd.DataFrame, symbols: list[str]) -> None:
@@ -4506,10 +7048,33 @@ def _render_tradeboard_command_palette(events_df: pd.DataFrame, state_df: pd.Dat
         )
     with c2:
         run = st.button("Run", use_container_width=True, key="ui_command_palette_run")
-    st.caption("Command Palette 2.0: search/filter commands, then run. Keyboard target: `Ctrl/Cmd+K` in browser focus.")
+    st.caption(
+        "Command Palette 2.0: search/filter commands, then run. "
+        "Shortcuts: `Ctrl/Cmd+K` palette context, `Alt+R` refresh, `Alt+1..6` workspace jump."
+    )
+    fav_raw = st.session_state.get("ui_command_favorites", [])
+    favorites = [str(x) for x in fav_raw if str(x).strip()] if isinstance(fav_raw, list) else []
+    if favorites:
+        f1, f2 = st.columns([2.4, 1.0])
+        with f1:
+            fav_pick = st.selectbox("Favorite Commands", options=favorites, index=0, key="ui_palette_favorite_pick")
+        with f2:
+            if st.button("Run Favorite", use_container_width=True, key="ui_palette_favorite_run"):
+                st.session_state["ui_command_palette_action"] = fav_pick
+                st.session_state["ui_palette_status"] = f"Favorite command selected: {fav_pick}"
+                st.rerun()
+    if st.button("Add Current To Favorites", use_container_width=True, key="ui_palette_add_favorite"):
+        action_txt = str(st.session_state.get("ui_command_palette_action", "") or "").strip()
+        if action_txt:
+            if action_txt not in favorites:
+                favorites.append(action_txt)
+            st.session_state["ui_command_favorites"] = sorted(set(favorites))
+            st.session_state["ui_palette_status"] = f"Added favorite: {action_txt}"
+            st.rerun()
 
     if run:
         selected_symbol = str(st.session_state.get("ui_selected_symbol", "") or "").strip().upper()
+        _record_ui_command_event(action, str(search or ""))
         _append_ui_audit("palette_run", {"action": action, "selected_symbol": selected_symbol})
         if action == "Refresh Data Now":
             _load_runtime_db.clear()
@@ -4643,7 +7208,7 @@ def _symbol_price_event_df(events_df: pd.DataFrame, symbol: str) -> pd.DataFrame
     return frame
 
 
-def _symbol_candlestick_chart(events_df: pd.DataFrame, symbol: str) -> alt.Chart | None:
+def _symbol_candlestick_chart(events_df: pd.DataFrame, symbol: str, reference_ts: Any = None) -> alt.Chart | None:
     frame = _symbol_price_event_df(events_df, symbol)
     if frame.empty:
         return None
@@ -4706,15 +7271,24 @@ def _symbol_candlestick_chart(events_df: pd.DataFrame, symbol: str) -> alt.Chart
             ],
         )
     )
+    chart = (wick + body)
+    ref_rule = _reference_rule_layer(reference_ts)
+    if ref_rule is not None:
+        chart = chart + ref_rule
     return (
-        (wick + body)
-        .properties(height=360)
+        chart.properties(height=360)
         .configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)")
         .configure_view(strokeOpacity=0)
     )
 
 
-def _symbol_activity_chart(events_df: pd.DataFrame, symbol: str, chart_type: str = "Line") -> alt.Chart | None:
+def _symbol_activity_chart(
+    events_df: pd.DataFrame,
+    symbol: str,
+    chart_type: str = "Line",
+    with_markers: bool = False,
+    reference_ts: Any = None,
+) -> alt.Chart | None:
     frame = _symbol_activity_df(events_df, symbol)
     if frame.empty:
         return None
@@ -4765,7 +7339,7 @@ def _symbol_activity_chart(events_df: pd.DataFrame, symbol: str, chart_type: str
                 "order_type:N",
             ]
 
-        return (
+        core = (
             alt.Chart(plot_frame)
             .mark_bar(opacity=0.92, size=10)
             .encode(
@@ -4784,21 +7358,152 @@ def _symbol_activity_chart(events_df: pd.DataFrame, symbol: str, chart_type: str
                 tooltip=tooltip_fields,
             )
             .properties(height=360)
-            .configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)")
-            .configure_legend(labelColor="#d8e6ff", titleColor="#d8e6ff")
-            .configure_view(strokeOpacity=0)
         )
+        ref_rule = _reference_rule_layer(reference_ts, y_title="Filled Qty (Signed)")
+        chart = core
+        if ref_rule is not None:
+            chart = alt.layer(core, ref_rule).resolve_scale(y="independent")
+        return chart.configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)").configure_legend(labelColor="#d8e6ff", titleColor="#d8e6ff").configure_view(strokeOpacity=0)
+    base = alt.Chart(frame).encode(
+        x=alt.X("ts:T", title="Time (NY)"),
+        y=alt.Y("cum_position:Q", title="Estimated Net Position"),
+        tooltip=["ts:T", "event_type:N", "side:N", "qty:Q", "cum_position:Q", "order_type:N"],
+    )
+    line = base.mark_line(
+        point=alt.OverlayMarkDef(filled=True, size=78) if with_markers else True,
+        strokeWidth=2.4,
+        color="#00c805",
+    )
+    core = line.properties(height=360)
+    chart = core
+    ref_rule = _reference_rule_layer(reference_ts, y_title="Estimated Net Position")
+    if ref_rule is not None:
+        chart = alt.layer(core, ref_rule).resolve_scale(y="independent")
+    return chart.configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)").configure_view(strokeOpacity=0)
+
+
+def _symbol_activity_marker_chart(events_df: pd.DataFrame, symbol: str) -> alt.Chart | None:
+    frame = _symbol_activity_df(events_df, symbol)
+    if frame.empty:
+        return None
+    frame = frame.copy()
+    frame["side_norm"] = frame["side"].astype(str).str.lower().map(lambda s: "buy" if s == "buy" else ("sell" if s == "sell" else "other"))
     return (
         alt.Chart(frame)
-        .mark_line(point=True, strokeWidth=2.4)
+        .mark_point(size=78, filled=True, opacity=0.92)
         .encode(
             x=alt.X("ts:T", title="Time (NY)"),
             y=alt.Y("cum_position:Q", title="Estimated Net Position"),
-            color=alt.value("#00c805"),
+            color=alt.Color(
+                "side_norm:N",
+                scale=alt.Scale(domain=["buy", "sell", "other"], range=["#00c805", "#ff5d7a", "#aab4be"]),
+                title="Execution Side",
+            ),
+            shape=alt.Shape(
+                "side_norm:N",
+                scale=alt.Scale(domain=["buy", "sell", "other"], range=["triangle-up", "triangle-down", "circle"]),
+                legend=None,
+            ),
             tooltip=["ts:T", "event_type:N", "side:N", "qty:Q", "cum_position:Q", "order_type:N"],
         )
         .properties(height=360)
-        .configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)")
+    )
+
+
+def _multi_symbol_compare_chart(events_df: pd.DataFrame, symbols: list[str], limit: int = 4, reference_ts: Any = None) -> alt.Chart | None:
+    picks = [str(s).strip().upper() for s in symbols if str(s).strip()]
+    if not picks:
+        return None
+    picks = picks[: max(1, int(limit))]
+    frames: list[pd.DataFrame] = []
+    for sym in picks:
+        sym_df = _symbol_activity_df(events_df, sym)
+        if sym_df.empty:
+            continue
+        tmp = sym_df[["ts", "cum_position"]].copy()
+        tmp["symbol"] = sym
+        tmp["cum_position"] = pd.to_numeric(tmp["cum_position"], errors="coerce")
+        tmp = tmp.dropna(subset=["ts", "cum_position"])
+        if tmp.empty:
+            continue
+        base = float(tmp["cum_position"].iloc[0])
+        tmp["position_delta"] = tmp["cum_position"] - base
+        frames.append(tmp)
+    if not frames:
+        return None
+    plot = pd.concat(frames, ignore_index=True).sort_values("ts")
+    core = (
+        alt.Chart(plot)
+        .mark_line(strokeWidth=2.1)
+        .encode(
+            x=alt.X("ts:T", title="Time (NY)"),
+            y=alt.Y("position_delta:Q", title="Position Delta From First Event"),
+            color=alt.Color("symbol:N", title="Symbol"),
+            tooltip=["ts:T", "symbol:N", alt.Tooltip("position_delta:Q", format=",.4f")],
+        )
+        .properties(height=220)
+    )
+    chart = core
+    ref_rule = _reference_rule_layer(reference_ts, y_title="Position Delta")
+    if ref_rule is not None:
+        chart = alt.layer(core, ref_rule).resolve_scale(y="independent")
+    return (
+        chart.configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)")
+        .configure_legend(labelColor="#d8e6ff", titleColor="#d8e6ff")
+        .configure_view(strokeOpacity=0)
+    )
+
+
+def _mini_symbol_activity_chart(events_df: pd.DataFrame, symbol: str) -> alt.Chart | None:
+    frame = _symbol_activity_df(events_df, symbol)
+    if frame.empty:
+        return None
+    return (
+        alt.Chart(frame)
+        .mark_line(strokeWidth=1.8, color="#66d7ff")
+        .encode(
+            x=alt.X("ts:T", title=None),
+            y=alt.Y("cum_position:Q", title=None),
+            tooltip=["ts:T", "event_type:N", "side:N", "qty:Q", "cum_position:Q"],
+        )
+        .properties(height=120)
+        .configure_axis(labelColor="#95abcf", titleColor="#95abcf", gridColor="rgba(159,179,213,0.16)")
+        .configure_view(strokeOpacity=0)
+    )
+
+
+def _watchlist_card_spark_chart(events_df: pd.DataFrame, symbol: str, points: int = 28) -> alt.Chart | None:
+    frame = _symbol_activity_df(events_df, symbol)
+    if frame.empty:
+        return None
+    plot = frame[["ts", "cum_position"]].copy()
+    plot["ts"] = pd.to_datetime(plot["ts"], errors="coerce")
+    plot["cum_position"] = pd.to_numeric(plot["cum_position"], errors="coerce")
+    plot = plot.dropna(subset=["ts", "cum_position"]).sort_values("ts")
+    if plot.empty:
+        return None
+    plot = plot.tail(max(8, int(points)))
+    line = (
+        alt.Chart(plot)
+        .mark_line(strokeWidth=2.0, color="#8ab4ff", interpolate="monotone")
+        .encode(
+            x=alt.X("ts:T", axis=None),
+            y=alt.Y("cum_position:Q", axis=None),
+            tooltip=[
+                alt.Tooltip("ts:T", title="Time"),
+                alt.Tooltip("cum_position:Q", title="Cum Pos", format=",.4f"),
+            ],
+        )
+    )
+    points_layer = (
+        alt.Chart(plot.tail(1))
+        .mark_point(size=26, filled=True, color="#c4d7ff")
+        .encode(x=alt.X("ts:T", axis=None), y=alt.Y("cum_position:Q", axis=None))
+    )
+    return (
+        (line + points_layer)
+        .properties(height=36)
+        .configure_axis(grid=False, ticks=False, domain=False, labels=False)
         .configure_view(strokeOpacity=0)
     )
 
@@ -4965,6 +7670,55 @@ def _execution_slippage_summary(orders: pd.DataFrame) -> tuple[pd.DataFrame, dic
         "avg_fill_latency_sec": float(s["fill_latency_sec"].dropna().mean()) if s["fill_latency_sec"].dropna().size else None,
     }
     return by_symbol.reset_index(drop=True), summary
+
+
+def _render_execution_kpi_strip(orders_enriched: pd.DataFrame) -> None:
+    if orders_enriched.empty:
+        return
+    frame = orders_enriched.copy()
+    if "ts_parsed" not in frame.columns:
+        frame["ts_parsed"] = pd.to_datetime(frame.get("ts"), errors="coerce")
+    else:
+        frame["ts_parsed"] = pd.to_datetime(frame["ts_parsed"], errors="coerce")
+    frame = frame.dropna(subset=["ts_parsed"]).sort_values("ts_parsed")
+    if frame.empty:
+        return
+
+    latest = frame.iloc[-1]
+    latest_sym = str(latest.get("symbol_norm") or latest.get("symbol") or "-")
+    latest_side = str(latest.get("side_norm") or latest.get("side") or "-").upper()
+    latest_qty = float(pd.to_numeric(latest.get("qty_num"), errors="coerce") or pd.to_numeric(latest.get("qty"), errors="coerce") or 0.0)
+    latest_px = float(pd.to_numeric(latest.get("exec_price"), errors="coerce") or 0.0)
+    latest_ts = pd.to_datetime(latest.get("ts_parsed"), errors="coerce")
+    if pd.isna(latest_ts):
+        latest_ts_txt = "-"
+    else:
+        try:
+            if latest_ts.tzinfo is None:
+                latest_ts = latest_ts.tz_localize(NY_TZ)
+            else:
+                latest_ts = latest_ts.tz_convert(NY_TZ)
+            latest_ts_txt = latest_ts.strftime("%Y-%m-%d %H:%M:%S")
+        except Exception:
+            latest_ts_txt = str(latest_ts)
+
+    _, sl = _execution_slippage_summary(frame)
+    avg_adv = float(sl.get("avg_adverse_bps", 0.0) or 0.0) if sl else 0.0
+    p95_adv = float(sl.get("p95_adverse_bps", 0.0) or 0.0) if sl else 0.0
+    avg_lat = sl.get("avg_fill_latency_sec") if sl else None
+    avg_lat_txt = "-" if avg_lat is None else f"{float(avg_lat):.2f}s"
+
+    cutoff = pd.Timestamp.now(tz=NY_TZ) - pd.Timedelta(hours=24)
+    recent = frame[frame["ts_parsed"] >= cutoff].copy()
+    recent_fills = int(len(recent))
+    recent_syms = int(recent["symbol_norm"].astype(str).nunique()) if "symbol_norm" in recent.columns else 0
+
+    c1, c2, c3, c4, c5 = st.columns(5)
+    c1.metric("Latest Fill", f"{latest_sym} {latest_side}", f"qty {latest_qty:.4f} @ {latest_px:.4f}")
+    c2.metric("Latest Fill Time (NY)", latest_ts_txt)
+    c3.metric("Avg Adverse Slippage", f"{avg_adv:.2f} bps", f"P95 {p95_adv:.2f} bps")
+    c4.metric("Avg Fill Latency", avg_lat_txt)
+    c5.metric("24h Fill Flow", f"{recent_fills:,} fills", f"{recent_syms} symbols")
 
 
 def _pnl_attribution_v2(orders: pd.DataFrame) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
@@ -5555,16 +8309,22 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
 
     symbols = _symbol_universe(events_df, state_df)
     if not symbols:
-        st.info("No symbols in current runtime state/events yet.")
+        _render_skeleton(lines=4)
+        _render_empty_state(
+            "No symbol stream detected",
+            "No symbols are available in current runtime state/events.",
+            "Confirm DB path, runtime loop health, and active event ingestion before trading decisions.",
+        )
         st.markdown("</div>", unsafe_allow_html=True)
         return
     _apply_terminal_pending_ui_state(symbols)
+    layout_locked = bool(st.session_state.get("ui_panel_layout_locked", False))
 
     default_symbol = symbols[0]
     if "ui_selected_symbol" not in st.session_state or st.session_state.ui_selected_symbol not in symbols:
         st.session_state.ui_selected_symbol = default_symbol
 
-    top_ctrl_left, top_ctrl_right = st.columns([1.0, 2.2])
+    top_ctrl_left, top_ctrl_mid, top_ctrl_right = st.columns([1.0, 1.0, 1.8])
     with top_ctrl_left:
         jump_symbol = st.selectbox(
             "Quick Symbol Jump",
@@ -5573,6 +8333,31 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
             key="ui_symbol_jump_select",
         )
         st.session_state.ui_selected_symbol = jump_symbol
+    with top_ctrl_mid:
+        st.selectbox(
+            "Panel Layout",
+            options=["Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"],
+            index=["Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"].index(
+                str(st.session_state.get("ui_tradeboard_split", "Balanced"))
+                if str(st.session_state.get("ui_tradeboard_split", "Balanced")) in {"Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"}
+                else "Balanced"
+            ),
+            key="ui_tradeboard_split",
+            disabled=layout_locked,
+        )
+    if str(st.session_state.get("ui_tradeboard_split", "Balanced")) == "Custom":
+        cw1, cw2, cw3 = st.columns(3)
+        raw = st.session_state.get("ui_tradeboard_custom_weights", [0.8, 1.95, 0.75])
+        raw = raw if isinstance(raw, list) and len(raw) == 3 else [0.8, 1.95, 0.75]
+        with cw1:
+            l_w = st.slider("Left Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[0], errors="coerce") or 0.8), step=0.05, key="ui_tb_custom_w_left", disabled=layout_locked)
+        with cw2:
+            c_w = st.slider("Center Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[1], errors="coerce") or 1.95), step=0.05, key="ui_tb_custom_w_center", disabled=layout_locked)
+        with cw3:
+            r_w = st.slider("Right Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[2], errors="coerce") or 0.75), step=0.05, key="ui_tb_custom_w_right", disabled=layout_locked)
+        st.session_state["ui_tradeboard_custom_weights"] = [float(l_w), float(c_w), float(r_w)]
+    if layout_locked:
+        st.caption("Panel layout is locked. Disable `Lock Panel Layout` in Preferences to edit.")
     with top_ctrl_right:
         view_col, chart_col = st.columns([1.5, 1.0])
         with view_col:
@@ -5608,7 +8393,7 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 st.session_state["ui_time_window"] = preset
                 st.session_state["ui_palette_status"] = f"Time window set to {preset}."
                 st.rerun()
-    sync_left, sync_mid, sync_right = st.columns([1.1, 1.0, 2.0])
+    sync_left, sync_mid, sync_cur, sync_right = st.columns([1.0, 0.9, 1.25, 2.0])
     with sync_left:
         current_window = str(st.session_state.get("ui_time_window", "1D") or "1D")
         if current_window not in TIME_WINDOW_OPTIONS:
@@ -5616,13 +8401,45 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
         st.selectbox("Time Window", options=list(TIME_WINDOW_OPTIONS), index=list(TIME_WINDOW_OPTIONS).index(current_window), key="ui_time_window")
     with sync_mid:
         st.checkbox("Sync Charts", value=bool(st.session_state.get("ui_sync_charts", True)), key="ui_sync_charts")
+    with sync_cur:
+        st.checkbox("Linked Cursor", value=bool(st.session_state.get("ui_linked_cursor_enabled", True)), key="ui_linked_cursor_enabled")
+        cursor_opts: list[str] = []
+        if not events_df.empty and "ts_ny" in events_df.columns:
+            tsv = pd.to_datetime(events_df["ts_ny"], errors="coerce").dropna().sort_values()
+            if not tsv.empty:
+                cursor_opts = [pd.Timestamp(t).tz_convert(NY_TZ).strftime("%Y-%m-%d %H:%M:%S") for t in tsv.tail(120)]
+        if cursor_opts:
+            default_cursor = str(st.session_state.get("ui_linked_cursor_ts", cursor_opts[-1]) or cursor_opts[-1])
+            if default_cursor not in cursor_opts:
+                default_cursor = cursor_opts[-1]
+            st.selectbox(
+                "Cursor Time (NY)",
+                options=cursor_opts,
+                index=cursor_opts.index(default_cursor),
+                key="ui_linked_cursor_ts",
+                disabled=not bool(st.session_state.get("ui_linked_cursor_enabled", True)),
+            )
     with sync_right:
         _render_tradeboard_command_palette(events_df, state_df, symbols)
+    pop1, pop2, pop3 = st.columns([1.0, 1.0, 2.0])
+    with pop1:
+        if st.button("Pop-out Chart", use_container_width=True, key="ui_tb_popout_chart"):
+            st.session_state["ui_popout_panel"] = "tradeboard_chart"
+            st.rerun()
+    with pop2:
+        if st.button("Pop-out Alerts", use_container_width=True, key="ui_tb_popout_alerts"):
+            st.session_state["ui_popout_panel"] = "alerts"
+            st.rerun()
 
     selected_symbol = st.session_state.ui_selected_symbol
     sync_enabled = bool(st.session_state.get("ui_sync_charts", True))
     window = str(st.session_state.get("ui_time_window", "1D") or "1D")
     scoped_events_df = _events_in_time_window(events_df, window) if sync_enabled else events_df.copy()
+    cursor_ts: Any = None
+    if bool(st.session_state.get("ui_linked_cursor_enabled", True)):
+        cursor_raw = str(st.session_state.get("ui_linked_cursor_ts", "") or "").strip()
+        if cursor_raw:
+            cursor_ts = pd.to_datetime(cursor_raw, errors="coerce")
     summary = _symbol_summary(scoped_events_df, state_df, selected_symbol)
     st.caption(_window_scope_label(scoped_events_df, window=window, sync_enabled=sync_enabled))
     kpi = _tradeboard_scope_metrics(scoped_events_df, state_df, selected_symbol)
@@ -5638,7 +8455,7 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
     with k5:
         st.metric("Latest Event (NY)", str(kpi.get("latest_event_ts", "-")))
 
-    left, center, right = st.columns([0.8, 1.95, 0.75])
+    left, center, right = st.columns(_tradeboard_split_columns(str(st.session_state.get("ui_tradeboard_split", "Balanced"))))
 
     with left:
         st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
@@ -5659,26 +8476,32 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
         if mode == "Intraday Activity":
             if str(chart_type).strip().lower() == "candles":
                 feed = str(os.getenv("ALPACA_DATA_FEED", "sip") or "sip").strip().lower()
-                chart, market_status = _market_candlestick_chart(selected_symbol, window=window, feed=feed)
+                chart, market_status = _market_candlestick_chart(selected_symbol, window=window, feed=feed, events_df=scoped_events_df, reference_ts=cursor_ts)
                 if chart is not None:
                     st.caption(f"Market candles source: Alpaca `{feed}` ({window}) with VWAP overlay.")
                 else:
                     st.caption(f"Market candles unavailable ({market_status}). Falling back to execution-derived candles.")
-                    chart = _symbol_candlestick_chart(scoped_events_df, selected_symbol)
+                    chart = _symbol_candlestick_chart(scoped_events_df, selected_symbol, reference_ts=cursor_ts)
                 if chart is None and sync_enabled:
-                    chart = _symbol_candlestick_chart(events_df, selected_symbol)
+                    chart = _symbol_candlestick_chart(events_df, selected_symbol, reference_ts=cursor_ts)
                     if chart is not None:
                         st.caption("No candle-priced events in selected time window; showing full available range for symbol.")
                 if chart is None:
                     # Runtime market-order events often omit explicit fill prices. Keep the
                     # panel useful by falling back to execution-activity bars.
-                    chart = _symbol_activity_chart(scoped_events_df, selected_symbol, chart_type="Bar")
+                    chart = _symbol_activity_chart(scoped_events_df, selected_symbol, chart_type="Bar", reference_ts=cursor_ts)
                     if chart is None and sync_enabled:
-                        chart = _symbol_activity_chart(events_df, selected_symbol, chart_type="Bar")
+                        chart = _symbol_activity_chart(events_df, selected_symbol, chart_type="Bar", reference_ts=cursor_ts)
                     if chart is not None:
                         st.caption("Candles unavailable (no priced execution events). Showing execution bars instead.")
             else:
-                chart = _symbol_activity_chart(scoped_events_df, selected_symbol, chart_type=chart_type)
+                chart = _symbol_activity_chart(
+                    scoped_events_df,
+                    selected_symbol,
+                    chart_type=chart_type,
+                    with_markers=(str(chart_type).strip().lower() == "line"),
+                    reference_ts=cursor_ts,
+                )
         elif mode == "Lifecycle":
             chart = _order_lifecycle_chart(scoped_events_df, symbol_filter=selected_symbol, chart_type=chart_type)
             if chart is None:
@@ -5689,10 +8512,39 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
             chart = _symbol_event_mix_chart(scoped_events_df, selected_symbol)
 
         if chart is None:
-            st.info("No chartable execution data for selected symbol yet.")
+            _render_empty_state(
+                f"No chartable data for {selected_symbol}",
+                "Chart data is unavailable in the selected scope.",
+                "Try widening the time window or disabling sync to inspect full symbol history.",
+            )
         else:
             st.altair_chart(chart, use_container_width=True)
-        export_a, export_b = st.columns([1.0, 1.0])
+            with st.expander("Compare Symbols In Scope", expanded=False):
+                default_compare = [selected_symbol] if selected_symbol in symbols else ([symbols[0]] if symbols else [])
+                compare_symbols = st.multiselect(
+                    "Symbols",
+                    options=symbols,
+                    default=default_compare,
+                    key="ui_tradeboard_compare_symbols",
+                    help="Compare event-derived position deltas across symbols.",
+                )
+                compare_chart = _multi_symbol_compare_chart(scoped_events_df, compare_symbols, limit=4, reference_ts=cursor_ts)
+                if compare_chart is None:
+                    st.caption("Select symbols with execution history in the current scope.")
+                else:
+                    st.altair_chart(compare_chart, use_container_width=True)
+                    mini_syms = compare_symbols[:4]
+                    if mini_syms:
+                        cols = st.columns(2)
+                        for i, sym in enumerate(mini_syms):
+                            with cols[i % 2]:
+                                st.caption(f"{sym} mini-chart")
+                                mini = _mini_symbol_activity_chart(scoped_events_df, sym)
+                                if mini is None:
+                                    st.caption("No scoped events.")
+                                else:
+                                    st.altair_chart(mini, use_container_width=True)
+        export_a, export_b, export_c = st.columns([1.0, 1.0, 1.0])
         with export_a:
             scoped_export = scoped_events_df.copy()
             if not scoped_export.empty:
@@ -5719,6 +8571,37 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 use_container_width=True,
                 key=f"ui_tradeboard_export_symbol_{selected_symbol}_{window}",
             )
+        with export_c:
+            pack_payload = {
+                "generated_at_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+                "symbol": selected_symbol,
+                "window": window,
+                "view_mode": str(st.session_state.get("ui_symbol_view_mode", "Intraday Activity")),
+                "chart_type": str(st.session_state.get("ui_symbol_chart_type", "Line")),
+                "linked_cursor_ts": str(st.session_state.get("ui_linked_cursor_ts", "") or ""),
+                "scope_rows": int(len(scoped_events_df)),
+            }
+            zbuf = io.BytesIO()
+            with zipfile.ZipFile(zbuf, mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
+                zf.writestr("context.json", json.dumps(pack_payload, indent=2))
+                zf.writestr("scope_events.csv", scoped_events_df.to_csv(index=False))
+                zf.writestr("symbol_executions.csv", _symbol_activity_df(scoped_events_df, selected_symbol).to_csv(index=False))
+                if chart is not None:
+                    try:
+                        zf.writestr("chart_spec.json", chart.to_json())
+                    except Exception:
+                        pass
+                    png = _chart_png_bytes(chart)
+                    if png:
+                        zf.writestr("chart.png", png)
+            st.download_button(
+                "Export Chart Pack (ZIP)",
+                data=zbuf.getvalue(),
+                file_name=f"tradeboard_pack_{selected_symbol}_{window.lower()}.zip",
+                mime="application/zip",
+                use_container_width=True,
+                key=f"ui_tradeboard_export_pack_{selected_symbol}_{window}",
+            )
         st.markdown("</div>", unsafe_allow_html=True)
 
         st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
@@ -5729,9 +8612,85 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
             for c in cols:
                 if c not in sym_table.columns:
                     sym_table[c] = None
-            st.dataframe(sym_table[cols].sort_values("ts", ascending=False), use_container_width=True, hide_index=True, height=220)
+            tbl = _table_customize(
+                sym_table[cols].copy(),
+                key="tradeboard_recent_exec",
+                default_sort_col="ts",
+                default_desc=True,
+            )
+            st.dataframe(
+                _paged_view(tbl, key="tradeboard_recent_exec_page", default_page_size=50),
+                use_container_width=True,
+                hide_index=True,
+                height=220,
+            )
         else:
-            st.info("No executions available.")
+            _render_empty_state(
+                "No execution rows in scope",
+                "No execution events were found for this symbol and filter window.",
+            )
+        with st.expander("Symbol Event Drilldown", expanded=False):
+            if sym_table.empty:
+                st.caption("No symbol rows to inspect.")
+            else:
+                row_opts = [
+                    f"{i+1}. {str(r.get('ts',''))} | {str(r.get('event_type',''))} | {str(r.get('side',''))} | qty={str(r.get('qty',''))}"
+                    for i, (_, r) in enumerate(sym_table.head(200).iterrows())
+                ]
+                pick = st.selectbox("Pick Event", options=row_opts, index=0, key="ui_tradeboard_drill_pick")
+                idx = max(0, min(len(row_opts) - 1, int(str(pick).split(".", 1)[0]) - 1))
+                row = sym_table.iloc[idx]
+                st.write(
+                    {
+                        "ts": str(row.get("ts", "")),
+                        "event_type": str(row.get("event_type", "")),
+                        "symbol": str(selected_symbol),
+                        "side": str(row.get("side", "")),
+                        "qty": _safe_float(row.get("qty")),
+                        "cum_position": _safe_float(row.get("cum_position")),
+                        "order_type": str(row.get("order_type", "")),
+                    }
+                )
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Linked Panels: Orders Timeline + Position Lens</div>", unsafe_allow_html=True)
+        lp1, lp2 = st.columns([1.2, 1.0])
+        with lp1:
+            lifecycle_chart = _order_lifecycle_chart(scoped_events_df, symbol_filter=selected_symbol, chart_type="Line")
+            if lifecycle_chart is None:
+                _render_empty_state(
+                    "Lifecycle timeline unavailable",
+                    "Order lifecycle points are missing for the selected symbol in current scope.",
+                )
+            else:
+                st.altair_chart(lifecycle_chart, use_container_width=True)
+            linked_orders = _orders_table(scoped_events_df)
+            if not linked_orders.empty:
+                linked_orders = linked_orders[linked_orders["symbol"].astype(str).str.upper() == selected_symbol].copy()
+            if linked_orders.empty:
+                st.caption("No linked order rows for this symbol.")
+            else:
+                cols = [c for c in ["ts", "event_type", "side", "qty", "order_type", "variant", "order_status"] if c in linked_orders.columns]
+                st.dataframe(linked_orders[cols].sort_values("ts", ascending=False).head(25), use_container_width=True, hide_index=True, height=220)
+        with lp2:
+            linked_pos = _estimated_positions_table(scoped_events_df, state_df)
+            if not linked_pos.empty:
+                linked_pos = linked_pos[linked_pos["symbol"].astype(str).str.upper() == selected_symbol].copy()
+            if linked_pos.empty:
+                _render_empty_state(
+                    "Position lens unavailable",
+                    "No event-derived position rows for selected symbol in current scope.",
+                )
+            else:
+                st.dataframe(linked_pos, use_container_width=True, hide_index=True, height=220)
+                net_qty = float(pd.to_numeric(linked_pos["net_qty_est"], errors="coerce").fillna(0.0).sum())
+                st.metric("Linked Net Qty (est)", f"{net_qty:,.4f}")
+                target_col = "target_wt_%" if "target_wt_%" in linked_pos.columns else (
+                    "target_weight_pct" if "target_weight_pct" in linked_pos.columns else ""
+                )
+                target_pct = float(pd.to_numeric(linked_pos[target_col], errors="coerce").fillna(0.0).sum()) if target_col else 0.0
+                st.metric("Linked Target Wt %", f"{target_pct:,.2f}%")
         st.markdown("</div>", unsafe_allow_html=True)
 
     with right:
@@ -5757,7 +8716,7 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 unsafe_allow_html=True,
             )
         else:
-            st.info("No symbol summary data.")
+            _render_empty_state("No symbol summary", "Summary KPIs are unavailable for the selected symbol.")
 
         st.markdown(
             (
@@ -5775,7 +8734,7 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
         st.markdown("<div class='terminal-title'>Liquidity Ladder (Event Buckets)</div>", unsafe_allow_html=True)
         ladder = _liquidity_ladder_chart(scoped_events_df, selected_symbol)
         if ladder is None:
-            st.info("No ladder data for selected symbol.")
+            _render_empty_state("No liquidity ladder", "No bucketed liquidity/activity bars are available in scope.")
         else:
             st.altair_chart(ladder, use_container_width=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -5787,9 +8746,15 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
     )
     pos_df = _estimated_positions_table(scoped_events_df, state_df)
     if pos_df.empty:
-        st.info("No event-derived position data available.")
+        _render_empty_state("No portfolio positions", "No event-derived position table can be formed from current filtered events.")
     else:
-        st.dataframe(pos_df, use_container_width=True, hide_index=True, height=240)
+        pos_tbl = _table_customize(pos_df.copy(), key="tradeboard_positions", default_sort_col="symbol", default_desc=False)
+        st.dataframe(
+            _paged_view(pos_tbl, key="tradeboard_positions_page", default_page_size=100),
+            use_container_width=True,
+            hide_index=True,
+            height=240,
+        )
     st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("</div>", unsafe_allow_html=True)
@@ -5883,10 +8848,44 @@ def _render_execution_orders_workspace(events_df: pd.DataFrame, state_df: pd.Dat
     )
     orders = _orders_table(events_df)
     if orders.empty:
-        st.info("No order/exit events found yet.")
+        _render_skeleton(lines=5)
+        _render_empty_state(
+            "No execution journal yet",
+            "No order/exit events were found in current runtime scope.",
+            "Run paper/live loop or load a populated DB to inspect lifecycle and slippage.",
+        )
         st.markdown("</div>", unsafe_allow_html=True)
         return
     orders_enriched = _orders_blotter_enriched(orders)
+    _render_execution_kpi_strip(orders_enriched)
+    layout_locked = bool(st.session_state.get("ui_panel_layout_locked", False))
+    st.selectbox(
+        "Execution Panel Layout",
+        options=["Balanced", "Blotter Focus", "Analytics Focus", "Custom"],
+        index=["Balanced", "Blotter Focus", "Analytics Focus", "Custom"].index(
+            str(st.session_state.get("ui_execution_split", "Balanced"))
+            if str(st.session_state.get("ui_execution_split", "Balanced")) in {"Balanced", "Blotter Focus", "Analytics Focus", "Custom"}
+            else "Balanced"
+        ),
+        key="ui_execution_split",
+        disabled=layout_locked,
+    )
+    if str(st.session_state.get("ui_execution_split", "Balanced")) == "Custom":
+        ew1, ew2 = st.columns(2)
+        raw = st.session_state.get("ui_execution_custom_weights", [1.15, 1.0])
+        raw = raw if isinstance(raw, list) and len(raw) == 2 else [1.15, 1.0]
+        with ew1:
+            l_w = st.slider("Left Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[0], errors="coerce") or 1.15), step=0.05, key="ui_ex_custom_w_left", disabled=layout_locked)
+        with ew2:
+            r_w = st.slider("Right Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[1], errors="coerce") or 1.0), step=0.05, key="ui_ex_custom_w_right", disabled=layout_locked)
+        st.session_state["ui_execution_custom_weights"] = [float(l_w), float(r_w)]
+    if layout_locked:
+        st.caption("Panel layout is locked. Disable `Lock Panel Layout` in Preferences to edit.")
+    p1, p2 = st.columns([1.0, 3.0])
+    with p1:
+        if st.button("Pop-out Blotter", use_container_width=True, key="ui_exec_popout_blotter"):
+            st.session_state["ui_popout_panel"] = "execution_blotter"
+            st.rerun()
 
     with st.expander("Pre-Trade Risk Guard Panel", expanded=False):
         st.caption("UI guardrails before placing orders. This does not mutate runtime logic.")
@@ -5993,7 +8992,7 @@ def _render_execution_orders_workspace(events_df: pd.DataFrame, state_df: pd.Dat
         with t3:
             st.dataframe(by_action, use_container_width=True, hide_index=True)
 
-    left, right = st.columns([1.15, 1.0])
+    left, right = st.columns(_execution_split_columns(str(st.session_state.get("ui_execution_split", "Balanced"))))
     with left:
         st.subheader("Advanced Orders Blotter")
         filtered = _orders_blotter_filters(orders_enriched if not orders_enriched.empty else orders)
@@ -6020,8 +9019,18 @@ def _render_execution_orders_workspace(events_df: pd.DataFrame, state_df: pd.Dat
                     "variant_norm",
                 ]
                 if c in filtered.columns
-            ]
-            st.dataframe(_paged_view(filtered[show_cols], key="exec_blotter", default_page_size=100), use_container_width=True, hide_index=True)
+                ]
+            blotter = _table_customize(
+                filtered[show_cols].copy(),
+                key="exec_blotter_adv",
+                default_sort_col="ts",
+                default_desc=True,
+            )
+            st.dataframe(
+                _paged_view(blotter, key="exec_blotter", default_page_size=100),
+                use_container_width=True,
+                hide_index=True,
+            )
             st.download_button(
                 "Download Filtered Blotter CSV",
                 data=filtered.to_csv(index=False).encode("utf-8"),
@@ -6050,14 +9059,26 @@ def _render_execution_orders_workspace(events_df: pd.DataFrame, state_df: pd.Dat
             st.info("No timeline points available.")
         else:
             st.altair_chart(timeline, use_container_width=True)
+    st.subheader("Advanced Lifecycle Lanes (Status + Retry/Cancel Markers)")
+    adv_lanes = _lifecycle_status_lane_chart(events_df, symbol_filter=tl_filter)
+    if adv_lanes is None:
+        st.info("Advanced lifecycle lane view unavailable.")
+    else:
+        st.altair_chart(adv_lanes, use_container_width=True)
     timeline_tbl = _execution_timeline_frame(orders, symbol_filter=("" if tl_symbol == "All" else tl_symbol))
     if not timeline_tbl.empty:
         cols = ["ts_parsed", "symbol_norm", "event_type", "side", "order_type", "qty", "latency_sec", "broker_order_id", "client_order_id"]
         for c in cols:
             if c not in timeline_tbl.columns:
                 timeline_tbl[c] = None
+        timeline_df = _table_customize(
+            timeline_tbl[cols].copy(),
+            key="exec_timeline_adv",
+            default_sort_col="ts_parsed",
+            default_desc=True,
+        )
         st.dataframe(
-            _paged_view(timeline_tbl[cols].sort_values("ts_parsed", ascending=False), key="exec_timeline_tbl", default_page_size=50),
+            _paged_view(timeline_df, key="exec_timeline_tbl", default_page_size=50),
             use_container_width=True,
             hide_index=True,
         )
@@ -6073,8 +9094,9 @@ def _render_execution_orders_workspace(events_df: pd.DataFrame, state_df: pd.Dat
         st.altair_chart(lc, use_container_width=True)
     lt = _order_lifecycle_table(events_df, symbol_filter=selected)
     if not lt.empty:
+        lt_tbl = _table_customize(lt.copy(), key="exec_lifecycle_adv", default_sort_col="step", default_desc=True)
         st.dataframe(
-            _paged_view(lt.sort_values("step", ascending=False), key="exec_lifecycle_tbl", default_page_size=50),
+            _paged_view(lt_tbl, key="exec_lifecycle_tbl", default_page_size=50),
             use_container_width=True,
             hide_index=True,
         )
@@ -6129,6 +9151,53 @@ def _render_execution_orders_workspace(events_df: pd.DataFrame, state_df: pd.Dat
                         "estimated_position_after_qty": round(after_qty, 6),
                     }
                 )
+                # Full lifecycle context around the selected trade.
+                broker_oid = str(row.get("broker_order_id") or "").strip()
+                client_oid = str(row.get("client_order_id") or "").strip()
+                ts_sel_parsed = pd.to_datetime(ts_sel, errors="coerce")
+                context = order_rows.copy()
+                if not context.empty:
+                    context["ts_parsed"] = pd.to_datetime(context[ts_col], errors="coerce")
+                    if broker_oid or client_oid:
+                        oid_hit = pd.Series(False, index=context.index)
+                        if broker_oid and ("broker_order_id" in context.columns):
+                            oid_hit = oid_hit | (context["broker_order_id"].astype(str) == broker_oid)
+                        if client_oid and ("client_order_id" in context.columns):
+                            oid_hit = oid_hit | (context["client_order_id"].astype(str) == client_oid)
+                        context = context[oid_hit].copy()
+                    else:
+                        # Fallback: same symbol in a bounded time window around selected event.
+                        if (not pd.isna(ts_sel_parsed)) and symbol:
+                            lo = ts_sel_parsed - pd.Timedelta(hours=3)
+                            hi = ts_sel_parsed + pd.Timedelta(hours=3)
+                            context = context[
+                                (context["symbol"].astype(str).str.upper() == symbol)
+                                & (context["ts_parsed"] >= lo)
+                                & (context["ts_parsed"] <= hi)
+                            ].copy()
+                st.caption("Related Lifecycle Events")
+                if context.empty:
+                    st.caption("No related lifecycle rows found for this event.")
+                else:
+                    rel_cols = [
+                        c
+                        for c in [
+                            "id",
+                            "ts_parsed",
+                            "event_type",
+                            "symbol",
+                            "side",
+                            "qty",
+                            "order_type",
+                            "order_status",
+                            "broker_order_id",
+                            "client_order_id",
+                            "variant",
+                        ]
+                        if c in context.columns
+                    ]
+                    rel = context[rel_cols].sort_values("ts_parsed", ascending=True).reset_index(drop=True)
+                    st.dataframe(rel, use_container_width=True, hide_index=True, height=220)
                 if isinstance(payload, dict):
                     st.json(payload, expanded=False)
                 else:
@@ -6397,6 +9466,13 @@ def _render_strategy_analytics_workspace(events_df: pd.DataFrame, state_df: pd.D
             st.info("No timeline data available.")
         else:
             st.altair_chart(vt, use_container_width=True)
+
+    st.subheader("Symbol x Signal x Regime Heatmap")
+    heat = _symbol_signal_regime_heatmap(events_df)
+    if heat is None:
+        st.info("Heatmap unavailable. Needs symbol/event/variant data in scope.")
+    else:
+        st.altair_chart(heat, use_container_width=True)
 
     row1c1, row1c2 = st.columns(2)
     with row1c1:
@@ -6752,10 +9828,62 @@ def _render_notifications_workspace(events_df: pd.DataFrame, state_df: pd.DataFr
         notices = pd.concat([custom, notices], ignore_index=True)
         notices["ts"] = pd.to_datetime(notices["ts"], errors="coerce")
         notices = notices.sort_values("ts", ascending=False).reset_index(drop=True)
+    raw_notice_count = int(len(notices))
     if notices.empty:
         st.success("No notifications available.")
         st.markdown("</div>", unsafe_allow_html=True)
         return
+    if "symbol" not in notices.columns:
+        notices["symbol"] = ""
+    notices["symbol"] = notices["symbol"].astype(str).str.upper().replace({"NAN": "", "NONE": ""})
+    dd1, dd2, dd3 = st.columns([1.25, 1.0, 1.25])
+    with dd1:
+        st.checkbox(
+            "Group by Symbol + Time Bucket",
+            value=bool(st.session_state.get("notice_group_symbol_bucket", True)),
+            key="notice_group_symbol_bucket",
+            help="Deduplicates repeated alerts into grouped alerts per symbol/time-bucket.",
+        )
+    with dd2:
+        st.selectbox(
+            "Bucket",
+            options=[5, 15, 30, 60],
+            index=[5, 15, 30, 60].index(int(pd.to_numeric(st.session_state.get("notice_bucket_minutes", 30), errors="coerce") or 30))
+            if int(pd.to_numeric(st.session_state.get("notice_bucket_minutes", 30), errors="coerce") or 30) in {5, 15, 30, 60}
+            else 2,
+            key="notice_bucket_minutes",
+            disabled=not bool(st.session_state.get("notice_group_symbol_bucket", True)),
+        )
+    with dd3:
+        st.caption("Grouping is UI-only and does not alter runtime events.")
+    if bool(st.session_state.get("notice_group_symbol_bucket", True)):
+        bucket_minutes = int(pd.to_numeric(st.session_state.get("notice_bucket_minutes", 30), errors="coerce") or 30)
+        grouped_input = notices.copy()
+        grouped_input["ts"] = pd.to_datetime(grouped_input["ts"], errors="coerce")
+        grouped_input = grouped_input.dropna(subset=["ts"]).copy()
+        grouped_input["bucket_ts"] = grouped_input["ts"].dt.floor(f"{bucket_minutes}min")
+        grouped_input["symbol_norm"] = grouped_input["symbol"].astype(str).str.upper().replace({"NAN": "-", "NONE": "-", "": "-"})
+        grouped_input["title_key"] = grouped_input["title"].astype(str).str.lower().str.strip()
+        grouped_counts = (
+            grouped_input.groupby(["severity", "source", "symbol_norm", "title_key", "bucket_ts"], as_index=False)
+            .agg(
+                count=("title_key", "count"),
+                ts=("ts", "max"),
+                title=("title", "first"),
+                detail=("detail", "first"),
+                symbol=("symbol_norm", "first"),
+            )
+            .sort_values("ts", ascending=False)
+        )
+        if not grouped_counts.empty:
+            notices = grouped_counts[["ts", "severity", "title", "detail", "source", "symbol", "count"]].copy()
+            notices["count"] = pd.to_numeric(notices["count"], errors="coerce").fillna(1).astype(int)
+            notices["title"] = notices.apply(
+                lambda r: f"{str(r['title'])} x{int(r['count'])}" if int(r["count"]) > 1 else str(r["title"]),
+                axis=1,
+            )
+            notices = notices.drop(columns=["count"]).reset_index(drop=True)
+            st.caption(f"Grouped notices: {len(notices):,} (raw {raw_notice_count:,}, bucket {bucket_minutes}m)")
 
     actions = st.session_state.get("notice_actions", {})
     if not isinstance(actions, dict):
@@ -6763,17 +9891,20 @@ def _render_notifications_workspace(events_df: pd.DataFrame, state_df: pd.DataFr
     now = pd.Timestamp.now(tz=NY_TZ)
 
     def _alert_key(row: pd.Series) -> str:
-        base = f"{row.get('ts')}|{row.get('severity')}|{row.get('title')}|{row.get('source')}"
+        base = f"{row.get('ts')}|{row.get('severity')}|{row.get('title')}|{row.get('source')}|{row.get('symbol')}"
         return hashlib.sha1(base.encode("utf-8")).hexdigest()[:16]
 
     notices["alert_key"] = notices.apply(_alert_key, axis=1)
     status_col: list[str] = []
     snooze_col: list[str] = []
+    muted_raw = st.session_state.get("notice_muted_until", {})
+    muted_map = muted_raw if isinstance(muted_raw, dict) else {}
     for _, row in notices.iterrows():
         key = str(row["alert_key"])
         rec = actions.get(key, {})
         status = str(rec.get("status", "open"))
         snooze_until = rec.get("snooze_until")
+        mute_until = muted_map.get(key)
         if snooze_until:
             try:
                 snooze_ts = pd.Timestamp(snooze_until)
@@ -6786,6 +9917,15 @@ def _render_notifications_workspace(events_df: pd.DataFrame, state_df: pd.DataFr
                         status = "open"
             except Exception:
                 pass
+        if mute_until:
+            try:
+                mute_ts = pd.Timestamp(mute_until)
+                if mute_ts.tzinfo is None:
+                    mute_ts = mute_ts.tz_localize(NY_TZ)
+                if now < mute_ts:
+                    status = "muted"
+            except Exception:
+                pass
         status_col.append(status)
         snooze_col.append(str(snooze_until or ""))
     notices["status"] = status_col
@@ -6795,31 +9935,116 @@ def _render_notifications_workspace(events_df: pd.DataFrame, state_df: pd.DataFr
     high_n = int((active_notices["severity"] == "high").sum())
     med_n = int((active_notices["severity"] == "medium").sum())
     info_n = int((active_notices["severity"] == "info").sum())
-    c1, c2, c3 = st.columns(3)
+    unread_n = int(active_notices["status"].isin(["open", "escalated"]).sum())
+    c1, c2, c3, c4 = st.columns(4)
     c1.metric("High", str(high_n))
     c2.metric("Medium", str(med_n))
     c3.metric("Info", str(info_n))
+    c4.metric("Unread", str(unread_n))
+    t1, t2, t3 = st.columns([1.3, 1.2, 1.5])
+    with t1:
+        inbox_tab = st.radio(
+            "Inbox",
+            options=["All", "Open", "Escalated", "Snoozed", "Muted", "Acknowledged"],
+            horizontal=True,
+            key="notice_inbox_tab",
+        )
+    with t2:
+        st.caption(f"Muted active: {int((notices['status'] == 'muted').sum())}")
+    with t3:
+        if st.button("Clear Expired Mutes", use_container_width=True, key="notice_clear_expired_mutes"):
+            next_m = {}
+            for k, v in muted_map.items():
+                ts = pd.to_datetime(v, errors="coerce")
+                if pd.isna(ts):
+                    continue
+                if ts.tzinfo is None:
+                    ts = ts.tz_localize(NY_TZ)
+                if now < ts:
+                    next_m[str(k)] = ts.isoformat()
+            st.session_state["notice_muted_until"] = next_m
+            st.rerun()
+
+    with st.expander("Grouped Notification Summary", expanded=False):
+        grouped = (
+            notices.groupby(["severity", "status", "source", "symbol"], as_index=False)
+            .size()
+            .rename(columns={"size": "count"})
+            .sort_values(["severity", "status", "count"], ascending=[True, True, False])
+        )
+        st.dataframe(grouped, use_container_width=True, hide_index=True)
+        dedup = (
+            notices.groupby(["severity", "source", "symbol", "title"], as_index=False)
+            .agg(count=("alert_key", "count"), latest_ts=("ts", "max"))
+            .sort_values(["count", "latest_ts"], ascending=[False, False])
+        )
+        if not dedup.empty:
+            st.caption("Dedupe view (same severity+source+title collapsed):")
+            st.dataframe(dedup.head(100), use_container_width=True, hide_index=True)
 
     left, right = st.columns([1.2, 0.9])
     with left:
+        preset = st.selectbox(
+            "Severity Preset",
+            options=["All", "Critical Focus", "Operations", "Info Review"],
+            index=0,
+            key="notice_severity_preset",
+        )
+        preset_map = {
+            "All": ["high", "medium", "info"],
+            "Critical Focus": ["high"],
+            "Operations": ["high", "medium"],
+            "Info Review": ["info"],
+        }
         selected = st.multiselect(
             "Severity Filter",
             options=["high", "medium", "info"],
-            default=["high", "medium", "info"],
+            default=preset_map.get(preset, ["high", "medium", "info"]),
             key="notice_severity_filter",
         )
         status_filter = st.multiselect(
             "Status Filter",
-            options=["open", "snoozed", "acknowledged", "escalated"],
-            default=["open", "snoozed", "escalated"],
+            options=["open", "snoozed", "muted", "acknowledged", "escalated"],
+            default=["open", "snoozed", "muted", "escalated"],
             key="notice_status_filter",
+        )
+        if inbox_tab != "All":
+            tab_map = {
+                "Open": ["open"],
+                "Escalated": ["escalated"],
+                "Snoozed": ["snoozed"],
+                "Muted": ["muted"],
+                "Acknowledged": ["acknowledged"],
+            }
+            status_filter = tab_map.get(inbox_tab, status_filter)
+        source_opts = sorted([str(x) for x in notices["source"].dropna().astype(str).unique().tolist() if str(x).strip()])
+        source_filter = st.multiselect(
+            "Source Filter",
+            options=source_opts,
+            default=source_opts,
+            key="notice_source_filter",
+        )
+        keyword = st.text_input(
+            "Title/Detail Contains",
+            value=str(st.session_state.get("notice_keyword_filter", "") or ""),
+            key="notice_keyword_filter",
+            placeholder="search alert title/detail...",
         )
         view = active_notices if selected else notices.copy()
         if selected:
             view = view[view["severity"].isin(selected)]
         if status_filter:
             view = view[view["status"].isin(status_filter)]
-        cols = ["ts", "severity", "status", "title", "detail", "source", "snooze_until", "alert_key"]
+        if source_filter:
+            view = view[view["source"].astype(str).isin(source_filter)]
+        needle = str(keyword or "").strip().lower()
+        if needle:
+            hit = (
+                view["title"].astype(str).str.lower().str.contains(needle, na=False)
+                | view["detail"].astype(str).str.lower().str.contains(needle, na=False)
+            )
+            view = view[hit].copy()
+        cols = ["ts", "severity", "status", "symbol", "title", "detail", "source", "snooze_until", "alert_key"]
         st.dataframe(_paged_view(view[cols], key="notice_tbl", default_page_size=50), use_container_width=True, hide_index=True, height=360)
     with right:
         ch = _notification_severity_chart(notices)
@@ -6868,6 +10093,22 @@ def _render_notifications_workspace(events_df: pd.DataFrame, state_df: pd.DataFr
                     st.session_state.notice_actions = actions
                     _append_ui_audit("alert_reset", {"alert_key": selected_key})
                     st.info("Alert status reset.")
+                    st.rerun()
+                if st.button("Mute 30m", use_container_width=True, key="notice_mute_btn"):
+                    mute_map_raw = st.session_state.get("notice_muted_until", {})
+                    mute_map = mute_map_raw if isinstance(mute_map_raw, dict) else {}
+                    mute_map[selected_key] = (now + pd.Timedelta(minutes=30)).isoformat()
+                    st.session_state["notice_muted_until"] = mute_map
+                    _append_ui_audit("alert_mute", {"alert_key": selected_key, "minutes": 30})
+                    st.info("Alert muted for 30 minutes.")
+                    st.rerun()
+                if st.button("Unmute", use_container_width=True, key="notice_unmute_btn"):
+                    mute_map_raw = st.session_state.get("notice_muted_until", {})
+                    mute_map = mute_map_raw if isinstance(mute_map_raw, dict) else {}
+                    mute_map.pop(selected_key, None)
+                    st.session_state["notice_muted_until"] = mute_map
+                    _append_ui_audit("alert_unmute", {"alert_key": selected_key})
+                    st.info("Alert unmuted.")
                     st.rerun()
 
     with st.expander("Incident Timeline Mode", expanded=False):
@@ -6994,21 +10235,28 @@ def _render_audit_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) -> 
                 if col not in view.columns:
                     view[col] = None
             audit_view = view[cols].rename(columns={"ts_ny": "ts"})
-            st.dataframe(_paged_view(audit_view, key="audit_explorer", default_page_size=100), use_container_width=True, hide_index=True)
+            audit_tbl = _table_customize(audit_view.copy(), key="audit_explorer_adv", default_sort_col="ts", default_desc=True)
+            st.dataframe(
+                _paged_view(audit_tbl, key="audit_explorer", default_page_size=100),
+                use_container_width=True,
+                hide_index=True,
+            )
     with right:
         st.subheader("Cycle Metrics Ledger")
         cmt = _cycle_metrics_table(events_df)
         if cmt.empty:
             st.info("No cycle metrics entries found.")
         else:
-            st.dataframe(cmt, use_container_width=True, hide_index=True)
+            cmt_tbl = _table_customize(cmt.copy(), key="audit_cycle_metrics_adv", default_sort_col="ts_ny", default_desc=True)
+            st.dataframe(_paged_view(cmt_tbl, key="audit_cycle_metrics_page", default_page_size=100), use_container_width=True, hide_index=True)
 
         st.subheader("Current State Snapshot")
         if state_df.empty:
             st.info("No state keys available.")
         else:
             state_render = state_df[["key", "value", "updated_at_ny"]].rename(columns={"updated_at_ny": "updated_at"})
-            st.dataframe(state_render, use_container_width=True, hide_index=True)
+            state_tbl = _table_customize(state_render.copy(), key="audit_state_adv", default_sort_col="updated_at", default_desc=True)
+            st.dataframe(_paged_view(state_tbl, key="audit_state_page", default_page_size=100), use_container_width=True, hide_index=True)
 
     with st.expander("Replay Day (Audit Scrubber)", expanded=False):
         if events_df.empty or ("ts_ny" not in events_df.columns):
@@ -7028,49 +10276,202 @@ def _render_audit_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) -> 
                     if day_df.empty:
                         st.info("No events for selected day.")
                     else:
+                        replay_mode = st.selectbox(
+                            "Replay Mode",
+                            options=["Event-by-Event", "Minute-by-Minute"],
+                            index=0,
+                            key="audit_replay_mode",
+                        )
+                        pending_speed = st.session_state.get("audit_replay_pending_speed_sec", None)
+                        if pending_speed is not None:
+                            try:
+                                speed_v = int(pending_speed)
+                            except Exception:
+                                speed_v = None
+                            if speed_v in {1, 2, 3, 5, 10}:
+                                st.session_state["audit_replay_speed_sec"] = speed_v
+                            st.session_state["audit_replay_pending_speed_sec"] = None
                         p1, p2, p3 = st.columns([1.2, 1.0, 2.0])
                         with p1:
                             playing = st.checkbox("Auto Play Replay", value=bool(st.session_state.get("audit_replay_playing", False)), key="audit_replay_playing")
                         with p2:
                             speed = st.selectbox("Tick (sec)", options=[1, 2, 3, 5, 10], index=1, key="audit_replay_speed_sec", disabled=not playing)
+                            sp1, sp2, sp3 = st.columns(3)
+                            with sp1:
+                                if st.button("1x", use_container_width=True, key="audit_speed_1x"):
+                                    st.session_state["audit_replay_pending_speed_sec"] = 1
+                                    st.rerun()
+                            with sp2:
+                                if st.button("2x", use_container_width=True, key="audit_speed_2x"):
+                                    st.session_state["audit_replay_pending_speed_sec"] = 2
+                                    st.rerun()
+                            with sp3:
+                                if st.button("5x", use_container_width=True, key="audit_speed_5x"):
+                                    st.session_state["audit_replay_pending_speed_sec"] = 5
+                                    st.rerun()
                         with p3:
                             cprev, cnext = st.columns(2)
                             with cprev:
                                 if st.button("Step Back", use_container_width=True, key="audit_step_back"):
-                                    cur_idx = int(st.session_state.get("audit_replay_idx", len(day_df)) or len(day_df))
-                                    st.session_state["audit_replay_idx"] = max(1, cur_idx - 1)
+                                    if replay_mode == "Minute-by-Minute":
+                                        cur_idx = int(st.session_state.get("audit_replay_minute_idx", len(day_df)) or len(day_df))
+                                        st.session_state["audit_replay_pending_minute_idx"] = max(1, cur_idx - 1)
+                                    else:
+                                        cur_idx = int(st.session_state.get("audit_replay_idx", len(day_df)) or len(day_df))
+                                        st.session_state["audit_replay_pending_idx"] = max(1, cur_idx - 1)
                                     st.rerun()
                             with cnext:
                                 if st.button("Step Forward", use_container_width=True, key="audit_step_fwd"):
-                                    cur_idx = int(st.session_state.get("audit_replay_idx", 1) or 1)
-                                    st.session_state["audit_replay_idx"] = min(len(day_df), cur_idx + 1)
+                                    if replay_mode == "Minute-by-Minute":
+                                        cur_idx = int(st.session_state.get("audit_replay_minute_idx", 1) or 1)
+                                        st.session_state["audit_replay_pending_minute_idx"] = min(len(day_df), cur_idx + 1)
+                                    else:
+                                        cur_idx = int(st.session_state.get("audit_replay_idx", 1) or 1)
+                                        st.session_state["audit_replay_pending_idx"] = min(len(day_df), cur_idx + 1)
                                     st.rerun()
-                        if "audit_replay_idx" not in st.session_state:
-                            st.session_state["audit_replay_idx"] = len(day_df)
-                        if int(st.session_state.get("audit_replay_idx", 1)) > len(day_df):
-                            st.session_state["audit_replay_idx"] = len(day_df)
-                        if int(st.session_state.get("audit_replay_idx", 1)) < 1:
-                            st.session_state["audit_replay_idx"] = 1
-                        if playing and len(day_df) > 1:
-                            cur_idx = int(st.session_state.get("audit_replay_idx", 1) or 1)
-                            next_idx = min(len(day_df), cur_idx + 1)
-                            st.session_state["audit_replay_idx"] = next_idx
-                            if next_idx < len(day_df):
-                                _auto_refresh_pulse(enabled=True, interval_seconds=int(speed))
-                        if len(day_df) <= 1:
-                            idx = 1
-                            st.caption("Replay Event Index: 1/1")
+                        if replay_mode == "Minute-by-Minute":
+                            minute_df = day_df.copy()
+                            minute_df["minute_ny"] = pd.to_datetime(minute_df["ts_ny"], errors="coerce").dt.floor("min")
+                            minute_keys = [m for m in minute_df["minute_ny"].dropna().unique().tolist()]
+                            minute_keys = sorted(minute_keys)
+                            if not minute_keys:
+                                st.info("Minute replay unavailable for selected day.")
+                                idx = 1
+                                current = day_df.iloc[0]
+                            else:
+                                if "audit_replay_minute_idx" not in st.session_state:
+                                    st.session_state["audit_replay_minute_idx"] = len(minute_keys)
+                                pending_m_idx = st.session_state.get("audit_replay_pending_minute_idx", None)
+                                if pending_m_idx is not None:
+                                    try:
+                                        st.session_state["audit_replay_minute_idx"] = int(pending_m_idx)
+                                    except Exception:
+                                        pass
+                                    st.session_state["audit_replay_pending_minute_idx"] = None
+                                st.session_state["audit_replay_minute_idx"] = max(
+                                    1,
+                                    min(len(minute_keys), int(st.session_state.get("audit_replay_minute_idx", len(minute_keys)) or len(minute_keys))),
+                                )
+                                if playing and len(minute_keys) > 1:
+                                    cur_m_idx = int(st.session_state.get("audit_replay_minute_idx", 1) or 1)
+                                    next_m_idx = min(len(minute_keys), cur_m_idx + 1)
+                                    st.session_state["audit_replay_minute_idx"] = next_m_idx
+                                    if next_m_idx < len(minute_keys):
+                                        _auto_refresh_pulse(enabled=True, interval_seconds=int(speed))
+                                if len(minute_keys) <= 1:
+                                    m_idx = 1
+                                    st.caption("Replay Minute Index: 1/1")
+                                else:
+                                    m_idx = st.slider(
+                                        "Replay Minute Index",
+                                        min_value=1,
+                                        max_value=len(minute_keys),
+                                        value=int(st.session_state.get("audit_replay_minute_idx", len(minute_keys)) or len(minute_keys)),
+                                        step=1,
+                                        key="audit_replay_minute_idx",
+                                    )
+                                target_minute = pd.Timestamp(minute_keys[int(m_idx) - 1])
+                                slice_df = minute_df[minute_df["minute_ny"] <= target_minute].copy()
+                                idx = max(1, len(slice_df))
+                                current = slice_df.iloc[-1]
+                                day_df = slice_df.reset_index(drop=True)
+                                st.caption(
+                                    f"Replay minute {m_idx}/{len(minute_keys)} | up to {target_minute} | rows={len(day_df)}"
+                                )
                         else:
-                            idx = st.slider(
-                                "Replay Event Index",
-                                min_value=1,
-                                max_value=len(day_df),
-                                value=len(day_df),
-                                step=1,
-                                key="audit_replay_idx",
-                            )
-                        current = day_df.iloc[int(idx) - 1]
-                        st.caption(f"Replay {idx}/{len(day_df)} | ts={current.get('ts_ny')} | event={current.get('event_type')}")
+                            if "audit_replay_idx" not in st.session_state:
+                                st.session_state["audit_replay_idx"] = len(day_df)
+                            pending_idx = st.session_state.get("audit_replay_pending_idx", None)
+                            if pending_idx is not None:
+                                try:
+                                    st.session_state["audit_replay_idx"] = int(pending_idx)
+                                except Exception:
+                                    pass
+                                st.session_state["audit_replay_pending_idx"] = None
+                            if int(st.session_state.get("audit_replay_idx", 1)) > len(day_df):
+                                st.session_state["audit_replay_idx"] = len(day_df)
+                            if int(st.session_state.get("audit_replay_idx", 1)) < 1:
+                                st.session_state["audit_replay_idx"] = 1
+                            if playing and len(day_df) > 1:
+                                cur_idx = int(st.session_state.get("audit_replay_idx", 1) or 1)
+                                next_idx = min(len(day_df), cur_idx + 1)
+                                st.session_state["audit_replay_idx"] = next_idx
+                                if next_idx < len(day_df):
+                                    _auto_refresh_pulse(enabled=True, interval_seconds=int(speed))
+                            if len(day_df) <= 1:
+                                idx = 1
+                                st.caption("Replay Event Index: 1/1")
+                            else:
+                                idx = st.slider(
+                                    "Replay Event Index",
+                                    min_value=1,
+                                    max_value=len(day_df),
+                                    value=len(day_df),
+                                    step=1,
+                                    key="audit_replay_idx",
+                                )
+                            current = day_df.iloc[int(idx) - 1]
+                            st.caption(f"Replay {idx}/{len(day_df)} | ts={current.get('ts_ny')} | event={current.get('event_type')}")
+                        bm_store_raw = st.session_state.get("audit_replay_bookmarks", {})
+                        bm_store = bm_store_raw if isinstance(bm_store_raw, dict) else {}
+                        day_marks_raw = bm_store.get(day_sel, [])
+                        day_marks = day_marks_raw if isinstance(day_marks_raw, list) else []
+                        b1, b2, b3, b4 = st.columns([1.0, 1.4, 1.0, 1.0])
+                        with b1:
+                            if st.button("Bookmark This Event", use_container_width=True, key="audit_replay_bookmark_save"):
+                                mark = {
+                                    "idx": int(idx),
+                                    "ts_ny": str(current.get("ts_ny")),
+                                    "event_type": str(current.get("event_type", "")),
+                                    "symbol": str(current.get("symbol", "")),
+                                }
+                                exists = any(int(m.get("idx", -1)) == int(idx) for m in day_marks if isinstance(m, dict))
+                                if not exists:
+                                    day_marks.append(mark)
+                                day_marks = sorted(
+                                    [m for m in day_marks if isinstance(m, dict)],
+                                    key=lambda m: int(pd.to_numeric(m.get("idx", 0), errors="coerce") or 0),
+                                )[:200]
+                                bm_store[day_sel] = day_marks
+                                st.session_state["audit_replay_bookmarks"] = bm_store
+                                st.success("Replay bookmark saved.")
+                        with b2:
+                            mark_opts = ["(none)"] + [
+                                f"#{int(pd.to_numeric(m.get('idx', 0), errors='coerce') or 0)} | {str(m.get('ts_ny', ''))} | {str(m.get('event_type', ''))}"
+                                for m in day_marks
+                            ]
+                            chosen_mark = st.selectbox("Bookmarks", options=mark_opts, index=0, key="audit_replay_bookmark_pick")
+                            if st.button("Jump To Bookmark", use_container_width=True, key="audit_replay_bookmark_jump"):
+                                if chosen_mark != "(none)":
+                                    pick_idx = mark_opts.index(chosen_mark) - 1
+                                    if 0 <= pick_idx < len(day_marks):
+                                        target_idx = int(pd.to_numeric(day_marks[pick_idx].get("idx", 1), errors="coerce") or 1)
+                                        st.session_state["audit_replay_pending_idx"] = max(1, min(len(day_df), target_idx))
+                                        st.rerun()
+                        with b3:
+                            if st.button("Prev Bookmark", use_container_width=True, key="audit_replay_bookmark_prev"):
+                                mark_values = sorted(
+                                    [int(pd.to_numeric(m.get("idx", 0), errors="coerce") or 0) for m in day_marks if isinstance(m, dict)],
+                                )
+                                cur_idx = int(idx)
+                                prev_marks = [m for m in mark_values if m < cur_idx]
+                                if prev_marks:
+                                    st.session_state["audit_replay_pending_idx"] = max(1, prev_marks[-1])
+                                    st.rerun()
+                        with b4:
+                            if st.button("Clear Day Bookmarks", use_container_width=True, key="audit_replay_bookmark_clear_day"):
+                                bm_store.pop(day_sel, None)
+                                st.session_state["audit_replay_bookmarks"] = bm_store
+                                st.info("Cleared replay bookmarks for selected day.")
+                            if st.button("Next Bookmark", use_container_width=True, key="audit_replay_bookmark_next"):
+                                mark_values = sorted(
+                                    [int(pd.to_numeric(m.get("idx", 0), errors="coerce") or 0) for m in day_marks if isinstance(m, dict)],
+                                )
+                                cur_idx = int(idx)
+                                next_marks = [m for m in mark_values if m > cur_idx]
+                                if next_marks:
+                                    st.session_state["audit_replay_pending_idx"] = min(len(day_df), next_marks[0])
+                                    st.rerun()
                         replay_cols = ["id", "ts_ny", "event_type", "symbol", "side", "qty", "variant", "order_type"]
                         for col in replay_cols:
                             if col not in day_df.columns:
@@ -7175,6 +10576,44 @@ def _render_orders_tab(events_df: pd.DataFrame) -> None:
                 use_container_width=True,
             )
 
+    d1, d2 = st.columns(2)
+    with d1:
+        if "side" in orders.columns:
+            by_side = orders.copy()
+            by_side["side"] = by_side["side"].astype(str).str.lower().replace({"": "unknown"})
+            by_side = by_side.groupby("side", as_index=False).size().rename(columns={"size": "count"})
+            st.altair_chart(
+                alt.Chart(by_side)
+                .mark_arc(innerRadius=48, outerRadius=90)
+                .encode(
+                    theta=alt.Theta("count:Q"),
+                    color=alt.Color("side:N", scale=alt.Scale(range=["#00c805", "#ff5d7a", "#2ea7ff", "#f3b13c"])),
+                    tooltip=["side:N", "count:Q"],
+                )
+                .properties(height=240),
+                use_container_width=True,
+            )
+        else:
+            st.caption("No side field available in current order rows.")
+    with d2:
+        if "order_type" in orders.columns:
+            by_ot = orders.copy()
+            by_ot["order_type"] = by_ot["order_type"].astype(str).str.lower().replace({"": "unknown"})
+            by_ot = by_ot.groupby("order_type", as_index=False).size().rename(columns={"size": "count"})
+            st.altair_chart(
+                alt.Chart(by_ot)
+                .mark_bar(opacity=0.9, cornerRadiusTopLeft=4, cornerRadiusTopRight=4, color="#2ea7ff")
+                .encode(
+                    x=alt.X("order_type:N", sort="-y"),
+                    y=alt.Y("count:Q", title="Count"),
+                    tooltip=["order_type:N", "count:Q"],
+                )
+                .properties(height=240),
+                use_container_width=True,
+            )
+        else:
+            st.caption("No order_type field available in current order rows.")
+
     st.dataframe(orders, use_container_width=True, hide_index=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -7278,6 +10717,208 @@ def _render_backtest_import_hub(events_df: pd.DataFrame, state_df: pd.DataFrame)
     )
     st.subheader("Runtime Reference")
     st.dataframe(runtime_ref, use_container_width=True, hide_index=True)
+    with st.expander("Runtime Report Builder", expanded=False):
+        st.caption("Build ad-hoc runtime reports with custom columns, filters, ranges, and export templates.")
+        if events_df.empty:
+            st.info("No runtime events available for report builder.")
+        else:
+            all_cols = [str(c) for c in events_df.columns.tolist()]
+            default_cols = [c for c in ["id", "ts_ny", "event_type", "symbol", "side", "qty", "variant", "order_type"] if c in all_cols]
+            cols = st.multiselect(
+                "Columns",
+                options=all_cols,
+                default=default_cols if default_cols else all_cols[: min(10, len(all_cols))],
+                key="ui_report_builder_cols",
+            )
+            r1, r2, r3 = st.columns(3)
+            with r1:
+                win = st.selectbox("Time Range", options=list(TIME_WINDOW_OPTIONS), index=list(TIME_WINDOW_OPTIONS).index("1M"), key="ui_report_builder_window")
+            with r2:
+                q = st.text_input("Contains", value="", key="ui_report_builder_query", placeholder="payload/event/symbol text")
+            with r3:
+                tmpl = st.selectbox("Template", options=["Execution Audit", "Variant Journal", "Signal Feed", "Custom"], index=0, key="ui_report_builder_template")
+            rep = _events_in_time_window(events_df, str(win))
+            if str(q or "").strip():
+                needle = str(q).strip().lower()
+                mask = pd.Series(False, index=rep.index)
+                for c in ["payload_text", "event_type", "symbol", "variant", "order_type", "side"]:
+                    if c in rep.columns:
+                        mask = mask | rep[c].astype(str).str.lower().str.contains(needle, na=False)
+                rep = rep[mask]
+            if tmpl == "Execution Audit":
+                pref = [c for c in ["id", "ts_ny", "event_type", "symbol", "side", "qty", "order_type", "order_status", "broker_order_id", "client_order_id"] if c in all_cols]
+                cols = pref or cols
+            elif tmpl == "Variant Journal":
+                pref = [c for c in ["id", "ts_ny", "event_type", "variant", "variant_reason", "threshold_pct", "profile"] if c in all_cols]
+                cols = pref or cols
+            elif tmpl == "Signal Feed":
+                pref = [c for c in ["id", "ts_ny", "event_type", "symbol", "side", "qty", "payload_text"] if c in all_cols]
+                cols = pref or cols
+            cols = [c for c in cols if c in rep.columns]
+            if not cols:
+                st.warning("Select at least one available column.")
+            else:
+                out = rep[cols].copy()
+                st.dataframe(_paged_view(out, key="ui_report_builder_tbl", default_page_size=100), use_container_width=True, hide_index=True)
+                e1, e2 = st.columns(2)
+                with e1:
+                    st.download_button(
+                        "Export Report CSV",
+                        data=out.to_csv(index=False).encode("utf-8"),
+                        file_name=f"runtime_report_{tmpl.lower().replace(' ', '_')}_{str(win).lower()}.csv",
+                        mime="text/csv",
+                        use_container_width=True,
+                        key="ui_report_builder_export_csv",
+                    )
+                with e2:
+                    st.download_button(
+                        "Export Report JSON",
+                        data=json.dumps(out.to_dict(orient="records"), indent=2, default=str).encode("utf-8"),
+                        file_name=f"runtime_report_{tmpl.lower().replace(' ', '_')}_{str(win).lower()}.json",
+                        mime="application/json",
+                        use_container_width=True,
+                        key="ui_report_builder_export_json",
+                    )
+    with st.expander("Quick Load Standard Multi-Window Report", expanded=False):
+        st.caption("Load the generated multi-window summary directly from disk for instant review in UI.")
+        default_summary_path = (
+            "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/reports/"
+            "multiwindow_intraday_pl5m_switch_v1_2026-03-20/"
+            "summary_aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_switch_v1_"
+            "paper_live_style_optimistic.csv"
+        )
+        quick_path = st.text_input(
+            "Summary CSV Path",
+            value=str(st.session_state.get("ui_bt_quick_path", default_summary_path) or default_summary_path),
+            key="ui_bt_quick_path",
+        )
+        cqa, cqb = st.columns([0.9, 1.1])
+        with cqa:
+            if st.button("Load Summary From Path", use_container_width=True, key="ui_bt_quick_load"):
+                st.session_state["ui_bt_quick_loaded_path"] = str(quick_path or "").strip()
+        with cqb:
+            if st.button("Clear Loaded Summary", use_container_width=True, key="ui_bt_quick_clear"):
+                st.session_state["ui_bt_quick_loaded_path"] = ""
+
+        loaded_path = str(st.session_state.get("ui_bt_quick_loaded_path", "") or "").strip()
+        if loaded_path:
+            p = Path(loaded_path)
+            if not p.exists():
+                st.warning(f"File not found: {loaded_path}")
+            else:
+                try:
+                    quick_df = pd.read_csv(p)
+                    if quick_df.empty:
+                        st.info("Loaded summary is empty.")
+                    else:
+                        order = {
+                            "1m": 1,
+                            "2m": 2,
+                            "3m": 3,
+                            "4m": 4,
+                            "5m": 5,
+                            "6m": 6,
+                            "9m": 9,
+                            "1y": 12,
+                            "2y": 24,
+                            "3y": 36,
+                            "4y": 48,
+                            "5y": 60,
+                            "7y": 84,
+                            "10y": 120,
+                        }
+                        if "Window" in quick_df.columns:
+                            quick_df["window_order"] = quick_df["Window"].astype(str).str.lower().map(order).fillna(9999)
+                            quick_df = quick_df.sort_values("window_order").reset_index(drop=True)
+                        show_cols = [
+                            c
+                            for c in [
+                                "Profile",
+                                "Window",
+                                "Mode",
+                                "Start Equity",
+                                "CPU Final Equity",
+                                "CPU Return %",
+                                "CPU PnL",
+                                "CPU MaxDD %",
+                                "CPU Trades",
+                                "GPU Backend",
+                                "GPU Final Equity",
+                                "GPU Return %",
+                                "CPU-GPU Diff (bps)",
+                            ]
+                            if c in quick_df.columns
+                        ]
+                        st.dataframe(quick_df[show_cols], use_container_width=True, hide_index=True)
+                        score_df = quick_df.copy()
+                        if "CPU Return %" in score_df.columns:
+                            score_df["CPU Return %"] = pd.to_numeric(score_df["CPU Return %"], errors="coerce")
+                        if "CPU MaxDD %" in score_df.columns:
+                            score_df["CPU MaxDD %"] = pd.to_numeric(score_df["CPU MaxDD %"], errors="coerce").abs()
+                        if ("CPU Return %" in score_df.columns) and ("CPU MaxDD %" in score_df.columns):
+                            score_df["Risk-Adjusted Score"] = score_df["CPU Return %"] / score_df["CPU MaxDD %"].clip(lower=0.01)
+                        if "Risk-Adjusted Score" in score_df.columns:
+                            rank_cols = [c for c in ["Profile", "Window", "Mode", "CPU Return %", "CPU MaxDD %", "Risk-Adjusted Score"] if c in score_df.columns]
+                            ranked = score_df[rank_cols].dropna(subset=["Risk-Adjusted Score"]).sort_values(
+                                ["Risk-Adjusted Score", "CPU Return %"], ascending=False
+                            ).head(10)
+                            if not ranked.empty:
+                                st.subheader("Leaderboard (Risk-Adjusted)")
+                                st.dataframe(ranked, use_container_width=True, hide_index=True)
+                                top = ranked.iloc[0]
+                                cta1, cta2, cta3 = st.columns(3)
+                                cta1.metric("Top Profile", str(top.get("Profile", "-")))
+                                cta2.metric("Top Window", str(top.get("Window", "-")))
+                                cta3.metric("Top Score", f"{float(pd.to_numeric(top.get('Risk-Adjusted Score'), errors='coerce') or 0.0):.2f}")
+                                promote_profile = str(top.get("Profile", "") or "").strip()
+                                if promote_profile and st.button(
+                                    f"Promote {promote_profile}",
+                                    use_container_width=True,
+                                    key="ui_bt_promote_profile",
+                                ):
+                                    st.session_state["ui_palette_status"] = f"Promoted backtest profile: {promote_profile}"
+                                    st.session_state["ui_pending_saved_workspace"] = "Backtest Hub"
+                                    st.rerun()
+                        st.download_button(
+                            "Download Loaded Summary CSV",
+                            data=quick_df.to_csv(index=False).encode("utf-8"),
+                            file_name=p.name,
+                            mime="text/csv",
+                            use_container_width=True,
+                            key="ui_bt_quick_download",
+                        )
+
+                        if ("Window" in quick_df.columns) and ("CPU Return %" in quick_df.columns):
+                            plot_df = quick_df.copy()
+                            plot_df["Window"] = plot_df["Window"].astype(str)
+                            plot_df["CPU Return %"] = pd.to_numeric(plot_df["CPU Return %"], errors="coerce")
+                            if "GPU Return %" in plot_df.columns:
+                                plot_df["GPU Return %"] = pd.to_numeric(plot_df["GPU Return %"], errors="coerce")
+                            melt_cols = ["Window", "CPU Return %"] + (["GPU Return %"] if "GPU Return %" in plot_df.columns else [])
+                            melt = plot_df[melt_cols].melt(id_vars=["Window"], var_name="Series", value_name="ReturnPct")
+                            melt = melt.dropna(subset=["ReturnPct"]).copy()
+                            if not melt.empty:
+                                chart = (
+                                    alt.Chart(melt)
+                                    .mark_bar(size=18)
+                                    .encode(
+                                        x=alt.X("Window:N", sort=list(order.keys()), title="Window"),
+                                        y=alt.Y("ReturnPct:Q", title="Return %"),
+                                        color=alt.Color("Series:N", title="Series"),
+                                        xOffset="Series:N",
+                                        tooltip=["Window:N", "Series:N", alt.Tooltip("ReturnPct:Q", format=".2f")],
+                                    )
+                                    .properties(height=280)
+                                    .configure_axis(
+                                        labelColor="#afc3e6",
+                                        titleColor="#d8e6ff",
+                                        gridColor="rgba(159,179,213,0.2)",
+                                    )
+                                    .configure_view(strokeOpacity=0)
+                                )
+                                st.altair_chart(chart, use_container_width=True)
+                except Exception as exc:
+                    st.error(f"Quick-load failed: {exc}")
     with st.expander("Backtest vs Runtime Compare View", expanded=False):
         st.caption("Upload one runtime-equity CSV and one backtest-equity CSV to compare parity and drift.")
         rc1, rc2 = st.columns(2)
@@ -7386,7 +11027,12 @@ def _render_backtest_import_hub(events_df: pd.DataFrame, state_df: pd.DataFrame)
             except Exception as exc:
                 st.error(f"Compare load failed: {exc}")
     if not uploaded:
-        st.info("Upload one or more CSV/JSON backtest outputs to compare.")
+        _render_skeleton(lines=4)
+        _render_empty_state(
+            "No backtest files uploaded",
+            "Upload one or more CSV/JSON outputs to populate comparative analytics.",
+            "Tip: use Quick Load for standard multi-window reports, then compare against runtime references.",
+        )
         st.markdown("</div>", unsafe_allow_html=True)
         return
 
@@ -7487,7 +11133,432 @@ def _render_runbook_tab(db_path: str, current_user: str, user_default_db: str, s
     st.markdown("</div>", unsafe_allow_html=True)
 
 
+def _render_workspace_help_drawer(workspace_name: str) -> None:
+    help_map: dict[str, list[str]] = {
+        "Command Center": [
+            "Use this as your landing workspace for quick operational overview.",
+            "Apply workspace presets and global filters before deep drilling.",
+            "Check freshness confidence and alert counts first.",
+        ],
+        "Tradeboard": [
+            "Select symbol from watchlist and validate event scope/time window.",
+            "Use Compare Symbols for side-by-side event-derived position movement.",
+            "Use Symbol Event Drilldown before interpreting sudden quantity shifts.",
+        ],
+        "Multi-Chart": [
+            "Use synchronized window/chart mode to compare four symbols side by side.",
+            "Start with SOXL/SOXS or TQQQ/SQQQ pairs to inspect directional regime shifts.",
+            "Use the same window before comparing signal quality across symbols.",
+        ],
+        "Execution Journal": [
+            "Start with Risk Guard Panel to verify drift/slippage thresholds.",
+            "Use blotter presets for faster operational review.",
+            "Use lifecycle timeline and trade drawer for order-level forensics.",
+        ],
+        "Notifications": [
+            "Acknowledge, snooze, or escalate from Manage Alert panel.",
+            "Use Grouped Summary to reduce alert noise.",
+            "Track incident progression in Incident Timeline Mode.",
+        ],
+        "Audit Trail": [
+            "Use replay scrubber + bookmarks for deterministic investigations.",
+            "Filter by event types and payload terms.",
+            "Export UI audit log for operational review.",
+        ],
+        "UI Diagnostics": [
+            "Inspect render timing history before enabling tighter auto-refresh cadence.",
+            "Check stale-widget detector when dashboards look delayed or inconsistent.",
+            "Use this workspace for UI performance troubleshooting only.",
+        ],
+    }
+    tips = help_map.get(workspace_name, [])
+    if not tips:
+        return
+    with st.expander(f"{workspace_name} Help", expanded=False):
+        for tip in tips:
+            st.markdown(f"- {tip}")
+
+
+def _render_command_center_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame, user_role: str) -> None:
+    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown("<div class='section-caption'>Role-tuned command center with customizable summary tiles.</div>", unsafe_allow_html=True)
+    hs = _health_snapshot(events_df, state_df)
+    notices = _notification_center_table(events_df, state_df)
+    curve = _equity_curve_frame(events_df, state_df)
+    pnl = _pnl_snapshot(curve, state_df)
+    default_tiles = [
+        "Freshness",
+        "Events 1h",
+        "Cycles 24h",
+        "Errors 24h",
+        "Current Equity",
+        "Return %",
+        "Max Drawdown %",
+        "Open Alerts",
+    ]
+    selected_tiles = st.session_state.get("ui_home_tiles", [])
+    if not isinstance(selected_tiles, list) or not selected_tiles:
+        selected_tiles = default_tiles
+    selected_tiles = st.multiselect(
+        "Visible Tiles",
+        options=default_tiles,
+        default=[t for t in selected_tiles if t in default_tiles] or default_tiles,
+        key="ui_home_tiles",
+    )
+    metrics: dict[str, str] = {
+        "Freshness": "-" if hs.get("freshness_min") is None else f"{float(hs['freshness_min']):.1f}m",
+        "Events 1h": f"{int(hs.get('events_1h', 0)):,}",
+        "Cycles 24h": f"{int(hs.get('cycles_24h', 0)):,}",
+        "Errors 24h": f"{int(hs.get('error_events_24h', 0)):,}",
+        "Current Equity": "-" if pnl.get("end_equity") is None else f"${float(pnl['end_equity']):,.2f}",
+        "Return %": "-" if pnl.get("return_pct") is None else f"{float(pnl['return_pct']):.2f}%",
+        "Max Drawdown %": "-" if pnl.get("max_drawdown_pct") is None else f"{float(pnl['max_drawdown_pct']):.2f}%",
+        "Open Alerts": f"{int(len(notices)):,}",
+    }
+    cols = st.columns(4)
+    for i, tile in enumerate(selected_tiles):
+        with cols[i % 4]:
+            st.metric(tile, metrics.get(tile, "-"))
+    st.caption(f"Persona mode: `{st.session_state.get('ui_persona_mode', 'Operator')}` | Role: `{user_role}`")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_ui_changelog_workspace() -> None:
+    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown("<div class='section-caption'>Built-in UI release notes and feature changelog.</div>", unsafe_allow_html=True)
+    rows = [
+        {"date": "2026-03-23", "area": "Session Strip", "change": "Added market session + eval countdown chips"},
+        {"date": "2026-03-23", "area": "Watchlist", "change": "Added min-event filter and multi-mode sorting controls"},
+        {"date": "2026-03-23", "area": "Notifications", "change": "Added source filter and title/detail keyword search"},
+        {"date": "2026-03-23", "area": "Execution", "change": "Added side donut and order-type distribution charts"},
+        {"date": "2026-03-23", "area": "Tradeboard", "change": "Symbol compare + mini charts + event drilldown"},
+        {"date": "2026-03-23", "area": "Notifications", "change": "Grouped summary + toast dedupe + alert action polish"},
+        {"date": "2026-03-23", "area": "Layout", "change": "Visible workspace editor + custom panel widths + mobile nav"},
+        {"date": "2026-03-23", "area": "Command", "change": "Top command favorites/history/search-jump + shortcut help"},
+        {"date": "2026-03-23", "area": "Accessibility", "change": "Persona/accessibility presets and reduced-motion mode"},
+    ]
+    st.dataframe(pd.DataFrame(rows), use_container_width=True, hide_index=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _symbol_signal_regime_heatmap(events_df: pd.DataFrame) -> alt.Chart | None:
+    if events_df.empty:
+        return None
+    frame = events_df.copy()
+    for col in ["symbol", "event_type", "variant"]:
+        if col not in frame.columns:
+            frame[col] = None
+    frame["symbol"] = frame["symbol"].astype(str).str.upper().replace({"": pd.NA, "NONE": pd.NA, "NAN": pd.NA})
+    frame["signal"] = frame["event_type"].astype(str).replace({"": pd.NA, "None": pd.NA, "nan": pd.NA})
+    frame["regime"] = frame["variant"].astype(str).replace({"": "unknown", "None": "unknown", "nan": "unknown"})
+    frame = frame.dropna(subset=["symbol", "signal"])
+    if frame.empty:
+        return None
+    grouped = (
+        frame.groupby(["symbol", "signal", "regime"], as_index=False)
+        .size()
+        .rename(columns={"size": "count"})
+    )
+    grouped["symbol_regime"] = grouped["symbol"].astype(str) + " | " + grouped["regime"].astype(str)
+    return (
+        alt.Chart(grouped)
+        .mark_rect()
+        .encode(
+            x=alt.X("signal:N", title="Signal/Event Type", sort="-y"),
+            y=alt.Y("symbol_regime:N", title="Symbol | Regime"),
+            color=alt.Color("count:Q", title="Count", scale=alt.Scale(scheme="teals")),
+            tooltip=["symbol:N", "signal:N", "regime:N", "count:Q"],
+        )
+        .properties(height=340)
+        .configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff")
+        .configure_view(strokeOpacity=0)
+    )
+
+
+def _lifecycle_status_lane_chart(events_df: pd.DataFrame, symbol_filter: str = "") -> alt.Chart | None:
+    orders = _orders_table(events_df)
+    if orders.empty:
+        return None
+    frame = orders.copy()
+    if symbol_filter:
+        frame = frame[frame["symbol"].astype(str).str.upper() == str(symbol_filter).upper()].copy()
+    if frame.empty:
+        return None
+    frame["ts_plot"] = pd.to_datetime(frame.get("ts_ny"), errors="coerce")
+    if frame["ts_plot"].isna().all():
+        frame["ts_plot"] = pd.to_datetime(frame.get("ts"), errors="coerce")
+    frame = frame.dropna(subset=["ts_plot"]).copy()
+    if frame.empty:
+        return None
+    frame["status_lane"] = frame["order_status"].astype(str).str.lower().replace(
+        {
+            "": "unknown",
+            "none": "unknown",
+            "nan": "unknown",
+            "new": "submitted",
+            "accepted": "submitted",
+            "partially_filled": "partially_filled",
+            "filled": "filled",
+            "canceled": "canceled",
+            "rejected": "rejected",
+        }
+    )
+    frame["shape"] = frame["status_lane"].map(
+        lambda s: "triangle-up" if s in {"submitted", "new"} else ("diamond" if s in {"partially_filled"} else ("triangle-down" if s in {"canceled", "rejected"} else "circle"))
+    )
+    frame["side_norm"] = frame["side"].astype(str).str.lower().map(lambda s: "buy" if s == "buy" else ("sell" if s == "sell" else "other"))
+    return (
+        alt.Chart(frame)
+        .mark_point(filled=True, size=90, opacity=0.9)
+        .encode(
+            x=alt.X("ts_plot:T", title="Time (NY)"),
+            y=alt.Y("status_lane:N", title="Lifecycle Lane"),
+            color=alt.Color(
+                "side_norm:N",
+                title="Side",
+                scale=alt.Scale(domain=["buy", "sell", "other"], range=["#00c805", "#ff5d7a", "#aab4be"]),
+            ),
+            shape=alt.Shape("shape:N", title="Marker"),
+            tooltip=[
+                "ts_plot:T",
+                "symbol:N",
+                "event_type:N",
+                "side:N",
+                "order_type:N",
+                "order_status:N",
+                alt.Tooltip("qty:Q", format=",.6f"),
+            ],
+        )
+        .properties(height=300)
+        .configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)")
+        .configure_legend(labelColor="#d8e6ff", titleColor="#d8e6ff")
+        .configure_view(strokeOpacity=0)
+    )
+
+
+def _render_multi_chart_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
+    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='section-caption'>2x2 linked chart desk. All four charts share the same window and chart mode for synchronized analysis.</div>",
+        unsafe_allow_html=True,
+    )
+    symbols = _symbol_universe(events_df, state_df)
+    if not symbols:
+        _render_empty_state("No symbols available", "No symbols found in runtime scope for multi-chart view.")
+        st.markdown("</div>", unsafe_allow_html=True)
+        return
+    base_default = symbols[:4] if len(symbols) >= 4 else (symbols + [symbols[0]] * (4 - len(symbols)))
+    defaults = st.session_state.get("ui_multichart_symbols", base_default)
+    if not isinstance(defaults, list) or len(defaults) != 4:
+        defaults = base_default
+    c0, c1, c2 = st.columns([1.1, 1.1, 1.2])
+    with c0:
+        win = st.selectbox("Linked Window", options=list(TIME_WINDOW_OPTIONS), index=list(TIME_WINDOW_OPTIONS).index(str(st.session_state.get("ui_multichart_window", "1W")) if str(st.session_state.get("ui_multichart_window", "1W")) in TIME_WINDOW_OPTIONS else "1W"), key="ui_multichart_window")
+    with c1:
+        ctype = st.selectbox("Linked Chart", options=["Line", "Bar", "Candles"], index=["Line", "Bar", "Candles"].index(str(st.session_state.get("ui_multichart_chart_type", "Line")) if str(st.session_state.get("ui_multichart_chart_type", "Line")) in {"Line", "Bar", "Candles"} else "Line"), key="ui_multichart_chart_type")
+    with c2:
+        st.caption("Tip: use matching leveraged/inverse pairs to compare regime behavior.")
+    scoped = _events_in_time_window(events_df, win)
+    pick_cols = st.columns(4)
+    picks: list[str] = []
+    for i in range(4):
+        with pick_cols[i]:
+            p = st.selectbox(
+                f"Symbol {i+1}",
+                options=symbols,
+                index=symbols.index(defaults[i]) if defaults[i] in symbols else 0,
+                key=f"ui_multichart_symbol_{i+1}",
+            )
+            picks.append(p)
+    st.session_state["ui_multichart_symbols"] = picks
+    row_a = st.columns(2)
+    row_b = st.columns(2)
+    grid_cols = [row_a[0], row_a[1], row_b[0], row_b[1]]
+    for i, sym in enumerate(picks):
+        with grid_cols[i]:
+            st.markdown(f"**{sym}**")
+            chart: alt.Chart | None
+            if str(ctype).lower() == "candles":
+                chart = _symbol_candlestick_chart(scoped, sym)
+                if chart is None:
+                    chart = _symbol_activity_chart(scoped, sym, chart_type="Bar")
+            else:
+                chart = _symbol_activity_chart(scoped, sym, chart_type=ctype, with_markers=(str(ctype).lower() == "line"))
+            if chart is None:
+                _render_empty_state("No chart data", f"No chartable rows for {sym} in `{win}`.")
+            else:
+                st.altair_chart(chart, use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_ui_diagnostics_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
+    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='section-caption'>UI diagnostics for render timing, data volume, and stale-widget signals.</div>",
+        unsafe_allow_html=True,
+    )
+    hs = _health_snapshot(events_df, state_df)
+    timings_raw = st.session_state.get("ui_render_timings", [])
+    timings = timings_raw if isinstance(timings_raw, list) else []
+    tdf = pd.DataFrame(timings)
+    m1, m2, m3, m4 = st.columns(4)
+    m1.metric("Events Loaded", f"{int(len(events_df)):,}")
+    m2.metric("State Keys", f"{int(len(state_df)):,}")
+    m3.metric("Freshness (min)", "-" if hs.get("freshness_min") is None else f"{float(hs['freshness_min']):.2f}")
+    avg_render_ms = float(pd.to_numeric(tdf["render_ms"], errors="coerce").dropna().mean()) if (not tdf.empty and "render_ms" in tdf.columns) else None
+    m4.metric("Avg Render (ms)", "-" if avg_render_ms is None else f"{avg_render_ms:.1f}")
+    stale_rows = [
+        {
+            "widget": "Runtime stream freshness",
+            "age_min": None if hs.get("freshness_min") is None else float(hs.get("freshness_min") or 0.0),
+            "threshold_min": 10.0,
+            "status": "STALE" if (hs.get("freshness_min") is not None and float(hs.get("freshness_min") or 0.0) > 10.0) else "OK",
+        },
+        {
+            "widget": "Heavy widget cadence",
+            "age_min": float(pd.to_numeric(st.session_state.get("ui_heavy_widget_last_age_min", 0.0), errors="coerce") or 0.0),
+            "threshold_min": float(pd.to_numeric(st.session_state.get("ui_heavy_widget_cadence_sec", 30), errors="coerce") or 30.0) / 60.0,
+            "status": "OK",
+        },
+        {
+            "widget": "Fast widget cadence",
+            "age_min": float(pd.to_numeric(st.session_state.get("ui_fast_widget_last_age_min", 0.0), errors="coerce") or 0.0),
+            "threshold_min": float(pd.to_numeric(st.session_state.get("ui_fast_widget_cadence_sec", 5), errors="coerce") or 5.0) / 60.0,
+            "status": "OK",
+        },
+    ]
+    st.subheader("Stale Widget Detector")
+    st.dataframe(pd.DataFrame(stale_rows), use_container_width=True, hide_index=True)
+    st.subheader("Render Timing History")
+    if tdf.empty:
+        st.info("No render timings captured yet.")
+    else:
+        st.dataframe(tdf.sort_values("ts_ny", ascending=False).head(200), use_container_width=True, hide_index=True)
+        if "render_ms" in tdf.columns:
+            ch = (
+                alt.Chart(tdf.dropna(subset=["render_ms"]))
+                .mark_line(point=True, color="#66d7ff")
+                .encode(
+                    x=alt.X("ts_ny:T", title="Render Time (NY)"),
+                    y=alt.Y("render_ms:Q", title="Render ms"),
+                    tooltip=["ts_ny:T", alt.Tooltip("render_ms:Q", format=".2f")],
+                )
+                .properties(height=260)
+                .configure_axis(labelColor="#afc3e6", titleColor="#d8e6ff", gridColor="rgba(159,179,213,0.2)")
+                .configure_view(strokeOpacity=0)
+            )
+            st.altair_chart(ch, use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_popout_panel(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
+    pop = str(st.session_state.get("ui_popout_panel", "") or "").strip()
+    if not pop:
+        return
+    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    top1, top2 = st.columns([3.0, 1.0])
+    with top1:
+        st.subheader(f"Pop-out Panel: {pop}")
+    with top2:
+        if st.button("Close Pop-out", use_container_width=True, key="ui_popout_close"):
+            st.session_state["ui_popout_panel"] = ""
+            st.rerun()
+    if pop == "tradeboard_chart":
+        sym = str(st.session_state.get("ui_selected_symbol", "") or "")
+        ch = _symbol_activity_chart(events_df, sym, chart_type="Line", with_markers=True) if sym else None
+        if ch is None:
+            st.info("No chart data available.")
+        else:
+            st.altair_chart(ch, use_container_width=True)
+    elif pop == "execution_blotter":
+        orders = _orders_table(events_df)
+        if orders.empty:
+            st.info("No blotter rows.")
+        else:
+            st.dataframe(_paged_view(orders, key="popout_exec_blotter", default_page_size=100), use_container_width=True, hide_index=True)
+    elif pop == "alerts":
+        notices = _notification_center_table(events_df, state_df)
+        if notices.empty:
+            st.info("No active notices.")
+        else:
+            st.dataframe(_paged_view(notices, key="popout_alerts", default_page_size=80), use_container_width=True, hide_index=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _workspace_use_global_toggle(name: str, default_value: bool = True) -> bool:
+    key = f"ui_ws_use_global_{str(name).lower().replace(' ', '_').replace('&', 'and')}"
+    return st.checkbox(f"Use Global Filters ({name})", value=default_value, key=key)
+
+
+def _render_workspace_by_name(
+    workspace_name: str,
+    *,
+    events_df: pd.DataFrame,
+    events_global: pd.DataFrame,
+    state_df: pd.DataFrame,
+    db_path: str,
+    current_user: str,
+    user_role: str,
+    user_default_db: str,
+    strict_isolation: bool,
+) -> None:
+    _render_workspace_help_drawer(workspace_name)
+    fast_sec = int(pd.to_numeric(st.session_state.get("ui_fast_widget_cadence_sec", 5), errors="coerce") or 5)
+    heavy_sec = int(pd.to_numeric(st.session_state.get("ui_heavy_widget_cadence_sec", 30), errors="coerce") or 30)
+
+    def _scope(use_global: bool, ws_key: str, fast: bool) -> pd.DataFrame:
+        base = events_global if use_global else events_df
+        return _apply_widget_cadence(base, key=f"ws_{ws_key}", cadence_sec=(fast_sec if fast else heavy_sec))
+
+    if workspace_name == "Command Center":
+        use_global = _workspace_use_global_toggle("Command Center", default_value=True)
+        _render_command_center_workspace(events_df=_scope(use_global, "command_center", True), state_df=state_df, user_role=user_role)
+    elif workspace_name == "Tradeboard":
+        use_global = _workspace_use_global_toggle("Tradeboard", default_value=True)
+        _render_terminal_workspace(events_df=_scope(use_global, "tradeboard", True), state_df=state_df)
+    elif workspace_name == "Multi-Chart":
+        use_global = _workspace_use_global_toggle("Multi-Chart", default_value=True)
+        _render_multi_chart_workspace(events_df=_scope(use_global, "multi_chart", False), state_df=state_df)
+    elif workspace_name == "Portfolio Pulse":
+        use_global = _workspace_use_global_toggle("Portfolio Pulse", default_value=True)
+        _render_live_overview_workspace(events_df=_scope(use_global, "portfolio_pulse", True), state_df=state_df)
+    elif workspace_name == "Execution Journal":
+        use_global = _workspace_use_global_toggle("Execution Journal", default_value=True)
+        _render_execution_orders_workspace(events_df=_scope(use_global, "execution_journal", True), state_df=state_df)
+    elif workspace_name == "Strategy Lab":
+        use_global = _workspace_use_global_toggle("Strategy Lab", default_value=True)
+        _render_strategy_analytics_workspace(events_df=_scope(use_global, "strategy_lab", False), state_df=state_df)
+    elif workspace_name == "P&L Monitor":
+        use_global = _workspace_use_global_toggle("P&L Monitor", default_value=True)
+        _render_pnl_monitor_workspace(events_df=_scope(use_global, "pnl_monitor", False), state_df=state_df)
+    elif workspace_name == "Notifications":
+        use_global = _workspace_use_global_toggle("Notifications", default_value=True)
+        _render_notifications_workspace(events_df=_scope(use_global, "notifications", True), state_df=state_df)
+    elif workspace_name == "Ops Health":
+        use_global = _workspace_use_global_toggle("Ops Health", default_value=True)
+        _render_system_health_workspace(events_df=_scope(use_global, "ops_health", False), state_df=state_df, db_path=db_path)
+    elif workspace_name == "UI Diagnostics":
+        use_global = _workspace_use_global_toggle("UI Diagnostics", default_value=True)
+        _render_ui_diagnostics_workspace(events_df=_scope(use_global, "ui_diagnostics", False), state_df=state_df)
+    elif workspace_name == "Audit Trail":
+        use_global = _workspace_use_global_toggle("Audit Trail", default_value=True)
+        _render_audit_workspace(events_df=_scope(use_global, "audit_trail", False), state_df=state_df)
+    elif workspace_name == "Operator Guide":
+        _render_runbook_tab(
+            db_path=db_path,
+            current_user=current_user,
+            user_default_db=user_default_db,
+            strict_isolation=strict_isolation,
+        )
+    elif workspace_name == "Backtest Hub":
+        use_global = _workspace_use_global_toggle("Backtest Hub", default_value=True)
+        _render_backtest_import_hub(events_df=_scope(use_global, "backtest_hub", False), state_df=state_df)
+    elif workspace_name == "UI Changelog":
+        _render_ui_changelog_workspace()
+
+
 def _main_app() -> None:
+    render_start = pd.Timestamp.now(tz=NY_TZ)
     st.set_page_config(page_title=APP_TITLE, layout="wide", page_icon="chart_with_upwards_trend")
     _inject_theme_css()
     _init_session_state()
@@ -7505,6 +11576,7 @@ def _main_app() -> None:
     _touch_session_activity()
     current_user = str(st.session_state.get("auth_user", "") or "")
     user_role = _get_user_role(cfg, current_user)
+    _handle_keyboard_shortcut_event(user_role=user_role)
     st.session_state["auth_role_cached"] = user_role
     user_default_db = str(_user_runtime_db_path(current_user))
 
@@ -7512,7 +11584,9 @@ def _main_app() -> None:
     all_prefs = _load_prefs()
     user_prefs = all_prefs.get(current_user, {}) if isinstance(all_prefs, dict) else {}
     _load_user_ui_prefs_once(current_user=current_user, user_prefs=user_prefs if isinstance(user_prefs, dict) else {})
+    _inject_dynamic_theme_css()
     _inject_compact_mode_css(enabled=bool(st.session_state.get("ui_mobile_compact_mode", False)))
+    _inject_keyboard_shortcuts_js(enabled=bool(st.session_state.get("ui_keyboard_shortcuts_enabled", True)))
 
     with st.sidebar:
         st.markdown("## Runtime Ops")
@@ -7524,16 +11598,20 @@ def _main_app() -> None:
         with st.expander("RBAC Capability Matrix", expanded=False):
             cap_rows = pd.DataFrame(
                 [
+                    {"section": "Command Center", "min_role": "viewer"},
                     {"section": "Tradeboard", "min_role": "viewer"},
+                    {"section": "Multi-Chart", "min_role": "viewer"},
                     {"section": "Portfolio Pulse", "min_role": "viewer"},
                     {"section": "Execution Journal", "min_role": "operator"},
                     {"section": "Strategy Lab", "min_role": "viewer"},
                     {"section": "P&L Monitor", "min_role": "viewer"},
                     {"section": "Notifications", "min_role": "viewer"},
                     {"section": "Ops Health", "min_role": "operator"},
+                    {"section": "UI Diagnostics", "min_role": "operator"},
                     {"section": "Audit Trail", "min_role": "admin"},
                     {"section": "Operator Guide", "min_role": "viewer"},
                     {"section": "Backtest Hub", "min_role": "viewer"},
+                    {"section": "UI Changelog", "min_role": "viewer"},
                 ]
             )
             cap_rows["available"] = cap_rows["min_role"].map(lambda r: "YES" if _role_at_least(user_role, str(r)) else "NO")
@@ -7541,12 +11619,93 @@ def _main_app() -> None:
         st.caption(f"Auto-logout: `{cfg.session_timeout_min}m`")
         if st.session_state.get("auth_method"):
             st.caption(f"Auth method: `{st.session_state.auth_method}`")
+        _render_session_sidebar_tools(cfg, current_user=current_user)
         if st.button("Logout", use_container_width=True):
             _append_ui_audit("logout", {})
             _clear_auth_session(cfg)
             st.rerun()
 
         _render_admin_sidebar(cfg, st.session_state.auth_user)
+
+        st.markdown("---")
+        st.markdown("<div class='left-nav-card'>", unsafe_allow_html=True)
+        st.markdown("### Workspace Navigator")
+        workspace_options = _workspace_nav_options(user_role)
+        visible_pref_raw = st.session_state.get("ui_workspace_visible_tabs", [])
+        visible_pref = [t for t in visible_pref_raw if t in workspace_options] if isinstance(visible_pref_raw, list) else []
+        workspace_nav_options = visible_pref if visible_pref else workspace_options
+        nav_default = str(st.session_state.get("ui_workspace_nav_selection", st.session_state.get("ui_saved_workspace", "Tradeboard")) or "Tradeboard")
+        if nav_default not in workspace_nav_options:
+            nav_default = workspace_options[0] if workspace_options else "Tradeboard"
+        nav_selection = st.radio(
+            "Sections",
+            options=workspace_nav_options,
+            index=workspace_nav_options.index(nav_default) if workspace_nav_options else 0,
+            key="ui_workspace_nav_selection",
+            label_visibility="collapsed",
+        )
+        view_mode = st.selectbox(
+            "Layout Mode",
+            options=["Single Workspace", "Tabbed Workspace"],
+            index=["Single Workspace", "Tabbed Workspace"].index(str(st.session_state.get("ui_workspace_view_mode", "Single Workspace")) if str(st.session_state.get("ui_workspace_view_mode", "Single Workspace")) in {"Single Workspace", "Tabbed Workspace"} else "Single Workspace"),
+            key="ui_workspace_view_mode",
+            help="Single Workspace keeps focus. Tabbed Workspace shows all sections.",
+        )
+        if st.button("Set As Preferred Workspace", use_container_width=True, key="ui_set_preferred_workspace_btn"):
+            st.session_state["ui_pending_saved_workspace"] = nav_selection
+            st.session_state["ui_palette_status"] = f"Preferred workspace set to {nav_selection}."
+            st.rerun()
+        st.checkbox(
+            "Enable Layout Editor",
+            value=bool(st.session_state.get("ui_layout_editor_enabled", False)),
+            key="ui_layout_editor_enabled",
+            disabled=bool(st.session_state.get("ui_panel_layout_locked", False)),
+        )
+        if bool(st.session_state.get("ui_panel_layout_locked", False)):
+            st.caption("Layout editor is disabled because panel layout lock is ON.")
+        if bool(st.session_state.get("ui_layout_editor_enabled", False)):
+            current_visible_raw = st.session_state.get("ui_workspace_visible_tabs", [])
+            current_visible = [t for t in current_visible_raw if t in workspace_options] if isinstance(current_visible_raw, list) else []
+            if not current_visible:
+                current_visible = list(workspace_options)
+            new_visible = st.multiselect(
+                "Visible Workspaces",
+                options=workspace_options,
+                default=current_visible,
+                key="ui_workspace_visible_tabs",
+                help="Only selected workspaces appear in tabbed/single mode navigation.",
+            )
+            if not new_visible:
+                st.warning("At least one workspace must remain visible.")
+            else:
+                # Reorder editor avoids direct widget-state mutation by queuing a pending layout patch.
+                r1, r2, r3 = st.columns([1.55, 1.0, 1.0])
+                with r1:
+                    reorder_pick = st.selectbox(
+                        "Reorder Workspace",
+                        options=new_visible,
+                        index=0,
+                        key="ui_workspace_reorder_pick",
+                    )
+                with r2:
+                    if st.button("Move Up", use_container_width=True, key="ui_workspace_reorder_up"):
+                        ordered = list(new_visible)
+                        i = ordered.index(reorder_pick)
+                        if i > 0:
+                            ordered[i - 1], ordered[i] = ordered[i], ordered[i - 1]
+                            st.session_state["ui_layout_pending_load"] = {"ui_workspace_visible_tabs": ordered}
+                            st.rerun()
+                with r3:
+                    if st.button("Move Down", use_container_width=True, key="ui_workspace_reorder_down"):
+                        ordered = list(new_visible)
+                        i = ordered.index(reorder_pick)
+                        if i < len(ordered) - 1:
+                            ordered[i + 1], ordered[i] = ordered[i], ordered[i + 1]
+                            st.session_state["ui_layout_pending_load"] = {"ui_workspace_visible_tabs": ordered}
+                            st.rerun()
+            st.caption("Layout editor controls are UI-only and per-user.")
+        st.caption(f"Active: `{nav_selection}` | Mode: `{view_mode}`")
+        st.markdown("</div>", unsafe_allow_html=True)
 
         st.markdown("---")
         st.markdown("### Data Source")
@@ -7604,6 +11763,12 @@ def _main_app() -> None:
             st.warning("Selected DB path is not writable/readable for schema bootstrap.")
 
         event_limit = st.slider("Event rows to load", min_value=200, max_value=10000, value=int(st.session_state.sidebar_event_limit), step=100, key="sidebar_event_limit")
+        perf_enabled_sidebar = bool(st.session_state.get("ui_perf_mode_enabled", False))
+        perf_cap_rows = int(pd.to_numeric(st.session_state.get("ui_perf_max_rows", 3000), errors="coerce") or 3000)
+        perf_cap_rows = max(500, min(10000, perf_cap_rows))
+        effective_event_limit = min(int(event_limit), perf_cap_rows) if perf_enabled_sidebar else int(event_limit)
+        if perf_enabled_sidebar:
+            st.caption(f"Performance mode active: effective row cap `{effective_event_limit}` (requested `{int(event_limit)}`)")
         refresh = st.button("Refresh Now", use_container_width=True, disabled=not _role_at_least(user_role, ROLE_OPERATOR))
         if refresh:
             _load_runtime_db.clear()
@@ -7720,14 +11885,131 @@ def _main_app() -> None:
             st.caption("Saved per signed-in user.")
             st.selectbox(
                 "Preferred Workspace",
-                options=["Tradeboard", "Portfolio Pulse", "Execution Journal", "Strategy Lab", "P&L Monitor", "Notifications", "Ops Health", "Audit Trail", "Operator Guide"],
-                index=["Tradeboard", "Portfolio Pulse", "Execution Journal", "Strategy Lab", "P&L Monitor", "Notifications", "Ops Health", "Audit Trail", "Operator Guide"].index(str(st.session_state.get("ui_saved_workspace", "Tradeboard")) if str(st.session_state.get("ui_saved_workspace", "Tradeboard")) in ["Tradeboard", "Portfolio Pulse", "Execution Journal", "Strategy Lab", "P&L Monitor", "Notifications", "Ops Health", "Audit Trail", "Operator Guide"] else "Tradeboard"),
+                options=list(WORKSPACE_ORDER),
+                index=list(WORKSPACE_ORDER).index(str(st.session_state.get("ui_saved_workspace", "Tradeboard")) if str(st.session_state.get("ui_saved_workspace", "Tradeboard")) in WORKSPACE_ORDER else "Tradeboard"),
                 key="ui_saved_workspace",
+            )
+            st.text_input(
+                "Default Eval Time (ET, HH:MM)",
+                value=_normalize_eval_time(st.session_state.get("ui_eval_time", "15:55"), default="15:55"),
+                key="ui_eval_time",
+                help="Used for runtime command previews and countdown chips.",
             )
             compact_mode = st.checkbox(
                 "Compact table density",
                 value=bool(user_prefs.get("compact_mode", True)),
                 key="pref_compact_mode",
+            )
+            st.selectbox(
+                "Theme Preset",
+                options=list(THEME_PRESETS.keys()),
+                index=list(THEME_PRESETS.keys()).index(str(st.session_state.get("ui_theme_preset", "Neo Green")))
+                if str(st.session_state.get("ui_theme_preset", "Neo Green")) in THEME_PRESETS
+                else 0,
+                key="ui_theme_preset",
+            )
+            st.selectbox(
+                "Persona Mode",
+                options=["Viewer", "Operator", "Admin"],
+                index=["Viewer", "Operator", "Admin"].index(str(st.session_state.get("ui_persona_mode", "Operator")))
+                if str(st.session_state.get("ui_persona_mode", "Operator")) in {"Viewer", "Operator", "Admin"}
+                else 1,
+                key="ui_persona_mode",
+                help="Viewer narrows workspace scope and reduces operational noise.",
+            )
+            if st.button("Apply Persona Defaults", use_container_width=True, key="ui_apply_persona_defaults"):
+                persona = str(st.session_state.get("ui_persona_mode", "Operator") or "Operator")
+                if persona == "Viewer":
+                    st.session_state["ui_layout_pending_load"] = {
+                        "ui_saved_workspace": "Command Center",
+                        "ui_workspace_nav_selection": "Command Center",
+                        "ui_workspace_view_mode": "Single Workspace",
+                        "ui_workspace_visible_tabs": [
+                            "Command Center",
+                            "Tradeboard",
+                            "Multi-Chart",
+                            "Portfolio Pulse",
+                            "P&L Monitor",
+                            "Notifications",
+                            "Operator Guide",
+                            "Backtest Hub",
+                            "UI Changelog",
+                        ],
+                        "ui_focus_mode": True,
+                        "ui_incident_mode": False,
+                    }
+                elif persona == "Admin":
+                    st.session_state["ui_layout_pending_load"] = {
+                        "ui_saved_workspace": "UI Diagnostics",
+                        "ui_workspace_nav_selection": "UI Diagnostics",
+                        "ui_workspace_view_mode": "Tabbed Workspace",
+                        "ui_workspace_visible_tabs": [],
+                        "ui_focus_mode": False,
+                    }
+                else:
+                    st.session_state["ui_layout_pending_load"] = {
+                        "ui_saved_workspace": "Tradeboard",
+                        "ui_workspace_nav_selection": "Tradeboard",
+                        "ui_workspace_view_mode": "Single Workspace",
+                        "ui_workspace_visible_tabs": [],
+                        "ui_focus_mode": False,
+                    }
+                st.session_state["ui_palette_status"] = f"Persona defaults applied: {persona}"
+                st.rerun()
+            st.selectbox(
+                "Accessibility Preset",
+                options=["Default", "High Contrast", "Large Text", "Reduced Motion"],
+                index=["Default", "High Contrast", "Large Text", "Reduced Motion"].index(
+                    str(st.session_state.get("ui_accessibility_preset", "Default"))
+                )
+                if str(st.session_state.get("ui_accessibility_preset", "Default")) in {"Default", "High Contrast", "Large Text", "Reduced Motion"}
+                else 0,
+                key="ui_accessibility_preset",
+            )
+            st.selectbox(
+                "Density Mode",
+                options=list(DENSITY_MODES),
+                index=list(DENSITY_MODES).index(str(st.session_state.get("ui_density_mode", "Comfortable")))
+                if str(st.session_state.get("ui_density_mode", "Comfortable")) in DENSITY_MODES
+                else 0,
+                key="ui_density_mode",
+            )
+            st.slider(
+                "Font Scale %",
+                min_value=85,
+                max_value=130,
+                value=int(pd.to_numeric(st.session_state.get("ui_font_scale_pct", 100), errors="coerce") or 100),
+                step=5,
+                key="ui_font_scale_pct",
+            )
+            st.checkbox(
+                "High Contrast",
+                value=bool(st.session_state.get("ui_high_contrast", False)),
+                key="ui_high_contrast",
+            )
+            st.checkbox(
+                "Reduced Motion",
+                value=bool(st.session_state.get("ui_reduced_motion", False)),
+                key="ui_reduced_motion",
+                help="Disables transitions/animations for stability and accessibility.",
+            )
+            st.checkbox(
+                "Focus Mode",
+                value=bool(st.session_state.get("ui_focus_mode", False)),
+                key="ui_focus_mode",
+                help="Reduces secondary visual noise for operator concentration.",
+            )
+            st.checkbox(
+                "Minimal Mode",
+                value=bool(st.session_state.get("ui_minimal_mode", False)),
+                key="ui_minimal_mode",
+                help="Hides non-essential chrome so operators can focus on critical workflow cards.",
+            )
+            st.checkbox(
+                "Keyboard Shortcuts",
+                value=bool(st.session_state.get("ui_keyboard_shortcuts_enabled", True)),
+                key="ui_keyboard_shortcuts_enabled",
+                help="Ctrl/Cmd+K: command context, Alt+R: refresh, Alt+1..6: workspace jump.",
             )
             st.checkbox(
                 "Mobile Compact Mode",
@@ -7735,6 +12017,75 @@ def _main_app() -> None:
                 key="ui_mobile_compact_mode",
                 help="Uses smaller table pages and denser controls for smaller screens.",
             )
+            st.checkbox(
+                "Incident Mode",
+                value=bool(st.session_state.get("ui_incident_mode", False)),
+                key="ui_incident_mode",
+                help="Highlights incident-state styling across workspace cards.",
+            )
+            st.checkbox(
+                "Mobile Bottom Navigation",
+                value=bool(st.session_state.get("ui_mobile_bottom_nav", False)),
+                key="ui_mobile_bottom_nav",
+                help="Shows a bottom navigation rail for quick workspace switching.",
+            )
+            st.checkbox(
+                "Show Onboarding Guide",
+                value=bool(st.session_state.get("ui_show_onboarding", True)),
+                key="ui_show_onboarding",
+            )
+            perf_enabled = st.checkbox(
+                "Performance Mode",
+                value=bool(st.session_state.get("ui_perf_mode_enabled", False)),
+                key="ui_perf_mode_enabled",
+                help="Caps loaded rows for faster rendering on large runtime DBs.",
+            )
+            st.selectbox(
+                "Fast Widgets Cadence (sec)",
+                options=[1, 2, 3, 5, 10, 15, 30],
+                index=[1, 2, 3, 5, 10, 15, 30].index(int(st.session_state.get("ui_fast_widget_cadence_sec", 5)))
+                if int(st.session_state.get("ui_fast_widget_cadence_sec", 5)) in [1, 2, 3, 5, 10, 15, 30]
+                else 3,
+                key="ui_fast_widget_cadence_sec",
+            )
+            st.selectbox(
+                "Heavy Widgets Cadence (sec)",
+                options=[5, 10, 15, 30, 60, 120, 300],
+                index=[5, 10, 15, 30, 60, 120, 300].index(int(st.session_state.get("ui_heavy_widget_cadence_sec", 30)))
+                if int(st.session_state.get("ui_heavy_widget_cadence_sec", 30)) in [5, 10, 15, 30, 60, 120, 300]
+                else 3,
+                key="ui_heavy_widget_cadence_sec",
+            )
+            st.slider(
+                "Performance Max Rows",
+                min_value=500,
+                max_value=10000,
+                value=int(pd.to_numeric(st.session_state.get("ui_perf_max_rows", 3000), errors="coerce") or 3000),
+                step=250,
+                key="ui_perf_max_rows",
+                disabled=not bool(perf_enabled),
+            )
+            st.checkbox(
+                "Lock Panel Layout",
+                value=bool(st.session_state.get("ui_panel_layout_locked", False)),
+                key="ui_panel_layout_locked",
+                help="Prevents accidental layout/split edits in Tradeboard/Execution workspaces.",
+            )
+            if st.button("Reset UI Layout To Defaults", use_container_width=True, key="ui_reset_layout_defaults"):
+                st.session_state["ui_layout_pending_load"] = {
+                    "ui_workspace_view_mode": "Single Workspace",
+                    "ui_workspace_nav_selection": "Tradeboard",
+                    "ui_saved_workspace": "Tradeboard",
+                    "ui_workspace_visible_tabs": [],
+                    "ui_tradeboard_split": "Balanced",
+                    "ui_execution_split": "Balanced",
+                    "ui_tradeboard_custom_weights": [0.8, 1.95, 0.75],
+                    "ui_execution_custom_weights": [1.15, 1.0],
+                    "ui_panel_layout_locked": False,
+                    "ui_popout_panel": "",
+                }
+                st.session_state["ui_palette_status"] = "UI layout reset to defaults."
+                st.rerun()
             save_prefs = st.button("Save Preferences", use_container_width=True, key="save_user_prefs")
             if save_prefs:
                 next_all = all_prefs if isinstance(all_prefs, dict) else {}
@@ -7777,6 +12128,109 @@ def _main_app() -> None:
                     (st.success if ok else st.error)(msg)
                     if ok:
                         st.rerun()
+
+            st.markdown("---")
+            st.caption("Saved View Packs")
+            view_pack_name = st.text_input("View Pack Name", value="", key="ui_saved_view_pack_name")
+            vp1, vp2, vp3 = st.columns(3)
+            with vp1:
+                if st.button("Save View Pack", use_container_width=True, key="ui_save_view_pack"):
+                    pack_name = str(view_pack_name or "").strip()
+                    if not pack_name:
+                        st.warning("Enter a view pack name.")
+                    else:
+                        saved_views_raw = st.session_state.get("ui_saved_views", {})
+                        saved_views = saved_views_raw if isinstance(saved_views_raw, dict) else {}
+                        packs_raw = saved_views.get("__packs__", {})
+                        packs = packs_raw if isinstance(packs_raw, dict) else {}
+                        packs[pack_name] = {
+                            "saved_at_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+                            "ui_state": {k: st.session_state.get(k) for k in USER_UI_PREF_KEYS},
+                        }
+                        saved_views["__packs__"] = packs
+                        st.session_state["ui_saved_views"] = saved_views
+                        st.success(f"Saved view pack: {pack_name}")
+            saved_views_raw = st.session_state.get("ui_saved_views", {})
+            saved_views = saved_views_raw if isinstance(saved_views_raw, dict) else {}
+            packs_raw = saved_views.get("__packs__", {})
+            packs = packs_raw if isinstance(packs_raw, dict) else {}
+            pack_opts = sorted(packs.keys())
+            selected_pack = ""
+            with vp2:
+                if pack_opts:
+                    selected_pack = st.selectbox("Saved Pack", options=pack_opts, index=0, key="ui_saved_view_pack_pick")
+                else:
+                    st.caption("No saved view packs.")
+            with vp3:
+                if pack_opts and st.button("Apply View Pack", use_container_width=True, key="ui_apply_view_pack"):
+                    payload = packs.get(selected_pack, {})
+                    ui_payload = payload.get("ui_state", {}) if isinstance(payload, dict) else {}
+                    if isinstance(ui_payload, dict):
+                        st.session_state["ui_layout_pending_load"] = ui_payload
+                        st.success(f"Applied view pack: {selected_pack}")
+                        st.rerun()
+            if pack_opts:
+                dp1, dp2 = st.columns(2)
+                with dp1:
+                    if st.button("Delete View Pack", use_container_width=True, key="ui_delete_view_pack"):
+                        target = str(st.session_state.get("ui_saved_view_pack_pick", "") or "")
+                        if target and target in packs:
+                            packs.pop(target, None)
+                            saved_views["__packs__"] = packs
+                            st.session_state["ui_saved_views"] = saved_views
+                            st.success(f"Deleted view pack: {target}")
+                            st.rerun()
+                with dp2:
+                    export_payload = {
+                        "schema": "switch_ui_saved_views_v1",
+                        "exported_at_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+                        "saved_views": packs,
+                    }
+                    st.download_button(
+                        "Export View Packs JSON",
+                        data=json.dumps(export_payload, indent=2).encode("utf-8"),
+                        file_name=f"{current_user}_view_packs.json",
+                        mime="application/json",
+                        use_container_width=True,
+                        key="ui_export_view_packs",
+                    )
+            import_file = st.file_uploader("Import View Packs JSON", type=["json"], key="ui_import_view_packs")
+            if import_file is not None:
+                try:
+                    imported = json.loads(import_file.getvalue().decode("utf-8"))
+                    imported_views = imported.get("saved_views", {}) if isinstance(imported, dict) else {}
+                    if not isinstance(imported_views, dict):
+                        raise ValueError("missing saved_views map")
+                    merged = dict(saved_views)
+                    merged_packs_raw = merged.get("__packs__", {})
+                    merged_packs = merged_packs_raw if isinstance(merged_packs_raw, dict) else {}
+                    for k, v in imported_views.items():
+                        if isinstance(k, str) and isinstance(v, dict):
+                            merged_packs[str(k)] = v
+                    merged["__packs__"] = merged_packs
+                    st.session_state["ui_saved_views"] = merged
+                    st.success(f"Imported view packs: {len(imported_views)}")
+                except Exception as exc:
+                    st.error(f"Invalid view-pack JSON: {exc}")
+            st.markdown("---")
+            snapshot_payload = {
+                "schema": "switch_ui_workspace_snapshot_v1",
+                "generated_at_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+                "user": current_user,
+                "workspace": str(st.session_state.get("ui_workspace_nav_selection", "Tradeboard")),
+                "ui_state": {k: st.session_state.get(k) for k in USER_UI_PREF_KEYS},
+                "runtime_db_path": str(db_path),
+                "event_limit": int(event_limit),
+                "effective_event_limit": int(effective_event_limit),
+            }
+            st.download_button(
+                "Export Workspace Snapshot JSON",
+                data=json.dumps(snapshot_payload, indent=2, default=str).encode("utf-8"),
+                file_name=f"{current_user}_workspace_snapshot.json",
+                mime="application/json",
+                use_container_width=True,
+                key="ui_export_workspace_snapshot",
+            )
 
             stored_layouts = user_prefs.get("layouts", {}) if isinstance(user_prefs, dict) and isinstance(user_prefs.get("layouts", {}), dict) else {}
             layout_opts = sorted(stored_layouts.keys())
@@ -7863,7 +12317,7 @@ def _main_app() -> None:
                                 except Exception:
                                     pass
                             if payload.get("workspace"):
-                                st.session_state["ui_saved_workspace"] = str(payload.get("workspace"))
+                                st.session_state["ui_pending_saved_workspace"] = str(payload.get("workspace"))
                         _append_ui_audit("workspace_profile_apply", {"name": selected_profile})
                         st.success(f"Applied workspace profile: {selected_profile}")
                         st.rerun()
@@ -7881,8 +12335,9 @@ def _main_app() -> None:
                     if ok:
                         st.rerun()
 
-    state_df, events_df = _load_runtime_db(db_path=db_path, event_limit=event_limit)
+    state_df, events_df = _load_runtime_db(db_path=db_path, event_limit=effective_event_limit)
     notices_df = _notification_center_table(events_df, state_df)
+    _sync_toast_history(notices_df)
 
     with st.sidebar:
         st.markdown("---")
@@ -7898,7 +12353,22 @@ def _main_app() -> None:
             for _, row in notices_df.head(3).iterrows():
                 st.caption(f"[{str(row.get('severity')).upper()}] {str(row.get('title'))}")
 
-    events_global = _global_filter_toolbar(events_df)
+    events_global_raw = _global_filter_toolbar(events_df)
+    fast_sec = int(pd.to_numeric(st.session_state.get("ui_fast_widget_cadence_sec", 5), errors="coerce") or 5)
+    heavy_sec = int(pd.to_numeric(st.session_state.get("ui_heavy_widget_cadence_sec", 30), errors="coerce") or 30)
+    events_fast = _apply_widget_cadence(events_global_raw, key="fast", cadence_sec=fast_sec)
+    events_heavy = _apply_widget_cadence(events_global_raw, key="heavy", cadence_sec=heavy_sec)
+    events_global = events_fast
+    _render_top_command_bar(events_fast, state_df, user_role=user_role)
+    _render_global_command_palette_modal(events_fast, state_df, user_role=user_role)
+    _render_change_since_refresh_strip(events_fast, notices_df)
+    _render_realtime_status_ribbon(events_fast, state_df, current_user=current_user, user_role=user_role)
+    _render_active_context_bar(events_fast, state_df)
+    _render_workspace_preset_chips()
+    _render_onboarding_guide()
+    _render_workspace_quick_nav(_workspace_nav_options(user_role))
+    _render_keyboard_cheatsheet()
+    _render_activity_timeline_strip(events_fast)
 
     live_mode_enabled = bool(st.session_state.get("ui_live_stream_enabled", False))
     if live_mode_enabled:
@@ -7914,65 +12384,75 @@ def _main_app() -> None:
             interval_seconds=int(st.session_state.get("ui_auto_refresh_interval_sec", 30)),
         )
 
-    _render_runtime_health_banner(cfg, db_path=db_path, events_df=events_global, state_df=state_df)
-    _render_banner(db_path=db_path, state_df=state_df, events_df=events_global)
-    _render_status_bar(events_df=events_global, state_df=state_df)
-    _render_operator_brief(events_df=events_global, state_df=state_df)
-    _render_kpis(events_df=events_global, state_df=state_df)
-    _render_persistent_pnl_tiles(events_df=events_global, state_df=state_df)
+    _render_runtime_health_banner(cfg, db_path=db_path, events_df=events_fast, state_df=state_df)
+    _render_banner(db_path=db_path, state_df=state_df, events_df=events_fast)
+    _render_status_bar(events_df=events_fast, state_df=state_df)
+    _render_risk_strip(events_df=events_fast, state_df=state_df)
+    _render_actionable_alert_center(notices_df=notices_df)
+    _render_operator_brief(events_df=events_fast, state_df=state_df)
+    _render_kpis(events_df=events_fast, state_df=state_df)
+    _render_persistent_pnl_tiles(events_df=events_heavy, state_df=state_df)
     st.caption(f"Preferred Workspace: `{st.session_state.get('ui_saved_workspace', 'Tradeboard')}` | Tip: pin browser tab with this dashboard open on your preferred tab.")
 
-    tab_specs: list[tuple[str, str]] = [
-        ("Tradeboard", ROLE_VIEWER),
-        ("Portfolio Pulse", ROLE_VIEWER),
-        ("Execution Journal", ROLE_OPERATOR),
-        ("Strategy Lab", ROLE_VIEWER),
-        ("P&L Monitor", ROLE_VIEWER),
-        ("Notifications", ROLE_VIEWER),
-        ("Ops Health", ROLE_OPERATOR),
-        ("Audit Trail", ROLE_ADMIN),
-        ("Operator Guide", ROLE_VIEWER),
-        ("Backtest Hub", ROLE_VIEWER),
-    ]
-    allowed_tabs = [name for name, min_role in tab_specs if _role_at_least(user_role, min_role)]
-    tab_objs = st.tabs(allowed_tabs)
-
-    for tab_obj, tab_name in zip(tab_objs, allowed_tabs, strict=False):
-        with tab_obj:
-            if tab_name == "Tradeboard":
-                use_global = st.checkbox("Use Global Filters (Tradeboard)", value=True, key="ui_ws_use_global_tradeboard")
-                _render_terminal_workspace(events_df=(events_global if use_global else events_df), state_df=state_df)
-            elif tab_name == "Portfolio Pulse":
-                use_global = st.checkbox("Use Global Filters (Portfolio Pulse)", value=True, key="ui_ws_use_global_pulse")
-                _render_live_overview_workspace(events_df=(events_global if use_global else events_df), state_df=state_df)
-            elif tab_name == "Execution Journal":
-                use_global = st.checkbox("Use Global Filters (Execution Journal)", value=True, key="ui_ws_use_global_exec")
-                _render_execution_orders_workspace(events_df=(events_global if use_global else events_df), state_df=state_df)
-            elif tab_name == "Strategy Lab":
-                use_global = st.checkbox("Use Global Filters (Strategy Lab)", value=True, key="ui_ws_use_global_strategy")
-                _render_strategy_analytics_workspace(events_df=(events_global if use_global else events_df), state_df=state_df)
-            elif tab_name == "P&L Monitor":
-                use_global = st.checkbox("Use Global Filters (P&L Monitor)", value=True, key="ui_ws_use_global_pnl")
-                _render_pnl_monitor_workspace(events_df=(events_global if use_global else events_df), state_df=state_df)
-            elif tab_name == "Notifications":
-                use_global = st.checkbox("Use Global Filters (Notifications)", value=True, key="ui_ws_use_global_notice")
-                _render_notifications_workspace(events_df=(events_global if use_global else events_df), state_df=state_df)
-            elif tab_name == "Ops Health":
-                use_global = st.checkbox("Use Global Filters (Ops Health)", value=True, key="ui_ws_use_global_health")
-                _render_system_health_workspace(events_df=(events_global if use_global else events_df), state_df=state_df, db_path=db_path)
-            elif tab_name == "Audit Trail":
-                use_global = st.checkbox("Use Global Filters (Audit Trail)", value=True, key="ui_ws_use_global_audit")
-                _render_audit_workspace(events_df=(events_global if use_global else events_df), state_df=state_df)
-            elif tab_name == "Operator Guide":
-                _render_runbook_tab(
+    allowed_tabs = _workspace_nav_options(user_role)
+    visible_tabs_raw = st.session_state.get("ui_workspace_visible_tabs", [])
+    if isinstance(visible_tabs_raw, list) and visible_tabs_raw:
+        filtered_tabs = [t for t in visible_tabs_raw if t in allowed_tabs]
+        if filtered_tabs:
+            allowed_tabs = filtered_tabs
+    _render_mobile_bottom_nav(allowed_tabs)
+    layout_mode = str(st.session_state.get("ui_workspace_view_mode", "Single Workspace") or "Single Workspace")
+    if layout_mode == "Tabbed Workspace":
+        tab_objs = st.tabs(allowed_tabs)
+        for tab_obj, tab_name in zip(tab_objs, allowed_tabs, strict=False):
+            with tab_obj:
+                _render_workspace_by_name(
+                    tab_name,
+                    events_df=events_df,
+                    events_global=events_heavy,
+                    state_df=state_df,
                     db_path=db_path,
                     current_user=current_user,
+                    user_role=user_role,
                     user_default_db=user_default_db,
                     strict_isolation=bool(st.session_state.get("ui_strict_user_db", True)),
                 )
-            elif tab_name == "Backtest Hub":
-                use_global = st.checkbox("Use Global Filters (Backtest Hub)", value=True, key="ui_ws_use_global_backtest")
-                _render_backtest_import_hub(events_df=(events_global if use_global else events_df), state_df=state_df)
+    else:
+        active_workspace = str(st.session_state.get("ui_workspace_nav_selection", st.session_state.get("ui_saved_workspace", "Tradeboard")) or "Tradeboard")
+        if active_workspace not in allowed_tabs and allowed_tabs:
+            active_workspace = allowed_tabs[0]
+        st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+        st.markdown(
+            f"<div class='section-caption'>Focused workspace mode: `{active_workspace}`. Switch in left navigator for faster operator flow.</div>",
+            unsafe_allow_html=True,
+        )
+        st.markdown("</div>", unsafe_allow_html=True)
+        _render_workspace_by_name(
+            active_workspace,
+            events_df=events_df,
+            events_global=events_heavy,
+            state_df=state_df,
+            db_path=db_path,
+            current_user=current_user,
+            user_role=user_role,
+            user_default_db=user_default_db,
+            strict_isolation=bool(st.session_state.get("ui_strict_user_db", True)),
+        )
+    _render_popout_panel(events_df=events_global, state_df=state_df)
+    _render_toast_center()
+    render_end = pd.Timestamp.now(tz=NY_TZ)
+    ms = max(0.0, (render_end - render_start).total_seconds() * 1000.0)
+    rec = {
+        "ts_ny": render_end.isoformat(),
+        "render_ms": round(float(ms), 3),
+        "rows_events": int(len(events_df)),
+        "rows_state": int(len(state_df)),
+        "workspace": str(st.session_state.get("ui_workspace_nav_selection", "Tradeboard")),
+    }
+    timings_raw = st.session_state.get("ui_render_timings", [])
+    timings = list(timings_raw) if isinstance(timings_raw, list) else []
+    timings.append(rec)
+    st.session_state["ui_render_timings"] = timings[-500:]
 
 
 if __name__ == "__main__":

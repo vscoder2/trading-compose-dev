@@ -915,7 +915,7 @@ def _build_parser() -> argparse.ArgumentParser:
     parser.add_argument("--run-once", action="store_true", help="Run at most one iteration and exit.")
 
     parser.add_argument("--state-db", default="switch_runtime_v1_runtime.db")
-    parser.add_argument("--eval-time", default="15:55", help="Daily NY time for main cycle (HH:MM).")
+    parser.add_argument("--eval-time", default="15:56", help="Daily NY time for main cycle (HH:MM).")
     parser.add_argument("--loop-sleep-seconds", type=int, default=30)
     parser.add_argument("--data-feed", default="sip", help="Alpaca feed: sip or iex.")
     parser.add_argument("--daily-lookback-days", type=int, default=800)

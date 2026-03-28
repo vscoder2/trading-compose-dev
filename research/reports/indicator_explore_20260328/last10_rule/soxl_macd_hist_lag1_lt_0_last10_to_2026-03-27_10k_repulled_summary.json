@@ -1,0 +1,14 @@
+{
+  "initial_equity": 10000.0,
+  "initial_principal": 10000.0,
+  "rule": "SOXL_MACD_hist_lag1_lt_0",
+  "window_start": "2026-03-16",
+  "window_end": "2026-03-27",
+  "fetch_end_used": "2026-03-28",
+  "active_days": 9,
+  "total_days": 10,
+  "final_equity": 9138.83755716172,
+  "total_pnl": -861.1624428382802,
+  "total_return_pct": -8.611624428382802,
+  "max_drawdown_pct": 11.36401746301765
+}

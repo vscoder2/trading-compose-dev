@@ -1,0 +1,11 @@
+strategy_profile,profit_lock_exec_model,runtime_profit_lock_order_type,rebalance_time_ny,slippage_bps,sell_fee_bps,warmup_days,daily_lookback_days,anchor_window_start_equity,daily_synthetic_parity
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,0.0,220,400,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,0.0,220,800,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,0.0,260,400,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,0.0,260,800,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,1.0,220,400,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,1.0,220,800,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,1.0,260,400,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,0.0,1.0,260,800,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,1.0,0.0,220,400,False,False
+aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m,paper_live_style_optimistic,market_order,15:55,1.0,0.0,220,800,False,False

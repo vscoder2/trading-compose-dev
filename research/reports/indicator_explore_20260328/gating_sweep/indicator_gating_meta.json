@@ -1,0 +1,18 @@
+{
+  "input_csv": "/home/chewy/projects/trading-compose-dev/research/reports/indicator_explore_20260328/indicator_daylevel_1y.csv",
+  "rows_in_input": 252,
+  "rules_tested": 721,
+  "max_rule_size": 3,
+  "min_active_days": 20,
+  "initial_equity": 10000.0,
+  "outputs": {
+    "ranked_csv": "/home/chewy/projects/trading-compose-dev/research/reports/indicator_explore_20260328/gating_sweep/indicator_gating_ranked.csv",
+    "top_csv": "/home/chewy/projects/trading-compose-dev/research/reports/indicator_explore_20260328/gating_sweep/indicator_gating_top.csv"
+  },
+  "baseline": {
+    "final_equity": 37907.50024518469,
+    "pnl": 27907.50024518469,
+    "return_pct": 279.07500245184684,
+    "maxdd_pct": 39.99122056015784
+  }
+}
