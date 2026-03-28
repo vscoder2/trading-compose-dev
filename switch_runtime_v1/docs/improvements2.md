@@ -3632,6 +3632,199 @@ goal, exact logic change, runtime insertion point, data model changes, and test 
 
 
 
+Done. I reviewed it twice against the playbook, and the conclusion holds: the next deepest upgrade is a supervisory control kernel above the existing runtime loop, profit-lock logic, and rebalance flow. That recommendation is stronger after reading the actual runtime/verifier split, state keys, event schema, and long-window results. The current system already has good decision logic and a real execution loop, but its persisted control state is still thin, its priority policy is implicit, and live-vs-verifier drift is an acknowledged risk. Meanwhile, the same locked profile that looks strong over 1 year also shows very deep 2–7 year drawdowns, including 86.66% max drawdown in several longer windows.  ￼
+
+Executive conclusion
+
+The runtime already does these things well:
+	•	computes baseline target weights from the unchanged SOXL Growth v2.4.5 RL tree,
+	•	runs optional 5-minute intraday profit-lock checks before eval time,
+	•	submits exits before rebalances,
+	•	dedupes intraday checks with intraday_profit_lock_last_slot,
+	•	dedupes the daily cycle with parity_executed_day,
+	•	persists events and last target/profile snapshots.  ￼
+
+What it does not yet do as a first-class layer is:
+	•	enforce a global action priority constitution,
+	•	persist durable lock state beyond basic slot/day keys,
+	•	reconcile broker reality vs local intent before every cycle,
+	•	scale exposure explicitly as a function of damage or confidence,
+	•	explain every action with a reproducible decision record.  ￼
+
+That is why the right upgrade is not “another signal.” It is a control plane.
+
+Full engineering backlog table
+
+Pri	Backlog item	Goal	Difficulty	Dependencies	Runtime insertion point	Data model changes	Expected payoff
+1	Supervisory decision kernel	Centralize allow/block/resize/rank logic	H	none	Around intraday PL stage + daily eval stage before submit	new decision_cycles, locks, policy_state	Very high
+2	Protective-action priority ladder	Ensure one unambiguous action order	M	kernel	Before _submit_profit_lock_signals and before rebalance intent submit	policy enum + reason code	Very high
+3	Decision dry-run validator	Catch invalid/contradictory intents pre-submit	M	priority ladder	After signal + intent build, before broker calls	decision_precheck log	Very high
+4	Broker-state drift detector	Detect mismatch between local state and broker reality	M	broker fetches	Start of every intraday/daily cycle	drift_snapshots	Very high
+5	Pending-order reconciliation engine	Make open orders first-class and prevent duplicates	M	drift detector	Before submit and after fills/open-order refresh	open_order_state, intent_state	Very high
+6	Persistent lock objects	Durable cooldowns, session locks, brake states	M	state DB migration	Used by PL, rebalance, supervisor	locks table	Very high
+7	Dynamic exposure scaling	Shrink gross risk under stress, restore gradually	M	kernel, equity tracking	After baseline target, before rebalance intents	risk_state.exposure_scalar	Very high
+8	Hard portfolio drawdown brake	Stop adding risk after deep damage	M	exposure scaling, equity curve	Before buy intents	risk_state.dd_brake_state	Very high
+9	Recovery probe mode	Re-enter with capped sizing after brake release	M	hard DD brake	After brake exit condition	risk_state.recovery_phase	High
+10	Session PnL circuit breaker	Stop intraday churn after daily damage	M	intraday PnL tracking	Intraday slot stage and pre-close stage	session_state.pnl_lock	High
+11	Intraday no-reentry guard	Prevent PL exits from reversing back in same session	L/M	lock objects	Rebalance intent filter	symbol/day lock record	High
+12	Less-binary switch logic with hysteresis	Reduce cliff effects and whipsaw	M	current regime engine	Around target-selection overlay	hysteresis state	High
+13	Regime confidence score	Turn binary regime into graded control input	M	hysteresis optional	After evaluator target creation	risk_state.confidence	High
+14	Soft risk-off mode	Intermediate posture between full-on and brake	M	confidence score	Post-target, pre-intent sizing	risk mode field	Medium-high
+15	Exposure transition ramping	Smooth target jumps between days	M	exposure scaling	Final target weight builder	prior effective target snapshot	Medium-high
+16	Order conflict resolver	Net symbol-level conflicts to one action	M	priority ladder	Between PL exits and rebalance orders	action-resolution log	High
+17	Adaptive rebalance threshold	Reduce churn in noisy periods	L/M	confidence or volatility input	build_rebalance_order_intents inputs	threshold by regime field	Medium-high
+18	Daily turnover / notional budget	Prevent churn spirals and overtrading	L/M	lock objects, accounting	Rebalance intent filter	turnover ledger	Medium-high
+19	Fill-quality guard	Block or reduce orders in bad execution conditions	M	execution telemetry	Pre-submit validator	fill quality metrics store	Medium-high
+20	Latency and quote-age telemetry	Gate actions on stale or degraded market data	M	metrics plumbing	Around _fetch_intraday_day_stats and stale checks	telemetry tables	Medium-high
+21	Better stale-data handling tiers	Replace binary stale skip with graded policy	L/M	quote-age telemetry	Staleness branch in runtime loop	data health state	Medium
+22	Session-aware behavior layer	Different policy near open/midday/close	M	clock/session context	Supervisor	session mode field	Medium
+23	Intraday PL state machine	Make PL armed/triggered/closed states explicit	M/H	lock objects	Replace implicit PL path	profit_lock_state	High
+24	Rule-reason attribution log	Explain why every action happened	L/M	kernel	Every decision cycle	reason ledger	Medium
+25	Decision snapshot hashing	Reproducible decision provenance	M	normalized state serialization	End of each cycle	decision_hash	Medium
+26	Expected vs realized turnover monitor	Measure execution drift vs intent	L/M	fills reconciliation	End-of-cycle + EOD	turnover comparison table	Medium
+27	Structural logging schema	Normalize events for analysis	L/M	none	Event writes	richer event payload schema	Medium
+28	Cycle ledger with checksum	Strong audit trail per loop	L/M	snapshot hash	End of loop	decision_cycles table	Medium
+29	End-of-day reconciliation report	Daily operator truth source	L	fills/events/positions	Post-close/EOD job	report artifact + summary row	Medium
+30	Event alert hooks	Operational visibility	L	event emission	On critical transitions	alert state table	Medium
+31	Trade attribution engine	Quantify value of each layer	H	EOD recon + shadow paths	Analysis sidecar	attribution tables	Medium-high
+32	Live shadow comparator	Compare alternate overlays without capital risk	H	cycle ledger	Parallel sidecar	shadow run tables	Medium-high
+33	Failure-severity framework	Consistent runtime response to faults	M	kernel + alerts	Error handling paths	incident state	Medium
+34	Adaptive cadence control	Change intraday check frequency by state	M	session/risk state	Runtime loop scheduler	cadence state	Medium
+35	Hard per-symbol notional cap	Local containment of sizing spikes	L	exposure scaling	Final order sizing	cap config field	Medium
+36	Account-mode assertion	Prevent wrong-account execution	L	broker account read	Startup + pre-submit	none or startup audit row	Medium
+
+Detailed spec sheet for the highest-leverage items
+
+Item	Exact logic change	Insert here	Data model changes	Key test cases
+Supervisory decision kernel	Add a single supervisor.evaluate(cycle_context) that outputs allowed_actions, blocked_actions, exposure_scalar, lock_updates, severity, reason_codes	Wrap both intraday slot processing and daily cycle just after data load, before PL submit and rebalance submit	decision_cycles, locks, policy_state, decision_reasons	stale data with open position; DD brake active; intraday PL plus rebalance conflict; restart mid-session
+Protective-action priority ladder	Enforce ordered classes: SEV1 risk exits > session breakers > PL exits > risk reductions > rebalance adds	Right after signal generation and intent build	action class enum, reason fields	same symbol has PL sell and rebalance buy; session breaker blocks buy; risk reduction survives stale data
+Decision dry-run validator	Validate positions, qty sign, symbol eligibility, buying power, duplicate order risk, stale quote age, lock conflicts, priority conflicts	Immediately before any broker API submit	decision_precheck artifact/log row	zero/negative qty; missing price; duplicate open order; symbol lock active; market closed
+Broker-state drift detector	Compare broker positions/open orders/account against local last target/last known locks; emit drift severity and optionally safe mode	Cycle start before any decisions	drift_snapshots table	manual broker trade outside runtime; canceled order not reflected locally; stale cached position qty
+Pending-order reconciliation	Build a symbol-level state map: none/pending_exit/pending_entry/partial/blocked; use it in action eligibility	Before intent resolution and after broker refresh	open_order_state, intent_state	repeated submit attempt; partial fill then rebalance; stop order still resting at daily eval
+Persistent lock objects	Replace ad hoc KV-only guards with typed locks: symbol_cooldown, session_loss, dd_brake, reentry_block, stale_data_safe_mode	Shared utility used everywhere	locks(lock_id, scope, subject, state, start_ts, expiry_ts, reason)	restart persistence; session boundary expiry; manual unlock path; multiple overlapping locks
+Dynamic exposure scaling	Compute scalar from drawdown, regime confidence, execution quality, data health; apply to gross target before rebalance sizing	After baseline target weights from evaluator	risk_state.exposure_scalar, effective target snapshot	scale 1.0 normal; 0.5 under stress; 0.25 in recovery; 0.0 under hard brake
+Hard portfolio drawdown brake	If rolling or peak-to-trough DD breaches threshold, block net-new buys and permit only flattening/risk-reducing actions until unlock condition	Supervisor pre-buy eligibility	risk_state.dd_brake_state, dd_metrics	threshold breach intraday; breach at daily eval; unlock after recovery; sell still allowed while buy blocked
+Recovery probe mode	After DD brake clears, allow re-entry only at capped scalar and with cooldown; step up exposure by schedule if realized damage does not worsen	Post-brake phase in supervisor	risk_state.recovery_phase, probe_step	brake exit followed by successful days; immediate relapse back into DD; restart during probe
+Session PnL circuit breaker	Track realized+unrealized session PnL; if daily loss threshold hit, block adds and optionally disable same-day re-entry	Intraday slot gate and daily cycle	session_state per date	one large open loss; PL exit then attempted re-entry same day; new session reset
+Intraday no-reentry guard	If symbol exited by intraday PL, block entry into same symbol until next session or explicit unlock	Rebalance filter	symbol/day reentry lock	PL sell at 13:10 then target still same symbol at 15:55; next day re-entry allowed
+Intraday PL state machine	Make states explicit: idle -> armed -> trailing -> exit_pending -> exited; no duplicate triggers	Replace current implicit signal path	profit_lock_state by symbol/date	multiple 5-min checks after arm; trailing stop updated upward only; no duplicate exit submit
+Less-binary switch logic with hysteresis	Add enter/exit bands or min-hold regime duration around switch thresholds rather than flipping on one crossing	Post-evaluator overlay or tree wrapper	hysteresis state memory	threshold oscillation around boundary; sustained regime change; restart preserves band state
+Regime confidence score	Compute a normalized confidence value from indicator distance to boundary, agreement count, and volatility health; feed sizing and thresholding	After baseline target	confidence field in decision cycle	weak signals lead to reduced exposure; strong signals full exposure
+Order conflict resolver	Collapse PL exits + rebalance intents + pending-order state to one net instruction per symbol	Immediately before submit	action-resolution row	sell-first then buy same symbol; two sources of sell with different qty; pending exit plus new entry
+Fill-quality guard	If spread proxy/slippage proxy/rejection rate worsens, reduce size or defer buys	Pre-submit validator	execution health metrics	bad fill regime blocks adds but allows exits; recovery after metric normalization
+Better stale-data handling tiers	Replace “skip everything if stale > threshold” with tiered rules: small stale=reduce size, medium stale=exits only, severe stale=no submits	Runtime loop stale branch	data health state	minute lag 1 min, 4 min, 10 min; exits still allowed in medium tier
+Expected vs realized turnover monitor	Compare intended notional vs filled notional and timestamp drift; emit daily variance	EOD and post-cycle	turnover monitor table	all fills complete; partial fills; canceled orders; live vs modeled turnover delta
+End-of-day reconciliation report	Produce single report: positions, fills, locks, target, effective target, drift, incidents, turnover, DD status	Post-close	report artifact	correct after normal day, PL day, stale-data day, partial fill day
+Live shadow comparator	Run one or more alternate policies off same market data and holdings snapshot, but never submit	Parallel sidecar after baseline context is built	shadow_cycles, shadow_diffs	compare current vs hysteresis variant; compare full vs reduced exposure; sidecar unaffected by broker errors
+
+Phase plan
+
+Phase 1: Control integrity
+
+Ship these first.
+
+Order	Item	Why first
+1	Supervisory decision kernel	Gives one place to enforce policy
+2	Priority ladder	Prevents contradictory behavior
+3	Dry-run validator	Stops bad submits immediately
+4	Drift detector	Reveals local-vs-broker mismatch
+5	Pending-order reconciliation	Makes in-flight orders real state
+6	Persistent lock objects	Makes control durable across restart
+
+Phase 2: Capital preservation
+
+This is the biggest drawdown-reduction block.
+
+Order	Item	Why
+7	Dynamic exposure scaling	Most direct risk throttling lever
+8	Hard portfolio drawdown brake	Contains left-tail damage
+9	Recovery probe mode	Avoids instant full re-risking
+10	Session PnL circuit breaker	Limits same-day churn after damage
+11	Intraday no-reentry guard	Prevents PL churn/reversal loops
+
+Phase 3: Decision quality
+
+This improves signal-to-execution translation.
+
+Order	Item	Why
+12	Less-binary switch logic with hysteresis	Reduces threshold cliff flips
+13	Regime confidence score	Supports graded sizing
+14	Soft risk-off mode	Better than binary on/off
+15	Exposure transition ramping	Smooths big allocation jumps
+16	Adaptive rebalance threshold	Cuts noise-driven trading
+
+Phase 4: Execution quality and observability
+
+This makes live operation trustworthy.
+
+Order	Item	Why
+17	Order conflict resolver	One clean symbol action
+18	Fill-quality guard	Protects against bad execution regimes
+19	Latency and quote-age telemetry	Better data-health gating
+20	Better stale-data handling tiers	Exits-only behavior is safer than full skip
+21	Rule-reason attribution + decision hash	Reproducibility and auditability
+22	EOD reconciliation + turnover monitor	Daily truth source
+
+Recommended data model migration
+
+The guide already shows a minimal SQLite shape with state_kv and events. That is enough for the current loop, but not enough for the next layer. Add these tables on top of the current schema rather than replacing it.  ￼
+
+Table	Purpose	Key columns
+decision_cycles	One row per intraday slot or daily cycle	cycle_id, ts, cycle_type, profile, target, effective_target, decision_hash, severity
+locks	Durable lock framework	lock_id, scope, subject, state, reason, start_ts, expiry_ts, cleared_ts
+drift_snapshots	Broker vs local mismatch evidence	ts, positions_diff_json, orders_diff_json, severity, resolved
+open_order_state	In-flight order truth	symbol, order_id, state, side, qty, created_ts, updated_ts
+risk_state	Exposure and brake state	ts, equity, peak_equity, drawdown_pct, exposure_scalar, dd_brake_state, recovery_phase
+session_state	Session-scoped breaker state	session_date, session_pnl, breaker_state, reentry_blocked
+decision_reasons	Explainability	cycle_id, symbol, reason_code, priority_class, detail_json
+shadow_cycles	Sidecar comparisons	cycle_id, variant_name, effective_target, hypothetical_actions, diff_json
+
+Exact runtime insertion points
+
+Grounded in the playbook’s current runtime lifecycle, the clean insertion map is this: the supervisor should sit after the runtime fetches daily/minute bars and before it submits profit-lock exits or rebalance orders; the reconciler should run at cycle start; the validator and conflict resolver should run after signal/intent creation and before broker API submission. The same supervisor abstraction should be reused in both the 5-minute intraday slot path and the at/after-eval daily cycle path.  ￼
+
+Why this outranks more alpha work
+
+The uploaded playbook itself already warns that verifier results are modeled, that live outcomes can diverge due to fills, latency, staleness, and order lifecycle, and that current policy-style guardrails such as max drawdown, max daily loss, and max turnover are only suggested baselines, not yet a guaranteed runtime constitution.  ￼
+
+That means the next best engineering dollar is not “find a slightly better entry threshold.” It is:
+	•	reduce live failure modes,
+	•	reduce churn under damage,
+	•	make restarts deterministic,
+	•	make actions auditable,
+	•	and make risk-sizing explicit.
+
+Top 10 build order if you want the fastest path
+
+Build order	Item
+1	Supervisory decision kernel
+2	Protective-action priority ladder
+3	Decision dry-run validator
+4	Broker-state drift detector
+5	Pending-order reconciliation
+6	Persistent lock objects
+7	Dynamic exposure scaling
+8	Hard portfolio drawdown brake
+9	Recovery probe mode
+10	Session PnL circuit breaker
+
+Final recommendation
+
+Approve Phase 1 and Phase 2 as the next program increment.
+
+That gives you a runtime that is no longer just:
+
+strategy -> signal -> order
+
+but instead:
+
+market state -> reconciliation -> policy -> validated net action -> controlled execution -> audited state
+
+That is the deepest credible upgrade for this system.
+
+If you want, next I’ll turn this into a ticket-ready backlog with IDs, acceptance criteria, and engineering estimates in story points.
+
+
 
 
 
