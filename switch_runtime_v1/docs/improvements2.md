@@ -2813,6 +2813,548 @@ That is the real deep upgrade path.
 I can turn this into a phase-by-phase engineering plan with pseudocode interfaces and data model changes.
 
 
+I reviewed it again against the guide’s actual mechanics, especially these constraints it already has:
+	•	fixed 5-minute intraday profit-lock cadence
+	•	3 discrete variants
+	•	daily eval-time rebalance
+	•	one-symbol regime logic
+	•	state DB with limited persistent keys
+	•	optional controls already hinted in the guide
+	•	realistic backtest profile showing 283 trades in 1 year with 98.06% return but 56.55% max drawdown, and 84.59% max drawdown over 5y/7y
+
+That combination tells me the next best additions are not “more indicators.” They are control-plane features that make the runtime more selective, safer, and more reproducible.
+
+Deep second-pass additions
+
+These are after the roadmap you already have.
+
+18) Decision snapshot hashing
+
+Every eval cycle should produce a deterministic hash of all decision inputs:
+	•	daily bars used
+	•	regime metrics
+	•	prior state
+	•	variant chosen
+	•	exposure scalar
+	•	final targets
+	•	open orders
+	•	account equity
+
+Why this matters:
+	•	lets you prove why a cycle made a decision
+	•	makes backtest/live drift diagnosable
+	•	gives reproducibility when behavior looks wrong
+
+19) Latency and quote-age telemetry
+
+You already have a stale-data threshold, but that is too coarse.
+
+Add live measurements for:
+	•	quote age
+	•	bar age
+	•	broker round-trip time
+	•	order ack latency
+	•	fill latency
+
+Why:
+	•	“not stale” does not mean “good enough”
+	•	useful for deciding whether to suppress rebalance adds but still allow protective exits
+
+20) Fill-quality guard
+
+Since the realistic backtest already warns that broker microstructure can differ from the model, add a runtime function that compares submitted orders to:
+	•	last trade
+	•	bid/ask midpoint if available
+	•	realized fill slippage
+
+Use that to:
+	•	widen rebalance threshold temporarily
+	•	cut size
+	•	suppress marginal rebalances
+
+21) Recovery probe mode
+
+After a hard brake or bad loss period, do not go directly back to full risk.
+
+Add a mode:
+	•	recovery_probe
+
+Behavior:
+	•	allow only fractionally sized exposure
+	•	require positive follow-through for N cycles before returning to normal risk
+
+This is one of the best additions for a system with huge historical drawdowns.
+
+22) Per-cycle “expected turnover vs realized turnover” monitor
+
+You already know intended rebalance intents. Add a post-cycle comparison:
+	•	intended turnover
+	•	submitted turnover
+	•	filled turnover
+	•	leftover residual exposure
+
+Why:
+	•	shows whether the runtime is actually accomplishing what the strategy thinks it did
+	•	helps explain live underperformance
+
+23) Protective-action priority ladder
+
+Right now there are multiple action types, but not a full priority ladder.
+
+Add a single engine that ranks:
+	1.	emergency / brake exits
+	2.	profit-lock exits
+	3.	rebalance reductions
+	4.	rebalance adds
+	5.	bracket attachments / maintenance
+
+This is different from a conflict resolver. It is the policy layer for the whole runtime.
+
+24) Broker-state drift detector
+
+At cycle start, compare:
+	•	broker positions
+	•	locally persisted last final target
+	•	open orders
+	•	expected residuals from prior cycle
+
+If mismatch exceeds threshold:
+	•	emit drift event
+	•	suppress new adds
+	•	optionally enter protective-only mode
+
+This is extremely high value in live trading.
+
+25) Session PnL circuit breaker
+
+Not just drawdown from peak equity. Add intraday/session-aware braking:
+	•	if realized PnL loss for the day breaches threshold, stop new adds
+	•	if combined realized + unrealized loss breaches deeper threshold, allow only reductions/exits
+
+Useful because your runtime already acts intraday every 5 minutes.
+
+26) Rule-reason attribution log
+
+When variant changes, do not just log the result. Log:
+	•	which gate fired
+	•	which thresholds were crossed
+	•	persistence streak values
+	•	any lock still in effect
+	•	why other candidate states lost
+
+This will save huge time when debugging regime behavior.
+
+27) Adaptive cadence control
+
+The guide uses a 5-minute intraday check cadence for the current profile. Make cadence dynamic:
+	•	calm state: slower checks
+	•	trail active / high stress / near close: faster checks
+
+This improves protection without running everything at maximum cadence all day.
+
+28) Persistent lock objects instead of loose keys
+
+Right now persistence is relatively sparse. Replace ad hoc state with explicit lock objects:
+	•	baseline_vol_lock
+	•	drawdown_lock
+	•	variant_cooldown_lock
+	•	reentry_lock
+	•	turnover_budget_lock
+
+Each should store:
+	•	start time
+	•	reason
+	•	expiry condition
+	•	status
+
+That will make behavior much easier to reason about.
+
+29) Decision dry-run before submit
+
+Before placing any orders, run a final validation pass on the full intent set:
+	•	does any action violate a lock?
+	•	does any action exceed notional budget?
+	•	does any action contradict reentry rules?
+	•	does any action exceed brake-imposed size caps?
+	•	does any action create impossible net exposure?
+
+This catches logic bugs before the broker sees them.
+
+30) Live shadow comparator
+
+When live, also compute hypothetical alternatives without trading them:
+	•	no profit lock
+	•	no switch overlay
+	•	no brake
+	•	previous-variant hold
+
+This gives a continuous answer to: “which layer is actually helping?”
+
+⸻
+
+Best next additions, ranked
+
+If I review it twice and force-rank only the next additions, I’d put them in this order:
+	1.	Broker-state drift detector
+	2.	Protective-action priority ladder
+	3.	Recovery probe mode
+	4.	Session PnL circuit breaker
+	5.	Decision dry-run before submit
+	6.	Rule-reason attribution log
+	7.	Fill-quality guard
+	8.	Latency and quote-age telemetry
+	9.	Persistent lock objects
+	10.	Live shadow comparator
+	11.	Decision snapshot hashing
+	12.	Adaptive cadence control
+
+Why this order:
+	•	first stop the runtime from doing the wrong thing live
+	•	then improve capital preservation
+	•	then improve diagnosability
+	•	then improve research feedback
+
+Dev-ready implementation spec
+
+Below is the spec for the strongest of these additions.
+
+1) Broker-state drift detector
+
+Goal
+Detect when broker reality differs materially from local runtime expectations and stop the runtime from compounding that mismatch.
+
+Exact logic change
+At cycle start, compute:
+	•	current broker positions by symbol
+	•	current open orders by symbol
+	•	expected holdings from prior persisted target and known submitted intents
+
+Then calculate per symbol:
+	•	qty_drift = broker_qty - expected_qty
+	•	pending_order_drift = unexpected_open_orders
+
+If either exceeds threshold:
+	•	emit switch_broker_state_drift
+	•	suppress new adds for affected symbols
+	•	optionally enter protective_only mode if drift is broad
+
+Where it fits in runtime
+Immediately after broker/data/state initialization, before intraday profit-lock or eval-time rebalance logic.
+
+Expected impact
+Large live-safety improvement. Prevents duplicate exposure, bad re-entry, and false assumptions after partial fills or restarts.
+
+Test cases
+	1.	Broker qty matches local expectation → no drift event
+	2.	Broker has unexpected residual qty after partial fill → drift event fires
+	3.	Unexpected open sell order exists → new add is suppressed
+	4.	Runtime restart with stale local state but correct broker state → drift detected and reconciled
+	5.	Broad multi-symbol drift enters protective-only mode
+
+⸻
+
+2) Protective-action priority ladder
+
+Goal
+Establish a single runtime-wide policy for which action class wins when multiple controls want to act at once.
+
+Exact logic change
+Assign priority ranks:
+	1.	hard brake exits
+	2.	session circuit-breaker exits
+	3.	profit-lock exits
+	4.	rebalance reductions
+	5.	rebalance adds
+	6.	bracket maintenance / secondary actions
+
+For each symbol and cycle:
+	•	collapse candidate actions to highest-priority valid action
+	•	reject lower-priority conflicting actions
+	•	log all dropped actions with reasons
+
+Where it fits in runtime
+After all candidate actions are produced, before conflict resolution and order submission.
+
+Expected impact
+Cleaner runtime behavior and fewer contradictory orders.
+
+Test cases
+	1.	Profit lock and rebalance add occur together → profit lock wins
+	2.	Hard brake exit and profit lock both fire → hard brake wins
+	3.	Reduction and add both appear → net highest-priority action only
+	4.	Dropped lower-priority actions are logged with explicit reason
+
+⸻
+
+3) Recovery probe mode
+
+Goal
+Prevent immediate re-risking after a hard brake or severe loss phase.
+
+Exact logic change
+Add brake states:
+	•	healthy
+	•	soft_brake
+	•	hard_brake
+	•	recovery_probe
+
+When leaving hard_brake, do not return directly to full sizing. Instead:
+	•	max exposure capped at low level
+	•	require N successful eval cycles or equity improvement before restoring normal scaling
+
+Where it fits in runtime
+Portfolio risk layer, before final target commit.
+
+Expected impact
+Reduces repeated drawdown waves after a severe loss.
+
+Test cases
+	1.	Hard brake triggered → exposure minimized
+	2.	Recovery condition met → enters probe, not healthy
+	3.	Probe underperforms again → falls back to hard brake
+	4.	Probe succeeds for required cycles → healthy restored
+
+⸻
+
+4) Session PnL circuit breaker
+
+Goal
+Use intraday realized/unrealized loss to halt adding risk before daily damage snowballs.
+
+Exact logic change
+Track:
+	•	session realized PnL
+	•	session unrealized PnL
+	•	combined session loss %
+
+Rules example:
+	•	first threshold: no new adds
+	•	second threshold: reductions only
+	•	third threshold: force protective flattening / minimal exposure
+
+Protective exits remain allowed.
+
+Where it fits in runtime
+Before intraday actions and before eval-time rebalance add intents are allowed.
+
+Expected impact
+Better intraday survival on bad days.
+
+Test cases
+	1.	Mild session loss → no new adds
+	2.	Larger loss → reductions only
+	3.	Severe loss → protective flattening allowed, adds suppressed
+	4.	Next session resets breaker state appropriately
+
+⸻
+
+5) Decision dry-run before submit
+
+Goal
+Catch invalid or contradictory intent sets before they hit the broker.
+
+Exact logic change
+Build a final validation function that simulates post-order state using:
+	•	current positions
+	•	pending orders
+	•	locks
+	•	budgets
+	•	brake state
+	•	reentry restrictions
+
+Reject or modify intents that violate:
+	•	exposure caps
+	•	turnover caps
+	•	no-reentry rules
+	•	drift restrictions
+	•	priority policy
+
+Where it fits in runtime
+Right before order submission.
+
+Expected impact
+Big reduction in broker-side errors and logic mistakes.
+
+Test cases
+	1.	Intent would exceed exposure cap → rejected
+	2.	Symbol reentry blocked after profit lock → add removed
+	3.	Order budget exceeded → only protective exits survive
+	4.	Simulation net exposure after intents matches allowed target
+
+⸻
+
+6) Rule-reason attribution log
+
+Goal
+Make every variant decision explainable.
+
+Exact logic change
+When variant is chosen, log:
+	•	current metrics
+	•	hard overrides active
+	•	persistence counters
+	•	entry/exit thresholds compared
+	•	winning rule path
+	•	losing candidate reasons
+
+Persist in structured event:
+	•	switch_variant_decision_detail
+
+Where it fits in runtime
+Inside the variant selection function, right after final state is chosen.
+
+Expected impact
+Much faster debugging and better research loops.
+
+Test cases
+	1.	Baseline due to vol lock logs vol threshold and lock status
+	2.	Inverse transition after 3-day persistence logs streak counts
+	3.	Mixed-signal day logs why a candidate lost
+	4.	Event survives restart and can be audited later
+
+⸻
+
+7) Fill-quality guard
+
+Goal
+Reduce execution damage when live fills are materially worse than expected.
+
+Exact logic change
+For each filled order, compute:
+	•	slippage vs reference price
+	•	rolling median slippage by action type
+
+If rolling slippage exceeds threshold:
+	•	widen rebalance threshold temporarily
+	•	reduce add sizing
+	•	optionally suppress marginal adds
+
+Where it fits in runtime
+Post-fill reconciliation, with summary state fed into next cycle.
+
+Expected impact
+Improves live PnL quality in poor microstructure conditions.
+
+Test cases
+	1.	Normal slippage → no behavior change
+	2.	Repeated bad fills → threshold widens for future rebalances
+	3.	Protective exits remain allowed even when add sizing is suppressed
+
+⸻
+
+8) Persistent lock objects
+
+Goal
+Replace fragile scattered flags with explicit lock records.
+
+Exact logic change
+Define persistent schema:
+	•	lock_type
+	•	symbol optional
+	•	start_ts
+	•	reason
+	•	enter_condition
+	•	exit_condition
+	•	status
+	•	metadata
+
+Initial lock types:
+	•	vol baseline lock
+	•	drawdown lock
+	•	variant cooldown lock
+	•	reentry lock
+	•	turnover budget lock
+
+Where it fits in runtime
+Persistence/state layer.
+
+Expected impact
+More deterministic behavior and easier debugging.
+
+Test cases
+	1.	Vol lock created when threshold breached
+	2.	Lock persists across restart
+	3.	Exit condition releases lock correctly
+	4.	Conflicting locks resolve by priority policy
+
+⸻
+
+9) Live shadow comparator
+
+Goal
+Continuously evaluate whether each overlay/control is helping in live conditions.
+
+Exact logic change
+At each eval cycle, compute hypothetical outcomes for:
+	•	actual runtime
+	•	no profit lock
+	•	no switch overlay
+	•	previous-variant hold
+
+Persist paper-only shadow state; no orders submitted.
+
+Where it fits in runtime
+After final live decision, as a sidecar evaluation block.
+
+Expected impact
+Creates evidence for which control layer is worth keeping.
+
+Test cases
+	1.	Shadow states update without affecting real orders
+	2.	Restart reloads shadow state consistently
+	3.	Daily report shows delta between live path and shadow paths
+
+⸻
+
+10) Decision snapshot hashing
+
+Goal
+Make every cycle reproducible.
+
+Exact logic change
+Serialize normalized decision inputs into a canonical blob and store:
+	•	cycle_id
+	•	input_hash
+	•	code_version
+	•	decision_summary
+
+Where it fits in runtime
+At end of pre-submit decision phase and on cycle completion.
+
+Expected impact
+Major auditability upgrade.
+
+Test cases
+	1.	Same inputs produce same hash
+	2.	Any changed metric or state changes hash
+	3.	Hash is stored on cycle completion event
+
+⸻
+
+Best implementation order for these additions
+	1.	Protective-action priority ladder
+	2.	Decision dry-run before submit
+	3.	Broker-state drift detector
+	4.	Persistent lock objects
+	5.	Recovery probe mode
+	6.	Session PnL circuit breaker
+	7.	Rule-reason attribution log
+	8.	Fill-quality guard
+	9.	Latency and quote-age telemetry
+	10.	Live shadow comparator
+	11.	Decision snapshot hashing
+	12.	Adaptive cadence control
+
+Deep bottom line
+
+The deepest next upgrade is this:
+
+move the runtime from “signal engine that submits orders” to “supervised execution state machine with proof of why every action was allowed.”
+
+That is the layer your current system is still missing.
+
+I can now turn the full roadmap into a single engineering backlog table with priority, difficulty, dependencies, and expected payoff.
+
 
 
 
