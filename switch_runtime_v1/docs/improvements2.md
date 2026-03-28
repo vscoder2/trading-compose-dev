@@ -2100,6 +2100,721 @@ I can turn this into a dev-ready implementation spec next, with each item writte
 	•	test cases
 
 
+Yes. There’s still a lot more you can improve without changing symbols.
+
+Your current runtime already has these building blocks:
+	•	fixed profile parameters for profit lock and trailing exit
+	•	SOXL-based regime metrics
+	•	3 discrete variants
+	•	rebalance thresholding
+	•	event/state persistence
+	•	stale-data skip
+	•	paper/live execution through Alpaca
+	•	a few optional next controls already mentioned in the guide
+
+So the deep improvements now are less about “more indicators” and more about making the system:
+	•	self-protecting
+	•	path-aware
+	•	execution-aware
+	•	state-consistent
+	•	researchable
+	•	auditable
+
+Below is a deeper layer of improvements, then a dev-ready implementation spec.
+
+⸻
+
+Deep next-layer improvements and additions
+
+A. Regime confidence score
+
+Right now variant selection is rule-based and threshold-based. That is simple, but brittle.
+
+Add
+
+A regime_confidence scalar from 0 to 1 built only from your existing metrics:
+	•	MA ordering quality
+	•	normalized distance from MA
+	•	slope strength
+	•	realized vol stress
+	•	crossover penalty
+	•	drawdown penalty
+
+Why it matters
+
+Instead of only deciding which state, the system can also decide how strongly it believes the state.
+
+Use it for
+	•	exposure scalar
+	•	switch cooldown override
+	•	rebalance threshold widening
+	•	profit-lock aggressiveness
+
+This is one of the highest-value “meta” additions.
+
+⸻
+
+B. Hysteresis layer for all thresholded decisions
+
+You already have some locking and persistence, but most decisions are still sharp thresholds.
+
+Add
+
+For every important gate, use separate enter/exit thresholds:
+	•	high vol enter baseline at 1.30
+	•	high vol exit baseline at 1.15
+	•	crossover stress enter at 4
+	•	exit at 2
+	•	drawdown brake enter at X
+	•	exit only after recovery to Y
+
+Why it matters
+
+This is one of the best ways to reduce oscillation without needing new data.
+
+⸻
+
+C. Intraday risk-state machine
+
+Profit lock is currently event-driven, but not a full intraday state machine.
+
+Add states
+
+For each symbol:
+	•	normal
+	•	trigger_armed
+	•	trail_active
+	•	exit_submitted
+	•	exit_confirmed
+	•	reentry_blocked
+
+Why it matters
+
+This makes intraday protection deterministic across restarts, partial fills, and quote noise.
+
+⸻
+
+D. Equity curve control layer
+
+Your guide shows very strong returns but also extreme max drawdowns:
+	•	1y PnL 9,806.13
+	•	1y MaxDD 56.5545%
+	•	5y MaxDD 84.5905%
+Those numbers tell you the system needs to respond not just to market state, but to its own live equity curve.
+
+Add
+
+A supervisory equity-state layer:
+	•	healthy
+	•	soft_brake
+	•	hard_brake
+	•	recovery_probe
+
+Why it matters
+
+This is different from market-regime logic. It protects the account when the strategy itself is underperforming.
+
+⸻
+
+E. Exposure transition ramping
+
+Currently target changes are likely too abrupt.
+
+Add
+
+A target ramp function:
+	•	do not jump immediately to final target
+	•	move by max X% of equity or X% of target gap per cycle/day
+
+Why it matters
+
+This reduces gap risk, slippage, and false full-commitment in transitional regimes.
+
+⸻
+
+F. Execution quality estimator
+
+You have a live runtime, but no explicit execution-quality model in the runtime loop.
+
+Add
+
+A live slippage estimator:
+	•	expected fill quality vs last/quote midpoint
+	•	per-order realized slippage
+	•	rolling slippage regime
+
+Use it for
+	•	skip/resize rule
+	•	wider rebalance threshold in poor execution conditions
+	•	alerting when live microstructure worsens
+
+⸻
+
+G. Trade attribution engine
+
+Right now you can see total outcomes, but not enough component attribution.
+
+Add attribution by source:
+	•	baseline strategy contribution
+	•	switch overlay contribution
+	•	profit-lock contribution
+	•	execution drag
+	•	overtrading drag
+
+Why it matters
+
+Without this, you can keep refining the wrong component.
+
+⸻
+
+H. Failure-severity framework
+
+Current failure handling is mostly per-case.
+
+Add severity classes:
+	•	warn
+	•	protective-only
+	•	cycle-skip
+	•	halt-runtime
+
+Examples:
+	•	stale quotes: protective-only
+	•	DB write failure: halt
+	•	broker rejection for one small order: warn
+	•	repeated rejections: halt or hard brake
+
+Why it matters
+
+This makes runtime behavior much more production-grade.
+
+⸻
+
+I. Order intent simulation before submit
+
+Before actual submission, simulate the full intent set against current state.
+
+Add checks
+	•	conflicting intents
+	•	duplicate symbol actions
+	•	exposure cap violation
+	•	turnover budget violation
+	•	same-day no-reentry violation
+	•	protective exit priority violation
+
+Why it matters
+
+This is a very strong reliability upgrade.
+
+⸻
+
+J. Session-aware behavior
+
+Your intraday profit-lock checks run every 5 minutes for the current profile. Good. But session context still matters.
+
+Add session phases
+	•	first 15 minutes
+	•	normal intraday
+	•	pre-eval window
+	•	post-eval / close-near
+
+Use session phase for
+	•	looser or disabled intraday trailing early in the session
+	•	stricter stale-data handling near close
+	•	stronger conflict resolution between profit lock and rebalance near eval time
+
+⸻
+
+K. Pending-order reconciliation engine
+
+The runtime should know not just positions, but also what is already “in flight.”
+
+Add
+
+Before every decision cycle:
+	•	load open broker orders
+	•	map them to local intent IDs
+	•	cancel/replace or suppress duplicate actions
+
+Why it matters
+
+This prevents a surprising amount of live-runtime damage.
+
+⸻
+
+L. Shadow-mode evaluator
+
+When live, also compute “what would have happened” under:
+	•	no switch overlay
+	•	no profit lock
+	•	no brake
+
+Why it matters
+
+This gives you continual live A/B evaluation without adding symbols or changing production exposure.
+
+⸻
+
+M. Structural logging schema
+
+Your event types are good, but not rich enough.
+
+Add per-cycle structured fields
+	•	cycle_id
+	•	prior variant
+	•	chosen variant
+	•	rule reasons
+	•	confidence score
+	•	exposure scalar
+	•	brake state
+	•	stale-data state
+	•	intended turnover
+	•	submitted turnover
+	•	skipped intents reasons
+
+This is essential if you want to iterate fast.
+
+⸻
+
+Dev-ready implementation spec
+
+Below is the implementation spec in the format you requested.
+
+⸻
+
+1) Dynamic exposure scaling
+
+Goal
+Reduce catastrophic drawdown by scaling final target exposure using existing regime stress metrics.
+
+Exact logic change
+After variant overlay, compute:
+	•	risk_scalar_vol
+	•	risk_scalar_dd
+	•	risk_scalar_chop
+
+Then:
+final_target_after_risk = final_target_after_overlay * min(all_scalars)
+
+Example initial version:
+	•	if rv20_ann <= 0.95 → 1.00
+	•	if 0.95 < rv20_ann <= 1.20 → 0.80
+	•	if 1.20 < rv20_ann <= 1.30 → 0.60
+	•	if rv20_ann > 1.30 → 0.30
+
+And:
+	•	if dd20_pct >= 8 → cap at 0.70
+	•	if dd20_pct >= 12 → cap at 0.40
+	•	if crossovers20 >= 4 → cap at 0.50
+
+Where it fits in runtime
+Immediately after:
+	1.	baseline target computed
+	2.	variant selected
+	3.	overlay applied
+
+Before:
+	•	profit-lock close logic
+	•	rebalance intent build
+
+Expected impact
+Largest likely reduction in drawdown and overexposure during misclassified regimes.
+
+Test cases
+	1.	Calm trend regime → scalar stays near 1.0
+	2.	High vol regime → scalar reduces exposure
+	3.	Mixed regime with high chop but low DD → chop scalar dominates
+	4.	Deep DD plus high vol → final scalar equals most conservative cap
+	5.	Scalar never increases exposure above baseline target
+
+⸻
+
+2) Hard portfolio drawdown brake
+
+Goal
+Protect capital when equity drawdown becomes unacceptable regardless of regime classification.
+
+Exact logic change
+Track rolling peak equity and current equity.
+
+States:
+	•	healthy
+	•	soft_brake
+	•	hard_brake
+	•	recovery_probe
+
+Example:
+	•	drawdown >= 10% → soft_brake → max exposure 50%
+	•	drawdown >= 15% → hard_brake → max exposure 0–20%
+	•	stay in hard_brake until equity recovers above prior low + recovery threshold
+
+Where it fits in runtime
+At start of eval cycle after reading account equity, before variant selection or at least before final target is committed.
+
+Expected impact
+Strong reduction in left-tail outcomes.
+
+Test cases
+	1.	Equity drop triggers soft brake
+	2.	Larger drop triggers hard brake
+	3.	Recovery does not instantly re-enable full risk
+	4.	Brake state persists across restart
+	5.	Brake state overrides variant “risk-on” behavior
+
+⸻
+
+3) Less-binary switch logic with hysteresis
+
+Goal
+Reduce whipsaw from hard threshold cliffs.
+
+Exact logic change
+Introduce separate enter/exit thresholds for major regime gates.
+
+Examples:
+	•	high vol enter baseline at 1.30, exit only below 1.15
+	•	crossover stress enter at 4, exit only at 2
+	•	baseline lock due to DD enters at 12, exits only after lock duration and DD normalization
+
+Also allow:
+	•	warning_zone
+	•	confirm_zone
+	•	force_zone
+
+Where it fits in runtime
+Inside current regime computation and variant selection logic.
+
+Expected impact
+Fewer unnecessary state flips and cleaner trend participation.
+
+Test cases
+	1.	Vol oscillating around 1.30 does not flip state daily
+	2.	Crossovers alternating 3–4–3–4 does not whipsaw immediately
+	3.	Exit thresholds are honored separately from entry thresholds
+	4.	Hard overrides still supersede hysteresis rules
+
+⸻
+
+4) Regime confidence score
+
+Goal
+Create a continuous measure of signal quality using only current metrics.
+
+Exact logic change
+Compute a score from 0 to 1 based on weighted components:
+	•	MA alignment
+	•	slope quality
+	•	normalized MA distance
+	•	vol penalty
+	•	crossover penalty
+	•	DD penalty
+
+Example:
+confidence = trend_score - vol_penalty - chop_penalty - dd_penalty, clipped to [0,1]
+
+Use it to:
+	•	modulate exposure scalar
+	•	modulate rebalance threshold
+	•	optionally modulate profit-lock aggressiveness
+
+Where it fits in runtime
+In regime metric computation block.
+
+Expected impact
+More nuanced behavior without adding new symbols.
+
+Test cases
+	1.	Strong clean trend returns high confidence
+	2.	High vol / high chop returns low confidence
+	3.	Confidence remains bounded [0,1]
+	4.	Confidence is persisted and logged each cycle
+
+⸻
+
+5) Intraday profit-lock state machine
+
+Goal
+Make profit-lock deterministic and restart-safe.
+
+Exact logic change
+For each tracked symbol maintain:
+	•	normal
+	•	trigger_armed
+	•	trail_active
+	•	exit_submitted
+	•	exit_confirmed
+	•	reentry_blocked
+
+Persist:
+	•	trigger activation
+	•	day high watermark
+	•	active trail stop level
+	•	exit order ID if any
+	•	session reentry block flag
+
+Where it fits in runtime
+Intraday profit-lock check cadence path.
+
+Expected impact
+Better live reliability, fewer duplicate exits, cleaner reentry behavior.
+
+Test cases
+	1.	Trigger hit but no trail exit yet → state moves to trail_active
+	2.	Restart mid-session preserves state
+	3.	Exit submitted does not duplicate on next loop
+	4.	Filled exit sets reentry_blocked
+	5.	New session resets proper fields only
+
+⸻
+
+6) Intraday no-reentry guard
+
+Goal
+Prevent churn after protective exits.
+
+Exact logic change
+If a symbol exits via profit lock during session:
+	•	exclude it from any rebalance add intent until next session
+	•	optionally allow only explicit override in debug mode
+
+Where it fits in runtime
+Before build_rebalance_order_intents(...)
+
+Expected impact
+Cleaner protective behavior on reversal days.
+
+Test cases
+	1.	Symbol exited intraday is omitted from same-day buy intents
+	2.	Next session reentry allowed again
+	3.	Guard survives restart via persisted state
+
+⸻
+
+7) Order conflict resolver
+
+Goal
+Ensure the runtime never sends contradictory symbol actions.
+
+Exact logic change
+Before submission, collapse all candidate actions per symbol using priority:
+	1.	protective exit
+	2.	rebalance reduction
+	3.	rebalance increase
+
+Rules:
+	•	no simultaneous buy and sell on same symbol in same cycle
+	•	no rebalance add if exit order open
+	•	optional cancel/replace for stale protective orders
+
+Where it fits in runtime
+Immediately before intent submission.
+
+Expected impact
+Fewer rejects, cleaner broker state, deterministic behavior.
+
+Test cases
+	1.	Profit-lock exit and rebalance buy conflict → exit wins
+	2.	Existing open sell order blocks new sell duplicate
+	3.	Reduction and increase intents for same symbol resolve to net action once
+
+⸻
+
+8) Pending-order reconciliation engine
+
+Goal
+Make runtime aware of open broker orders, not just positions.
+
+Exact logic change
+At cycle start:
+	•	fetch open orders
+	•	map to known local intents
+	•	detect orphaned, duplicate, or stale orders
+	•	suppress or cancel as needed
+
+Where it fits in runtime
+Right after broker/client creation and before decision logic.
+
+Expected impact
+Less duplicate submission and better restart safety.
+
+Test cases
+	1.	Existing open order prevents duplicate submission
+	2.	Filled order is removed from pending map
+	3.	Orphaned order triggers alert or cancel workflow
+	4.	Restart sees pending order and avoids re-sending
+
+⸻
+
+9) Adaptive rebalance threshold
+
+Goal
+Trade less in noisy conditions and stay responsive in clean trends.
+
+Exact logic change
+Replace fixed threshold with:
+effective_rebalance_threshold = base_threshold * f(rv20_ann, crossovers20, confidence)
+
+Example:
+	•	calm + high confidence → smaller threshold
+	•	noisy/high vol → larger threshold
+
+Where it fits in runtime
+Passed into rebalance intent builder.
+
+Expected impact
+Reduced overtrading and slippage drag.
+
+Test cases
+	1.	Clean trend lowers threshold
+	2.	High chop raises threshold
+	3.	Threshold stays within defined min/max bounds
+
+⸻
+
+10) Daily turnover / notional budget
+
+Goal
+Prevent churn spirals and excessive execution drag.
+
+Exact logic change
+Track cumulative:
+	•	daily gross notional traded
+	•	daily turnover % of equity
+
+If limit breached:
+	•	allow protective exits
+	•	suppress new adds
+	•	optionally cap further reductions too
+
+Where it fits in runtime
+During intent filtering after intent build, before order submit.
+
+Expected impact
+Better live cost control and reduced runaway trading behavior.
+
+Test cases
+	1.	Budget under limit → normal behavior
+	2.	Budget exceeded → only protective exits allowed
+	3.	Budget resets next trading day
+	4.	Budget persisted across restart
+
+⸻
+
+11) Session-aware behavior layer
+
+Goal
+Avoid treating all intraday periods the same.
+
+Exact logic change
+Define session phase:
+	•	open
+	•	midday
+	•	pre-eval
+	•	close-near
+
+Use phase to alter:
+	•	profit-lock aggressiveness
+	•	stale-data tolerance
+	•	whether new adds are allowed
+	•	conflict resolution between rebalance and protection
+
+Where it fits in runtime
+Shared session context object computed once per loop.
+
+Expected impact
+Cleaner behavior in known noisy windows.
+
+Test cases
+	1.	Early open uses looser protective policy or suppresses certain actions
+	2.	Pre-eval prioritizes consistency into rebalance window
+	3.	Close-near phase blocks unwanted fresh adds
+
+⸻
+
+12) End-of-day reconciliation and attribution report
+
+Goal
+Create a daily audit trail and research feedback loop.
+
+Exact logic change
+Write one EOD record with:
+	•	start/end equity
+	•	variant chosen
+	•	confidence
+	•	brake state
+	•	target before/after overlay
+	•	risk scalar
+	•	submitted orders
+	•	fills
+	•	realized PnL
+	•	estimated slippage
+	•	profit-lock actions
+	•	skipped actions with reasons
+
+Where it fits in runtime
+At day-end or after eval cycle complete.
+
+Expected impact
+Massive improvement in debugging and iteration speed.
+
+Test cases
+	1.	EOD file written once per day
+	2.	Fields populated even on no-trade days
+	3.	Restart does not create duplicate EOD entries
+	4.	Missing fills handled gracefully
+
+⸻
+
+What else I would add after these
+
+After the 12 above, the next additions would be:
+	•	shadow-mode comparator
+	•	failure severity framework
+	•	live execution quality score
+	•	structured analytics dashboard export
+	•	auto-suspend after repeated broker rejects
+	•	latency and quote-age telemetry
+	•	per-cycle deterministic cycle_id
+	•	checksum/hash of decision inputs for reproducibility
+
+⸻
+
+Best implementation order
+	1.	Order conflict resolver
+	2.	Pending-order reconciliation engine
+	3.	Intraday profit-lock state machine
+	4.	Intraday no-reentry guard
+	5.	Dynamic exposure scaling
+	6.	Hard drawdown brake
+	7.	Less-binary switch logic with hysteresis
+	8.	Regime confidence score
+	9.	Adaptive rebalance threshold
+	10.	Daily turnover budget
+	11.	Session-aware behavior layer
+	12.	End-of-day reconciliation and attribution report
+
+That order gives you safer plumbing first, then better strategy control, then better observability.
+
+⸻
+
+Deep bottom line
+
+The next evolution of this system is not “more indicators.”
+
+It is turning it from a signal-driven runtime into a supervised risk engine where:
+	•	signal decides direction
+	•	confidence decides size
+	•	equity decides whether risk is allowed
+	•	execution decides whether orders should go out
+	•	state machine decides whether actions are still valid
+	•	audit layer decides what to improve next
+
+That is the real deep upgrade path.
+
+I can turn this into a phase-by-phase engineering plan with pseudocode interfaces and data model changes.
+
+
+
+
 
 
 
