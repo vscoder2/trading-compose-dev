@@ -3356,6 +3356,281 @@ That is the layer your current system is still missing.
 I can now turn the full roadmap into a single engineering backlog table with priority, difficulty, dependencies, and expected payoff.
 
 
+I reviewed it twice. The next deepest upgrade is not another signal.
+
+It is a supervisory control kernel that sits above the current strategy, switch logic, profit-lock, and broker execution.
+
+Next deepest upgrade
+
+Add a Supervisory Decision Kernel
+
+Right now the runtime does this well:
+	•	computes a baseline target
+	•	picks a variant
+	•	applies overlay
+	•	runs profit lock
+	•	submits rebalance orders
+
+What it still lacks is a single layer that decides:
+	•	is this action allowed right now
+	•	at what size
+	•	with what priority
+	•	with what proof
+	•	under what lock state
+	•	and what should happen if live state disagrees with expected state
+
+That kernel should own five things:
+	1.	Eligibility
+	•	can this symbol be traded right now
+	•	reentry lock, stale-data tier, session breaker, turnover budget
+	2.	Priority
+	•	hard brake exit
+	•	session loss brake
+	•	profit-lock exit
+	•	rebalance reduction
+	•	rebalance add
+	3.	Sizing
+	•	exposure scalar
+	•	drawdown brake cap
+	•	recovery probe cap
+	•	execution-quality cap
+	4.	State validity
+	•	broker-state drift detection
+	•	pending-order reconciliation
+	•	intent dry-run simulation
+	•	persistent lock objects
+	5.	Auditability
+	•	decision snapshot
+	•	reason attribution
+	•	cycle hash
+	•	expected vs realized turnover/fills
+
+That is the deepest upgrade because it changes the runtime from:
+
+“signal engine that sends orders”
+
+into:
+
+“risk-governed state machine that only sends provably valid orders”
+
+That is the right next step for a system that can make ~98% in 1 year but also hit ~56.6% max drawdown, and ~84.6% max drawdown over longer windows.
+
+⸻
+
+Engineering backlog table
+
+I ranked this as one combined backlog, with survivability first, then execution integrity, then research/observability.
+
+Pri	Item	Difficulty	Dependencies	Expected payoff
+1	Protective-action priority ladder	M	none	Very high live safety; stops contradictory action classes
+2	Decision dry-run before submit	M	priority ladder	Very high; catches invalid intents before broker submission
+3	Broker-state drift detector	M	broker/open-order fetch	Very high; prevents compounding stale local state
+4	Pending-order reconciliation engine	M	broker-state drift detector	Very high; suppresses duplicates and stale in-flight actions
+5	Persistent lock objects	M	state DB schema update	Very high; makes locks deterministic across restart
+6	Dynamic exposure scaling	M	regime metrics, final target path	Very high; biggest drawdown reduction lever
+7	Hard portfolio drawdown brake	M	equity tracking, lock objects	Very high; left-tail survival improvement
+8	Recovery probe mode	M	drawdown brake, exposure scaling	High; prevents re-risking too fast after damage
+9	Session PnL circuit breaker	M	intraday PnL tracking	High; better intraday survival
+10	Less-binary switch logic with hysteresis	M	regime engine	High; reduces whipsaw and cliff effects
+11	Regime confidence score	M	regime metrics, hysteresis optional	High; enables nuanced sizing and gating
+12	Intraday profit-lock state machine	M/H	state DB, broker order tracking	High; deterministic protective behavior
+13	Intraday no-reentry guard	L/M	profit-lock state machine, lock objects	High; reduces chop after exits
+14	Order conflict resolver	M	priority ladder	High; cleaner net symbol action resolution
+15	Adaptive rebalance threshold	L/M	confidence score optional	Medium-high; reduces churn in noisy periods
+16	Daily turnover / notional budget	L/M	lock objects, turnover accounting	Medium-high; caps churn spirals
+17	Exposure transition ramping	M	exposure scaling	Medium-high; smoother entry/exit path
+18	Fill-quality guard	M	fill reconciliation, slippage stats	Medium-high; protects live PnL in bad execution regimes
+19	Latency and quote-age telemetry	M	logging/metrics plumbing	Medium-high; better action gating under degraded feeds
+20	Better stale-data handling tiers	L/M	telemetry optional	Medium; avoids binary skip behavior
+21	Session-aware behavior layer	M	clock/session context	Medium; better open/close behavior
+22	Rule-reason attribution log	L/M	variant selection, locks	Medium; huge debugging value
+23	Decision snapshot hashing	M	normalized state serialization	Medium; reproducibility/auditability
+24	Post-cycle expected vs realized turnover monitor	L/M	fill reconciliation	Medium; shows execution drift
+25	End-of-day reconciliation report	L	fill/order/event logging	Medium; operator clarity
+26	Event alert hooks	L	event emission	Medium; operational visibility
+27	Trade attribution engine	H	EOD report, shadow states, realized PnL decomposition	Medium-high long-term; tells what actually adds value
+28	Live shadow comparator	H	sidecar state, EOD reporting	Medium-high research payoff; validates overlays live
+29	Failure-severity framework	M	lock objects, alerting, policy layer	Medium; cleaner runtime failure handling
+30	Adaptive cadence control	M	session context, profit-lock state	Medium; better resource/protection balance
+31	Structural logging schema	L/M	event schema update	Medium; unlocks faster debugging
+32	Per-cycle cycle_id + input checksum ledger	L/M	snapshot hashing	Medium; stronger traceability
+33	Soft risk-off mode before full baseline	M	switch logic refactor	Medium; smoother transitions
+34	Hard notional cap per symbol per cycle	L	intent filtering	Medium; localized risk containment
+35	Account-mode assertion (paper/live identity check)	L	broker account read	Medium; prevents wrong-account disasters
+
+
+⸻
+
+Suggested implementation phases
+
+Phase 1 — Control integrity
+
+Build the kernel skeleton first.
+
+Order	Item	Why first
+1	Protective-action priority ladder	Establish runtime-wide action policy
+2	Decision dry-run before submit	Prevent invalid actions immediately
+3	Broker-state drift detector	Stop local-vs-broker mismatch
+4	Pending-order reconciliation engine	Make in-flight orders first-class
+5	Persistent lock objects	Give the control layer durable memory
+
+Phase 2 — Capital preservation
+
+Then reduce damage.
+
+Order	Item	Why
+6	Dynamic exposure scaling	Biggest risk reduction lever
+7	Hard portfolio drawdown brake	Prevent catastrophic persistence
+8	Recovery probe mode	Avoid snap-back re-risking
+9	Session PnL circuit breaker	Add intraday survival brake
+10	Exposure transition ramping	Reduce abrupt risk jumps
+
+Phase 3 — Decision quality
+
+Then refine the strategy-control interface.
+
+Order	Item	Why
+11	Less-binary switch logic with hysteresis	Reduce threshold cliff behavior
+12	Regime confidence score	Turn discrete logic into graded logic
+13	Adaptive rebalance threshold	Cut churn
+14	Soft risk-off mode	Better middle ground than hard baseline
+15	Session-aware behavior layer	Align actions with market phase
+
+Phase 4 — Protective execution
+
+Then harden intraday behavior.
+
+Order	Item	Why
+16	Intraday profit-lock state machine	Deterministic protection
+17	Intraday no-reentry guard	Reduce reversal churn
+18	Order conflict resolver	One net action per symbol
+19	Fill-quality guard	Adapt to bad execution conditions
+20	Better stale-data handling tiers	Avoid over-binary action gating
+
+Phase 5 — Observability and research
+
+Then make the system provable.
+
+Order	Item	Why
+21	Rule-reason attribution log	Explain decisions
+22	Decision snapshot hashing	Reproducibility
+23	Structural logging schema	Rich debugging
+24	Expected vs realized turnover monitor	Execution diagnostics
+25	End-of-day reconciliation report	Daily operator truth
+26	Event alert hooks	Immediate awareness
+27	Cycle ledger / checksum	Strong traceability
+
+Phase 6 — Continuous improvement sidecars
+
+Then add evidence engines.
+
+Order	Item	Why
+28	Live shadow comparator	Live A/B without risking capital
+29	Trade attribution engine	Learn what layer adds edge
+30	Failure-severity framework	Cleaner fault policy
+31	Adaptive cadence control	Smarter runtime pacing
+32	Hard per-symbol notional cap	Extra local safety
+33	Account-mode assertion	Final operational hardening
+
+
+⸻
+
+Deepest architecture recommendation
+
+New top-level modules
+
+If you want the deepest clean upgrade, split the runtime into these control-plane components:
+
+1. supervisor.py
+
+Owns:
+	•	eligibility
+	•	locks
+	•	brakes
+	•	session circuit breakers
+	•	exposure caps
+
+2. action_policy.py
+
+Owns:
+	•	priority ladder
+	•	conflict resolution
+	•	dry-run validation
+	•	net allowed actions
+
+3. reconcile.py
+
+Owns:
+	•	broker positions
+	•	open orders
+	•	fill reconciliation
+	•	drift detection
+
+4. decision_ledger.py
+
+Owns:
+	•	cycle_id
+	•	normalized decision snapshot
+	•	input hash
+	•	reason attribution
+	•	EOD summary
+
+5. shadow_eval.py
+
+Owns:
+	•	no-profit-lock path
+	•	no-switch path
+	•	no-brake path
+	•	previous-variant hold path
+
+This preserves your current core strategy code while making the runtime governable.
+
+⸻
+
+Highest-payoff subset if you want only 10 backlog items
+
+If you only want the strongest 10, do these:
+
+Pri	Item	Payoff
+1	Protective-action priority ladder	Very high
+2	Decision dry-run before submit	Very high
+3	Broker-state drift detector	Very high
+4	Persistent lock objects	Very high
+5	Dynamic exposure scaling	Very high
+6	Hard portfolio drawdown brake	Very high
+7	Recovery probe mode	High
+8	Less-binary switch logic with hysteresis	High
+9	Intraday profit-lock state machine	High
+10	Fill-quality guard	Medium-high
+
+That set gives you the biggest safety and control gain fastest.
+
+⸻
+
+What “review twice” changed in my conclusion
+
+On a first pass, it is tempting to keep suggesting smarter signals.
+
+On the second pass, the bigger truth is this:
+	•	your system already has enough signal logic to be dangerous
+	•	it does not yet have enough supervisory logic to be trustworthy
+
+So the next deepest upgrade is not a better indicator.
+
+It is a runtime constitution:
+	•	what actions are allowed
+	•	in what order
+	•	at what size
+	•	under what lock
+	•	with what proof
+	•	and with what recovery behavior when reality diverges from expectation
+
+That is the right next layer.
+
+I can turn this backlog into a dev-ready specification sheet with columns for:
+goal, exact logic change, runtime insertion point, data model changes, and test cases.
+
+
 
 
 
