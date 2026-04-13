@@ -1,0 +1,24 @@
+
+> @figma/my-make-file@0.0.1 dev:runtime
+> bash scripts/dev_runtime.sh
+
+{
+  "ok": true,
+  "out": "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/ui_ux/src/app/data/runtime_snapshot.json",
+  "db": "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/runtime_data/users/demo_trader/switch_runtime_v1_runtime.db",
+  "stocks": 8,
+  "positions": 1,
+  "trades": 300
+}
+[ui_ux] starting Vite on 0.0.0.0:8787 with runtime snapshot daemon
+[snapshot-daemon] start db=/home/chewy/projects/trading-compose-dev/switch_runtime_v1/runtime_data/users/demo_trader/switch_runtime_v1_runtime.db out=/home/chewy/projects/trading-compose-dev/switch_runtime_v1/ui_ux/src/app/data/runtime_snapshot.json interval=10.0s trade_limit=300
+[snapshot-daemon] updated stocks=8 positions=1 trades=300
+
+  VITE v6.3.5  ready in 241 ms
+
+  ➜  Local:   http://localhost:8787/
+  ➜  Network: http://192.168.1.175:8787/
+  ➜  Network: http://192.168.1.51:8787/
+  ➜  Network: http://172.17.0.1:8787/
+  ➜  Network: http://172.18.0.1:8787/
+  ➜  Network: http://100.77.80.30:8787/

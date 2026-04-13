@@ -1,0 +1,162 @@
+{
+  "window": {
+    "start": "2026-03-16",
+    "end": "2026-03-27",
+    "trading_days": 10
+  },
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "initial_equity": 10000.0,
+  "data_feed": "sip",
+  "rebalance_time_ny": "15:55",
+  "profit_lock_order_type": "market_order",
+  "v1": {
+    "final_equity": 9734.934784084542,
+    "return_pct": -2.650652159154576,
+    "maxdd_pct": 7.999528287601373,
+    "events": 2
+  },
+  "v2": {
+    "final_equity": 9734.934784084542,
+    "return_pct": -2.650652159154576,
+    "maxdd_pct": 7.999528287601373,
+    "events": 2
+  },
+  "delta": {
+    "equity_v2_minus_v1": 0.0,
+    "return_pct_v2_minus_v1": 0.0,
+    "diff_bps": 0.0
+  },
+  "daily_csv": "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/reports/compare_v1_v2_last10_trading_days_daily_2026-03-27.csv",
+  "daily_rows": [
+    {
+      "date": "2026-03-16",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 9999.00009999,
+      "v1_pnl": -0.999900009999692,
+      "v1_ret_pct": -0.009999000099991662,
+      "v2_equity": 9999.00009999,
+      "v2_pnl": -0.999900009999692,
+      "v2_ret_pct": -0.009999000099991662,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-17",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 10200.059867407414,
+      "v1_pnl": 201.05976741741324,
+      "v1_ret_pct": 2.0107987339415434,
+      "v2_equity": 10200.059867407414,
+      "v2_pnl": 201.05976741741324,
+      "v2_ret_pct": 2.0107987339415434,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-18",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 10138.624938474315,
+      "v1_pnl": -61.43492893309849,
+      "v1_ret_pct": -0.602299689724406,
+      "v2_equity": 10138.624938474315,
+      "v2_pnl": -61.43492893309849,
+      "v2_ret_pct": -0.602299689724406,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-19",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 10237.293157669897,
+      "v1_pnl": 98.66821919558242,
+      "v1_ret_pct": 0.9731913330885078,
+      "v2_equity": 10237.293157669897,
+      "v2_pnl": 98.66821919558242,
+      "v2_ret_pct": 0.9731913330885078,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-20",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 9447.016571848679,
+      "v1_pnl": -790.2765858212188,
+      "v1_ret_pct": -7.719585379159866,
+      "v2_equity": 9447.016571848679,
+      "v2_pnl": -790.2765858212188,
+      "v2_ret_pct": -7.719585379159866,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-23",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 10105.327706985661,
+      "v1_pnl": 658.3111351369826,
+      "v1_ret_pct": 6.968455386208339,
+      "v2_equity": 10105.327706985661,
+      "v2_pnl": 658.3111351369826,
+      "v2_ret_pct": 6.968455386208339,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-24",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 9811.933694191748,
+      "v1_pnl": -293.39401279391313,
+      "v1_ret_pct": -2.9033597059014205,
+      "v2_equity": 9811.933694191748,
+      "v2_pnl": -293.39401279391313,
+      "v2_ret_pct": -2.9033597059014205,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-25",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 9418.357995637414,
+      "v1_pnl": -393.57569855433394,
+      "v1_ret_pct": -4.011194029850751,
+      "v2_equity": 9418.357995637414,
+      "v2_pnl": -393.57569855433394,
+      "v2_ret_pct": -4.011194029850751,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-26",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 10236.412429111433,
+      "v1_pnl": 818.0544334740189,
+      "v1_ret_pct": 8.685743670530922,
+      "v2_equity": 10236.412429111433,
+      "v2_pnl": 818.0544334740189,
+      "v2_ret_pct": 8.685743670530922,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    },
+    {
+      "date": "2026-03-27",
+      "v1_variant": "baseline",
+      "v2_variant": "baseline",
+      "v1_equity": 9734.934784084542,
+      "v1_pnl": -501.47764502689097,
+      "v1_ret_pct": -4.898958971218603,
+      "v2_equity": 9734.934784084542,
+      "v2_pnl": -501.47764502689097,
+      "v2_ret_pct": -4.898958971218603,
+      "equity_delta_v2_minus_v1": 0.0,
+      "equity_diff_bps": 0.0
+    }
+  ]
+}

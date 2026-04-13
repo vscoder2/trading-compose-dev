@@ -1,0 +1,138 @@
+{
+  "baseline": {
+    "1y": {
+      "m0106_dd": 21.234413930745053,
+      "m0106_final": 19418.06157526601,
+      "v1_dd": 35.42609707057258,
+      "v1_final": 23643.357697744024,
+      "v2_dd": 17.36049286438656,
+      "v2_final": 45708.51371640169
+    },
+    "2m": {
+      "m0106_dd": 7.068698847574783,
+      "m0106_final": 19000.8106958482,
+      "v1_dd": 8.66704569580889,
+      "v1_final": 21020.108235875323,
+      "v2_dd": 16.376428800803208,
+      "v2_final": 16072.359641471796
+    },
+    "2y": {
+      "m0106_dd": 47.35542206743855,
+      "m0106_final": 12988.608771626676,
+      "v1_dd": 45.27001774988935,
+      "v1_final": 18241.95401664062,
+      "v2_dd": 74.19558211063527,
+      "v2_final": 16345.79110595488
+    },
+    "3m": {
+      "m0106_dd": 9.893362411045333,
+      "m0106_final": 17277.606026261263,
+      "v1_dd": 22.704213841574788,
+      "v1_final": 14624.546478507096,
+      "v2_dd": 16.376428800803186,
+      "v2_final": 21200.832441858118
+    },
+    "3y": {
+      "m0106_dd": 53.561105135378256,
+      "m0106_final": 15221.281657531135,
+      "v1_dd": 73.63070572481278,
+      "v1_final": 16919.506419140034,
+      "v2_dd": 74.19558211063534,
+      "v2_final": 21993.867075218586
+    },
+    "5m": {
+      "m0106_dd": 12.806243171288354,
+      "m0106_final": 19705.586547482577,
+      "v1_dd": 29.044692603023563,
+      "v1_final": 22955.068534363105,
+      "v2_dd": 16.376428800803197,
+      "v2_final": 23557.666621484233
+    }
+  },
+  "best_full_candidate": {
+    "1y_best_baseline_dd": 17.36049286438656,
+    "1y_best_baseline_final": 45708.51371640169,
+    "1y_meta_dd": 27.449508371291586,
+    "1y_meta_final": 20826.497547391362,
+    "1y_meta_return": 108.26497547391361,
+    "2m_best_baseline_dd": 7.068698847574783,
+    "2m_best_baseline_final": 21020.108235875323,
+    "2m_meta_dd": 7.06869884757477,
+    "2m_meta_final": 21974.474467829525,
+    "2m_meta_return": 119.74474467829523,
+    "2y_best_baseline_dd": 45.27001774988935,
+    "2y_best_baseline_final": 18241.95401664062,
+    "2y_meta_dd": 50.72358593807105,
+    "2y_meta_final": 14878.928654768484,
+    "2y_meta_return": 48.78928654768484,
+    "3m_best_baseline_dd": 9.893362411045333,
+    "3m_best_baseline_final": 21200.832441858118,
+    "3m_meta_dd": 7.068698847574781,
+    "3m_meta_final": 21121.589372797935,
+    "3m_meta_return": 111.21589372797933,
+    "3y_best_baseline_dd": 53.561105135378256,
+    "3y_best_baseline_final": 21993.867075218586,
+    "3y_meta_dd": 50.72358593807111,
+    "3y_meta_final": 26816.412090506707,
+    "3y_meta_return": 168.16412090506705,
+    "5m_best_baseline_dd": 12.806243171288354,
+    "5m_best_baseline_final": 23557.666621484233,
+    "5m_meta_dd": 13.953549164913378,
+    "5m_meta_final": 24199.766753665102,
+    "5m_meta_return": 141.99766753665105,
+    "avg_dd_over_best_baseline_pct": 2.7816482814519574,
+    "avg_uplift_pct_vs_best_baseline": -7.342173874076507,
+    "burst_dd20_max": 18.0,
+    "burst_ret3d_min": 0.12,
+    "burst_rv20_max": 120.0,
+    "burst_v1_bonus": 0.1,
+    "candidate_id": "MRV2-00002",
+    "dd_penalty": 0.08,
+    "lookback_days": 10,
+    "min_edge_to_switch": 0.03,
+    "min_hold_days": 2,
+    "ranking_score": 5839.2482811112095,
+    "riskoff_crossovers20_min": 8,
+    "riskoff_dd20_min": 18.0,
+    "riskoff_m0106_bonus": 0.35,
+    "riskoff_rv20_min": 95.0,
+    "router_days_m0106_all": 836,
+    "router_days_v1_all": 390,
+    "router_days_v2_all": 78,
+    "switch_penalty": 0.03,
+    "vol_penalty": 1.0,
+    "wins_vs_best_baseline": 3
+  },
+  "outputs": {
+    "coarse_csv": "/home/chewy/projects/trading-compose-dev/meta_router_v2/reports/sweep_meta_router_v2_long_focus_guard_20260327_20260327_coarse.csv",
+    "full_csv": "/home/chewy/projects/trading-compose-dev/meta_router_v2/reports/sweep_meta_router_v2_long_focus_guard_20260327_20260327_full.csv",
+    "json": "/home/chewy/projects/trading-compose-dev/meta_router_v2/reports/sweep_meta_router_v2_long_focus_guard_20260327_20260327.json"
+  },
+  "run": {
+    "coarse_windows": [
+      "2m",
+      "3m",
+      "5m",
+      "1y",
+      "2y",
+      "3y"
+    ],
+    "coarse_workers": 10,
+    "data_feed": "sip",
+    "end_date": "2026-03-27",
+    "full_windows": [
+      "2m",
+      "3m",
+      "5m",
+      "1y",
+      "2y",
+      "3y"
+    ],
+    "full_workers": 4,
+    "grid_size": 384,
+    "initial_equity": 10000.0,
+    "mode": "paper",
+    "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "topk_to_full": 20
+  }
+}

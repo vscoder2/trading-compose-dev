@@ -1,0 +1,3839 @@
+{
+  "generatedAt": "2026-04-11T00:25:09.896926+00:00",
+  "sourceDb": "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/runtime_data/users/demo_trader/switch_runtime_v1_runtime.db",
+  "summary": {
+    "portfolioValue": 36962.54,
+    "todayPnL": 0.0,
+    "todayPnLPct": 0.0,
+    "activeBots": 1,
+    "totalBotProfit": 106922.557147,
+    "todaysTrades": 2,
+    "openAlerts": 0,
+    "maxDrawdownPct": 6.9336,
+    "profile": "Semiconductor Momentum Pro",
+    "profileId": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "variant": "baseline"
+  },
+  "stocks": [
+    {
+      "symbol": "SOXL",
+      "name": "Direxion Daily Semiconductor Bull 3X Shares",
+      "price": 152.75992,
+      "change": 111.65868,
+      "changePercent": 271.6674,
+      "volume": 14063,
+      "marketCap": "N/A"
+    },
+    {
+      "symbol": "SOXS",
+      "name": "Direxion Daily Semiconductor Bear 3X Shares",
+      "price": 144.10804,
+      "change": 98.10764,
+      "changePercent": 213.2756,
+      "volume": 8863,
+      "marketCap": "N/A"
+    },
+    {
+      "symbol": "SPXL",
+      "name": "Direxion Daily S&P 500 Bull 3X Shares",
+      "price": 0.0,
+      "change": 0.0,
+      "changePercent": 0.0,
+      "volume": 150,
+      "marketCap": "N/A"
+    },
+    {
+      "symbol": "SPXS",
+      "name": "Direxion Daily S&P 500 Bear 3X Shares",
+      "price": 0.0,
+      "change": 0.0,
+      "changePercent": 0.0,
+      "volume": 980,
+      "marketCap": "N/A"
+    },
+    {
+      "symbol": "SQQQ",
+      "name": "ProShares UltraPro Short QQQ",
+      "price": 0.0,
+      "change": 0.0,
+      "changePercent": 0.0,
+      "volume": 331,
+      "marketCap": "N/A"
+    },
+    {
+      "symbol": "TMF",
+      "name": "Direxion Daily 20+ Year Treasury Bull 3X Shares",
+      "price": 0.0,
+      "change": 0.0,
+      "changePercent": 0.0,
+      "volume": 530,
+      "marketCap": "N/A"
+    },
+    {
+      "symbol": "TMV",
+      "name": "Direxion Daily 20+ Year Treasury Bear 3X Shares",
+      "price": 39.26156,
+      "change": 3.72076,
+      "changePercent": 10.469,
+      "volume": 1444,
+      "marketCap": "N/A"
+    },
+    {
+      "symbol": "TQQQ",
+      "name": "ProShares UltraPro QQQ",
+      "price": 0.0,
+      "change": 0.0,
+      "changePercent": 0.0,
+      "volume": 674,
+      "marketCap": "N/A"
+    }
+  ],
+  "positions": [
+    {
+      "symbol": "SOXL",
+      "name": "Direxion Daily Semiconductor Bull 3X Shares",
+      "shares": 544.945318,
+      "avgPrice": 122.886601,
+      "currentPrice": 152.75992,
+      "totalValue": 83245.803251,
+      "gainLoss": 16279.325378,
+      "gainLossPercent": 24.3097
+    }
+  ],
+  "trades": [
+    {
+      "id": "25",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 6.382436,
+      "price": 0.0,
+      "timestamp": "2025-03-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "27",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 0.305866,
+      "price": 0.0,
+      "timestamp": "2025-03-31T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "28",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 0.623699,
+      "price": 0.0,
+      "timestamp": "2025-03-31T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "30",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 0.492583,
+      "price": 0.0,
+      "timestamp": "2025-04-01T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "31",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 1.020792,
+      "price": 0.0,
+      "timestamp": "2025-04-01T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "33",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 0.609397,
+      "price": 0.0,
+      "timestamp": "2025-04-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "34",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 1.238616,
+      "price": 0.0,
+      "timestamp": "2025-04-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "36",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 31.297993,
+      "price": 35.5408,
+      "timestamp": "2025-04-03T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1112.3557
+    },
+    {
+      "id": "37",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 61.606387,
+      "price": 0.0,
+      "timestamp": "2025-04-03T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "38",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 21.769369,
+      "price": 0.0,
+      "timestamp": "2025-04-03T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "39",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 8.756558,
+      "price": 35.5408,
+      "timestamp": "2025-04-03T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "41",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 33.487132,
+      "price": 37.88112,
+      "timestamp": "2025-04-04T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1167.0041
+    },
+    {
+      "id": "42",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 51.27383,
+      "price": 0.0,
+      "timestamp": "2025-04-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "43",
+      "symbol": "SQQQ",
+      "type": "sell",
+      "shares": 21.769369,
+      "price": 0.0,
+      "timestamp": "2025-04-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "44",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 13.342863,
+      "price": 37.88112,
+      "timestamp": "2025-04-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "46",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 36.822848,
+      "price": 39.26156,
+      "timestamp": "2025-04-07T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1126.5566
+    },
+    {
+      "id": "47",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 5.156184,
+      "price": 0.0,
+      "timestamp": "2025-04-07T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "48",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 1.899658,
+      "price": 39.26156,
+      "timestamp": "2025-04-07T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "50",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 0.204878,
+      "price": 0.0,
+      "timestamp": "2025-04-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "51",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 0.537864,
+      "price": 39.26156,
+      "timestamp": "2025-04-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 15.7984
+    },
+    {
+      "id": "53",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 10.461179,
+      "price": 0.0,
+      "timestamp": "2025-04-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "54",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 28.511194,
+      "price": 0.0,
+      "timestamp": "2025-04-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "55",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 148.653186,
+      "price": 39.26156,
+      "timestamp": "2025-04-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1381.8381
+    },
+    {
+      "id": "57",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 0.427719,
+      "price": 0.0,
+      "timestamp": "2025-04-10T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "58",
+      "symbol": "SQQQ",
+      "type": "sell",
+      "shares": 0.179498,
+      "price": 0.0,
+      "timestamp": "2025-04-10T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "60",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 0.02566,
+      "price": 0.0,
+      "timestamp": "2025-04-11T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "61",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 0.010773,
+      "price": 0.0,
+      "timestamp": "2025-04-11T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "63",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 67.890672,
+      "price": 0.0,
+      "timestamp": "2025-04-14T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "64",
+      "symbol": "SQQQ",
+      "type": "sell",
+      "shares": 28.342469,
+      "price": 0.0,
+      "timestamp": "2025-04-14T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "66",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 67.694401,
+      "price": 0.0,
+      "timestamp": "2025-04-15T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "67",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 28.535802,
+      "price": 0.0,
+      "timestamp": "2025-04-15T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "69",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 0.765356,
+      "price": 0.0,
+      "timestamp": "2025-04-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "70",
+      "symbol": "SQQQ",
+      "type": "sell",
+      "shares": 28.535802,
+      "price": 0.0,
+      "timestamp": "2025-04-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "71",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 140.711977,
+      "price": 39.26156,
+      "timestamp": "2025-04-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "73",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 0.878152,
+      "price": 0.0,
+      "timestamp": "2025-04-17T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "74",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 1.760147,
+      "price": 39.26156,
+      "timestamp": "2025-04-17T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "76",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 0.4899,
+      "price": 0.0,
+      "timestamp": "2025-04-21T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "77",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 0.995622,
+      "price": 39.26156,
+      "timestamp": "2025-04-21T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "79",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 73.170784,
+      "price": 0.0,
+      "timestamp": "2025-04-22T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "80",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 139.947452,
+      "price": 39.26156,
+      "timestamp": "2025-04-22T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "82",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 71.009397,
+      "price": 0.0,
+      "timestamp": "2025-04-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "83",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 29.702114,
+      "price": 0.0,
+      "timestamp": "2025-04-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "85",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 0.882656,
+      "price": 0.0,
+      "timestamp": "2025-04-24T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "86",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 0.378538,
+      "price": 0.0,
+      "timestamp": "2025-04-24T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "88",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 24.301189,
+      "price": 0.0,
+      "timestamp": "2025-04-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "89",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 70.12674,
+      "price": 0.0,
+      "timestamp": "2025-04-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "90",
+      "symbol": "SQQQ",
+      "type": "sell",
+      "shares": 30.080652,
+      "price": 0.0,
+      "timestamp": "2025-04-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "91",
+      "symbol": "TMF",
+      "type": "buy",
+      "shares": 77.146241,
+      "price": 0.0,
+      "timestamp": "2025-04-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "92",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 113.246859,
+      "price": 0.0,
+      "timestamp": "2025-04-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "94",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 24.301189,
+      "price": 0.0,
+      "timestamp": "2025-04-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "95",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 70.168387,
+      "price": 0.0,
+      "timestamp": "2025-04-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "96",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 30.427358,
+      "price": 0.0,
+      "timestamp": "2025-04-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "97",
+      "symbol": "TMF",
+      "type": "sell",
+      "shares": 77.146241,
+      "price": 0.0,
+      "timestamp": "2025-04-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "98",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 113.246859,
+      "price": 0.0,
+      "timestamp": "2025-04-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "100",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 70.168387,
+      "price": 0.0,
+      "timestamp": "2025-04-29T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "101",
+      "symbol": "SQQQ",
+      "type": "buy",
+      "shares": 0.026997,
+      "price": 0.0,
+      "timestamp": "2025-04-29T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "102",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 130.182834,
+      "price": 39.26156,
+      "timestamp": "2025-04-29T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "104",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 23.794244,
+      "price": 0.0,
+      "timestamp": "2025-04-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "105",
+      "symbol": "SQQQ",
+      "type": "sell",
+      "shares": 30.454355,
+      "price": 0.0,
+      "timestamp": "2025-04-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "106",
+      "symbol": "TMF",
+      "type": "buy",
+      "shares": 75.190047,
+      "price": 0.0,
+      "timestamp": "2025-04-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "107",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 130.182834,
+      "price": 39.26156,
+      "timestamp": "2025-04-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "108",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 110.955766,
+      "price": 0.0,
+      "timestamp": "2025-04-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "110",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.219587,
+      "price": 0.0,
+      "timestamp": "2025-05-01T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "111",
+      "symbol": "TMF",
+      "type": "buy",
+      "shares": 2.419078,
+      "price": 0.0,
+      "timestamp": "2025-05-01T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "112",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 2.373768,
+      "price": 0.0,
+      "timestamp": "2025-05-01T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "114",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.538861,
+      "price": 0.0,
+      "timestamp": "2025-05-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "115",
+      "symbol": "TMF",
+      "type": "buy",
+      "shares": 4.040568,
+      "price": 0.0,
+      "timestamp": "2025-05-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "116",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 2.762286,
+      "price": 0.0,
+      "timestamp": "2025-05-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "118",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 236.069694,
+      "price": 0.0,
+      "timestamp": "2025-05-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "119",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.022003,
+      "price": 0.0,
+      "timestamp": "2025-05-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "120",
+      "symbol": "TMF",
+      "type": "sell",
+      "shares": 81.649693,
+      "price": 0.0,
+      "timestamp": "2025-05-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "121",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.075098,
+      "price": 0.0,
+      "timestamp": "2025-05-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "123",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 236.069694,
+      "price": 0.0,
+      "timestamp": "2025-05-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "124",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 23.013793,
+      "price": 0.0,
+      "timestamp": "2025-05-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "125",
+      "symbol": "SPXS",
+      "type": "buy",
+      "shares": 143.0076,
+      "price": 0.0,
+      "timestamp": "2025-05-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "126",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 105.744614,
+      "price": 0.0,
+      "timestamp": "2025-05-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "128",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 71.5038,
+      "price": 0.0,
+      "timestamp": "2025-05-07T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "129",
+      "symbol": "TMV",
+      "type": "buy",
+      "shares": 119.70335,
+      "price": 39.26156,
+      "timestamp": "2025-05-07T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "131",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 217.929156,
+      "price": 0.0,
+      "timestamp": "2025-05-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "132",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 22.076572,
+      "price": 0.0,
+      "timestamp": "2025-05-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "133",
+      "symbol": "SPXS",
+      "type": "sell",
+      "shares": 71.5038,
+      "price": 0.0,
+      "timestamp": "2025-05-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "134",
+      "symbol": "TMV",
+      "type": "sell",
+      "shares": 119.70335,
+      "price": 39.26156,
+      "timestamp": "2025-05-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "135",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 100.898448,
+      "price": 0.0,
+      "timestamp": "2025-05-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "137",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 5.211844,
+      "price": 0.0,
+      "timestamp": "2025-05-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "138",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.297148,
+      "price": 0.0,
+      "timestamp": "2025-05-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "139",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 1.14444,
+      "price": 0.0,
+      "timestamp": "2025-05-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "141",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 53.179328,
+      "price": 41.10124,
+      "timestamp": "2025-05-12T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 2185.7363
+    },
+    {
+      "id": "142",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 14.743135,
+      "price": 41.10124,
+      "timestamp": "2025-05-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 605.9611
+    },
+    {
+      "id": "143",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.643085,
+      "price": 0.0,
+      "timestamp": "2025-05-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "144",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.766863,
+      "price": 0.0,
+      "timestamp": "2025-05-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "146",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 49.493544,
+      "price": 42.61688,
+      "timestamp": "2025-05-13T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 2109.2604
+    },
+    {
+      "id": "147",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 6.839935,
+      "price": 42.61688,
+      "timestamp": "2025-05-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 291.4967
+    },
+    {
+      "id": "148",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.637348,
+      "price": 0.0,
+      "timestamp": "2025-05-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "149",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.222065,
+      "price": 0.0,
+      "timestamp": "2025-05-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "151",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 0.306713,
+      "price": 42.61688,
+      "timestamp": "2025-05-14T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 13.0712
+    },
+    {
+      "id": "152",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.180214,
+      "price": 0.0,
+      "timestamp": "2025-05-14T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "153",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.609954,
+      "price": 0.0,
+      "timestamp": "2025-05-14T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "155",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 3.674844,
+      "price": 42.61688,
+      "timestamp": "2025-05-15T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "156",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.350618,
+      "price": 0.0,
+      "timestamp": "2025-05-15T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "157",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.404706,
+      "price": 0.0,
+      "timestamp": "2025-05-15T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "159",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 2.620641,
+      "price": 42.61688,
+      "timestamp": "2025-05-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "160",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.229313,
+      "price": 0.0,
+      "timestamp": "2025-05-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "161",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.349334,
+      "price": 0.0,
+      "timestamp": "2025-05-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "163",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 2.763705,
+      "price": 42.61688,
+      "timestamp": "2025-05-19T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "164",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.162396,
+      "price": 0.0,
+      "timestamp": "2025-05-19T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "165",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.686322,
+      "price": 0.0,
+      "timestamp": "2025-05-19T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "167",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 0.773196,
+      "price": 42.61688,
+      "timestamp": "2025-05-20T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 29.8805
+    },
+    {
+      "id": "168",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.054082,
+      "price": 0.0,
+      "timestamp": "2025-05-20T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "169",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.156344,
+      "price": 0.0,
+      "timestamp": "2025-05-20T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "171",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 1.103084,
+      "price": 42.61688,
+      "timestamp": "2025-05-21T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "172",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.03466,
+      "price": 0.0,
+      "timestamp": "2025-05-21T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "173",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.703649,
+      "price": 0.0,
+      "timestamp": "2025-05-21T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "175",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 4.285467,
+      "price": 42.61688,
+      "timestamp": "2025-05-22T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "176",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.177174,
+      "price": 0.0,
+      "timestamp": "2025-05-22T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "177",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 1.314107,
+      "price": 0.0,
+      "timestamp": "2025-05-22T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "179",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 3.280683,
+      "price": 42.61688,
+      "timestamp": "2025-05-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "180",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.275714,
+      "price": 0.0,
+      "timestamp": "2025-05-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "181",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.361559,
+      "price": 0.0,
+      "timestamp": "2025-05-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "183",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 51.945689,
+      "price": 42.09952,
+      "timestamp": "2025-05-27T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1815.0204
+    },
+    {
+      "id": "184",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 4.8114,
+      "price": 42.09952,
+      "timestamp": "2025-05-27T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 168.1138
+    },
+    {
+      "id": "185",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.26761,
+      "price": 0.0,
+      "timestamp": "2025-05-27T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "186",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.41581,
+      "price": 0.0,
+      "timestamp": "2025-05-27T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "188",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 0.168246,
+      "price": 42.09952,
+      "timestamp": "2025-05-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 5.8787
+    },
+    {
+      "id": "189",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.076829,
+      "price": 0.0,
+      "timestamp": "2025-05-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "190",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.247414,
+      "price": 0.0,
+      "timestamp": "2025-05-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "192",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 0.024196,
+      "price": 42.09952,
+      "timestamp": "2025-05-29T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.8454
+    },
+    {
+      "id": "193",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.09778,
+      "price": 0.0,
+      "timestamp": "2025-05-29T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "194",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.434655,
+      "price": 0.0,
+      "timestamp": "2025-05-29T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "196",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 7.900529,
+      "price": 42.09952,
+      "timestamp": "2025-05-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "197",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.423571,
+      "price": 0.0,
+      "timestamp": "2025-05-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "198",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 1.826311,
+      "price": 0.0,
+      "timestamp": "2025-05-30T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "200",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 3.425032,
+      "price": 42.09952,
+      "timestamp": "2025-06-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 102.8079
+    },
+    {
+      "id": "201",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.259185,
+      "price": 0.0,
+      "timestamp": "2025-06-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "202",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.505867,
+      "price": 0.0,
+      "timestamp": "2025-06-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "204",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 51.813603,
+      "price": 43.62552,
+      "timestamp": "2025-06-03T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1634.3366
+    },
+    {
+      "id": "205",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 9.033545,
+      "price": 43.62552,
+      "timestamp": "2025-06-03T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 25.9358
+    },
+    {
+      "id": "206",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.405117,
+      "price": 0.0,
+      "timestamp": "2025-06-03T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "207",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 1.140663,
+      "price": 0.0,
+      "timestamp": "2025-06-03T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "209",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 5.114644,
+      "price": 43.62552,
+      "timestamp": "2025-06-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "210",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.427585,
+      "price": 0.0,
+      "timestamp": "2025-06-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "211",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.839756,
+      "price": 0.0,
+      "timestamp": "2025-06-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "213",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 0.548596,
+      "price": 43.62552,
+      "timestamp": "2025-06-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "214",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.074391,
+      "price": 0.0,
+      "timestamp": "2025-06-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "215",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.604173,
+      "price": 0.0,
+      "timestamp": "2025-06-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "217",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 1.171413,
+      "price": 43.62552,
+      "timestamp": "2025-06-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "218",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.078698,
+      "price": 0.0,
+      "timestamp": "2025-06-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "219",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.270711,
+      "price": 0.0,
+      "timestamp": "2025-06-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "221",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 48.43226,
+      "price": 45.63684,
+      "timestamp": "2025-06-09T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 2.3561
+    },
+    {
+      "id": "222",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 8.242658,
+      "price": 45.63684,
+      "timestamp": "2025-06-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "223",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.584731,
+      "price": 0.0,
+      "timestamp": "2025-06-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "224",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 2.309728,
+      "price": 0.0,
+      "timestamp": "2025-06-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "226",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 5.262228,
+      "price": 45.63684,
+      "timestamp": "2025-06-10T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "227",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.38584,
+      "price": 0.0,
+      "timestamp": "2025-06-10T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "228",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 1.39633,
+      "price": 0.0,
+      "timestamp": "2025-06-10T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "230",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 0.262294,
+      "price": 45.63684,
+      "timestamp": "2025-06-11T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "231",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.043064,
+      "price": 0.0,
+      "timestamp": "2025-06-11T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "232",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.032274,
+      "price": 0.0,
+      "timestamp": "2025-06-11T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "234",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 0.758999,
+      "price": 45.63684,
+      "timestamp": "2025-06-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "235",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.098232,
+      "price": 0.0,
+      "timestamp": "2025-06-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "236",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 0.015532,
+      "price": 0.0,
+      "timestamp": "2025-06-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "238",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 5.226927,
+      "price": 45.63684,
+      "timestamp": "2025-06-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "239",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 0.388562,
+      "price": 0.0,
+      "timestamp": "2025-06-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "240",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 1.213684,
+      "price": 0.0,
+      "timestamp": "2025-06-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "242",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 46.618093,
+      "price": 47.12264,
+      "timestamp": "2025-06-16T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 9.2836
+    },
+    {
+      "id": "243",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 6.943908,
+      "price": 47.12264,
+      "timestamp": "2025-06-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "244",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.544033,
+      "price": 0.0,
+      "timestamp": "2025-06-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "245",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 1.080209,
+      "price": 0.0,
+      "timestamp": "2025-06-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "247",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 0.710295,
+      "price": 47.12264,
+      "timestamp": "2025-06-17T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "248",
+      "symbol": "SPXL",
+      "type": "buy",
+      "shares": 0.004619,
+      "price": 0.0,
+      "timestamp": "2025-06-17T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "249",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.394682,
+      "price": 0.0,
+      "timestamp": "2025-06-17T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "251",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 1.208089,
+      "price": 47.12264,
+      "timestamp": "2025-06-18T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "252",
+      "symbol": "SPXL",
+      "type": "sell",
+      "shares": 24.479148,
+      "price": 0.0,
+      "timestamp": "2025-06-18T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "253",
+      "symbol": "TMF",
+      "type": "buy",
+      "shares": 105.073362,
+      "price": 0.0,
+      "timestamp": "2025-06-18T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "254",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.339505,
+      "price": 0.0,
+      "timestamp": "2025-06-18T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "256",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 1.055182,
+      "price": 47.12264,
+      "timestamp": "2025-06-20T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "257",
+      "symbol": "TMF",
+      "type": "sell",
+      "shares": 0.765612,
+      "price": 0.0,
+      "timestamp": "2025-06-20T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "258",
+      "symbol": "TQQQ",
+      "type": "buy",
+      "shares": 0.150173,
+      "price": 0.0,
+      "timestamp": "2025-06-20T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "260",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 0.433232,
+      "price": 47.12264,
+      "timestamp": "2025-06-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "261",
+      "symbol": "TMF",
+      "type": "buy",
+      "shares": 0.8916,
+      "price": 0.0,
+      "timestamp": "2025-06-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "262",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 1.12995,
+      "price": 0.0,
+      "timestamp": "2025-06-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "264",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 44.774624,
+      "price": 48.99052,
+      "timestamp": "2025-06-24T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 2.7802
+    },
+    {
+      "id": "265",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 179.098494,
+      "price": 48.99052,
+      "timestamp": "2025-06-24T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "266",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 75.489788,
+      "price": 0.0,
+      "timestamp": "2025-06-24T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "267",
+      "symbol": "TMF",
+      "type": "sell",
+      "shares": 105.199351,
+      "price": 0.0,
+      "timestamp": "2025-06-24T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "268",
+      "symbol": "TQQQ",
+      "type": "sell",
+      "shares": 103.698751,
+      "price": 0.0,
+      "timestamp": "2025-06-24T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "271",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 482.184058,
+      "price": 48.99052,
+      "timestamp": "2025-06-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "272",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 75.489788,
+      "price": 0.0,
+      "timestamp": "2025-06-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "281",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 120.546015,
+      "price": 50.84148,
+      "timestamp": "2025-07-08T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 223.1259
+    },
+    {
+      "id": "282",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 2.09089,
+      "price": 50.84148,
+      "timestamp": "2025-07-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "294",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 484.274949,
+      "price": 50.84148,
+      "timestamp": "2025-07-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 669.3776
+    },
+    {
+      "id": "295",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 84.534348,
+      "price": 0.0,
+      "timestamp": "2025-07-23T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "299",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 443.97607,
+      "price": 50.84148,
+      "timestamp": "2025-07-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "300",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 84.534348,
+      "price": 0.0,
+      "timestamp": "2025-07-28T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "304",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 443.97607,
+      "price": 50.84148,
+      "timestamp": "2025-07-31T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "305",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 73.539447,
+      "price": 0.0,
+      "timestamp": "2025-07-31T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "308",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 18.384862,
+      "price": 46.0004,
+      "timestamp": "2025-08-01T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 845.711
+    },
+    {
+      "id": "309",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 496.177452,
+      "price": 50.84148,
+      "timestamp": "2025-08-01T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "310",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 73.539447,
+      "price": 46.0004,
+      "timestamp": "2025-08-01T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 2537.133
+    },
+    {
+      "id": "312",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 496.177452,
+      "price": 50.84148,
+      "timestamp": "2025-08-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "313",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 82.575067,
+      "price": 46.0004,
+      "timestamp": "2025-08-04T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "315",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 516.235169,
+      "price": 50.84148,
+      "timestamp": "2025-08-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "316",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 82.575067,
+      "price": 46.0004,
+      "timestamp": "2025-08-05T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "322",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 129.058792,
+      "price": 57.79768,
+      "timestamp": "2025-08-12T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 897.7588
+    },
+    {
+      "id": "323",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 8.98019,
+      "price": 57.79768,
+      "timestamp": "2025-08-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 62.468
+    },
+    {
+      "id": "325",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 507.25498,
+      "price": 57.79768,
+      "timestamp": "2025-08-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 2630.8083
+    },
+    {
+      "id": "326",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 117.297546,
+      "price": 46.0004,
+      "timestamp": "2025-08-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "329",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 29.324387,
+      "price": 63.29844,
+      "timestamp": "2025-08-15T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 507.2544
+    },
+    {
+      "id": "330",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 572.416714,
+      "price": 57.79768,
+      "timestamp": "2025-08-15T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "331",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 117.297546,
+      "price": 63.29844,
+      "timestamp": "2025-08-15T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1521.7632
+    },
+    {
+      "id": "337",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 143.104178,
+      "price": 62.82844,
+      "timestamp": "2025-08-22T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 719.9228
+    },
+    {
+      "id": "338",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 6.221731,
+      "price": 62.82844,
+      "timestamp": "2025-08-22T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "353",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 578.638445,
+      "price": 62.82844,
+      "timestamp": "2025-09-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 2159.7683
+    },
+    {
+      "id": "354",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 137.551187,
+      "price": 63.29844,
+      "timestamp": "2025-09-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "364",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 34.387797,
+      "price": 57.97508,
+      "timestamp": "2025-09-25T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -183.0586
+    },
+    {
+      "id": "365",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 7.057892,
+      "price": 57.97508,
+      "timestamp": "2025-09-25T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "372",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 335.812209,
+      "price": 62.82844,
+      "timestamp": "2025-10-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "373",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 144.609079,
+      "price": 57.97508,
+      "timestamp": "2025-10-02T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -549.1759
+    },
+    {
+      "id": "376",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 83.953052,
+      "price": 56.02692,
+      "timestamp": "2025-10-06T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -571.0084
+    },
+    {
+      "id": "377",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 6.312886,
+      "price": 56.02692,
+      "timestamp": "2025-10-06T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "380",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 85.531274,
+      "price": 58.54444,
+      "timestamp": "2025-10-08T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -352.1911
+    },
+    {
+      "id": "381",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 5.655824,
+      "price": 58.54444,
+      "timestamp": "2025-10-08T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -23.2889
+    },
+    {
+      "id": "386",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 84.117318,
+      "price": 52.67764,
+      "timestamp": "2025-10-13T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -839.8683
+    },
+    {
+      "id": "387",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 336.469271,
+      "price": 52.67764,
+      "timestamp": "2025-10-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -827.3908
+    },
+    {
+      "id": "388",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 156.641755,
+      "price": 57.97508,
+      "timestamp": "2025-10-13T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "390",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 39.160439,
+      "price": 55.38852,
+      "timestamp": "2025-10-14T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -101.2908
+    },
+    {
+      "id": "391",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 0.073135,
+      "price": 55.38852,
+      "timestamp": "2025-10-14T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -0.1892
+    },
+    {
+      "id": "398",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 39.142155,
+      "price": 51.89936,
+      "timestamp": "2025-10-22T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -237.8168
+    },
+    {
+      "id": "399",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 5.982729,
+      "price": 51.89936,
+      "timestamp": "2025-10-22T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "409",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 40.637837,
+      "price": 46.8278,
+      "timestamp": "2025-11-04T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -435.468
+    },
+    {
+      "id": "410",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 270.198207,
+      "price": 52.67764,
+      "timestamp": "2025-11-04T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "411",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 162.551349,
+      "price": 46.8278,
+      "timestamp": "2025-11-04T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -467.327
+    },
+    {
+      "id": "413",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 67.549552,
+      "price": 50.61352,
+      "timestamp": "2025-11-05T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -139.4304
+    },
+    {
+      "id": "414",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 270.198207,
+      "price": 50.61352,
+      "timestamp": "2025-11-05T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -418.2911
+    },
+    {
+      "id": "415",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 196.316347,
+      "price": 46.8278,
+      "timestamp": "2025-11-05T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "417",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 49.079087,
+      "price": 55.31408,
+      "timestamp": "2025-11-06T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 416.4989
+    },
+    {
+      "id": "418",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 322.091569,
+      "price": 50.61352,
+      "timestamp": "2025-11-06T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "419",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 196.316347,
+      "price": 55.31408,
+      "timestamp": "2025-11-06T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1249.4966
+    },
+    {
+      "id": "422",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 80.522892,
+      "price": 57.92496,
+      "timestamp": "2025-11-10T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 588.7383
+    },
+    {
+      "id": "423",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 2.574161,
+      "price": 57.92496,
+      "timestamp": "2025-11-10T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 18.8208
+    },
+    {
+      "id": "431",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 79.879352,
+      "price": 45.9594,
+      "timestamp": "2025-11-19T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -371.7681
+    },
+    {
+      "id": "432",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 5.212949,
+      "price": 45.9594,
+      "timestamp": "2025-11-19T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "434",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 81.182589,
+      "price": 40.01976,
+      "timestamp": "2025-11-20T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -848.0429
+    },
+    {
+      "id": "435",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 79.981261,
+      "price": 40.01976,
+      "timestamp": "2025-11-20T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "438",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 101.177904,
+      "price": 58.05184,
+      "timestamp": "2025-11-24T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1285.7391
+    },
+    {
+      "id": "439",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 3.197471,
+      "price": 58.05184,
+      "timestamp": "2025-11-24T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 40.6325
+    },
+    {
+      "id": "442",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 100.378537,
+      "price": 62.94136,
+      "timestamp": "2025-11-26T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1033.8618
+    },
+    {
+      "id": "443",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 1.477707,
+      "price": 62.94136,
+      "timestamp": "2025-11-26T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "459",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 100.747964,
+      "price": 62.18972,
+      "timestamp": "2025-12-18T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -1.1107
+    },
+    {
+      "id": "460",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 10.65406,
+      "price": 62.18972,
+      "timestamp": "2025-12-18T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "462",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 103.411479,
+      "price": 69.02924,
+      "timestamp": "2025-12-19T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 72.8687
+    },
+    {
+      "id": "463",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 2.136659,
+      "price": 69.02924,
+      "timestamp": "2025-12-19T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "472",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 102.877314,
+      "price": 77.7588,
+      "timestamp": "2026-01-02T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "473",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 411.509255,
+      "price": 77.7588,
+      "timestamp": "2026-01-02T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "474",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 352.542039,
+      "price": 55.31408,
+      "timestamp": "2026-01-02T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "479",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 88.13551,
+      "price": 72.48264,
+      "timestamp": "2026-01-08T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1513.1598
+    },
+    {
+      "id": "480",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 3.632507,
+      "price": 72.48264,
+      "timestamp": "2026-01-08T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "490",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 221.021908,
+      "price": 77.7588,
+      "timestamp": "2026-01-21T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "491",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 356.174546,
+      "price": 72.48264,
+      "timestamp": "2026-01-21T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 4539.4794
+    },
+    {
+      "id": "497",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 55.255477,
+      "price": 57.43032,
+      "timestamp": "2026-01-27T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -1123.2599
+    },
+    {
+      "id": "498",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 1.030027,
+      "price": 57.43032,
+      "timestamp": "2026-01-27T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -20.9389
+    },
+    {
+      "id": "500",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 54.99797,
+      "price": 61.67692,
+      "timestamp": "2026-01-28T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -884.4708
+    },
+    {
+      "id": "501",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 1.859686,
+      "price": 61.67692,
+      "timestamp": "2026-01-28T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -29.9072
+    },
+    {
+      "id": "505",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 218.132195,
+      "price": 61.67692,
+      "timestamp": "2026-01-30T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -1734.8931
+    },
+    {
+      "id": "506",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 342.022663,
+      "price": 72.48264,
+      "timestamp": "2026-01-30T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "509",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 85.505666,
+      "price": 53.90276,
+      "timestamp": "2026-02-03T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -1588.685
+    },
+    {
+      "id": "510",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 15.206717,
+      "price": 53.90276,
+      "timestamp": "2026-02-03T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "512",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 89.307345,
+      "price": 63.72972,
+      "timestamp": "2026-02-04T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -688.8381
+    },
+    {
+      "id": "513",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 310.597814,
+      "price": 61.67692,
+      "timestamp": "2026-02-04T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "514",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 357.22938,
+      "price": 63.72972,
+      "timestamp": "2026-02-04T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": -1406.9989
+    },
+    {
+      "id": "517",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 77.649453,
+      "price": 76.71768,
+      "timestamp": "2026-02-06T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1167.9068
+    },
+    {
+      "id": "518",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 310.597814,
+      "price": 76.71768,
+      "timestamp": "2026-02-06T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 3503.7204
+    },
+    {
+      "id": "519",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 506.530225,
+      "price": 63.72972,
+      "timestamp": "2026-02-06T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "524",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 126.632556,
+      "price": 73.34556,
+      "timestamp": "2026-02-12T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1217.6784
+    },
+    {
+      "id": "525",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 7.487884,
+      "price": 73.34556,
+      "timestamp": "2026-02-12T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 72.0023
+    },
+    {
+      "id": "528",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 124.760585,
+      "price": 70.6644,
+      "timestamp": "2026-02-17T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 865.1747
+    },
+    {
+      "id": "529",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 28.596445,
+      "price": 70.6644,
+      "timestamp": "2026-02-17T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "532",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 283.054797,
+      "price": 76.71768,
+      "timestamp": "2026-02-19T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "533",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 527.638786,
+      "price": 70.6644,
+      "timestamp": "2026-02-19T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 1717.368
+    },
+    {
+      "id": "535",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 283.054797,
+      "price": 76.71768,
+      "timestamp": "2026-02-20T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 0.0
+    },
+    {
+      "id": "536",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 558.58849,
+      "price": 70.6644,
+      "timestamp": "2026-02-20T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "541",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 139.647122,
+      "price": 76.86176,
+      "timestamp": "2026-02-26T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 865.4435
+    },
+    {
+      "id": "542",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 17.356928,
+      "price": 76.86176,
+      "timestamp": "2026-02-26T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "546",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 143.986354,
+      "price": 94.9158,
+      "timestamp": "2026-03-03T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 3456.3716
+    },
+    {
+      "id": "547",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 4.804537,
+      "price": 94.9158,
+      "timestamp": "2026-03-03T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "550",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 145.187489,
+      "price": 93.12908,
+      "timestamp": "2026-03-05T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 3169.4376
+    },
+    {
+      "id": "551",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 22.477744,
+      "price": 93.12908,
+      "timestamp": "2026-03-05T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "553",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 150.806925,
+      "price": 108.9912,
+      "timestamp": "2026-03-06T18:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 5259.9362
+    },
+    {
+      "id": "554",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 566.482435,
+      "price": 76.71768,
+      "timestamp": "2026-03-06T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "555",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 603.227699,
+      "price": 108.9912,
+      "timestamp": "2026-03-06T20:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 823.1286
+    },
+    {
+      "id": "557",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 141.620609,
+      "price": 120.81936,
+      "timestamp": "2026-03-09T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 6245.7068
+    },
+    {
+      "id": "558",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 6.652236,
+      "price": 120.81936,
+      "timestamp": "2026-03-09T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 293.3748
+    },
+    {
+      "id": "560",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 139.95755,
+      "price": 122.24452,
+      "timestamp": "2026-03-10T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 6371.825
+    },
+    {
+      "id": "561",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 20.747008,
+      "price": 122.24452,
+      "timestamp": "2026-03-10T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "563",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 580.577207,
+      "price": 122.24452,
+      "timestamp": "2026-03-11T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 12667.9361
+    },
+    {
+      "id": "564",
+      "symbol": "SOXS",
+      "type": "buy",
+      "shares": 862.92243,
+      "price": 108.9912,
+      "timestamp": "2026-03-11T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "566",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 215.730608,
+      "price": 144.10804,
+      "timestamp": "2026-03-12T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 7575.7772
+    },
+    {
+      "id": "567",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 711.305346,
+      "price": 122.24452,
+      "timestamp": "2026-03-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    },
+    {
+      "id": "568",
+      "symbol": "SOXS",
+      "type": "sell",
+      "shares": 862.92243,
+      "price": 144.10804,
+      "timestamp": "2026-03-12T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 22727.3317
+    },
+    {
+      "id": "571",
+      "symbol": "SOXL",
+      "type": "sell",
+      "shares": 177.826337,
+      "price": 152.75992,
+      "timestamp": "2026-03-16T17:08:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": 5426.4418
+    },
+    {
+      "id": "572",
+      "symbol": "SOXL",
+      "type": "buy",
+      "shares": 11.466309,
+      "price": 152.75992,
+      "timestamp": "2026-03-16T19:55:00+00:00",
+      "strategy": "Semiconductor Momentum Pro",
+      "profit": null
+    }
+  ],
+  "bots": [
+    {
+      "id": "runtime-1",
+      "name": "Runtime Switch Engine",
+      "strategy": "Semiconductor Momentum Pro (Baseline)",
+      "status": "active",
+      "totalTrades": 300,
+      "winRate": 0.0,
+      "profit": 106922.557147,
+      "riskLevel": "medium"
+    }
+  ],
+  "portfolioChart": [
+    {
+      "date": "2025-07-03",
+      "value": 12739.3
+    },
+    {
+      "date": "2025-07-07",
+      "value": 12035.31
+    },
+    {
+      "date": "2025-07-08",
+      "value": 12765.49
+    },
+    {
+      "date": "2025-07-09",
+      "value": 12901.08
+    },
+    {
+      "date": "2025-07-10",
+      "value": 13249.76
+    },
+    {
+      "date": "2025-07-11",
+      "value": 13211.02
+    },
+    {
+      "date": "2025-07-14",
+      "value": 12828.44
+    },
+    {
+      "date": "2025-07-15",
+      "value": 13211.02
+    },
+    {
+      "date": "2025-07-16",
+      "value": 13085.11
+    },
+    {
+      "date": "2025-07-17",
+      "value": 13225.55
+    },
+    {
+      "date": "2025-07-18",
+      "value": 13230.39
+    },
+    {
+      "date": "2025-07-21",
+      "value": 13312.72
+    },
+    {
+      "date": "2025-07-22",
+      "value": 12741.27
+    },
+    {
+      "date": "2025-07-23",
+      "value": 12477.27
+    },
+    {
+      "date": "2025-07-24",
+      "value": 12592.24
+    },
+    {
+      "date": "2025-07-25",
+      "value": 12625.2
+    },
+    {
+      "date": "2025-07-28",
+      "value": 11929.64
+    },
+    {
+      "date": "2025-07-29",
+      "value": 11996.23
+    },
+    {
+      "date": "2025-07-30",
+      "value": 12253.74
+    },
+    {
+      "date": "2025-07-31",
+      "value": 11083.87
+    },
+    {
+      "date": "2025-08-01",
+      "value": 11942.99
+    },
+    {
+      "date": "2025-08-04",
+      "value": 12396.99
+    },
+    {
+      "date": "2025-08-05",
+      "value": 12652.92
+    },
+    {
+      "date": "2025-08-06",
+      "value": 12379.32
+    },
+    {
+      "date": "2025-08-07",
+      "value": 12900.72
+    },
+    {
+      "date": "2025-08-08",
+      "value": 13267.24
+    },
+    {
+      "date": "2025-08-11",
+      "value": 13215.62
+    },
+    {
+      "date": "2025-08-12",
+      "value": 14198.07
+    },
+    {
+      "date": "2025-08-13",
+      "value": 14839.31
+    },
+    {
+      "date": "2025-08-14",
+      "value": 14793.57
+    },
+    {
+      "date": "2025-08-15",
+      "value": 15661.32
+    },
+    {
+      "date": "2025-08-18",
+      "value": 15752.91
+    },
+    {
+      "date": "2025-08-19",
+      "value": 15014.49
+    },
+    {
+      "date": "2025-08-20",
+      "value": 14762.63
+    },
+    {
+      "date": "2025-08-21",
+      "value": 14505.04
+    },
+    {
+      "date": "2025-08-22",
+      "value": 15877.84
+    },
+    {
+      "date": "2025-08-25",
+      "value": 15791.04
+    },
+    {
+      "date": "2025-08-26",
+      "value": 16161.37
+    },
+    {
+      "date": "2025-08-27",
+      "value": 16300.25
+    },
+    {
+      "date": "2025-08-28",
+      "value": 16502.77
+    },
+    {
+      "date": "2025-08-29",
+      "value": 15061.96
+    },
+    {
+      "date": "2025-09-02",
+      "value": 14604.83
+    },
+    {
+      "date": "2025-09-03",
+      "value": 14408.1
+    },
+    {
+      "date": "2025-09-04",
+      "value": 14836.29
+    },
+    {
+      "date": "2025-09-05",
+      "value": 15299.2
+    },
+    {
+      "date": "2025-09-08",
+      "value": 15663.74
+    },
+    {
+      "date": "2025-09-09",
+      "value": 15721.61
+    },
+    {
+      "date": "2025-09-10",
+      "value": 16543.27
+    },
+    {
+      "date": "2025-09-11",
+      "value": 16873.1
+    },
+    {
+      "date": "2025-09-12",
+      "value": 16944.93
+    },
+    {
+      "date": "2025-09-15",
+      "value": 16541.91
+    },
+    {
+      "date": "2025-09-16",
+      "value": 16220.04
+    },
+    {
+      "date": "2025-09-17",
+      "value": 16273.68
+    },
+    {
+      "date": "2025-09-18",
+      "value": 14609.31
+    },
+    {
+      "date": "2025-09-19",
+      "value": 14850.03
+    },
+    {
+      "date": "2025-09-22",
+      "value": 14178.78
+    },
+    {
+      "date": "2025-09-23",
+      "value": 14276.44
+    },
+    {
+      "date": "2025-09-24",
+      "value": 14331.46
+    },
+    {
+      "date": "2025-09-25",
+      "value": 15237.46
+    },
+    {
+      "date": "2025-09-26",
+      "value": 15152.14
+    },
+    {
+      "date": "2025-09-29",
+      "value": 15152.14
+    },
+    {
+      "date": "2025-09-30",
+      "value": 14751.57
+    },
+    {
+      "date": "2025-10-01",
+      "value": 13982.25
+    },
+    {
+      "date": "2025-10-02",
+      "value": 13123.54
+    },
+    {
+      "date": "2025-10-03",
+      "value": 12838.1
+    },
+    {
+      "date": "2025-10-06",
+      "value": 14270.04
+    },
+    {
+      "date": "2025-10-07",
+      "value": 13284.72
+    },
+    {
+      "date": "2025-10-08",
+      "value": 14394.16
+    },
+    {
+      "date": "2025-10-09",
+      "value": 14212.46
+    },
+    {
+      "date": "2025-10-10",
+      "value": 11510.61
+    },
+    {
+      "date": "2025-10-13",
+      "value": 13012.23
+    },
+    {
+      "date": "2025-10-14",
+      "value": 13840.67
+    },
+    {
+      "date": "2025-10-15",
+      "value": 12574.03
+    },
+    {
+      "date": "2025-10-16",
+      "value": 12419.02
+    },
+    {
+      "date": "2025-10-17",
+      "value": 12542.71
+    },
+    {
+      "date": "2025-10-20",
+      "value": 11925.83
+    },
+    {
+      "date": "2025-10-21",
+      "value": 12110.58
+    },
+    {
+      "date": "2025-10-22",
+      "value": 13470.63
+    },
+    {
+      "date": "2025-10-23",
+      "value": 12509.95
+    },
+    {
+      "date": "2025-10-24",
+      "value": 11931.27
+    },
+    {
+      "date": "2025-10-27",
+      "value": 10905.57
+    },
+    {
+      "date": "2025-10-28",
+      "value": 10873.06
+    },
+    {
+      "date": "2025-10-29",
+      "value": 10359.4
+    },
+    {
+      "date": "2025-10-30",
+      "value": 10744.64
+    },
+    {
+      "date": "2025-10-31",
+      "value": 10648.74
+    },
+    {
+      "date": "2025-11-03",
+      "value": 10487.81
+    },
+    {
+      "date": "2025-11-04",
+      "value": 11564.48
+    },
+    {
+      "date": "2025-11-05",
+      "value": 12821.42
+    },
+    {
+      "date": "2025-11-06",
+      "value": 13853.16
+    },
+    {
+      "date": "2025-11-07",
+      "value": 13444.1
+    },
+    {
+      "date": "2025-11-10",
+      "value": 14365.5
+    },
+    {
+      "date": "2025-11-11",
+      "value": 13359.02
+    },
+    {
+      "date": "2025-11-12",
+      "value": 13966.11
+    },
+    {
+      "date": "2025-11-13",
+      "value": 12531.47
+    },
+    {
+      "date": "2025-11-14",
+      "value": 12416.45
+    },
+    {
+      "date": "2025-11-17",
+      "value": 11771.02
+    },
+    {
+      "date": "2025-11-18",
+      "value": 10975.42
+    },
+    {
+      "date": "2025-11-19",
+      "value": 11677.3
+    },
+    {
+      "date": "2025-11-20",
+      "value": 12469.16
+    },
+    {
+      "date": "2025-11-21",
+      "value": 12841.5
+    },
+    {
+      "date": "2025-11-24",
+      "value": 14398.3
+    },
+    {
+      "date": "2025-11-25",
+      "value": 14522.77
+    },
+    {
+      "date": "2025-11-26",
+      "value": 15793.25
+    },
+    {
+      "date": "2025-11-28",
+      "value": 16627.44
+    },
+    {
+      "date": "2025-12-01",
+      "value": 16647.59
+    },
+    {
+      "date": "2025-12-02",
+      "value": 17651.04
+    },
+    {
+      "date": "2025-12-03",
+      "value": 18771.36
+    },
+    {
+      "date": "2025-12-04",
+      "value": 18199.11
+    },
+    {
+      "date": "2025-12-05",
+      "value": 18739.12
+    },
+    {
+      "date": "2025-12-08",
+      "value": 19339.58
+    },
+    {
+      "date": "2025-12-09",
+      "value": 19258.98
+    },
+    {
+      "date": "2025-12-10",
+      "value": 20008.55
+    },
+    {
+      "date": "2025-12-11",
+      "value": 19661.97
+    },
+    {
+      "date": "2025-12-12",
+      "value": 16808.79
+    },
+    {
+      "date": "2025-12-15",
+      "value": 16595.2
+    },
+    {
+      "date": "2025-12-16",
+      "value": 16317.14
+    },
+    {
+      "date": "2025-12-17",
+      "value": 14511.74
+    },
+    {
+      "date": "2025-12-18",
+      "value": 15958.46
+    },
+    {
+      "date": "2025-12-19",
+      "value": 17168.17
+    },
+    {
+      "date": "2025-12-22",
+      "value": 17801.89
+    },
+    {
+      "date": "2025-12-23",
+      "value": 17982.95
+    },
+    {
+      "date": "2025-12-24",
+      "value": 18192.82
+    },
+    {
+      "date": "2025-12-26",
+      "value": 18192.82
+    },
+    {
+      "date": "2025-12-29",
+      "value": 18032.34
+    },
+    {
+      "date": "2025-12-30",
+      "value": 17970.61
+    },
+    {
+      "date": "2025-12-31",
+      "value": 17295.73
+    },
+    {
+      "date": "2026-01-02",
+      "value": 19389.81
+    },
+    {
+      "date": "2026-01-05",
+      "value": 18614.22
+    },
+    {
+      "date": "2026-01-06",
+      "value": 16781.0
+    },
+    {
+      "date": "2026-01-07",
+      "value": 17274.56
+    },
+    {
+      "date": "2026-01-08",
+      "value": 18307.37
+    },
+    {
+      "date": "2026-01-09",
+      "value": 16811.44
+    },
+    {
+      "date": "2026-01-12",
+      "value": 16526.5
+    },
+    {
+      "date": "2026-01-13",
+      "value": 16170.32
+    },
+    {
+      "date": "2026-01-14",
+      "value": 16241.56
+    },
+    {
+      "date": "2026-01-15",
+      "value": 15457.98
+    },
+    {
+      "date": "2026-01-16",
+      "value": 14888.1
+    },
+    {
+      "date": "2026-01-20",
+      "value": 15457.98
+    },
+    {
+      "date": "2026-01-21",
+      "value": 14030.47
+    },
+    {
+      "date": "2026-01-22",
+      "value": 14083.52
+    },
+    {
+      "date": "2026-01-23",
+      "value": 13614.95
+    },
+    {
+      "date": "2026-01-26",
+      "value": 13416.03
+    },
+    {
+      "date": "2026-01-27",
+      "value": 14290.67
+    },
+    {
+      "date": "2026-01-28",
+      "value": 15288.89
+    },
+    {
+      "date": "2026-01-29",
+      "value": 15371.78
+    },
+    {
+      "date": "2026-01-30",
+      "value": 13475.69
+    },
+    {
+      "date": "2026-02-02",
+      "value": 12654.84
+    },
+    {
+      "date": "2026-02-03",
+      "value": 14074.84
+    },
+    {
+      "date": "2026-02-04",
+      "value": 16520.7
+    },
+    {
+      "date": "2026-02-05",
+      "value": 16539.33
+    },
+    {
+      "date": "2026-02-06",
+      "value": 18944.23
+    },
+    {
+      "date": "2026-02-09",
+      "value": 18336.39
+    },
+    {
+      "date": "2026-02-10",
+      "value": 18437.7
+    },
+    {
+      "date": "2026-02-11",
+      "value": 17019.42
+    },
+    {
+      "date": "2026-02-12",
+      "value": 18065.33
+    },
+    {
+      "date": "2026-02-13",
+      "value": 17566.29
+    },
+    {
+      "date": "2026-02-17",
+      "value": 18678.41
+    },
+    {
+      "date": "2026-02-18",
+      "value": 18045.25
+    },
+    {
+      "date": "2026-02-19",
+      "value": 18463.66
+    },
+    {
+      "date": "2026-02-20",
+      "value": 18992.01
+    },
+    {
+      "date": "2026-02-23",
+      "value": 19438.88
+    },
+    {
+      "date": "2026-02-24",
+      "value": 18545.14
+    },
+    {
+      "date": "2026-02-25",
+      "value": 17763.11
+    },
+    {
+      "date": "2026-02-26",
+      "value": 19812.52
+    },
+    {
+      "date": "2026-02-27",
+      "value": 20618.85
+    },
+    {
+      "date": "2026-03-02",
+      "value": 20618.85
+    },
+    {
+      "date": "2026-03-03",
+      "value": 23926.9
+    },
+    {
+      "date": "2026-03-04",
+      "value": 22416.95
+    },
+    {
+      "date": "2026-03-05",
+      "value": 24183.4
+    },
+    {
+      "date": "2026-03-06",
+      "value": 27128.84
+    },
+    {
+      "date": "2026-03-09",
+      "value": 29850.15
+    },
+    {
+      "date": "2026-03-10",
+      "value": 31693.71
+    },
+    {
+      "date": "2026-03-11",
+      "value": 32558.06
+    },
+    {
+      "date": "2026-03-12",
+      "value": 35764.43
+    },
+    {
+      "date": "2026-03-13",
+      "value": 36077.41
+    },
+    {
+      "date": "2026-03-16",
+      "value": 38805.61
+    },
+    {
+      "date": "2026-03-17",
+      "value": 39716.3
+    },
+    {
+      "date": "2026-03-18",
+      "value": 39044.12
+    },
+    {
+      "date": "2026-03-19",
+      "value": 39644.03
+    },
+    {
+      "date": "2026-03-20",
+      "value": 36962.54
+    }
+  ]
+}

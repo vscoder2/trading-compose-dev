@@ -1,0 +1,92 @@
+[
+  {
+    "date": "2026-03-24",
+    "runtime_switch_loop.py target": "SOXS 100.0%",
+    "runtime_switch_loop.py actual": "SOXS 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXS 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXS 100.0%",
+    "MRV2-00003 target": "SOXS 100.0%",
+    "MRV2-00003 actual": "SOXS 100.0%"
+  },
+  {
+    "date": "2026-03-25",
+    "runtime_switch_loop.py target": "SOXS 100.0%",
+    "runtime_switch_loop.py actual": "SOXS 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXS 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXS 100.0%",
+    "MRV2-00003 target": "SOXS 65.0%, TMF 35.0%",
+    "MRV2-00003 actual": "SOXS 65.0%, TMF 35.0%"
+  },
+  {
+    "date": "2026-03-26",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "SOXL 100.0%",
+    "MRV2-00003 actual": "SOXL 100.0%"
+  },
+  {
+    "date": "2026-03-27",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "SOXL 100.0%",
+    "MRV2-00003 actual": "SOXL 100.0%"
+  },
+  {
+    "date": "2026-03-30",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "SOXL 100.0%",
+    "MRV2-00003 actual": "SOXL 100.0%"
+  },
+  {
+    "date": "2026-03-31",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "SOXL 100.0%",
+    "MRV2-00003 actual": "SOXL 100.0%"
+  },
+  {
+    "date": "2026-04-01",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "SOXL 100.0%",
+    "MRV2-00003 actual": "SOXL 100.0%"
+  },
+  {
+    "date": "2026-04-02",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "TMF 80.5%, SOXL 19.5%",
+    "MRV2-00003 actual": "TMF 80.5%, SOXL 19.5%"
+  },
+  {
+    "date": "2026-04-06",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "TMF 80.5%, SOXL 19.5%",
+    "MRV2-00003 actual": "TMF 79.9%, SOXL 20.1%"
+  },
+  {
+    "date": "2026-04-07",
+    "runtime_switch_loop.py target": "SOXL 100.0%",
+    "runtime_switch_loop.py actual": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py target": "SOXL 100.0%",
+    "runtime_switch_loop_v2_controlplane.py actual": "SOXL 100.0%",
+    "MRV2-00003 target": "SOXL 100.0%",
+    "MRV2-00003 actual": "SOXL 100.0%"
+  }
+]

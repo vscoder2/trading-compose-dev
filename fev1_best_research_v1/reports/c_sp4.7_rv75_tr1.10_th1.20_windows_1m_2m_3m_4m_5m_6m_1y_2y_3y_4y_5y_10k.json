@@ -1,0 +1,123 @@
+[
+  {
+    "Window": "1m",
+    "Period": "2026-03-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 20305.24,
+    "PnL ($)": 10305.24,
+    "Return %": 103.05,
+    "MaxDD %": 16.73,
+    "Trading Days": 23,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2026-03-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "2m",
+    "Period": "2026-02-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 27698.03,
+    "PnL ($)": 17698.03,
+    "Return %": 176.98,
+    "MaxDD %": 16.73,
+    "Trading Days": 42,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2026-02-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "3m",
+    "Period": "2026-01-12 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 31188.42,
+    "PnL ($)": 21188.42,
+    "Return %": 211.88,
+    "MaxDD %": 24.69,
+    "Trading Days": 62,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2026-01-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "4m",
+    "Period": "2025-12-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 34828.26,
+    "PnL ($)": 24828.26,
+    "Return %": 248.28,
+    "MaxDD %": 28.08,
+    "Trading Days": 83,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-12-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "5m",
+    "Period": "2025-11-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 48260.48,
+    "PnL ($)": 38260.48,
+    "Return %": 382.6,
+    "MaxDD %": 28.08,
+    "Trading Days": 104,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-11-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "6m",
+    "Period": "2025-10-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 52294.21,
+    "PnL ($)": 42294.21,
+    "Return %": 422.94,
+    "MaxDD %": 29.78,
+    "Trading Days": 125,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-10-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "1y",
+    "Period": "2025-04-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 89484.12,
+    "PnL ($)": 79484.12,
+    "Return %": 794.84,
+    "MaxDD %": 32.78,
+    "Trading Days": 251,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-04-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "2y",
+    "Period": "2024-04-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 40037.44,
+    "PnL ($)": 30037.44,
+    "Return %": 300.37,
+    "MaxDD %": 81.42,
+    "Trading Days": 502,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2024-04-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "3y",
+    "Period": "2023-04-10 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 50227.02,
+    "PnL ($)": 40227.02,
+    "Return %": 402.27,
+    "MaxDD %": 81.42,
+    "Trading Days": 754,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2023-04-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "4y",
+    "Period": "2022-04-11 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 82412.59,
+    "PnL ($)": 72412.59,
+    "Return %": 724.13,
+    "MaxDD %": 81.42,
+    "Trading Days": 1003,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2022-04-10_to_2026-04-10_10k.csv"
+  },
+  {
+    "Window": "5y",
+    "Period": "2021-04-12 to 2026-04-10",
+    "Start Equity": 10000.0,
+    "Final Equity": 52185.01,
+    "PnL ($)": 42185.01,
+    "Return %": 421.85,
+    "MaxDD %": 81.42,
+    "Trading Days": 1256,
+    "CSV": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2021-04-10_to_2026-04-10_10k.csv"
+  }
+]

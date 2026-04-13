@@ -1,0 +1,17 @@
+{
+  "window": "7y",
+  "base_ret": 22.28862836777308,
+  "base_dd": 73.63070572481281,
+  "cfg_ret": 3281.8028763665448,
+  "cfg_dd": 15.36869414152274,
+  "delta_ret": 3259.5142479987717,
+  "delta_dd": -58.262011583290075,
+  "overlay_stats": {
+    "changed_recent_cap_days": 16,
+    "changed_primary_cap_days": 29,
+    "changed_defensive_blend_days": 21,
+    "changed_total_aggr_cap_days": 29,
+    "changed_always_def_blend_days": 53,
+    "changed_shock_days": 816
+  }
+}

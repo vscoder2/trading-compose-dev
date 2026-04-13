@@ -1,0 +1,64 @@
+{
+  "outputs": {
+    "csv": "/home/chewy/projects/trading-compose-dev/meta_router_v1/reports/smoke_meta_router_1m_20260327_20260327.csv",
+    "json": "/home/chewy/projects/trading-compose-dev/meta_router_v1/reports/smoke_meta_router_1m_20260327_20260327.json"
+  },
+  "rows": [
+    {
+      "m0106_final_equity": 16810.788583133068,
+      "m0106_maxdd_pct": 7.068698847574766,
+      "m0106_return_pct": 68.10788583133068,
+      "meta_cpu_final_equity": 16810.788583133068,
+      "meta_cpu_gpu_diff_bps": 0.0,
+      "meta_cpu_maxdd_pct": 7.068698847574766,
+      "meta_cpu_pnl": 6810.788583133068,
+      "meta_cpu_return_pct": 68.10788583133068,
+      "meta_gpu_final_equity": 16810.788583133068,
+      "meta_gpu_maxdd_pct": 7.068698847574766,
+      "meta_gpu_return_pct": 68.10788583133068,
+      "period": "2026-02-25 to 2026-03-27",
+      "router_days_m0106": 21,
+      "router_days_v1": 0,
+      "router_days_v2": 2,
+      "start_equity": 10000.0,
+      "v1_final_equity": 19508.989836837496,
+      "v1_maxdd_pct": 7.999528287601359,
+      "v1_return_pct": 95.08989836837496,
+      "v2_final_equity": 14906.13604668267,
+      "v2_maxdd_pct": 8.27267070067973,
+      "v2_return_pct": 49.0613604668267,
+      "window": "1m",
+      "winner_by_final_equity": "runtime_switch_loop.py"
+    }
+  ],
+  "run": {
+    "base_rebalance_threshold": 0.05,
+    "controlplane_hysteresis_enter": 0.62,
+    "controlplane_hysteresis_enter_days": 2,
+    "controlplane_hysteresis_exit": 0.58,
+    "controlplane_hysteresis_exit_days": 2,
+    "controlplane_threshold_cap": 0.5,
+    "data_feed": "sip",
+    "end_date": "2026-03-27",
+    "gpu_backend": "cupy_available_cpu_logic",
+    "initial_equity": 10000.0,
+    "mode": "paper",
+    "rebalance_time_ny": "15:55",
+    "router_cfg": {
+      "burst_dd20_max": 15.0,
+      "burst_ret3d_min": 0.12,
+      "burst_rv20_max": 130.0,
+      "riskoff_crossovers20_min": 8,
+      "riskoff_dd20_min": 20.0,
+      "riskoff_rv20_min": 95.0
+    },
+    "runtime_profit_lock_order_type": "market_order",
+    "runtime_stop_price_offset_bps": 2.0,
+    "sell_fee_bps": 0.0,
+    "slippage_bps": 1.0,
+    "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "windows": [
+      "1m"
+    ]
+  }
+}

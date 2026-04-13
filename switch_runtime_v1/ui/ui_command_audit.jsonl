@@ -6,3 +6,4 @@
 {"ts_ny": "2026-03-23T03:35:19.540313-04:00", "user": "demo_trader", "role": "operator", "action": "palette_run", "meta": {"action": "Refresh Data Now", "selected_symbol": "SOXL"}}
 {"ts_ny": "2026-03-23T12:00:31.622939-04:00", "user": "demo_trader", "role": "operator", "action": "logout", "meta": {}}
 {"ts_ny": "2026-03-23T13:34:01.113960-04:00", "user": "demo_trader", "role": "operator", "action": "logout", "meta": {}}
+{"ts_ny": "2026-04-04T23:43:32.805572-04:00", "user": "admin", "role": "admin", "action": "refresh_runtime_db", "meta": {"db_path": "/home/chewy/projects/trading-compose-dev/switch_runtime_v1/runtime_data/users/admin/switch_runtime_v1_runtime.db"}}

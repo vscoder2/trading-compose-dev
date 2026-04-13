@@ -1,0 +1,10 @@
+{
+  "start_equity":10000.0,
+  "final_equity":13725.5170850575,
+  "total_pnl":3725.5170850575,
+  "total_return_pct":37.2551708506,
+  "trading_days":22.0,
+  "intraday_switch_days":8.0,
+  "buy_days":9.0,
+  "max_drawdown_pct_day_end":16.735067668
+}

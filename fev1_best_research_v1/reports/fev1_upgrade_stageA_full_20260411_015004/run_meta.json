@@ -1,0 +1,22 @@
+{
+  "run_id": "fev1_upgrade_stageA_full_20260411_015004",
+  "reports_dir": "/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/fev1_upgrade_stageA_full_20260411_015004",
+  "baseline_candidate": "C_sp5.0_rv80_tr1.00_th1.00",
+  "candidate_count": 300,
+  "quick_windows": [
+    "3m",
+    "6m",
+    "1y"
+  ],
+  "full_windows": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "1y"
+  ],
+  "top_k_from_quick": 30,
+  "strict_accept_count": 30
+}

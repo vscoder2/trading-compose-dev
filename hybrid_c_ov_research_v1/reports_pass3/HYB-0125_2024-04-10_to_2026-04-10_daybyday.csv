@@ -1,0 +1,503 @@
+Date,Day Start Equity,Start Ticker,Intraday Switch Time,Intraday Switch,Buy Time,Buy Ticker,End-of-Day Ticker,Day End Equity,PnL ($),Return %,Drawdown %
+2024-04-10,10000.0,CASH,no change,no change,15:55,SOXS,SOXS,9999.0,-1.0,-0.01,0.01
+2024-04-11,9999.0,SOXS,no change,no change,no change,no change,SOXS,9358.55,-640.45,-6.41,6.41
+2024-04-12,9358.55,SOXS,no change,no change,no change,no change,SOXS,10275.53,916.98,9.8,0.0
+2024-04-15,10275.53,SOXS,no change,no change,no change,no change,SOXS,10645.17,369.64,3.6,0.0
+2024-04-16,10645.17,SOXS,no change,no change,no change,no change,SOXS,10380.37,-264.8,-2.49,2.49
+2024-04-17,10380.37,SOXS,no change,no change,no change,no change,SOXS,11340.95,960.58,9.25,0.0
+2024-04-18,11340.95,SOXS,no change,no change,no change,no change,SOXS,12074.41,733.46,6.47,0.0
+2024-04-19,12074.41,SOXS,no change,no change,no change,no change,SOXS,13439.74,1365.33,11.31,0.0
+2024-04-22,13439.74,SOXS,no change,no change,no change,no change,SOXS,12909.97,-529.77,-3.94,3.94
+2024-04-23,12909.97,SOXS,no change,no change,no change,no change,SOXS,12046.83,-863.14,-6.69,10.36
+2024-04-24,12046.83,SOXS,no change,no change,no change,no change,SOXS,11492.33,-554.51,-4.6,14.49
+2024-04-25,11492.33,SOXS,no change,no change,no change,no change,SOXS,10930.45,-561.88,-4.89,18.67
+2024-04-26,10930.45,SOXS,no change,no change,no change,no change,SOXS,10269.69,-660.76,-6.05,23.59
+2024-04-29,10269.69,SOXS,no change,no change,no change,no change,SOXS,10036.76,-232.93,-2.27,25.32
+2024-04-30,10036.76,SOXS,no change,no change,15:55,SOXL,SOXL,10617.23,580.47,5.78,21.0
+2024-05-01,10617.23,SOXL,no change,no change,15:55,SOXS,SOXS,9531.86,-1085.37,-10.22,29.08
+2024-05-02,9531.86,SOXS,04:09,SOXS,no change,no change,CASH,9067.83,-464.02,-4.87,32.53
+2024-05-03,9067.83,CASH,no change,no change,15:55,SOXS,SOXS,9066.93,-0.91,-0.01,32.54
+2024-05-06,9066.93,SOXS,09:52,SOXS,no change,no change,CASH,8639.44,-427.48,-4.71,35.72
+2024-05-07,8639.44,CASH,no change,no change,15:55,SOXL,SOXL,8638.58,-0.86,-0.01,35.72
+2024-05-08,8638.58,SOXL,no change,no change,no change,no change,SOXL,8645.14,6.56,0.08,35.67
+2024-05-09,8645.14,SOXL,no change,no change,no change,no change,SOXL,8517.64,-127.5,-1.47,36.62
+2024-05-10,8517.64,SOXL,no change,no change,15:55,SOXS,SOXS,8793.99,276.35,3.24,34.57
+2024-05-13,8793.99,SOXS,no change,no change,no change,no change,SOXS,8754.11,-39.88,-0.45,34.86
+2024-05-14,8754.11,SOXS,15:02,SOXS,no change,no change,CASH,8378.47,-375.65,-4.29,37.66
+2024-05-15,8378.47,CASH,no change,no change,15:55,SOXL,SOXL,8377.63,-0.84,-0.01,37.67
+2024-05-16,8377.63,SOXL,no change,no change,no change,no change,SOXL,8277.34,-100.29,-1.2,38.41
+2024-05-17,8277.34,SOXL,no change,no change,no change,no change,SOXL,8110.76,-166.58,-2.01,39.65
+2024-05-20,8110.76,SOXL,13:58,SOXL,15:55,SOXL,SOXL,8616.7,505.94,6.24,35.89
+2024-05-21,8616.7,SOXL,no change,no change,no change,no change,SOXL,8598.8,-17.9,-0.21,36.02
+2024-05-22,8598.8,SOXL,no change,no change,no change,no change,SOXL,8829.51,230.71,2.68,34.3
+2024-05-23,8829.51,SOXL,09:31,SOXL,15:55,SOXL,SOXL,9361.97,532.46,6.03,30.34
+2024-05-24,9361.97,SOXL,no change,no change,no change,no change,SOXL,9922.88,560.91,5.99,26.17
+2024-05-28,9922.88,SOXL,no change,no change,no change,no change,SOXL,10372.89,450.01,4.54,22.82
+2024-05-29,10372.89,SOXL,no change,no change,no change,no change,SOXL,9804.13,-568.76,-5.48,27.05
+2024-05-30,9804.13,SOXL,no change,no change,no change,no change,SOXL,9648.37,-155.76,-1.59,28.21
+2024-05-31,9648.37,SOXL,no change,no change,no change,no change,SOXL,9268.88,-379.5,-3.93,31.03
+2024-06-03,9268.88,SOXL,no change,no change,no change,no change,SOXL,9322.85,53.98,0.58,30.63
+2024-06-04,9322.85,SOXL,no change,no change,no change,no change,SOXL,9166.1,-156.75,-1.68,31.8
+2024-06-05,9166.1,SOXL,no change,no change,no change,no change,SOXL,10354.66,1188.56,12.97,22.95
+2024-06-06,10354.66,SOXL,no change,no change,no change,no change,SOXL,10169.46,-185.2,-1.79,24.33
+2024-06-07,10169.46,SOXL,no change,no change,no change,no change,SOXL,10014.6,-154.86,-1.52,25.49
+2024-06-10,10014.6,SOXL,no change,no change,no change,no change,SOXL,10410.25,395.65,3.95,22.54
+2024-06-11,10410.25,SOXL,no change,no change,no change,no change,SOXL,10443.59,33.34,0.32,22.29
+2024-06-12,10443.59,SOXL,10:44,SOXL,15:55,SOXL,SOXL,11201.37,757.78,7.26,16.65
+2024-06-13,11201.37,SOXL,no change,no change,no change,no change,SOXL,11560.61,359.25,3.21,13.98
+2024-06-14,11560.61,SOXL,no change,no change,no change,no change,SOXL,11333.85,-226.77,-1.96,15.67
+2024-06-17,11333.85,SOXL,no change,no change,no change,no change,SOXL,11971.23,637.38,5.62,10.93
+2024-06-18,11971.23,SOXL,no change,no change,no change,no change,SOXL,12411.25,440.03,3.68,7.65
+2024-06-20,12411.25,SOXL,no change,no change,no change,no change,SOXL,11471.22,-940.03,-7.57,14.65
+2024-06-21,11471.22,SOXL,no change,no change,no change,no change,SOXL,11020.72,-450.5,-3.93,18.0
+2024-06-24,11020.72,SOXL,no change,no change,15:55,SOXS,SOXS,10103.88,-916.84,-8.32,24.82
+2024-06-25,10103.88,SOXS,16:51,SOXS,no change,no change,CASH,9628.04,-475.85,-4.71,28.36
+2024-06-26,9628.04,CASH,no change,no change,15:55,SOXS,SOXS,9627.08,-0.96,-0.01,28.37
+2024-06-27,9627.08,SOXS,no change,no change,no change,no change,SOXS,9864.59,237.51,2.47,26.6
+2024-06-28,9864.59,SOXS,10:00,SOXS,no change,no change,CASH,9173.69,-690.9,-7.0,31.74
+2024-07-01,9173.69,CASH,no change,no change,15:55,SOXS,SOXS,9172.77,-0.92,-0.01,31.75
+2024-07-02,9172.77,SOXS,19:59,SOXS,15:55,SOXL,SOXL,8739.9,-432.87,-4.72,34.97
+2024-07-03,8739.9,SOXL,no change,no change,no change,no change,SOXL,9193.35,453.45,5.19,31.6
+2024-07-05,9193.35,SOXL,no change,no change,no change,no change,SOXL,9286.44,93.09,1.01,30.9
+2024-07-08,9286.44,SOXL,no change,no change,no change,no change,SOXL,9778.51,492.07,5.3,27.24
+2024-07-09,9778.51,SOXL,no change,no change,no change,no change,SOXL,9735.87,-42.64,-0.44,27.56
+2024-07-10,9735.87,SOXL,no change,no change,no change,no change,SOXL,10437.21,701.34,7.2,22.34
+2024-07-11,10437.21,SOXL,no change,no change,no change,no change,SOXL,9437.51,-999.7,-9.58,29.78
+2024-07-12,9437.51,SOXL,15:30,SOXL,15:55,SOXL,SOXL,9994.13,556.62,5.9,25.64
+2024-07-15,9994.13,SOXL,no change,no change,no change,no change,SOXL,9970.32,-23.81,-0.24,25.81
+2024-07-16,9970.32,SOXL,no change,no change,no change,no change,SOXL,10187.23,216.91,2.18,24.2
+2024-07-17,10187.23,SOXL,no change,no change,15:55,SOXS,SOXS,8134.82,-2052.41,-20.15,39.47
+2024-07-18,8134.82,SOXS,04:00,SOXS,no change,no change,CASH,7751.71,-383.11,-4.71,42.32
+2024-07-19,7751.71,CASH,no change,no change,15:55,SOXS,SOXS,7750.93,-0.78,-0.01,42.33
+2024-07-22,7750.93,SOXS,05:57,SOXS,no change,no change,CASH,7378.17,-372.76,-4.81,45.1
+2024-07-23,7378.17,CASH,no change,no change,15:55,SOXS,SOXS,7377.43,-0.74,-0.01,45.11
+2024-07-24,7377.43,SOXS,no change,no change,no change,no change,SOXS,8513.01,1135.58,15.39,36.66
+2024-07-25,8513.01,SOXS,no change,no change,no change,no change,SOXS,9068.37,555.36,6.52,32.53
+2024-07-26,9068.37,SOXS,no change,no change,no change,no change,SOXS,8685.1,-383.28,-4.23,35.38
+2024-07-29,8685.1,SOXS,no change,no change,no change,no change,SOXS,8553.61,-131.48,-1.51,36.36
+2024-07-30,8553.61,SOXS,no change,no change,no change,no change,SOXS,9429.04,875.42,10.23,29.84
+2024-07-31,9429.04,SOXS,no change,no change,no change,no change,SOXS,7658.7,-1770.34,-18.78,43.01
+2024-08-01,7658.7,SOXS,no change,no change,no change,no change,SOXS,9373.75,1715.04,22.39,30.25
+2024-08-02,9373.75,SOXS,no change,no change,15:55,SPXS,SPXS,10811.01,1437.26,15.33,19.56
+2024-08-05,10811.01,SPXS,no change,no change,no change,no change,SPXS,11227.21,416.2,3.85,16.46
+2024-08-06,11227.21,SPXS,no change,no change,no change,no change,SPXS,11327.35,100.14,0.89,15.72
+2024-08-07,11327.35,TMV,no change,no change,no change,no change,SPXS,11656.36,329.02,2.9,13.27
+2024-08-08,11656.36,SPXS,no change,no change,15:55,SQQQ,SQQQ,11398.08,-258.29,-2.22,15.19
+2024-08-09,11398.08,SQQQ,no change,no change,no change,no change,SQQQ,11201.95,-196.13,-1.72,16.65
+2024-08-12,11201.95,SQQQ,09:30,SQQQ,no change,no change,SPXS,11052.43,-149.52,-1.33,17.76
+2024-08-13,11052.43,SPXS,no change,no change,15:55,SQQQ,SQQQ,10779.32,-273.11,-2.47,19.8
+2024-08-14,10779.32,SQQQ,no change,no change,no change,no change,SQQQ,10656.33,-122.99,-1.14,20.71
+2024-08-15,10656.33,SQQQ,09:37,SQQQ,no change,no change,SPXS,10223.59,-432.74,-4.06,23.93
+2024-08-16,10223.59,SPXS,no change,no change,15:55,SQQQ,SQQQ,10184.19,-39.4,-0.39,24.22
+2024-08-19,10184.19,SQQQ,no change,no change,no change,no change,SQQQ,9883.3,-300.89,-2.95,26.46
+2024-08-20,9883.3,SQQQ,08:00,SQQQ,15:55,TMV,TMV,9833.7,-49.6,-0.5,26.83
+2024-08-21,9833.7,TMV,no change,no change,15:55,SQQQ,SQQQ,9819.93,-13.78,-0.14,26.93
+2024-08-22,9819.93,TMV,no change,no change,15:55,SPXS,SPXS,10237.41,417.49,4.25,23.83
+2024-08-23,10237.41,TMV,no change,no change,15:55,SPXS,SPXS,9956.54,-280.87,-2.74,25.92
+2024-08-26,9956.54,SPXS,no change,no change,no change,no change,SPXS,10074.59,118.06,1.19,25.04
+2024-08-27,10074.59,SPXS,no change,no change,no change,no change,SPXS,10012.15,-62.44,-0.62,25.5
+2024-08-28,10012.15,SPXS,no change,no change,15:55,TMV,SPXS,10155.69,143.54,1.43,24.44
+2024-08-29,10155.69,SPXS,no change,no change,15:55,SPXL,SPXL,10223.91,68.22,0.67,23.93
+2024-08-30,10223.91,TQQQ,10:57,TQQQ,15:55,SOXL,SPXL,10277.41,53.5,0.52,23.53
+2024-09-03,10277.41,SPXL,05:11,TQQQ,15:55,SPXS,SPXS,9208.49,-1068.92,-10.4,31.48
+2024-09-04,9208.49,SPXS,no change,no change,no change,no change,SPXS,9044.43,-164.05,-1.78,32.7
+2024-09-05,9044.43,SPXS,no change,no change,15:55,SOXS,SOXS,9025.74,-18.69,-0.21,32.84
+2024-09-06,9025.74,SOXS,no change,no change,no change,no change,SOXS,10146.6,1120.86,12.42,24.5
+2024-09-09,10146.6,SOXS,no change,no change,no change,no change,SOXS,9579.62,-566.98,-5.59,28.72
+2024-09-10,9579.62,SOXS,no change,no change,no change,no change,SOXS,9265.02,-314.6,-3.28,31.06
+2024-09-11,9265.02,SOXS,13:41,SOXS,no change,no change,CASH,8600.67,-664.35,-7.17,36.01
+2024-09-12,8600.67,CASH,no change,no change,15:55,SOXS,SOXS,8599.81,-0.86,-0.01,36.01
+2024-09-13,8599.81,SOXS,09:34,SOXS,no change,no change,CASH,8194.8,-405.01,-4.71,39.03
+2024-09-16,8194.8,CASH,no change,no change,15:55,SOXS,SOXS,8193.98,-0.82,-0.01,39.03
+2024-09-17,8193.98,SOXS,no change,no change,no change,no change,SOXS,8180.44,-13.54,-0.17,39.13
+2024-09-18,8180.44,SOXS,14:01,SOXS,no change,no change,CASH,7799.46,-380.98,-4.66,41.97
+2024-09-19,7799.46,CASH,no change,no change,15:55,SOXS,SOXS,7798.68,-0.78,-0.01,41.97
+2024-09-20,7798.68,SOXS,no change,no change,15:55,SPXL,TMF,8206.33,407.65,5.23,38.94
+2024-09-23,8206.33,TQQQ,08:00,TQQQ,15:55,SOXS,SOXS,8180.09,-26.24,-0.32,39.14
+2024-09-24,8180.09,SOXS,11:52,SOXS,15:55,SPXL,SPXL,7794.07,-386.02,-4.72,42.01
+2024-09-25,7794.07,TMF,no change,no change,no change,no change,TQQQ,7725.86,-68.21,-0.88,42.51
+2024-09-26,7725.86,TQQQ,10:24,TQQQ,15:55,SOXL,SPXL,7843.21,117.35,1.52,41.64
+2024-09-27,7843.21,SPXL,11:24,TQQQ,15:55,TQQQ,SPXL,7690.98,-152.24,-1.94,42.77
+2024-09-30,7690.98,SPXL,14:20,TQQQ,15:55,TQQQ,SPXL,7579.67,-111.31,-1.45,43.6
+2024-10-01,7579.67,SPXL,09:34,TQQQ,15:55,TMF,SPXL,7292.59,-287.08,-3.79,45.74
+2024-10-02,7292.59,SPXL,09:42,TQQQ,15:55,SOXL,SPXL,7183.7,-108.89,-1.49,46.55
+2024-10-03,7183.7,SPXL,10:22,TQQQ,15:55,TQQQ,SPXL,7136.84,-46.85,-0.65,46.9
+2024-10-04,7136.84,SPXL,09:56,TQQQ,15:55,TQQQ,SPXL,7363.91,227.07,3.18,45.21
+2024-10-07,7363.91,SPXL,08:00,TQQQ,15:55,TQQQ,SPXL,7222.51,-141.4,-1.92,46.26
+2024-10-08,7222.51,SPXL,08:01,TQQQ,15:55,TQQQ,SPXL,7374.33,151.82,2.1,45.13
+2024-10-09,7374.33,SPXL,no change,no change,no change,no change,SPXL,7550.3,175.97,2.39,43.82
+2024-10-10,7550.3,SPXL,09:48,TQQQ,15:55,TQQQ,SPXL,7424.46,-125.84,-1.67,44.76
+2024-10-11,7424.46,SPXL,no change,no change,no change,no change,SPXL,7548.74,124.28,1.67,43.83
+2024-10-14,7548.74,SPXL,no change,no change,no change,no change,SOXL,7814.79,266.05,3.52,41.85
+2024-10-15,7814.79,SOXL,10:30,TQQQ,15:55,SOXS,SOXS,7240.86,-573.92,-7.34,46.12
+2024-10-16,7240.86,SOXS,no change,no change,no change,no change,SOXS,7209.55,-31.32,-0.43,46.36
+2024-10-17,7209.55,SOXS,04:00,SOXS,no change,no change,CASH,6752.38,-457.17,-6.34,49.76
+2024-10-18,6752.38,CASH,no change,no change,15:55,SOXS,SOXS,6751.7,-0.68,-0.01,49.76
+2024-10-21,6751.7,SOXS,no change,no change,no change,no change,SOXS,6789.45,37.74,0.56,49.48
+2024-10-22,6789.45,SOXS,no change,no change,no change,no change,SOXS,6806.14,16.7,0.25,49.36
+2024-10-23,6806.14,SOXS,no change,no change,no change,no change,SOXS,7054.15,248.01,3.64,47.51
+2024-10-24,7054.15,SOXS,no change,no change,no change,no change,SOXS,6931.63,-122.52,-1.74,48.42
+2024-10-25,6931.63,SOXS,10:02,SOXS,no change,no change,CASH,6424.07,-507.56,-7.32,52.2
+2024-10-28,6424.07,CASH,no change,no change,15:55,SOXS,SOXS,6423.43,-0.64,-0.01,52.21
+2024-10-29,6423.43,SOXS,no change,no change,no change,no change,SOXS,5974.44,-448.98,-6.99,55.55
+2024-10-30,5974.44,SOXS,no change,no change,no change,no change,SOXS,6573.23,598.79,10.02,51.09
+2024-10-31,6573.23,SOXS,no change,no change,no change,no change,SOXS,7321.49,748.25,11.38,45.52
+2024-11-01,7321.49,SOXS,no change,no change,no change,no change,SOXS,7146.34,-175.15,-2.39,46.83
+2024-11-04,7146.34,SOXS,no change,no change,no change,no change,SOXS,7267.43,121.09,1.69,45.93
+2024-11-05,7267.43,SOXS,no change,no change,no change,no change,SOXS,7016.88,-250.55,-3.45,47.79
+2024-11-06,7016.88,SOXS,no change,no change,no change,no change,SOXS,6412.29,-604.58,-8.62,52.29
+2024-11-07,6412.29,SOXS,08:45,SOXS,no change,no change,CASH,6116.6,-295.7,-4.61,54.49
+2024-11-08,6116.6,CASH,no change,no change,15:55,SOXS,SOXS,6115.99,-0.61,-0.01,54.49
+2024-11-11,6115.99,SOXS,no change,no change,15:55,SOXL,SOXL,6582.88,466.89,7.63,51.02
+2024-11-12,6582.88,SOXL,no change,no change,no change,no change,SOXL,6384.0,-198.88,-3.02,52.5
+2024-11-13,6384.0,SOXL,no change,no change,15:55,SOXS,SOXS,5956.56,-427.44,-6.7,55.68
+2024-11-14,5956.56,SOXS,no change,no change,no change,no change,SOXS,5953.99,-2.57,-0.04,55.7
+2024-11-15,5953.99,SOXS,no change,no change,no change,no change,SOXS,6538.84,584.86,9.82,51.35
+2024-11-18,6538.84,SOXS,no change,no change,no change,no change,SOXS,6297.11,-241.74,-3.7,53.15
+2024-11-19,6297.11,SOXS,no change,no change,no change,no change,SOXS,6264.56,-32.55,-0.52,53.39
+2024-11-20,6264.56,SOXS,no change,no change,no change,no change,SOXS,6407.57,143.01,2.28,52.32
+2024-11-21,6407.57,SOXS,no change,no change,no change,no change,SOXS,6109.9,-297.67,-4.65,54.54
+2024-11-22,6109.9,SOXS,no change,no change,no change,no change,SOXS,6091.68,-18.22,-0.3,54.67
+2024-11-25,6091.68,SOXS,no change,no change,no change,no change,SOXS,5924.04,-167.65,-2.75,55.92
+2024-11-26,5924.04,SOXS,no change,no change,no change,no change,SOXS,6163.17,239.14,4.04,54.14
+2024-11-27,6163.17,SOXS,no change,no change,no change,no change,SOXS,6399.81,236.64,3.84,52.38
+2024-11-29,6399.81,SOXS,no change,no change,no change,no change,SOXS,6152.8,-247.01,-3.86,54.22
+2024-12-02,6152.8,SOXS,11:34,SOXS,no change,no change,CASH,5676.03,-476.77,-7.75,57.77
+2024-12-03,5676.03,CASH,no change,no change,15:55,SOXS,SOXS,5675.47,-0.57,-0.01,57.77
+2024-12-04,5675.47,SOXS,06:06,SOXS,no change,no change,CASH,5406.76,-268.71,-4.73,59.77
+2024-12-05,5406.76,CASH,no change,no change,15:55,SOXL,SOXL,5406.22,-0.54,-0.01,59.77
+2024-12-06,5406.22,SOXL,no change,no change,15:55,SOXS,SOXS,5520.86,114.65,2.12,58.92
+2024-12-09,5520.86,SOXS,no change,no change,no change,no change,SOXS,5615.05,94.18,1.71,58.22
+2024-12-10,5615.05,SOXS,no change,no change,no change,no change,SOXS,6020.22,405.17,7.22,55.21
+2024-12-11,6020.22,SOXS,no change,no change,no change,no change,SOXS,5562.64,-457.58,-7.6,58.61
+2024-12-12,5562.64,SOXS,no change,no change,15:55,SOXL,SOXL,5713.09,150.46,2.7,57.49
+2024-12-13,5713.09,SOXL,10:25,SOXL,15:55,SOXL,SOXL,6171.78,458.69,8.03,54.08
+2024-12-16,6171.78,SOXL,no change,no change,15:55,SOXS,SOXS,6527.82,356.04,5.77,51.43
+2024-12-17,6527.82,SOXS,no change,no change,15:55,SOXL,SOXL,6827.05,299.23,4.58,49.2
+2024-12-18,6827.05,SOXL,no change,no change,15:55,SOXS,SOXS,6147.39,-679.67,-9.96,54.26
+2024-12-19,6147.39,SOXS,no change,no change,15:55,SOXL,SOXL,6500.62,353.24,5.75,51.63
+2024-12-20,6500.62,SOXL,no change,no change,15:55,SOXS,SOXS,6739.96,239.34,3.68,49.85
+2024-12-23,6739.96,SOXS,09:32,SOXS,no change,no change,CASH,6415.02,-324.94,-4.82,52.27
+2024-12-24,6415.02,CASH,no change,no change,15:55,SOXL,SOXL,6414.38,-0.64,-0.01,52.27
+2024-12-26,6414.38,SOXL,no change,no change,no change,no change,SOXL,6477.78,63.4,0.99,51.8
+2024-12-27,6477.78,SOXL,no change,no change,no change,no change,SOXL,6248.81,-228.97,-3.53,53.5
+2024-12-30,6248.81,SOXL,no change,no change,15:55,SOXS,SOXS,5950.49,-298.32,-4.77,55.72
+2024-12-31,5950.49,SOXS,no change,no change,no change,no change,SOXS,6150.84,200.34,3.37,54.23
+2025-01-02,6150.84,SOXS,no change,no change,no change,no change,SOXS,6033.26,-117.58,-1.91,55.11
+2025-01-03,6033.26,SOXS,11:54,SOXS,no change,no change,CASH,5670.25,-363.0,-6.02,57.81
+2025-01-06,5670.25,CASH,no change,no change,15:55,SOXS,SOXS,5669.69,-0.57,-0.01,57.81
+2025-01-07,5669.69,SOXS,no change,no change,no change,no change,SOXS,5910.79,241.11,4.25,56.02
+2025-01-08,5910.79,SOXS,no change,no change,no change,no change,SOXS,6100.18,189.39,3.2,54.61
+2025-01-10,6100.18,SOXS,no change,no change,no change,no change,SOXS,6551.98,451.8,7.41,51.25
+2025-01-13,6551.98,SOXS,no change,no change,no change,no change,SOXS,6613.0,61.02,0.93,50.8
+2025-01-14,6613.0,SOXS,no change,no change,no change,no change,SOXS,6524.54,-88.46,-1.34,51.45
+2025-01-15,6524.54,SOXS,no change,no change,no change,no change,SOXS,6084.87,-439.67,-6.74,54.72
+2025-01-16,6084.87,SOXS,no change,no change,no change,no change,SOXS,6046.64,-38.24,-0.63,55.01
+2025-01-17,6046.64,SOXS,no change,no change,no change,no change,SOXS,5567.36,-479.28,-7.93,58.58
+2025-01-21,5567.36,SOXS,08:00,SOXS,15:55,SOXL,SOXL,5402.13,-165.23,-2.97,59.8
+2025-01-22,5402.13,SOXL,no change,no change,no change,no change,SOXL,5627.38,225.24,4.17,58.13
+2025-01-23,5627.38,SOXL,no change,no change,no change,no change,SOXL,5565.6,-61.77,-1.1,58.59
+2025-01-24,5565.6,SOXL,no change,no change,no change,no change,SOXL,5245.25,-320.36,-5.76,60.97
+2025-01-27,5245.25,SOXL,no change,no change,no change,no change,SOXL,3970.02,-1275.23,-24.31,70.46
+2025-01-28,3970.02,SOXL,no change,no change,15:55,SOXS,SOXS,4062.67,92.65,2.33,69.77
+2025-01-29,4062.67,SOXS,04:00,SOXS,no change,no change,CASH,3839.79,-222.87,-5.49,71.43
+2025-01-30,3839.79,CASH,no change,no change,15:55,SOXS,SOXS,3839.41,-0.38,-0.01,71.43
+2025-01-31,3839.41,SOXS,10:10,SOXS,no change,no change,CASH,3656.67,-182.74,-4.76,72.79
+2025-02-03,3656.67,CASH,no change,no change,15:55,SOXS,SOXS,3656.3,-0.37,-0.01,72.79
+2025-02-04,3656.3,SOXS,16:16,SOXS,no change,no change,CASH,3448.77,-207.53,-5.68,74.34
+2025-02-05,3448.77,CASH,no change,no change,15:55,SOXS,SOXS,3448.43,-0.34,-0.01,74.34
+2025-02-06,3448.43,SOXS,no change,no change,no change,no change,SOXS,3462.27,13.85,0.4,74.24
+2025-02-07,3462.27,SOXS,no change,no change,no change,no change,SOXS,3616.08,153.81,4.44,73.09
+2025-02-10,3616.08,SOXS,no change,no change,no change,no change,SOXS,3464.11,-151.97,-4.2,74.22
+2025-02-11,3464.11,SOXS,no change,no change,no change,no change,SOXS,3478.7,14.6,0.42,74.12
+2025-02-12,3478.7,SOXS,no change,no change,no change,no change,SOXS,3459.66,-19.05,-0.55,74.26
+2025-02-13,3459.66,SOXS,no change,no change,no change,no change,SOXS,3342.82,-116.83,-3.38,75.13
+2025-02-14,3342.82,SOXS,no change,no change,no change,no change,SOXS,3336.13,-6.7,-0.2,75.18
+2025-02-18,3336.13,SOXS,04:00,SOXS,no change,no change,CASH,3268.04,-68.09,-2.04,75.68
+2025-02-19,3268.04,CASH,no change,no change,15:55,SOXS,SOXS,3267.71,-0.33,-0.01,75.69
+2025-02-20,3267.71,SOXS,no change,no change,no change,no change,SOXS,3245.23,-22.47,-0.69,75.85
+2025-02-21,3245.23,SOXS,no change,no change,no change,no change,SOXS,3535.03,289.8,8.93,73.7
+2025-02-24,3535.03,SOXS,no change,no change,15:55,SOXL,SOXL,3773.11,238.08,6.73,71.93
+2025-02-25,3773.11,SOXL,no change,no change,15:55,SOXS,SOXS,3483.07,-290.04,-7.69,74.08
+2025-02-26,3483.07,SOXS,no change,no change,no change,no change,SOXS,3269.0,-214.07,-6.15,75.68
+2025-02-27,3269.0,SOXS,no change,no change,no change,no change,SOXS,3844.73,575.73,17.61,71.39
+2025-02-28,3844.73,SOXS,no change,no change,no change,no change,SOXS,3696.09,-148.64,-3.87,72.5
+2025-03-03,3696.09,SOXS,no change,no change,no change,no change,SOXS,4092.25,396.16,10.72,69.55
+2025-03-04,4092.25,SOXS,no change,no change,no change,no change,SOXS,3997.46,-94.79,-2.32,70.26
+2025-03-05,3997.46,SOXS,no change,no change,no change,no change,SOXS,3720.8,-276.66,-6.92,72.31
+2025-03-06,3720.8,SOXS,no change,no change,no change,no change,SOXS,4190.32,469.52,12.62,68.82
+2025-03-07,4190.32,SOXS,no change,no change,no change,no change,SOXS,3825.43,-364.88,-8.71,71.54
+2025-03-10,3825.43,SOXS,no change,no change,no change,no change,SOXS,4394.72,569.29,14.88,67.3
+2025-03-11,4394.72,SOXS,no change,no change,15:55,SPXS,SPXS,4495.98,101.26,2.3,66.55
+2025-03-12,4495.98,SPXS,no change,no change,15:55,SQQQ,TMV,4508.2,12.22,0.27,66.46
+2025-03-13,4508.2,TMV,no change,no change,no change,no change,SQQQ,4587.51,79.31,1.76,65.87
+2025-03-14,4587.51,SQQQ,no change,no change,15:55,SPXS,SPXS,4443.84,-143.67,-3.13,66.94
+2025-03-17,4443.84,SPXS,14:26,SQQQ,15:55,SPXS,SPXS,4336.63,-107.21,-2.41,67.73
+2025-03-18,4336.63,SPXS,no change,no change,no change,no change,SPXS,4495.51,158.87,3.66,66.55
+2025-03-19,4495.51,SPXS,no change,no change,15:55,TMV,SPXS,4348.44,-147.07,-3.27,67.64
+2025-03-20,4348.44,TMV,no change,no change,no change,no change,SPXS,4351.47,3.03,0.07,67.62
+2025-03-21,4351.47,SPXS,no change,no change,15:55,SQQQ,SQQQ,4401.2,49.74,1.14,67.25
+2025-03-24,4401.2,SPXS,07:13,SQQQ,no change,no change,SPXS,4176.17,-225.03,-5.11,68.93
+2025-03-25,4176.17,SPXS,no change,no change,15:55,SQQQ,SQQQ,4169.8,-6.37,-0.15,68.97
+2025-03-26,4169.8,SQQQ,no change,no change,no change,no change,SQQQ,4347.09,177.29,4.25,67.65
+2025-03-27,4347.09,SQQQ,no change,no change,15:55,TMV,TMV,4397.26,50.17,1.15,67.28
+2025-03-28,4397.26,SPXS,no change,no change,no change,no change,SPXS,4433.99,36.73,0.84,67.01
+2025-03-31,4433.99,SPXS,no change,no change,no change,no change,SPXS,4348.75,-85.24,-1.92,67.64
+2025-04-01,4348.75,SPXS,no change,no change,no change,no change,SPXS,4277.58,-71.17,-1.64,68.17
+2025-04-02,4277.58,SPXS,no change,no change,no change,no change,SPXS,4226.16,-51.42,-1.2,68.55
+2025-04-03,4226.16,SPXS,no change,no change,15:55,SQQQ,SQQQ,4504.28,278.13,6.58,66.49
+2025-04-04,4504.28,SQQQ,no change,no change,15:55,SPXS,SPXS,4848.15,343.86,7.63,63.93
+2025-04-07,4848.15,SPXS,10:13,SPXS,no change,no change,TMV,4871.99,23.85,0.49,63.75
+2025-04-08,4871.99,TMV,no change,no change,15:55,SPXS,SPXS,4991.41,119.42,2.45,62.86
+2025-04-09,4991.41,SPXS,04:00,SPXS,15:55,SQQQ,SQQQ,5111.33,119.91,2.4,61.97
+2025-04-10,5111.33,SQQQ,no change,no change,15:55,SPXS,SQQQ,5444.21,332.89,6.51,59.49
+2025-04-11,5444.21,SQQQ,12:52,SPXS,no change,no change,SQQQ,5158.1,-286.11,-5.26,61.62
+2025-04-14,5158.1,SQQQ,no change,no change,15:55,SPXS,SPXS,5111.74,-46.36,-0.9,61.97
+2025-04-15,5111.74,SPXS,no change,no change,15:55,SQQQ,SPXS,5145.97,34.23,0.67,61.71
+2025-04-16,5145.97,SQQQ,no change,no change,15:55,TMV,TMV,5562.65,416.67,8.1,58.61
+2025-04-17,5562.65,TMV,no change,no change,no change,no change,TMV,5628.74,66.09,1.19,58.12
+2025-04-21,5628.74,TMV,no change,no change,no change,no change,TMV,5969.86,341.12,6.06,55.58
+2025-04-22,5969.86,TMV,no change,no change,15:55,SPXS,SPXS,5705.83,-264.04,-4.42,57.55
+2025-04-23,5705.83,SPXS,06:46,SPXS,15:55,SQQQ,SQQQ,5268.68,-437.15,-7.66,60.8
+2025-04-24,5268.68,SQQQ,10:28,SQQQ,15:55,SPXS,SPXS,5144.15,-124.52,-2.36,61.72
+2025-04-25,5144.15,SPXS,no change,no change,15:55,SOXS,SOXS,5095.82,-48.33,-0.94,62.08
+2025-04-28,5095.82,SOXS,no change,no change,15:55,SPXS,SPXS,5122.22,26.4,0.52,61.89
+2025-04-29,5122.22,SPXS,no change,no change,15:55,TMV,TMV,5054.12,-68.11,-1.33,62.39
+2025-04-30,5054.12,SQQQ,16:35,SQQQ,15:55,SOXS,SOXS,4993.75,-60.37,-1.19,62.84
+2025-05-01,4993.75,SOXS,06:18,SOXS,no change,no change,CASH,4755.2,-238.54,-4.78,64.62
+2025-05-02,4755.2,CASH,no change,no change,15:55,SOXS,SOXS,4754.73,-0.48,-0.01,64.62
+2025-05-05,4754.73,SOXS,no change,no change,15:55,SOXL,SOXL,4822.71,67.99,1.43,64.12
+2025-05-06,4822.71,SPXL,08:00,TQQQ,15:55,SPXS,SPXS,4697.92,-124.79,-2.59,65.04
+2025-05-07,4697.92,SPXS,no change,no change,15:55,TMV,SPXS,4663.93,-34.0,-0.72,65.3
+2025-05-08,4663.93,TMV,no change,no change,15:55,SOXL,SOXL,4686.5,22.57,0.48,65.13
+2025-05-09,4686.5,SOXL,10:27,TQQQ,15:55,TQQQ,SOXL,4712.0,25.51,0.54,64.94
+2025-05-12,4712.0,SOXL,04:00,SOXL,15:55,SOXL,SOXL,5173.78,461.77,9.8,61.5
+2025-05-13,5173.78,SPXL,14:00,SOXL,15:55,SOXL,SOXL,5442.96,269.18,5.2,59.5
+2025-05-14,5442.96,SOXL,no change,no change,no change,no change,TQQQ,5497.31,54.35,1.0,59.1
+2025-05-15,5497.31,TQQQ,08:00,TQQQ,15:55,TQQQ,TQQQ,5425.73,-71.59,-1.3,59.63
+2025-05-16,5425.73,TQQQ,10:44,TQQQ,15:55,TQQQ,SPXL,5455.58,29.85,0.55,59.41
+2025-05-19,5455.58,SPXL,12:10,TQQQ,15:55,TQQQ,SPXL,5378.98,-76.6,-1.4,59.98
+2025-05-20,5378.98,SPXL,15:00,TQQQ,15:55,TQQQ,SPXL,5306.42,-72.56,-1.35,60.52
+2025-05-21,5306.42,SPXL,13:17,TQQQ,15:55,TQQQ,SPXL,5132.05,-174.37,-3.29,61.81
+2025-05-22,5132.05,SPXL,07:59,TQQQ,15:55,TQQQ,SPXL,5062.37,-69.68,-1.36,62.33
+2025-05-23,5062.37,SPXL,07:21,TQQQ,15:55,TQQQ,SPXL,4904.86,-157.51,-3.11,63.5
+2025-05-27,4904.86,SPXL,15:31,SOXL,15:55,SOXS,SOXS,5194.81,289.95,5.91,61.35
+2025-05-28,5194.81,SOXS,19:12,SOXS,15:55,SOXL,SOXL,4944.77,-250.04,-4.81,63.21
+2025-05-29,4944.77,SOXL,07:25,SOXL,15:55,SOXL,SOXL,5151.04,206.27,4.17,61.67
+2025-05-30,5151.04,TQQQ,08:11,TQQQ,15:55,TQQQ,TQQQ,5039.01,-112.03,-2.17,62.51
+2025-06-02,5039.01,TQQQ,10:00,TQQQ,15:55,TQQQ,TQQQ,5080.95,41.94,0.83,62.19
+2025-06-03,5080.95,TQQQ,no change,no change,no change,no change,SOXL,5314.72,233.77,4.6,60.46
+2025-06-04,5314.72,SOXL,no change,no change,no change,no change,SOXL,5400.23,85.51,1.61,59.82
+2025-06-05,5400.23,SOXL,09:39,TQQQ,15:55,TQQQ,SOXL,5358.43,-41.8,-0.77,60.13
+2025-06-06,5358.43,SOXL,no change,no change,no change,no change,SOXL,5491.21,132.79,2.48,59.14
+2025-06-09,5491.21,SOXL,11:26,SOXL,15:55,SOXL,SOXL,5639.12,147.9,2.69,58.04
+2025-06-10,5639.12,SOXL,08:00,TQQQ,15:55,TQQQ,SOXL,5760.76,121.64,2.16,57.14
+2025-06-11,5760.76,SOXL,09:46,TQQQ,15:55,TQQQ,SOXL,5715.25,-45.5,-0.79,57.47
+2025-06-12,5715.25,SOXL,19:59,TQQQ,15:55,TQQQ,SOXL,5723.19,7.94,0.14,57.42
+2025-06-13,5723.19,SOXL,08:03,TQQQ,15:55,TQQQ,SOXL,5405.28,-317.91,-5.55,59.78
+2025-06-16,5405.28,SOXL,18:51,SOXL,15:55,SOXL,SOXL,5671.0,265.72,4.92,57.8
+2025-06-17,5671.0,SOXL,13:48,TQQQ,15:55,TQQQ,SOXL,5538.09,-132.91,-2.34,58.79
+2025-06-18,5538.09,SOXL,14:57,TQQQ,15:55,TMF,SOXL,5529.9,-8.19,-0.15,58.85
+2025-06-20,5529.9,SOXL,10:23,TQQQ,15:55,TQQQ,TMF,5494.86,-35.04,-0.63,59.11
+2025-06-23,5494.86,TQQQ,07:46,TQQQ,15:55,TQQQ,TMF,5527.21,32.35,0.59,58.87
+2025-06-24,5527.21,SOXL,no change,no change,15:55,SOXL,SOXL,5871.9,344.69,6.24,56.31
+2025-06-25,5871.9,SOXL,no change,no change,no change,no change,SOXL,6005.31,133.41,2.27,55.32
+2025-06-26,6005.31,SOXL,no change,no change,no change,no change,SOXL,6148.52,143.22,2.38,54.25
+2025-06-27,6148.52,SOXL,no change,no change,no change,no change,SOXL,6120.35,-28.17,-0.46,54.46
+2025-06-30,6120.35,SOXL,no change,no change,no change,no change,SOXL,6142.6,22.24,0.36,54.3
+2025-07-01,6142.6,SOXL,no change,no change,no change,no change,SOXL,6070.16,-72.44,-1.18,54.83
+2025-07-02,6070.16,SOXL,no change,no change,no change,no change,SOXL,6379.79,309.64,5.1,52.53
+2025-07-03,6379.79,SOXL,no change,no change,no change,no change,SOXL,6447.09,67.3,1.05,52.03
+2025-07-07,6447.09,SOXL,no change,no change,no change,no change,SOXL,6116.65,-330.44,-5.13,54.49
+2025-07-08,6116.65,SOXL,no change,no change,no change,no change,SOXL,6467.91,351.26,5.74,51.87
+2025-07-09,6467.91,SOXL,no change,no change,no change,no change,SOXL,6505.88,37.97,0.59,51.59
+2025-07-10,6505.88,SOXL,no change,no change,no change,no change,SOXL,6701.66,195.78,3.01,50.14
+2025-07-11,6701.66,SOXL,no change,no change,no change,no change,SOXL,6691.87,-9.79,-0.15,50.21
+2025-07-14,6691.87,SOXL,no change,no change,no change,no change,SOXL,6476.48,-215.38,-3.22,51.81
+2025-07-15,6476.48,SOXL,no change,no change,no change,no change,SOXL,6713.89,237.41,3.67,50.04
+2025-07-16,6713.89,SOXL,no change,no change,no change,no change,SOXL,6591.53,-122.36,-1.82,50.95
+2025-07-17,6591.53,SOXL,no change,no change,no change,no change,SOXL,6689.45,97.92,1.49,50.23
+2025-07-18,6689.45,SOXL,no change,no change,no change,no change,SOXL,6700.43,10.99,0.16,50.14
+2025-07-21,6700.43,SOXL,no change,no change,no change,no change,SOXL,6733.5,33.07,0.49,49.9
+2025-07-22,6733.5,SOXL,no change,no change,no change,no change,SOXL,6447.05,-286.45,-4.25,52.03
+2025-07-23,6447.05,SOXL,no change,no change,15:55,SOXS,SOXS,6267.79,-179.27,-2.78,53.36
+2025-07-24,6267.79,SOXS,no change,no change,no change,no change,SOXS,6273.62,5.84,0.09,53.32
+2025-07-25,6273.62,SOXS,no change,no change,no change,no change,SOXS,6296.68,23.06,0.37,53.15
+2025-07-28,6296.68,SOXS,no change,no change,15:55,SOXL,SOXL,5939.93,-356.75,-5.67,55.8
+2025-07-29,5939.93,SOXL,no change,no change,no change,no change,SOXL,5967.48,27.55,0.46,55.6
+2025-07-30,5967.48,SOXL,no change,no change,no change,no change,SOXL,6073.77,106.29,1.78,54.81
+2025-07-31,6073.77,SOXL,no change,no change,15:55,SOXS,SOXS,5470.06,-603.71,-9.94,59.3
+2025-08-01,5470.06,SOXS,no change,no change,15:55,SOXL,SOXL,5637.34,167.28,3.06,58.05
+2025-08-04,5637.34,SOXL,no change,no change,15:55,SOXS,SOXS,5837.85,200.51,3.56,56.56
+2025-08-05,5837.85,SOXS,no change,no change,15:55,SOXL,SOXL,5923.2,85.36,1.46,55.93
+2025-08-06,5923.2,SOXL,no change,no change,no change,no change,SOXL,5753.61,-169.6,-2.86,57.19
+2025-08-07,5753.61,SOXL,no change,no change,no change,no change,SOXL,6005.02,251.41,4.37,55.32
+2025-08-08,6005.02,SOXL,no change,no change,no change,no change,SOXL,6184.25,179.23,2.98,53.99
+2025-08-11,6184.25,SOXL,no change,no change,no change,no change,SOXL,6126.52,-57.73,-0.93,54.41
+2025-08-12,6126.52,SOXL,no change,no change,no change,no change,SOXL,6749.62,623.1,10.17,49.78
+2025-08-13,6749.62,SOXL,no change,no change,no change,no change,SOXL,7051.1,301.48,4.47,47.54
+2025-08-14,7051.1,SOXL,no change,no change,no change,no change,SOXL,7103.28,52.18,0.74,47.15
+2025-08-15,7103.28,SOXL,no change,no change,no change,no change,SOXL,6594.44,-508.83,-7.16,50.93
+2025-08-18,6594.44,SOXL,no change,no change,no change,no change,SOXL,6624.52,30.08,0.46,50.71
+2025-08-19,6624.52,SOXL,no change,no change,no change,no change,SOXL,6290.48,-334.04,-5.04,53.19
+2025-08-20,6290.48,SOXL,no change,no change,no change,no change,SOXL,6205.9,-84.57,-1.34,53.82
+2025-08-21,6205.9,SOXL,no change,no change,no change,no change,SOXL,6118.08,-87.82,-1.42,54.48
+2025-08-22,6118.08,SOXL,10:21,SOXL,15:55,SOXL,SOXL,6639.89,521.8,8.53,50.6
+2025-08-25,6639.89,SOXL,no change,no change,no change,no change,SOXL,6630.2,-9.69,-0.15,50.67
+2025-08-26,6630.2,SOXL,no change,no change,no change,no change,SOXL,6779.01,148.82,2.24,49.56
+2025-08-27,6779.01,SOXL,no change,no change,no change,no change,SOXL,6817.71,38.69,0.57,49.27
+2025-08-28,6817.71,SOXL,no change,no change,no change,no change,SOXL,6918.1,100.4,1.47,48.53
+2025-08-29,6918.1,SOXL,no change,no change,no change,no change,SOXL,6254.02,-664.09,-9.6,53.47
+2025-09-02,6254.02,SOXL,no change,no change,no change,no change,SOXL,6105.02,-149.0,-2.38,54.57
+2025-09-03,6105.02,SOXL,no change,no change,no change,no change,SOXL,5996.35,-108.67,-1.78,55.38
+2025-09-04,5996.35,SOXL,no change,no change,15:55,SOXS,SOXS,6181.99,185.64,3.1,54.0
+2025-09-05,6181.99,SOXS,no change,no change,15:55,SOXL,SOXL,5970.85,-211.14,-3.42,55.57
+2025-09-08,5970.85,SOXL,no change,no change,no change,no change,SOXL,6104.07,133.22,2.23,54.58
+2025-09-09,6104.07,SOXL,no change,no change,no change,no change,SOXL,6130.03,25.96,0.43,54.39
+2025-09-10,6130.03,SOXL,no change,no change,no change,no change,SOXL,6459.67,329.64,5.38,51.94
+2025-09-11,6459.67,SOXL,no change,no change,no change,no change,SOXL,6572.57,112.9,1.75,51.1
+2025-09-12,6572.57,SOXL,no change,no change,no change,no change,SOXL,6629.01,56.44,0.86,50.68
+2025-09-15,6629.01,SOXL,no change,no change,no change,no change,SOXL,6755.46,126.45,1.91,49.74
+2025-09-16,6755.46,SOXL,no change,no change,no change,no change,SOXL,6899.93,144.47,2.14,48.66
+2025-09-17,6899.93,SOXL,no change,no change,no change,no change,SOXL,6900.65,0.72,0.01,48.65
+2025-09-18,6900.65,SOXL,no change,no change,no change,no change,SOXL,7590.85,690.21,10.0,43.52
+2025-09-19,7590.85,SOXL,no change,no change,no change,no change,SOXL,7438.45,-152.4,-2.01,44.65
+2025-09-22,7438.45,SOXL,no change,no change,no change,no change,SOXL,7791.79,353.34,4.75,42.02
+2025-09-23,7791.79,SOXL,no change,no change,no change,no change,SOXL,7743.26,-48.54,-0.62,42.39
+2025-09-24,7743.26,SOXL,no change,no change,no change,no change,SOXL,7691.33,-51.93,-0.67,42.77
+2025-09-25,7691.33,SOXL,no change,no change,no change,no change,SOXL,7624.72,-66.61,-0.87,43.27
+2025-09-26,7624.72,SOXL,no change,no change,no change,no change,SOXL,7672.14,47.41,0.62,42.91
+2025-09-29,7672.14,SOXL,no change,no change,no change,no change,SOXL,7687.94,15.8,0.21,42.8
+2025-09-30,7687.94,SOXL,no change,no change,no change,no change,SOXL,7847.12,159.18,2.07,41.61
+2025-10-01,7847.12,SOXL,no change,no change,no change,no change,SOXL,8324.65,477.53,6.09,38.06
+2025-10-02,8324.65,SOXL,no change,no change,no change,no change,SOXL,8811.21,486.56,5.84,34.44
+2025-10-03,8811.21,SOXL,no change,no change,no change,no change,SOXL,8640.75,-170.47,-1.93,35.71
+2025-10-06,8640.75,SOXL,09:33,SOXL,15:55,SOXL,SOXL,9539.14,898.39,10.4,29.02
+2025-10-07,9539.14,SOXL,no change,no change,no change,no change,SOXL,8877.71,-661.43,-6.93,33.94
+2025-10-08,8877.71,SOXL,no change,no change,no change,no change,SOXL,9768.45,890.74,10.03,27.32
+2025-10-09,9768.45,SOXL,no change,no change,no change,no change,SOXL,9606.49,-161.95,-1.66,28.52
+2025-10-10,9606.49,SOXL,no change,no change,no change,no change,SOXL,7875.2,-1731.29,-18.02,41.4
+2025-10-13,7875.2,SOXL,04:00,SOXL,15:55,SOXS,SOXS,8513.51,638.31,8.11,36.65
+2025-10-14,8513.51,SOXS,no change,no change,15:55,SOXL,SOXL,9067.09,553.58,6.5,32.54
+2025-10-15,9067.09,SOXL,11:37,SOXL,15:55,SOXL,SOXL,9716.38,649.29,7.16,27.7
+2025-10-16,9716.38,SOXL,no change,no change,no change,no change,SOXL,9884.89,168.52,1.73,26.45
+2025-10-17,9884.89,SOXL,no change,no change,no change,no change,SOXL,9816.52,-68.37,-0.69,26.96
+2025-10-20,9816.52,SOXL,no change,no change,no change,no change,SOXL,10358.92,542.4,5.53,22.92
+2025-10-21,10358.92,SOXL,no change,no change,no change,no change,SOXL,10171.82,-187.1,-1.81,24.32
+2025-10-22,10171.82,SOXL,no change,no change,15:55,SOXS,SOXS,9329.0,-842.82,-8.29,30.59
+2025-10-23,9329.0,SOXS,09:50,SOXS,15:55,SOXL,SOXL,8853.23,-475.77,-5.1,34.13
+2025-10-24,8853.23,SOXL,no change,no change,no change,no change,SOXL,9328.74,475.51,5.37,30.59
+2025-10-27,9328.74,SOXL,no change,no change,no change,no change,SOXL,10075.81,747.07,8.01,25.03
+2025-10-28,10075.81,SOXL,no change,no change,no change,no change,SOXL,10102.64,26.83,0.27,24.83
+2025-10-29,10102.64,SOXL,no change,no change,no change,no change,SOXL,10627.53,524.88,5.2,20.92
+2025-10-30,10627.53,SOXL,no change,no change,no change,no change,SOXL,10235.55,-391.98,-3.69,23.84
+2025-10-31,10235.55,SOXL,no change,no change,no change,no change,SOXL,10325.91,90.36,0.88,23.17
+2025-11-03,10325.91,SOXL,no change,no change,no change,no change,SOXL,10428.95,103.04,1.0,22.4
+2025-11-04,10428.95,SOXL,no change,no change,no change,no change,SOXL,9187.05,-1241.9,-11.91,31.64
+2025-11-05,9187.05,SOXL,15:50,SOXL,15:55,SOXL,SOXL,10160.81,973.76,10.6,24.4
+2025-11-06,10160.81,SOXL,no change,no change,no change,no change,SOXL,9260.95,-899.86,-8.86,31.09
+2025-11-07,9260.95,SOXL,no change,no change,no change,no change,SOXL,8862.41,-398.54,-4.3,34.06
+2025-11-10,8862.41,SOXL,no change,no change,15:55,SOXS,SOXS,9691.31,828.9,9.35,27.89
+2025-11-11,9691.31,SOXS,no change,no change,15:55,SOXL,SOXL,10398.32,707.01,7.3,22.63
+2025-11-12,10398.32,SOXL,no change,no change,15:55,SOXS,SOXS,10847.74,449.41,4.32,19.29
+2025-11-13,10847.74,SOXS,no change,no change,15:55,SOXL,SOXL,11967.38,1119.64,10.32,10.96
+2025-11-14,11967.38,SOXL,no change,no change,15:55,SOXS,SOXS,11860.06,-107.32,-0.9,11.75
+2025-11-17,11860.06,SOXS,no change,no change,no change,no change,SOXS,12472.92,612.85,5.17,7.19
+2025-11-18,12472.92,SOXS,no change,no change,no change,no change,SOXS,13207.62,734.71,5.89,1.73
+2025-11-19,13207.62,SOXS,no change,no change,no change,no change,SOXS,12594.11,-613.51,-4.65,6.29
+2025-11-20,12594.11,SOXS,no change,no change,no change,no change,SOXS,14506.16,1912.04,15.18,0.0
+2025-11-21,14506.16,SOXS,no change,no change,no change,no change,SOXS,14104.64,-401.51,-2.77,2.77
+2025-11-24,14104.64,SOXS,no change,no change,no change,no change,SOXS,12097.58,-2007.06,-14.23,16.6
+2025-11-25,12097.58,SOXS,no change,no change,no change,no change,SOXS,12104.85,7.27,0.06,16.55
+2025-11-26,12104.85,SOXS,10:59,SOXS,no change,no change,CASH,11289.91,-814.94,-6.73,22.17
+2025-11-28,11289.91,CASH,no change,no change,15:55,SOXS,SOXS,11288.78,-1.13,-0.01,22.18
+2025-12-01,11288.78,SOXS,no change,no change,no change,no change,SOXS,11206.98,-81.8,-0.72,22.74
+2025-12-02,11206.98,SOXS,09:04,SOXS,15:55,SOXL,SOXL,10756.06,-450.92,-4.02,25.85
+2025-12-03,10756.06,SOXL,no change,no change,no change,no change,SOXL,11441.59,685.54,6.37,21.13
+2025-12-04,11441.59,SOXL,no change,no change,no change,no change,SOXL,11068.11,-373.48,-3.26,23.7
+2025-12-05,11068.11,SOXL,no change,no change,no change,no change,SOXL,11436.68,368.57,3.33,21.16
+2025-12-08,11436.68,SOXL,no change,no change,no change,no change,SOXL,11727.85,291.17,2.55,19.15
+2025-12-09,11727.85,SOXL,no change,no change,no change,no change,SOXL,11757.33,29.49,0.25,18.95
+2025-12-10,11757.33,SOXL,no change,no change,no change,no change,SOXL,12252.44,495.11,4.21,15.54
+2025-12-11,12252.44,SOXL,no change,no change,no change,no change,SOXL,11930.56,-321.88,-2.63,17.76
+2025-12-12,11930.56,SOXL,no change,no change,no change,no change,SOXL,10240.06,-1690.5,-14.17,29.41
+2025-12-15,10240.06,SOXL,no change,no change,15:55,SOXS,SOXS,10079.78,-160.28,-1.57,30.51
+2025-12-16,10079.78,SOXS,no change,no change,no change,no change,SOXS,10096.75,16.97,0.17,30.4
+2025-12-17,10096.75,SOXS,no change,no change,no change,no change,SOXS,11364.39,1267.63,12.55,21.66
+2025-12-18,11364.39,SOXS,no change,no change,no change,no change,SOXS,10438.99,-925.4,-8.14,28.04
+2025-12-19,10438.99,SOXS,09:45,SOXS,no change,no change,CASH,9605.07,-833.92,-7.99,33.79
+2025-12-22,9605.07,CASH,no change,no change,15:55,SOXS,SOXS,9604.11,-0.96,-0.01,33.79
+2025-12-23,9604.11,SOXS,no change,no change,15:55,SOXL,SOXL,9480.37,-123.74,-1.29,34.65
+2025-12-24,9480.37,SOXL,no change,no change,no change,no change,SOXL,9553.08,72.72,0.77,34.14
+2025-12-26,9553.08,SOXL,no change,no change,no change,no change,SOXL,9610.61,57.52,0.6,33.75
+2025-12-29,9610.61,SOXL,no change,no change,no change,no change,SOXL,9507.48,-103.13,-1.07,34.46
+2025-12-30,9507.48,SOXL,no change,no change,no change,no change,SOXL,9491.55,-15.93,-0.17,34.57
+2025-12-31,9491.55,SOXL,no change,no change,no change,no change,SOXL,9193.84,-297.71,-3.14,36.62
+2026-01-02,9193.84,SOXL,10:20,SOXL,15:55,SOXS,SOXS,10201.83,1007.99,10.96,29.67
+2026-01-05,10201.83,SOXS,05:06,SOXS,15:55,SOXL,SOXL,9720.4,-481.43,-4.72,32.99
+2026-01-06,9720.4,SOXL,no change,no change,no change,no change,SOXL,10731.9,1011.51,10.41,26.02
+2026-01-07,10731.9,SOXL,no change,no change,no change,no change,SOXL,10344.66,-387.25,-3.61,28.69
+2026-01-08,10344.66,SOXL,no change,no change,no change,no change,SOXL,9846.34,-498.32,-4.82,32.12
+2026-01-09,9846.34,SOXL,no change,no change,no change,no change,SOXL,10755.7,909.37,9.24,25.85
+2026-01-12,10755.7,SOXL,no change,no change,no change,no change,SOXL,10885.61,129.91,1.21,24.96
+2026-01-13,10885.61,SOXL,no change,no change,no change,no change,SOXL,11108.74,223.13,2.05,23.42
+2026-01-14,11108.74,SOXL,no change,no change,no change,no change,SOXL,10943.13,-165.61,-1.49,24.56
+2026-01-15,10943.13,SOXL,09:37,SOXL,15:55,SOXL,SOXL,11891.72,948.59,8.67,18.02
+2026-01-16,11891.72,SOXL,no change,no change,no change,no change,SOXL,12410.8,519.07,4.37,14.44
+2026-01-20,12410.8,SOXL,no change,no change,no change,no change,SOXL,11876.39,-534.4,-4.31,18.13
+2026-01-21,11876.39,SOXL,11:43,SOXL,15:55,SOXL,SOXL,12843.16,966.77,8.14,11.46
+2026-01-22,12843.16,SOXL,no change,no change,no change,no change,SOXL,12829.03,-14.14,-0.11,11.56
+2026-01-23,12829.03,SOXL,no change,no change,no change,no change,SOXL,12392.85,-436.18,-3.4,14.57
+2026-01-26,12392.85,SOXL,no change,no change,no change,no change,SOXL,12253.51,-139.34,-1.12,15.53
+2026-01-27,12253.51,SOXL,no change,no change,no change,no change,SOXL,13117.8,864.29,7.05,9.57
+2026-01-28,13117.8,SOXL,04:00,SOXL,15:55,SOXL,SOXL,14130.54,1012.74,7.72,2.59
+2026-01-29,14130.54,SOXL,no change,no change,no change,no change,SOXL,14171.89,41.35,0.29,2.3
+2026-01-30,14171.89,SOXL,no change,no change,no change,no change,SOXL,12459.4,-1712.49,-12.08,14.11
+2026-02-02,12459.4,SOXL,no change,no change,no change,no change,SOXL,13106.22,646.81,5.19,9.65
+2026-02-03,13106.22,SOXL,no change,no change,no change,no change,SOXL,12284.93,-821.29,-6.27,15.31
+2026-02-04,12284.93,SOXL,no change,no change,no change,no change,SOXL,10771.14,-1513.79,-12.32,25.75
+2026-02-05,10771.14,SOXL,no change,no change,15:55,SOXS,SOXS,10669.08,-102.06,-0.95,26.45
+2026-02-06,10669.08,SOXS,04:20,SOXS,no change,no change,CASH,10166.62,-502.46,-4.71,29.92
+2026-02-09,10166.62,CASH,no change,no change,15:55,SOXL,SOXL,10165.6,-1.02,-0.01,29.92
+2026-02-10,10165.6,SOXL,no change,no change,no change,no change,SOXL,10050.9,-114.71,-1.13,30.71
+2026-02-11,10050.9,SOXL,no change,no change,no change,no change,SOXL,10827.28,776.39,7.72,25.36
+2026-02-12,10827.28,SOXL,no change,no change,no change,no change,SOXL,10029.94,-797.35,-7.36,30.86
+2026-02-13,10029.94,SOXL,no change,no change,no change,no change,SOXL,10202.1,172.16,1.72,29.67
+2026-02-17,10202.1,SOXL,no change,no change,no change,no change,SOXL,10192.58,-9.52,-0.09,29.74
+2026-02-18,10192.58,SOXL,no change,no change,no change,no change,SOXL,10541.67,349.09,3.42,27.33
+2026-02-19,10541.67,SOXL,no change,no change,no change,no change,SOXL,10295.72,-245.95,-2.33,29.03
+2026-02-20,10295.72,SOXL,no change,no change,no change,no change,SOXL,10598.0,302.28,2.94,26.94
+2026-02-23,10598.0,SOXL,no change,no change,no change,no change,SOXL,10360.36,-237.63,-2.24,28.58
+2026-02-24,10360.36,SOXL,no change,no change,no change,no change,SOXL,10894.72,534.36,5.16,24.9
+2026-02-25,10894.72,SOXL,no change,no change,no change,no change,SOXL,11408.83,514.11,4.72,21.35
+2026-02-26,11408.83,SOXL,no change,no change,no change,no change,SOXL,10331.42,-1077.41,-9.44,28.78
+2026-02-27,10331.42,SOXL,no change,no change,15:55,SOXS,SOXS,9929.37,-402.05,-3.89,31.55
+2026-03-02,9929.37,SOXS,no change,no change,no change,no change,SOXS,9929.92,0.55,0.01,31.55
+2026-03-03,9929.92,SOXS,no change,no change,no change,no change,SOXS,11419.61,1489.69,15.0,21.28
+2026-03-04,11419.61,SOXS,no change,no change,no change,no change,SOXS,10674.98,-744.64,-6.52,26.41
+2026-03-05,10674.98,SOXS,13:43,SOXS,15:55,SOXS,SOXS,11457.47,782.5,7.33,21.02
+2026-03-06,11457.47,SOXS,09:32,SOXS,15:55,SOXS,SOXS,12139.29,681.82,5.95,16.32
+2026-03-09,12139.29,SOXS,12:28,SOXS,no change,no change,CASH,11565.39,-573.9,-4.73,20.27
+2026-03-10,11565.39,CASH,no change,no change,15:55,SOXS,SOXS,11564.23,-1.16,-0.01,20.28
+2026-03-11,11564.23,SOXS,08:01,SOXS,no change,no change,CASH,11019.61,-544.62,-4.71,24.03
+2026-03-12,11019.61,CASH,no change,no change,15:55,SOXS,SOXS,11018.51,-1.1,-0.01,24.04
+2026-03-13,11018.51,SOXS,09:31,SOXS,no change,no change,CASH,10476.63,-541.88,-4.92,27.78
+2026-03-16,10476.63,CASH,no change,no change,15:55,SOXS,SOXS,10475.58,-1.05,-0.01,27.79
+2026-03-17,10475.58,SOXS,no change,no change,no change,no change,SOXS,10269.5,-206.08,-1.97,29.21
+2026-03-18,10269.5,SOXS,04:00,SOXS,no change,no change,CASH,9846.35,-423.14,-4.12,32.12
+2026-03-19,9846.35,CASH,no change,no change,15:55,SOXS,SOXS,9845.37,-0.98,-0.01,32.13
+2026-03-20,9845.37,SOXS,15:53,SOXS,15:55,SOXS,SOXS,10694.86,849.49,8.63,26.27
+2026-03-23,10694.86,SOXS,07:07,SOXS,no change,no change,CASH,10191.18,-503.68,-4.71,29.75
+2026-03-24,10191.18,CASH,no change,no change,15:55,SOXS,SOXS,10190.16,-1.02,-0.01,29.75
+2026-03-25,10190.16,SOXS,04:05,SOXS,no change,no change,CASH,9693.92,-496.24,-4.87,33.17
+2026-03-26,9693.92,CASH,no change,no change,15:55,SOXL,SOXL,9692.95,-0.97,-0.01,33.18
+2026-03-27,9692.95,SOXL,no change,no change,15:55,SOXS,SOXS,9215.34,-477.62,-4.93,36.47
+2026-03-30,9215.34,SOXS,10:59,SOXS,15:55,SOXS,SOXS,9917.89,702.55,7.62,31.63
+2026-03-31,9917.89,SOXS,08:01,SOXS,no change,no change,CASH,9448.48,-469.41,-4.73,34.87
+2026-04-01,9448.48,CASH,no change,no change,15:55,SOXS,SOXS,9447.54,-0.94,-0.01,34.87
+2026-04-02,9447.54,SOXS,09:30,SOXS,15:55,SOXL,SOXL,10373.32,925.78,9.8,28.49
+2026-04-06,10373.32,SOXL,no change,no change,no change,no change,SOXL,10754.71,381.39,3.68,25.86
+2026-04-07,10754.71,SOXL,19:33,SOXL,15:55,SOXL,SOXL,12406.04,1651.34,15.35,14.48
+2026-04-08,12406.04,SOXL,07:16,SOXL,15:55,SOXL,SOXL,14364.45,1958.41,15.79,0.98
+2026-04-09,14364.45,SOXL,no change,no change,no change,no change,SOXL,15340.21,975.76,6.79,0.0
+2026-04-10,15340.21,SOXL,no change,no change,no change,no change,SOXL,16302.11,961.9,6.27,0.0

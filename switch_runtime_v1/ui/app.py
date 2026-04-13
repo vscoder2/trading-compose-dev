@@ -28,8 +28,8 @@ import streamlit as st
 import streamlit.components.v1 as components
 
 NY_TZ = "America/New_York"
-APP_TITLE = "Automated Trading Dashboard"
-APP_SUBTITLE = "Operator console for switch-runtime strategy execution, risk controls, and broker-facing decision flow"
+APP_TITLE = "TradeAI Pro"
+APP_SUBTITLE = "Automated Trading Platform for switch-runtime execution and risk operations"
 
 
 def _arrow_safe_scalar(value: Any) -> Any:
@@ -154,6 +154,12 @@ WORKSPACE_ORDER = [
     "UI Changelog",
 ]
 THEME_PRESETS: dict[str, dict[str, str]] = {
+    "Figma TradeAI": {
+        "accent": "#3b82f6",
+        "accent2": "#60a5fa",
+        "accent3": "#93c5fd",
+        "link": "#7dd3fc",
+    },
     "Neo Green": {
         "accent": "#00c805",
         "accent2": "#3cd95b",
@@ -707,8 +713,8 @@ def _sanitize_user_ui_prefs(ui: dict[str, Any]) -> dict[str, Any]:
     out["ui_mobile_compact_mode"] = bool(ui.get("ui_mobile_compact_mode", False))
     raw_rules = ui.get("ui_alert_rules", [])
     out["ui_alert_rules"] = raw_rules if isinstance(raw_rules, list) else []
-    theme = str(ui.get("ui_theme_preset", "Neo Green") or "Neo Green")
-    out["ui_theme_preset"] = theme if theme in THEME_PRESETS else "Neo Green"
+    theme = str(ui.get("ui_theme_preset", "Figma TradeAI") or "Figma TradeAI")
+    out["ui_theme_preset"] = theme if theme in THEME_PRESETS else "Figma TradeAI"
     density = str(ui.get("ui_density_mode", "Comfortable") or "Comfortable")
     out["ui_density_mode"] = density if density in DENSITY_MODES else "Comfortable"
     try:
@@ -1462,6 +1468,96 @@ def _inject_theme_css() -> None:
             position: relative;
             z-index: 1;
           }
+          .composer-login-shell {
+            max-width: 1080px;
+            margin: 1.1rem auto 0.8rem auto;
+          }
+          .composer-login-hero {
+            background:
+              radial-gradient(620px 240px at 0% 0%, rgba(0, 200, 5, 0.14), transparent 68%),
+              linear-gradient(170deg, rgba(12, 16, 21, 0.96), rgba(10, 14, 18, 0.98));
+            border: 1px solid rgba(118, 137, 156, 0.28);
+            border-radius: 18px;
+            padding: 1.15rem 1.1rem 1.05rem 1.1rem;
+            min-height: 100%;
+            box-shadow: var(--shadow-soft);
+          }
+          .composer-login-kicker {
+            text-transform: uppercase;
+            letter-spacing: 0.11em;
+            font-size: 0.72rem;
+            color: #95a0ad;
+            font-weight: 700;
+            margin-bottom: 0.22rem;
+          }
+          .composer-login-hero h1 {
+            margin: 0.05rem 0 0.52rem 0;
+            font-size: clamp(1.5rem, 2.2vw, 2rem);
+            line-height: 1.18;
+            letter-spacing: -0.025em;
+            color: #f6f9fc;
+          }
+          .composer-login-sub {
+            color: #b4beca;
+            margin-bottom: 0.72rem;
+            line-height: 1.45;
+          }
+          .composer-login-points {
+            margin: 0.2rem 0 0.9rem 1.0rem;
+            color: #d2dae3;
+            line-height: 1.5;
+          }
+          .composer-login-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.42rem;
+          }
+          .composer-login-chip {
+            border: 1px solid rgba(106, 120, 137, 0.34);
+            background: rgba(12, 16, 22, 0.74);
+            color: #d4dde7;
+            border-radius: 999px;
+            padding: 0.14rem 0.58rem;
+            font-size: 0.76rem;
+            font-family: "IBM Plex Mono", monospace;
+          }
+          .composer-auth-card {
+            background: rgba(11, 15, 20, 0.95);
+            border: 1px solid rgba(118, 137, 156, 0.31);
+            border-radius: 16px;
+            padding: 0.95rem 0.95rem 0.85rem 0.95rem;
+            box-shadow: var(--shadow-soft);
+          }
+          .composer-auth-card h3 {
+            margin: 0;
+            font-size: 1.18rem;
+            letter-spacing: -0.02em;
+          }
+          .composer-auth-card .composer-auth-sub {
+            color: #a8b3bf;
+            margin: 0.2rem 0 0.58rem 0;
+            font-size: 0.9rem;
+          }
+          .composer-auth-card [data-testid="stTextInput"] {
+            margin-bottom: 0.08rem;
+          }
+          .composer-auth-card [data-testid="stButton"] button,
+          .composer-auth-card [data-testid="stFormSubmitButton"] button {
+            border-radius: 10px !important;
+            min-height: 2.56rem;
+            font-weight: 700;
+          }
+          .composer-auth-card [data-testid="stRadio"] {
+            margin: 0.22rem 0 0.22rem 0;
+          }
+          .composer-auth-card .auth-divider {
+            margin: 0.62rem 0 0.52rem 0;
+          }
+          @media (max-width: 980px) {
+            .composer-login-shell {
+              margin-top: 0.55rem;
+            }
+          }
           .desk-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -1698,8 +1794,8 @@ def _inject_compact_mode_css(enabled: bool) -> None:
 
 
 def _inject_dynamic_theme_css() -> None:
-    preset = str(st.session_state.get("ui_theme_preset", "Neo Green") or "Neo Green")
-    colors = THEME_PRESETS.get(preset, THEME_PRESETS["Neo Green"])
+    preset = str(st.session_state.get("ui_theme_preset", "Figma TradeAI") or "Figma TradeAI")
+    colors = THEME_PRESETS.get(preset, THEME_PRESETS["Figma TradeAI"])
     accessibility_preset = str(st.session_state.get("ui_accessibility_preset", "Default") or "Default")
     reduced_motion_pref = bool(st.session_state.get("ui_reduced_motion", False))
     density = str(st.session_state.get("ui_density_mode", "Comfortable") or "Comfortable")
@@ -1777,6 +1873,73 @@ def _inject_dynamic_theme_css() -> None:
         scroll-behavior: auto !important;
       }
     """ if reduced_motion else ""
+    figma_style_css = """
+      .stApp {
+        background: linear-gradient(180deg, #020617 0%, #0b1220 100%) !important;
+      }
+      [data-testid="stSidebar"] {
+        background: #0f172a !important;
+        border-right: 1px solid #1e293b !important;
+      }
+      [data-testid="stSidebar"] .stButton button {
+        background: #2563eb !important;
+        color: #f8fafc !important;
+        border: 1px solid #3b82f6 !important;
+      }
+      .top-banner,
+      .desk-block,
+      .terminal-shell,
+      .terminal-shell-hero,
+      .kpi-card,
+      .left-nav-card,
+      .status-bar,
+      .top-command-bar,
+      .realtime-ribbon,
+      .toast-center,
+      .watch-item,
+      .rh-stat {
+        background: rgba(15, 23, 42, 0.86) !important;
+        border-color: rgba(51, 65, 85, 0.8) !important;
+        box-shadow: none !important;
+      }
+      .top-banner {
+        border-radius: 14px !important;
+      }
+      .terminal-title,
+      .hero-right-title,
+      .kpi-label,
+      .section-caption {
+        color: #94a3b8 !important;
+      }
+      .kpi-value,
+      .hero-right-v,
+      .rh-stat-v {
+        color: #f8fafc !important;
+      }
+      .status-badge,
+      .meta-chip,
+      .mode-chip,
+      .watch-item-badge {
+        background: rgba(30, 41, 59, 0.72) !important;
+        border-color: rgba(71, 85, 105, 0.8) !important;
+      }
+      .auth-image-row {
+        display: none !important;
+      }
+      .login-wrap .auth-panel {
+        background: rgba(15, 23, 42, 0.88) !important;
+        border: 1px solid rgba(51, 65, 85, 0.85) !important;
+      }
+      .stTextInput input,
+      .stTextArea textarea,
+      [data-baseweb="select"] > div {
+        background: rgba(15, 23, 42, 0.8) !important;
+        border: 1px solid rgba(51, 65, 85, 0.9) !important;
+      }
+      .stButton button {
+        border-radius: 10px !important;
+      }
+    """ if preset == "Figma TradeAI" else ""
     minimal_css = """
       .top-command-bar,
       .quick-nav-block,
@@ -1822,6 +1985,7 @@ def _inject_dynamic_theme_css() -> None:
           {focus_css}
           {incident_css}
           {reduced_motion_css}
+          {figma_style_css}
           {minimal_css}
         </style>
         """,
@@ -3677,15 +3841,15 @@ def _init_session_state() -> None:
     st.session_state.setdefault("ui_live_stream_transport", "Polling")
     st.session_state.setdefault("ui_live_stream_interval_sec", 5)
     st.session_state.setdefault("ui_live_stream_sse_url", "")
-    st.session_state.setdefault("ui_mobile_compact_mode", False)
+    st.session_state.setdefault("ui_mobile_compact_mode", True)
     st.session_state.setdefault("ui_alert_rules", [])
     st.session_state.setdefault("ui_strict_user_db", True)
     st.session_state.setdefault("ui_watchlist_pins", [])
     st.session_state.setdefault("ui_watchlist_pinned_only", False)
     st.session_state.setdefault("ui_watchlist_min_events", 0)
     st.session_state.setdefault("ui_watchlist_sort_mode", "Activity")
-    st.session_state.setdefault("ui_watchlist_card_density", "Standard")
-    st.session_state.setdefault("ui_watchlist_quick_actions", True)
+    st.session_state.setdefault("ui_watchlist_card_density", "Compact")
+    st.session_state.setdefault("ui_watchlist_quick_actions", False)
     st.session_state.setdefault("ui_time_window", "1D")
     st.session_state.setdefault("ui_eval_time", "15:55")
     st.session_state.setdefault("ui_sync_charts", True)
@@ -3737,7 +3901,7 @@ def _init_session_state() -> None:
     st.session_state.setdefault("audit_replay_pending_speed_sec", None)
     st.session_state.setdefault("audit_replay_pending_idx", None)
     st.session_state.setdefault("audit_replay_pending_minute_idx", None)
-    st.session_state.setdefault("ui_theme_preset", "Neo Green")
+    st.session_state.setdefault("ui_theme_preset", "Figma TradeAI")
     st.session_state.setdefault("ui_density_mode", "Comfortable")
     st.session_state.setdefault("ui_font_scale_pct", 100)
     st.session_state.setdefault("ui_high_contrast", False)
@@ -3764,7 +3928,8 @@ def _init_session_state() -> None:
     st.session_state.setdefault("ui_persona_mode", "Operator")
     st.session_state.setdefault("ui_home_tiles", [])
     st.session_state.setdefault("ui_show_onboarding", True)
-    st.session_state.setdefault("ui_minimal_mode", False)
+    st.session_state.setdefault("ui_minimal_mode", True)
+    st.session_state.setdefault("ui_simple_bootstrap_applied", False)
     st.session_state.setdefault("ui_fast_widget_cadence_sec", 5)
     st.session_state.setdefault("ui_heavy_widget_cadence_sec", 30)
     st.session_state.setdefault("ui_saved_views", {})
@@ -3851,6 +4016,19 @@ def _apply_terminal_pending_ui_state(symbols: list[str]) -> None:
         if pending_window in TIME_WINDOW_OPTIONS:
             st.session_state["ui_time_window"] = pending_window
         st.session_state["ui_pending_time_window"] = ""
+
+
+def _apply_simple_ui_bootstrap_once() -> None:
+    # One-time session bootstrap to keep the interface clean and focused.
+    if bool(st.session_state.get("ui_simple_bootstrap_applied", False)):
+        return
+    st.session_state["ui_minimal_mode"] = True
+    st.session_state["ui_mobile_compact_mode"] = True
+    st.session_state["ui_watchlist_card_density"] = "Compact"
+    st.session_state["ui_watchlist_quick_actions"] = False
+    st.session_state["ui_tradeboard_split"] = "Balanced"
+    st.session_state["ui_workspace_view_mode"] = "Single Workspace"
+    st.session_state["ui_simple_bootstrap_applied"] = True
 
 
 def _clear_auth_session(cfg: AuthConfig | None = None) -> None:
@@ -4102,192 +4280,188 @@ def _process_oauth_callback(cfg: AuthConfig) -> None:
 def _render_login(cfg: AuthConfig) -> None:
     _init_users_db(cfg)
     _process_oauth_callback(cfg)
-    st.markdown("<div class='login-wrap'>", unsafe_allow_html=True)
-    st.markdown(
-        """
-        <div class='auth-image-row'>
-          <div class='auth-image-tile auth-image-left'><span>Realtime Market Intelligence</span></div>
-          <div class='auth-image-tile auth-image-right'><span>Execution Risk Watch</span></div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
-    left, right = st.columns([1.1, 1.0])
+    st.markdown("<div class='composer-login-shell'>", unsafe_allow_html=True)
+    left, right = st.columns([1.2, 0.9], gap="large")
 
     with left:
-        st.markdown("##### Secure Operator Access")
-        st.markdown(f"## {APP_TITLE}")
+        st.markdown("<div class='composer-login-hero'>", unsafe_allow_html=True)
+        st.markdown("<div class='composer-login-kicker'>Operator Access</div>", unsafe_allow_html=True)
+        st.markdown(f"<h1>Sign in to {APP_TITLE}</h1>", unsafe_allow_html=True)
         st.markdown(
-            "Centralized interface for paper/live execution of "
-            "`aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m` with switch-variant overlays. "
-            "Use this desk to confirm state, observe decisions, and validate order outcomes in one place."
+            "<div class='composer-login-sub'>"
+            "Monitor allocations, track order lifecycle, and operate the runtime loop from one focused desk."
+            "</div>",
+            unsafe_allow_html=True,
         )
-        st.markdown("- Confirm runtime freshness before market decisions are trusted.")
-        st.markdown("- Track variant transitions (`baseline`, `inverse_ma20`, `inverse_ma60`) and reasons.")
-        st.markdown("- Inspect event-derived position drift versus current target allocations.")
-        metric_cols = st.columns(3)
-        with metric_cols[0]:
-            st.caption("Primary Profile")
-            st.code("aggr_adapt_t10_tr2", language="text")
-        with metric_cols[1]:
-            st.caption("Decision Time")
-            st.code("15:55 NY", language="text")
-        with metric_cols[2]:
-            st.caption("Data Feed")
-            st.code("SIP", language="text")
-        st.caption(
-            "Operational note: this UI is read/operate only. Strategy logic lives in runtime tools and the switch profile."
+        st.markdown(
+            """
+            <ul class='composer-login-points'>
+              <li>Paper/live orchestration with audit-grade event history.</li>
+              <li>Locked profile execution with controlled rebalance timing.</li>
+              <li>Integrated diagnostics for broker, runtime state, and health.</li>
+            </ul>
+            """,
+            unsafe_allow_html=True,
         )
+        st.markdown(
+            """
+            <div class='composer-login-chip-row'>
+              <span class='composer-login-chip'>Profile: aggr_adapt_t10_tr2</span>
+              <span class='composer-login-chip'>Decision: 15:55 NY</span>
+              <span class='composer-login-chip'>Feed: SIP</span>
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+        st.markdown("</div>", unsafe_allow_html=True)
 
     with right:
-        with st.container(border=True):
-            st.markdown("<div class='auth-panel'>", unsafe_allow_html=True)
-            st.markdown("#### Access")
-            st.caption("Use approved credentials or your configured OAuth provider.")
-            _render_auth_notice()
-            views = ["Sign In"]
-            if cfg.allow_registration:
-                views.append("Register")
-            requested_view = str(st.session_state.get("auth_view_requested", "") or "").strip()
-            current_auth_view = str(st.session_state.get("auth_view", "Sign In") or "Sign In")
-            if requested_view in views:
-                # Safe here: this runs before the auth_view widget is created.
-                st.session_state["auth_view"] = requested_view
-                current_auth_view = requested_view
-                st.session_state.auth_view_requested = ""
-            if current_auth_view not in views:
-                current_auth_view = views[0]
-            selected_view = st.radio(
-                "Auth Action",
-                options=views,
-                index=views.index(current_auth_view),
-                horizontal=True,
-                key="auth_view",
-                label_visibility="collapsed",
+        st.markdown("<div class='composer-auth-card auth-panel'>", unsafe_allow_html=True)
+        st.markdown("### Sign In")
+        st.markdown("<div class='composer-auth-sub'>Use your approved credentials to continue.</div>", unsafe_allow_html=True)
+        _render_auth_notice()
+        views = ["Sign In"]
+        if cfg.allow_registration:
+            views.append("Register")
+        requested_view = str(st.session_state.get("auth_view_requested", "") or "").strip()
+        current_auth_view = str(st.session_state.get("auth_view", "Sign In") or "Sign In")
+        if requested_view in views:
+            # Safe here: this runs before the auth_view widget is created.
+            st.session_state["auth_view"] = requested_view
+            current_auth_view = requested_view
+            st.session_state.auth_view_requested = ""
+        if current_auth_view not in views:
+            current_auth_view = views[0]
+        selected_view = st.radio(
+            "Auth Action",
+            options=views,
+            index=views.index(current_auth_view),
+            horizontal=True,
+            key="auth_view",
+            label_visibility="collapsed",
+        )
+
+        if selected_view == "Sign In":
+            with st.form("login_form", clear_on_submit=False, border=False):
+                username = st.text_input("Username", placeholder="Enter username", key="login_user_input")
+                password = st.text_input("Password", type="password", placeholder="Enter password", key="login_pass_input")
+                totp_code = ""
+                if cfg.totp_enabled:
+                    totp_code = st.text_input("Authenticator Code", placeholder="6-digit code", key="login_totp_input")
+                submit = st.form_submit_button("Sign In", use_container_width=True)
+            with st.expander("Forgot Password", expanded=False):
+                st.caption("Password reset requests are handled by admin/operator.")
+                reset_user = st.text_input(
+                    "Username for Reset",
+                    value=str(st.session_state.get("auth_forgot_requested", "") or ""),
+                    key="auth_forgot_username",
+                )
+                if st.button("Request Password Reset", use_container_width=True, key="auth_forgot_submit"):
+                    request_user = str(reset_user or "").strip()
+                    if not request_user:
+                        _set_auth_notice("error", "Enter your username to request password reset.")
+                    else:
+                        st.session_state["auth_forgot_requested"] = request_user
+                        _append_ui_audit("password_reset_requested", {"username": request_user})
+                        _set_auth_notice(
+                            "info",
+                            "Password reset request logged. Contact your admin to complete reset.",
+                        )
+                    st.rerun()
+            if submit:
+                user = username.strip()
+                if not user or not password:
+                    _set_auth_notice("error", "Username and password are required.")
+                    st.rerun()
+                if cfg.totp_enabled and (not _verify_totp(totp_code, cfg.totp_secret)):
+                    _set_auth_notice("error", "Invalid authenticator code.")
+                    st.rerun()
+                local_ok, local_msg = _verify_local_user(cfg, user, password)
+                if local_ok:
+                    st.session_state.auth_ok = True
+                    st.session_state.auth_user = user
+                    st.session_state.auth_method = "local"
+                    token = _create_persistent_session(cfg, username=user, auth_method="local")
+                    st.session_state.auth_session_token = token
+                    _queue_set_session_cookie(token, max_age_sec=_session_ttl_days() * 24 * 3600)
+                    _set_auth_notice("success", f"Welcome back, `{user}`.")
+                    st.rerun()
+                elif user == cfg.username and _verify_env_password(password, cfg):
+                    st.session_state.auth_ok = True
+                    st.session_state.auth_user = user
+                    st.session_state.auth_method = "env"
+                    token = _create_persistent_session(cfg, username=user, auth_method="env")
+                    st.session_state.auth_session_token = token
+                    _queue_set_session_cookie(token, max_age_sec=_session_ttl_days() * 24 * 3600)
+                    _set_auth_notice("success", f"Signed in as primary operator `{user}`.")
+                    st.rerun()
+                else:
+                    _set_auth_notice("error", local_msg or "Invalid username or password")
+                    st.rerun()
+        else:
+            st.caption("Create a local account. Admin can enable/disable access later.")
+            with st.form("register_form", clear_on_submit=False, border=False):
+                reg_user = st.text_input("New Username", placeholder="Choose username", key="register_user_input")
+                reg_pass = st.text_input("New Password", type="password", placeholder="At least 8 characters", key="register_pass_input")
+                reg_pass2 = st.text_input(
+                    "Confirm Password",
+                    type="password",
+                    placeholder="Re-enter password",
+                    key="register_pass2_input",
+                )
+                reg_submit = st.form_submit_button("Create Account", use_container_width=True)
+            if reg_user:
+                ok_user, reason = _validate_username(reg_user)
+                if ok_user:
+                    st.caption("Username format looks valid.")
+                else:
+                    st.caption(f"Username rule: {reason}")
+            if reg_pass:
+                score, label, details = _password_strength(reg_pass)
+                st.progress(score / 5.0, text=f"Password strength: {label} ({score}/5)")
+                st.caption(" | ".join(details))
+            if reg_pass and reg_pass2 and reg_pass != reg_pass2:
+                st.caption("Password confirmation does not match.")
+            if reg_submit:
+                if reg_pass != reg_pass2:
+                    _set_auth_notice("error", "Password confirmation does not match.")
+                    st.rerun()
+                else:
+                    ok, msg = _register_local_user(cfg, reg_user, reg_pass)
+                    if ok:
+                        _set_auth_notice("success", msg)
+                        st.session_state.auth_view_requested = "Sign In"
+                        st.rerun()
+                    else:
+                        _set_auth_notice("error", msg)
+                        st.rerun()
+
+        if _oauth_ready(cfg):
+            st.markdown("<div class='auth-divider'></div>", unsafe_allow_html=True)
+            st.caption(f"OAuth provider: `{cfg.oauth_provider}`")
+            if cfg.oauth_allowed_domain:
+                st.caption(f"Allowed email domain: `{cfg.oauth_allowed_domain}`")
+            if (not st.session_state.get("oauth_state")) or (not st.session_state.get("oauth_nonce")) or (not st.session_state.get("oauth_code_verifier")):
+                st.session_state.oauth_state = secrets.token_urlsafe(24)
+                st.session_state.oauth_nonce = secrets.token_urlsafe(24)
+                st.session_state.oauth_code_verifier = secrets.token_urlsafe(64)
+            oauth_url = _oauth_auth_url(
+                cfg,
+                st.session_state.oauth_state,
+                st.session_state.oauth_nonce,
+                _pkce_code_challenge(str(st.session_state.oauth_code_verifier)),
             )
-
-            if selected_view == "Sign In":
-                st.caption("Sign in with your local operator account.")
-                with st.form("login_form", clear_on_submit=False, border=False):
-                    username = st.text_input("Username", placeholder="Enter username", key="login_user_input")
-                    password = st.text_input("Password", type="password", placeholder="Enter password", key="login_pass_input")
-                    totp_code = ""
-                    if cfg.totp_enabled:
-                        totp_code = st.text_input("Authenticator Code", placeholder="6-digit code", key="login_totp_input")
-                    submit = st.form_submit_button("Sign In", use_container_width=True)
-                with st.expander("Forgot Password", expanded=False):
-                    st.caption("Password reset requests are handled by admin/operator.")
-                    reset_user = st.text_input(
-                        "Username for Reset",
-                        value=str(st.session_state.get("auth_forgot_requested", "") or ""),
-                        key="auth_forgot_username",
-                    )
-                    if st.button("Request Password Reset", use_container_width=True, key="auth_forgot_submit"):
-                        request_user = str(reset_user or "").strip()
-                        if not request_user:
-                            _set_auth_notice("error", "Enter your username to request password reset.")
-                        else:
-                            st.session_state["auth_forgot_requested"] = request_user
-                            _append_ui_audit("password_reset_requested", {"username": request_user})
-                            _set_auth_notice(
-                                "info",
-                                "Password reset request logged. Contact your admin to complete reset.",
-                            )
-                        st.rerun()
-                if submit:
-                    user = username.strip()
-                    if not user or not password:
-                        _set_auth_notice("error", "Username and password are required.")
-                        st.rerun()
-                    if cfg.totp_enabled and (not _verify_totp(totp_code, cfg.totp_secret)):
-                        _set_auth_notice("error", "Invalid authenticator code.")
-                        st.rerun()
-                    local_ok, local_msg = _verify_local_user(cfg, user, password)
-                    if local_ok:
-                        st.session_state.auth_ok = True
-                        st.session_state.auth_user = user
-                        st.session_state.auth_method = "local"
-                        token = _create_persistent_session(cfg, username=user, auth_method="local")
-                        st.session_state.auth_session_token = token
-                        _queue_set_session_cookie(token, max_age_sec=_session_ttl_days() * 24 * 3600)
-                        _set_auth_notice("success", f"Welcome back, `{user}`.")
-                        st.rerun()
-                    elif user == cfg.username and _verify_env_password(password, cfg):
-                        st.session_state.auth_ok = True
-                        st.session_state.auth_user = user
-                        st.session_state.auth_method = "env"
-                        token = _create_persistent_session(cfg, username=user, auth_method="env")
-                        st.session_state.auth_session_token = token
-                        _queue_set_session_cookie(token, max_age_sec=_session_ttl_days() * 24 * 3600)
-                        _set_auth_notice("success", f"Signed in as primary operator `{user}`.")
-                        st.rerun()
-                    else:
-                        _set_auth_notice("error", local_msg or "Invalid username or password")
-                        st.rerun()
-            else:
-                st.caption("Create a local account. Admin can later enable/disable access.")
-                with st.form("register_form", clear_on_submit=False, border=False):
-                    reg_user = st.text_input("New Username", placeholder="Choose username", key="register_user_input")
-                    reg_pass = st.text_input("New Password", type="password", placeholder="At least 8 characters", key="register_pass_input")
-                    reg_pass2 = st.text_input(
-                        "Confirm Password",
-                        type="password",
-                        placeholder="Re-enter password",
-                        key="register_pass2_input",
-                    )
-                    reg_submit = st.form_submit_button("Create Account", use_container_width=True)
-                if reg_user:
-                    ok_user, reason = _validate_username(reg_user)
-                    if ok_user:
-                        st.caption("Username format looks valid.")
-                    else:
-                        st.caption(f"Username rule: {reason}")
-                if reg_pass:
-                    score, label, details = _password_strength(reg_pass)
-                    st.progress(score / 5.0, text=f"Password strength: {label} ({score}/5)")
-                    st.caption(" | ".join(details))
-                if reg_pass and reg_pass2 and reg_pass != reg_pass2:
-                    st.caption("Password confirmation does not match.")
-                if reg_submit:
-                    if reg_pass != reg_pass2:
-                        _set_auth_notice("error", "Password confirmation does not match.")
-                        st.rerun()
-                    else:
-                        ok, msg = _register_local_user(cfg, reg_user, reg_pass)
-                        if ok:
-                            _set_auth_notice("success", msg)
-                            st.session_state.auth_view_requested = "Sign In"
-                            st.rerun()
-                        else:
-                            _set_auth_notice("error", msg)
-                            st.rerun()
-
-            if _oauth_ready(cfg):
-                st.markdown("<div class='auth-divider'></div>", unsafe_allow_html=True)
-                st.caption(f"OAuth provider: `{cfg.oauth_provider}`")
-                if cfg.oauth_allowed_domain:
-                    st.caption(f"Allowed email domain: `{cfg.oauth_allowed_domain}`")
-                if (not st.session_state.get("oauth_state")) or (not st.session_state.get("oauth_nonce")) or (not st.session_state.get("oauth_code_verifier")):
-                    st.session_state.oauth_state = secrets.token_urlsafe(24)
-                    st.session_state.oauth_nonce = secrets.token_urlsafe(24)
-                    st.session_state.oauth_code_verifier = secrets.token_urlsafe(64)
-                oauth_url = _oauth_auth_url(
-                    cfg,
-                    st.session_state.oauth_state,
-                    st.session_state.oauth_nonce,
-                    _pkce_code_challenge(str(st.session_state.oauth_code_verifier)),
-                )
-                st.link_button(
-                    f"Continue with {cfg.oauth_provider.title()}",
-                    oauth_url,
-                    use_container_width=True,
-                )
-            elif cfg.oauth_enabled:
-                missing = _missing_oauth_fields(cfg)
-                st.warning("OAuth is enabled but configuration is incomplete.")
-                if missing:
-                    st.code("\n".join(missing), language="text")
-            st.markdown("</div>", unsafe_allow_html=True)
+            st.link_button(
+                f"Continue with {cfg.oauth_provider.title()}",
+                oauth_url,
+                use_container_width=True,
+            )
+        elif cfg.oauth_enabled:
+            missing = _missing_oauth_fields(cfg)
+            st.warning("OAuth is enabled but configuration is incomplete.")
+            if missing:
+                st.code("\n".join(missing), language="text")
+        st.markdown("</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -6810,7 +6984,12 @@ def _watchlist_df(events_df: pd.DataFrame, state_df: pd.DataFrame) -> pd.DataFra
     return out.sort_values(["order_events", "symbol"], ascending=[False, True]).reset_index(drop=True)
 
 
-def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_rows: int = 14) -> str:
+def _watchlist_selector(
+    events_df: pd.DataFrame,
+    state_df: pd.DataFrame,
+    max_rows: int = 14,
+    simple_mode: bool = False,
+) -> str:
     watch = _watchlist_df(events_df, state_df)
     if watch.empty:
         return ""
@@ -6819,42 +6998,43 @@ def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_row
     watch = watch.copy()
     watch["pinned"] = watch["symbol"].astype(str).str.upper().isin(pin_set)
     max_ev = int(pd.to_numeric(watch.get("order_events"), errors="coerce").fillna(0.0).max()) if "order_events" in watch.columns else 0
-    ctl1, ctl2, ctl3, ctl4 = st.columns([1.0, 1.05, 1.0, 1.0])
-    with ctl1:
-        st.slider(
-            "Min Events",
-            min_value=0,
-            max_value=max(1, int(max_ev)),
-            value=min(int(pd.to_numeric(st.session_state.get("ui_watchlist_min_events", 0), errors="coerce") or 0), max(1, int(max_ev))),
-            step=1,
-            key="ui_watchlist_min_events",
-            help="Hide symbols with fewer execution events in current scope.",
-        )
-    with ctl2:
-        st.selectbox(
-            "Sort",
-            options=["Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"],
-            index=["Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"].index(str(st.session_state.get("ui_watchlist_sort_mode", "Activity")))
-            if str(st.session_state.get("ui_watchlist_sort_mode", "Activity")) in {"Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"}
-            else 0,
-            key="ui_watchlist_sort_mode",
-        )
-    with ctl3:
-        st.selectbox(
-            "Card Density",
-            options=["Compact", "Standard", "Expanded"],
-            index=["Compact", "Standard", "Expanded"].index(str(st.session_state.get("ui_watchlist_card_density", "Standard")))
-            if str(st.session_state.get("ui_watchlist_card_density", "Standard")) in {"Compact", "Standard", "Expanded"}
-            else 1,
-            key="ui_watchlist_card_density",
-        )
-    with ctl4:
-        st.checkbox(
-            "Quick Actions",
-            value=bool(st.session_state.get("ui_watchlist_quick_actions", True)),
-            key="ui_watchlist_quick_actions",
-            help="Show/hide watchlist quick action buttons to reduce clutter.",
-        )
+    if not simple_mode:
+        ctl1, ctl2, ctl3, ctl4 = st.columns([1.0, 1.05, 1.0, 1.0])
+        with ctl1:
+            st.slider(
+                "Min Events",
+                min_value=0,
+                max_value=max(1, int(max_ev)),
+                value=min(int(pd.to_numeric(st.session_state.get("ui_watchlist_min_events", 0), errors="coerce") or 0), max(1, int(max_ev))),
+                step=1,
+                key="ui_watchlist_min_events",
+                help="Hide symbols with fewer execution events in current scope.",
+            )
+        with ctl2:
+            st.selectbox(
+                "Sort",
+                options=["Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"],
+                index=["Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"].index(str(st.session_state.get("ui_watchlist_sort_mode", "Activity")))
+                if str(st.session_state.get("ui_watchlist_sort_mode", "Activity")) in {"Activity", "Target Weight", "Momentum", "Risk", "Alphabetical"}
+                else 0,
+                key="ui_watchlist_sort_mode",
+            )
+        with ctl3:
+            st.selectbox(
+                "Card Density",
+                options=["Compact", "Standard", "Expanded"],
+                index=["Compact", "Standard", "Expanded"].index(str(st.session_state.get("ui_watchlist_card_density", "Standard")))
+                if str(st.session_state.get("ui_watchlist_card_density", "Standard")) in {"Compact", "Standard", "Expanded"}
+                else 1,
+                key="ui_watchlist_card_density",
+            )
+        with ctl4:
+            st.checkbox(
+                "Quick Actions",
+                value=bool(st.session_state.get("ui_watchlist_quick_actions", True)),
+                key="ui_watchlist_quick_actions",
+                help="Show/hide watchlist quick action buttons to reduce clutter.",
+            )
     min_events = int(pd.to_numeric(st.session_state.get("ui_watchlist_min_events", 0), errors="coerce") or 0)
     if min_events > 0:
         filtered = watch[pd.to_numeric(watch["order_events"], errors="coerce").fillna(0.0) >= float(min_events)].copy()
@@ -6910,19 +7090,20 @@ def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_row
     )
     st.session_state["ui_selected_symbol"] = selected
 
-    pin_left, pin_right = st.columns([1.2, 1.0])
-    selected_is_pinned = selected in pin_set
-    with pin_left:
-        if st.button(("Unpin ★" if selected_is_pinned else "Pin ★"), use_container_width=True, key=f"ui_watchlist_pin_toggle_{selected}"):
-            _set_watchlist_pin(selected, pinned=not selected_is_pinned)
-            st.session_state["ui_palette_status"] = f"{'Pinned' if not selected_is_pinned else 'Unpinned'} {selected}."
-            st.rerun()
-    with pin_right:
-        if st.button("Clear Pins", use_container_width=True, key="ui_watchlist_pin_clear"):
-            st.session_state["ui_watchlist_pins"] = []
-            st.session_state["ui_palette_status"] = "Cleared watchlist pins."
-            st.rerun()
-    if bool(st.session_state.get("ui_watchlist_quick_actions", True)):
+    if not simple_mode:
+        pin_left, pin_right = st.columns([1.2, 1.0])
+        selected_is_pinned = selected in pin_set
+        with pin_left:
+            if st.button(("Unpin ★" if selected_is_pinned else "Pin ★"), use_container_width=True, key=f"ui_watchlist_pin_toggle_{selected}"):
+                _set_watchlist_pin(selected, pinned=not selected_is_pinned)
+                st.session_state["ui_palette_status"] = f"{'Pinned' if not selected_is_pinned else 'Unpinned'} {selected}."
+                st.rerun()
+        with pin_right:
+            if st.button("Clear Pins", use_container_width=True, key="ui_watchlist_pin_clear"):
+                st.session_state["ui_watchlist_pins"] = []
+                st.session_state["ui_palette_status"] = "Cleared watchlist pins."
+                st.rerun()
+    if (not simple_mode) and bool(st.session_state.get("ui_watchlist_quick_actions", True)):
         qa1, qa2, qa3 = st.columns(3)
         with qa1:
             if st.button("Focus Selected", use_container_width=True, key=f"ui_watchlist_focus_{selected}"):
@@ -6954,49 +7135,50 @@ def _watchlist_selector(events_df: pd.DataFrame, state_df: pd.DataFrame, max_row
 
     card_density = str(st.session_state.get("ui_watchlist_card_density", "Standard") or "Standard")
     st.caption(f"Pinned: {len(pin_set)} | Card Density: {card_density}")
-    st.markdown("<div class='section-caption'>Watchlist Cards</div>", unsafe_allow_html=True)
-    for _, row in shown.iterrows():
-        symbol = str(row["symbol"])
-        badge_w = "-" if pd.isna(row.get("target_wt_%")) else f"{float(pd.to_numeric(row.get('target_wt_%'), errors='coerce') or 0.0):.1f}%"
-        badge_e = int(pd.to_numeric(row.get("order_events"), errors="coerce") or 0)
-        last_side = str(row.get("last_side") or "-").upper()
-        net_qty = float(pd.to_numeric(row.get("net_qty_est"), errors="coerce") or 0.0)
-        last_evt_raw = str(row.get("last_event_ts") or "").strip()
-        last_evt_txt = "-"
-        if last_evt_raw and last_evt_raw != "-":
-            try:
-                last_evt = pd.to_datetime(last_evt_raw, errors="coerce", utc=True)
-                if not pd.isna(last_evt):
-                    last_evt_txt = last_evt.tz_convert(NY_TZ).strftime("%m-%d %H:%M")
-            except Exception:
-                last_evt_txt = "-"
-        net_txt = f"{net_qty:+.2f}"
-        pinned_cls = "★ " if bool(row.get("pinned", False)) else ""
-        active_cls = " (active)" if symbol == str(st.session_state.get("ui_selected_symbol", "")) else ""
-        density_cls = "compact" if card_density == "Compact" else ("expanded" if card_density == "Expanded" else "standard")
-        st.markdown(
-            (
-                f"<div class='watch-item {density_cls}'>"
-                f"<div class='watch-item-top'><span class='watch-item-symbol'>{pinned_cls}{symbol}{active_cls}</span>"
-                f"<span class='watch-item-badge'>wt {badge_w}</span> "
-                f"<span class='watch-item-badge'>ev {badge_e}</span> "
-                f"<span class='watch-item-badge'>{last_side}</span></div>"
-                + (f"<div class='watch-item-sub'>net {net_txt} | last {last_evt_txt} ET</div>" if card_density != "Compact" else "")
-                + "</div>"
-            ),
-            unsafe_allow_html=True,
-        )
-        if card_density != "Compact":
-            mini = _watchlist_card_spark_chart(events_df, symbol)
-            if mini is not None:
-                st.markdown("<div class='watch-item-spark-wrap'>", unsafe_allow_html=True)
-                st.altair_chart(mini, use_container_width=True)
-                if card_density == "Expanded":
-                    st.markdown(
-                        f"<div class='watch-item-spark-caption'>side={last_side} | net_qty={net_txt} | last={last_evt_txt} ET</div>",
-                        unsafe_allow_html=True,
-                    )
-                st.markdown("</div>", unsafe_allow_html=True)
+    if not simple_mode:
+        st.markdown("<div class='section-caption'>Watchlist Cards</div>", unsafe_allow_html=True)
+        for _, row in shown.iterrows():
+            symbol = str(row["symbol"])
+            badge_w = "-" if pd.isna(row.get("target_wt_%")) else f"{float(pd.to_numeric(row.get('target_wt_%'), errors='coerce') or 0.0):.1f}%"
+            badge_e = int(pd.to_numeric(row.get("order_events"), errors="coerce") or 0)
+            last_side = str(row.get("last_side") or "-").upper()
+            net_qty = float(pd.to_numeric(row.get("net_qty_est"), errors="coerce") or 0.0)
+            last_evt_raw = str(row.get("last_event_ts") or "").strip()
+            last_evt_txt = "-"
+            if last_evt_raw and last_evt_raw != "-":
+                try:
+                    last_evt = pd.to_datetime(last_evt_raw, errors="coerce", utc=True)
+                    if not pd.isna(last_evt):
+                        last_evt_txt = last_evt.tz_convert(NY_TZ).strftime("%m-%d %H:%M")
+                except Exception:
+                    last_evt_txt = "-"
+            net_txt = f"{net_qty:+.2f}"
+            pinned_cls = "★ " if bool(row.get("pinned", False)) else ""
+            active_cls = " (active)" if symbol == str(st.session_state.get("ui_selected_symbol", "")) else ""
+            density_cls = "compact" if card_density == "Compact" else ("expanded" if card_density == "Expanded" else "standard")
+            st.markdown(
+                (
+                    f"<div class='watch-item {density_cls}'>"
+                    f"<div class='watch-item-top'><span class='watch-item-symbol'>{pinned_cls}{symbol}{active_cls}</span>"
+                    f"<span class='watch-item-badge'>wt {badge_w}</span> "
+                    f"<span class='watch-item-badge'>ev {badge_e}</span> "
+                    f"<span class='watch-item-badge'>{last_side}</span></div>"
+                    + (f"<div class='watch-item-sub'>net {net_txt} | last {last_evt_txt} ET</div>" if card_density != "Compact" else "")
+                    + "</div>"
+                ),
+                unsafe_allow_html=True,
+            )
+            if card_density != "Compact":
+                mini = _watchlist_card_spark_chart(events_df, symbol)
+                if mini is not None:
+                    st.markdown("<div class='watch-item-spark-wrap'>", unsafe_allow_html=True)
+                    st.altair_chart(mini, use_container_width=True)
+                    if card_density == "Expanded":
+                        st.markdown(
+                            f"<div class='watch-item-spark-caption'>side={last_side} | net_qty={net_txt} | last={last_evt_txt} ET</div>",
+                            unsafe_allow_html=True,
+                        )
+                    st.markdown("</div>", unsafe_allow_html=True)
     compact = shown[["pinned", "symbol", "target_wt_%", "net_qty_est", "order_events", "last_side"]].copy()
     compact["pinned"] = compact["pinned"].map(lambda v: "★" if bool(v) else "")
     st.dataframe(compact, use_container_width=True, hide_index=True, height=280)
@@ -8319,6 +8501,7 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
         return
     _apply_terminal_pending_ui_state(symbols)
     layout_locked = bool(st.session_state.get("ui_panel_layout_locked", False))
+    simple_mode = bool(st.session_state.get("ui_minimal_mode", False))
 
     default_symbol = symbols[0]
     if "ui_selected_symbol" not in st.session_state or st.session_state.ui_selected_symbol not in symbols:
@@ -8334,30 +8517,20 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
         )
         st.session_state.ui_selected_symbol = jump_symbol
     with top_ctrl_mid:
-        st.selectbox(
-            "Panel Layout",
-            options=["Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"],
-            index=["Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"].index(
-                str(st.session_state.get("ui_tradeboard_split", "Balanced"))
-                if str(st.session_state.get("ui_tradeboard_split", "Balanced")) in {"Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"}
-                else "Balanced"
-            ),
-            key="ui_tradeboard_split",
-            disabled=layout_locked,
-        )
-    if str(st.session_state.get("ui_tradeboard_split", "Balanced")) == "Custom":
-        cw1, cw2, cw3 = st.columns(3)
-        raw = st.session_state.get("ui_tradeboard_custom_weights", [0.8, 1.95, 0.75])
-        raw = raw if isinstance(raw, list) and len(raw) == 3 else [0.8, 1.95, 0.75]
-        with cw1:
-            l_w = st.slider("Left Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[0], errors="coerce") or 0.8), step=0.05, key="ui_tb_custom_w_left", disabled=layout_locked)
-        with cw2:
-            c_w = st.slider("Center Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[1], errors="coerce") or 1.95), step=0.05, key="ui_tb_custom_w_center", disabled=layout_locked)
-        with cw3:
-            r_w = st.slider("Right Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[2], errors="coerce") or 0.75), step=0.05, key="ui_tb_custom_w_right", disabled=layout_locked)
-        st.session_state["ui_tradeboard_custom_weights"] = [float(l_w), float(c_w), float(r_w)]
-    if layout_locked:
-        st.caption("Panel layout is locked. Disable `Lock Panel Layout` in Preferences to edit.")
+        if simple_mode:
+            st.selectbox("Time Window", options=list(TIME_WINDOW_OPTIONS), key="ui_time_window")
+        else:
+            st.selectbox(
+                "Panel Layout",
+                options=["Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"],
+                index=["Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"].index(
+                    str(st.session_state.get("ui_tradeboard_split", "Balanced"))
+                    if str(st.session_state.get("ui_tradeboard_split", "Balanced")) in {"Balanced", "Chart Focus", "Watchlist Focus", "Stats Focus", "Custom"}
+                    else "Balanced"
+                ),
+                key="ui_tradeboard_split",
+                disabled=layout_locked,
+            )
     with top_ctrl_right:
         view_col, chart_col = st.columns([1.5, 1.0])
         with view_col:
@@ -8386,50 +8559,64 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 key="ui_symbol_chart_type",
                 disabled=len(chart_options) == 1,
             )
-    preset_cols = st.columns([0.55, 0.55, 0.55, 0.55, 0.55, 2.25])
-    for idx, preset in enumerate(["1D", "1W", "1M", "3M", "All"]):
-        with preset_cols[idx]:
-            if st.button(preset, use_container_width=True, key=f"ui_tw_preset_{preset}"):
-                st.session_state["ui_time_window"] = preset
-                st.session_state["ui_palette_status"] = f"Time window set to {preset}."
+    if not simple_mode:
+        if str(st.session_state.get("ui_tradeboard_split", "Balanced")) == "Custom":
+            cw1, cw2, cw3 = st.columns(3)
+            raw = st.session_state.get("ui_tradeboard_custom_weights", [0.8, 1.95, 0.75])
+            raw = raw if isinstance(raw, list) and len(raw) == 3 else [0.8, 1.95, 0.75]
+            with cw1:
+                l_w = st.slider("Left Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[0], errors="coerce") or 0.8), step=0.05, key="ui_tb_custom_w_left", disabled=layout_locked)
+            with cw2:
+                c_w = st.slider("Center Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[1], errors="coerce") or 1.95), step=0.05, key="ui_tb_custom_w_center", disabled=layout_locked)
+            with cw3:
+                r_w = st.slider("Right Width", min_value=0.2, max_value=3.0, value=float(pd.to_numeric(raw[2], errors="coerce") or 0.75), step=0.05, key="ui_tb_custom_w_right", disabled=layout_locked)
+            st.session_state["ui_tradeboard_custom_weights"] = [float(l_w), float(c_w), float(r_w)]
+        if layout_locked:
+            st.caption("Panel layout is locked. Disable `Lock Panel Layout` in Preferences to edit.")
+        preset_cols = st.columns([0.55, 0.55, 0.55, 0.55, 0.55, 2.25])
+        for idx, preset in enumerate(["1D", "1W", "1M", "3M", "All"]):
+            with preset_cols[idx]:
+                if st.button(preset, use_container_width=True, key=f"ui_tw_preset_{preset}"):
+                    st.session_state["ui_time_window"] = preset
+                    st.session_state["ui_palette_status"] = f"Time window set to {preset}."
+                    st.rerun()
+        sync_left, sync_mid, sync_cur, sync_right = st.columns([1.0, 0.9, 1.25, 2.0])
+        with sync_left:
+            current_window = str(st.session_state.get("ui_time_window", "1D") or "1D")
+            if current_window not in TIME_WINDOW_OPTIONS:
+                current_window = "1D"
+            st.selectbox("Time Window", options=list(TIME_WINDOW_OPTIONS), index=list(TIME_WINDOW_OPTIONS).index(current_window), key="ui_time_window")
+        with sync_mid:
+            st.checkbox("Sync Charts", value=bool(st.session_state.get("ui_sync_charts", True)), key="ui_sync_charts")
+        with sync_cur:
+            st.checkbox("Linked Cursor", value=bool(st.session_state.get("ui_linked_cursor_enabled", True)), key="ui_linked_cursor_enabled")
+            cursor_opts: list[str] = []
+            if not events_df.empty and "ts_ny" in events_df.columns:
+                tsv = pd.to_datetime(events_df["ts_ny"], errors="coerce").dropna().sort_values()
+                if not tsv.empty:
+                    cursor_opts = [pd.Timestamp(t).tz_convert(NY_TZ).strftime("%Y-%m-%d %H:%M:%S") for t in tsv.tail(120)]
+            if cursor_opts:
+                default_cursor = str(st.session_state.get("ui_linked_cursor_ts", cursor_opts[-1]) or cursor_opts[-1])
+                if default_cursor not in cursor_opts:
+                    default_cursor = cursor_opts[-1]
+                st.selectbox(
+                    "Cursor Time (NY)",
+                    options=cursor_opts,
+                    index=cursor_opts.index(default_cursor),
+                    key="ui_linked_cursor_ts",
+                    disabled=not bool(st.session_state.get("ui_linked_cursor_enabled", True)),
+                )
+        with sync_right:
+            _render_tradeboard_command_palette(events_df, state_df, symbols)
+        pop1, pop2, _ = st.columns([1.0, 1.0, 2.0])
+        with pop1:
+            if st.button("Pop-out Chart", use_container_width=True, key="ui_tb_popout_chart"):
+                st.session_state["ui_popout_panel"] = "tradeboard_chart"
                 st.rerun()
-    sync_left, sync_mid, sync_cur, sync_right = st.columns([1.0, 0.9, 1.25, 2.0])
-    with sync_left:
-        current_window = str(st.session_state.get("ui_time_window", "1D") or "1D")
-        if current_window not in TIME_WINDOW_OPTIONS:
-            current_window = "1D"
-        st.selectbox("Time Window", options=list(TIME_WINDOW_OPTIONS), index=list(TIME_WINDOW_OPTIONS).index(current_window), key="ui_time_window")
-    with sync_mid:
-        st.checkbox("Sync Charts", value=bool(st.session_state.get("ui_sync_charts", True)), key="ui_sync_charts")
-    with sync_cur:
-        st.checkbox("Linked Cursor", value=bool(st.session_state.get("ui_linked_cursor_enabled", True)), key="ui_linked_cursor_enabled")
-        cursor_opts: list[str] = []
-        if not events_df.empty and "ts_ny" in events_df.columns:
-            tsv = pd.to_datetime(events_df["ts_ny"], errors="coerce").dropna().sort_values()
-            if not tsv.empty:
-                cursor_opts = [pd.Timestamp(t).tz_convert(NY_TZ).strftime("%Y-%m-%d %H:%M:%S") for t in tsv.tail(120)]
-        if cursor_opts:
-            default_cursor = str(st.session_state.get("ui_linked_cursor_ts", cursor_opts[-1]) or cursor_opts[-1])
-            if default_cursor not in cursor_opts:
-                default_cursor = cursor_opts[-1]
-            st.selectbox(
-                "Cursor Time (NY)",
-                options=cursor_opts,
-                index=cursor_opts.index(default_cursor),
-                key="ui_linked_cursor_ts",
-                disabled=not bool(st.session_state.get("ui_linked_cursor_enabled", True)),
-            )
-    with sync_right:
-        _render_tradeboard_command_palette(events_df, state_df, symbols)
-    pop1, pop2, pop3 = st.columns([1.0, 1.0, 2.0])
-    with pop1:
-        if st.button("Pop-out Chart", use_container_width=True, key="ui_tb_popout_chart"):
-            st.session_state["ui_popout_panel"] = "tradeboard_chart"
-            st.rerun()
-    with pop2:
-        if st.button("Pop-out Alerts", use_container_width=True, key="ui_tb_popout_alerts"):
-            st.session_state["ui_popout_panel"] = "alerts"
-            st.rerun()
+        with pop2:
+            if st.button("Pop-out Alerts", use_container_width=True, key="ui_tb_popout_alerts"):
+                st.session_state["ui_popout_panel"] = "alerts"
+                st.rerun()
 
     selected_symbol = st.session_state.ui_selected_symbol
     sync_enabled = bool(st.session_state.get("ui_sync_charts", True))
@@ -8455,12 +8642,18 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
     with k5:
         st.metric("Latest Event (NY)", str(kpi.get("latest_event_ts", "-")))
 
-    left, center, right = st.columns(_tradeboard_split_columns(str(st.session_state.get("ui_tradeboard_split", "Balanced"))))
+    split_mode = "Balanced" if simple_mode else str(st.session_state.get("ui_tradeboard_split", "Balanced"))
+    left, center, right = st.columns(_tradeboard_split_columns(split_mode))
 
     with left:
         st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
         st.markdown("<div class='terminal-title'>Watchlist</div>", unsafe_allow_html=True)
-        selected_symbol = _watchlist_selector(events_df, state_df, max_rows=12) or selected_symbol
+        selected_symbol = _watchlist_selector(
+            events_df,
+            state_df,
+            max_rows=(8 if simple_mode else 12),
+            simple_mode=simple_mode,
+        ) or selected_symbol
         st.session_state.ui_selected_symbol = selected_symbol
         st.markdown("</div>", unsafe_allow_html=True)
 
@@ -8519,89 +8712,91 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
             )
         else:
             st.altair_chart(chart, use_container_width=True)
-            with st.expander("Compare Symbols In Scope", expanded=False):
-                default_compare = [selected_symbol] if selected_symbol in symbols else ([symbols[0]] if symbols else [])
-                compare_symbols = st.multiselect(
-                    "Symbols",
-                    options=symbols,
-                    default=default_compare,
-                    key="ui_tradeboard_compare_symbols",
-                    help="Compare event-derived position deltas across symbols.",
+            if not simple_mode:
+                with st.expander("Compare Symbols In Scope", expanded=False):
+                    default_compare = [selected_symbol] if selected_symbol in symbols else ([symbols[0]] if symbols else [])
+                    compare_symbols = st.multiselect(
+                        "Symbols",
+                        options=symbols,
+                        default=default_compare,
+                        key="ui_tradeboard_compare_symbols",
+                        help="Compare event-derived position deltas across symbols.",
+                    )
+                    compare_chart = _multi_symbol_compare_chart(scoped_events_df, compare_symbols, limit=4, reference_ts=cursor_ts)
+                    if compare_chart is None:
+                        st.caption("Select symbols with execution history in the current scope.")
+                    else:
+                        st.altair_chart(compare_chart, use_container_width=True)
+                        mini_syms = compare_symbols[:4]
+                        if mini_syms:
+                            cols = st.columns(2)
+                            for i, sym in enumerate(mini_syms):
+                                with cols[i % 2]:
+                                    st.caption(f"{sym} mini-chart")
+                                    mini = _mini_symbol_activity_chart(scoped_events_df, sym)
+                                    if mini is None:
+                                        st.caption("No scoped events.")
+                                    else:
+                                        st.altair_chart(mini, use_container_width=True)
+        if not simple_mode:
+            export_a, export_b, export_c = st.columns([1.0, 1.0, 1.0])
+            with export_a:
+                scoped_export = scoped_events_df.copy()
+                if not scoped_export.empty:
+                    for tcol in ["ts_ny", "ts"]:
+                        if tcol in scoped_export.columns:
+                            scoped_export[tcol] = pd.to_datetime(scoped_export[tcol], errors="coerce").astype(str)
+                st.download_button(
+                    "Export Scope Events CSV",
+                    data=scoped_export.to_csv(index=False).encode("utf-8"),
+                    file_name=f"tradeboard_scope_{window.lower()}_{selected_symbol}.csv",
+                    mime="text/csv",
+                    use_container_width=True,
+                    key=f"ui_tradeboard_export_scope_{selected_symbol}_{window}",
                 )
-                compare_chart = _multi_symbol_compare_chart(scoped_events_df, compare_symbols, limit=4, reference_ts=cursor_ts)
-                if compare_chart is None:
-                    st.caption("Select symbols with execution history in the current scope.")
-                else:
-                    st.altair_chart(compare_chart, use_container_width=True)
-                    mini_syms = compare_symbols[:4]
-                    if mini_syms:
-                        cols = st.columns(2)
-                        for i, sym in enumerate(mini_syms):
-                            with cols[i % 2]:
-                                st.caption(f"{sym} mini-chart")
-                                mini = _mini_symbol_activity_chart(scoped_events_df, sym)
-                                if mini is None:
-                                    st.caption("No scoped events.")
-                                else:
-                                    st.altair_chart(mini, use_container_width=True)
-        export_a, export_b, export_c = st.columns([1.0, 1.0, 1.0])
-        with export_a:
-            scoped_export = scoped_events_df.copy()
-            if not scoped_export.empty:
-                for tcol in ["ts_ny", "ts"]:
-                    if tcol in scoped_export.columns:
-                        scoped_export[tcol] = pd.to_datetime(scoped_export[tcol], errors="coerce").astype(str)
-            st.download_button(
-                "Export Scope Events CSV",
-                data=scoped_export.to_csv(index=False).encode("utf-8"),
-                file_name=f"tradeboard_scope_{window.lower()}_{selected_symbol}.csv",
-                mime="text/csv",
-                use_container_width=True,
-                key=f"ui_tradeboard_export_scope_{selected_symbol}_{window}",
-            )
-        with export_b:
-            symbol_export = _symbol_activity_df(scoped_events_df, selected_symbol).copy()
-            if not symbol_export.empty and "ts" in symbol_export.columns:
-                symbol_export["ts"] = pd.to_datetime(symbol_export["ts"], errors="coerce").astype(str)
-            st.download_button(
-                f"Export {selected_symbol} Executions CSV",
-                data=symbol_export.to_csv(index=False).encode("utf-8"),
-                file_name=f"tradeboard_exec_{selected_symbol}_{window.lower()}.csv",
-                mime="text/csv",
-                use_container_width=True,
-                key=f"ui_tradeboard_export_symbol_{selected_symbol}_{window}",
-            )
-        with export_c:
-            pack_payload = {
-                "generated_at_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
-                "symbol": selected_symbol,
-                "window": window,
-                "view_mode": str(st.session_state.get("ui_symbol_view_mode", "Intraday Activity")),
-                "chart_type": str(st.session_state.get("ui_symbol_chart_type", "Line")),
-                "linked_cursor_ts": str(st.session_state.get("ui_linked_cursor_ts", "") or ""),
-                "scope_rows": int(len(scoped_events_df)),
-            }
-            zbuf = io.BytesIO()
-            with zipfile.ZipFile(zbuf, mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
-                zf.writestr("context.json", json.dumps(pack_payload, indent=2))
-                zf.writestr("scope_events.csv", scoped_events_df.to_csv(index=False))
-                zf.writestr("symbol_executions.csv", _symbol_activity_df(scoped_events_df, selected_symbol).to_csv(index=False))
-                if chart is not None:
-                    try:
-                        zf.writestr("chart_spec.json", chart.to_json())
-                    except Exception:
-                        pass
-                    png = _chart_png_bytes(chart)
-                    if png:
-                        zf.writestr("chart.png", png)
-            st.download_button(
-                "Export Chart Pack (ZIP)",
-                data=zbuf.getvalue(),
-                file_name=f"tradeboard_pack_{selected_symbol}_{window.lower()}.zip",
-                mime="application/zip",
-                use_container_width=True,
-                key=f"ui_tradeboard_export_pack_{selected_symbol}_{window}",
-            )
+            with export_b:
+                symbol_export = _symbol_activity_df(scoped_events_df, selected_symbol).copy()
+                if not symbol_export.empty and "ts" in symbol_export.columns:
+                    symbol_export["ts"] = pd.to_datetime(symbol_export["ts"], errors="coerce").astype(str)
+                st.download_button(
+                    f"Export {selected_symbol} Executions CSV",
+                    data=symbol_export.to_csv(index=False).encode("utf-8"),
+                    file_name=f"tradeboard_exec_{selected_symbol}_{window.lower()}.csv",
+                    mime="text/csv",
+                    use_container_width=True,
+                    key=f"ui_tradeboard_export_symbol_{selected_symbol}_{window}",
+                )
+            with export_c:
+                pack_payload = {
+                    "generated_at_ny": pd.Timestamp.now(tz=NY_TZ).isoformat(),
+                    "symbol": selected_symbol,
+                    "window": window,
+                    "view_mode": str(st.session_state.get("ui_symbol_view_mode", "Intraday Activity")),
+                    "chart_type": str(st.session_state.get("ui_symbol_chart_type", "Line")),
+                    "linked_cursor_ts": str(st.session_state.get("ui_linked_cursor_ts", "") or ""),
+                    "scope_rows": int(len(scoped_events_df)),
+                }
+                zbuf = io.BytesIO()
+                with zipfile.ZipFile(zbuf, mode="w", compression=zipfile.ZIP_DEFLATED) as zf:
+                    zf.writestr("context.json", json.dumps(pack_payload, indent=2))
+                    zf.writestr("scope_events.csv", scoped_events_df.to_csv(index=False))
+                    zf.writestr("symbol_executions.csv", _symbol_activity_df(scoped_events_df, selected_symbol).to_csv(index=False))
+                    if chart is not None:
+                        try:
+                            zf.writestr("chart_spec.json", chart.to_json())
+                        except Exception:
+                            pass
+                        png = _chart_png_bytes(chart)
+                        if png:
+                            zf.writestr("chart.png", png)
+                st.download_button(
+                    "Export Chart Pack (ZIP)",
+                    data=zbuf.getvalue(),
+                    file_name=f"tradeboard_pack_{selected_symbol}_{window.lower()}.zip",
+                    mime="application/zip",
+                    use_container_width=True,
+                    key=f"ui_tradeboard_export_pack_{selected_symbol}_{window}",
+                )
         st.markdown("</div>", unsafe_allow_html=True)
 
         st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
@@ -8653,45 +8848,46 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
                 )
         st.markdown("</div>", unsafe_allow_html=True)
 
-        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
-        st.markdown("<div class='terminal-title'>Linked Panels: Orders Timeline + Position Lens</div>", unsafe_allow_html=True)
-        lp1, lp2 = st.columns([1.2, 1.0])
-        with lp1:
-            lifecycle_chart = _order_lifecycle_chart(scoped_events_df, symbol_filter=selected_symbol, chart_type="Line")
-            if lifecycle_chart is None:
-                _render_empty_state(
-                    "Lifecycle timeline unavailable",
-                    "Order lifecycle points are missing for the selected symbol in current scope.",
-                )
-            else:
-                st.altair_chart(lifecycle_chart, use_container_width=True)
-            linked_orders = _orders_table(scoped_events_df)
-            if not linked_orders.empty:
-                linked_orders = linked_orders[linked_orders["symbol"].astype(str).str.upper() == selected_symbol].copy()
-            if linked_orders.empty:
-                st.caption("No linked order rows for this symbol.")
-            else:
-                cols = [c for c in ["ts", "event_type", "side", "qty", "order_type", "variant", "order_status"] if c in linked_orders.columns]
-                st.dataframe(linked_orders[cols].sort_values("ts", ascending=False).head(25), use_container_width=True, hide_index=True, height=220)
-        with lp2:
-            linked_pos = _estimated_positions_table(scoped_events_df, state_df)
-            if not linked_pos.empty:
-                linked_pos = linked_pos[linked_pos["symbol"].astype(str).str.upper() == selected_symbol].copy()
-            if linked_pos.empty:
-                _render_empty_state(
-                    "Position lens unavailable",
-                    "No event-derived position rows for selected symbol in current scope.",
-                )
-            else:
-                st.dataframe(linked_pos, use_container_width=True, hide_index=True, height=220)
-                net_qty = float(pd.to_numeric(linked_pos["net_qty_est"], errors="coerce").fillna(0.0).sum())
-                st.metric("Linked Net Qty (est)", f"{net_qty:,.4f}")
-                target_col = "target_wt_%" if "target_wt_%" in linked_pos.columns else (
-                    "target_weight_pct" if "target_weight_pct" in linked_pos.columns else ""
-                )
-                target_pct = float(pd.to_numeric(linked_pos[target_col], errors="coerce").fillna(0.0).sum()) if target_col else 0.0
-                st.metric("Linked Target Wt %", f"{target_pct:,.2f}%")
-        st.markdown("</div>", unsafe_allow_html=True)
+        if not simple_mode:
+            st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+            st.markdown("<div class='terminal-title'>Linked Panels: Orders Timeline + Position Lens</div>", unsafe_allow_html=True)
+            lp1, lp2 = st.columns([1.2, 1.0])
+            with lp1:
+                lifecycle_chart = _order_lifecycle_chart(scoped_events_df, symbol_filter=selected_symbol, chart_type="Line")
+                if lifecycle_chart is None:
+                    _render_empty_state(
+                        "Lifecycle timeline unavailable",
+                        "Order lifecycle points are missing for the selected symbol in current scope.",
+                    )
+                else:
+                    st.altair_chart(lifecycle_chart, use_container_width=True)
+                linked_orders = _orders_table(scoped_events_df)
+                if not linked_orders.empty:
+                    linked_orders = linked_orders[linked_orders["symbol"].astype(str).str.upper() == selected_symbol].copy()
+                if linked_orders.empty:
+                    st.caption("No linked order rows for this symbol.")
+                else:
+                    cols = [c for c in ["ts", "event_type", "side", "qty", "order_type", "variant", "order_status"] if c in linked_orders.columns]
+                    st.dataframe(linked_orders[cols].sort_values("ts", ascending=False).head(25), use_container_width=True, hide_index=True, height=220)
+            with lp2:
+                linked_pos = _estimated_positions_table(scoped_events_df, state_df)
+                if not linked_pos.empty:
+                    linked_pos = linked_pos[linked_pos["symbol"].astype(str).str.upper() == selected_symbol].copy()
+                if linked_pos.empty:
+                    _render_empty_state(
+                        "Position lens unavailable",
+                        "No event-derived position rows for selected symbol in current scope.",
+                    )
+                else:
+                    st.dataframe(linked_pos, use_container_width=True, hide_index=True, height=220)
+                    net_qty = float(pd.to_numeric(linked_pos["net_qty_est"], errors="coerce").fillna(0.0).sum())
+                    st.metric("Linked Net Qty (est)", f"{net_qty:,.4f}")
+                    target_col = "target_wt_%" if "target_wt_%" in linked_pos.columns else (
+                        "target_weight_pct" if "target_weight_pct" in linked_pos.columns else ""
+                    )
+                    target_pct = float(pd.to_numeric(linked_pos[target_col], errors="coerce").fillna(0.0).sum()) if target_col else 0.0
+                    st.metric("Linked Target Wt %", f"{target_pct:,.2f}%")
+            st.markdown("</div>", unsafe_allow_html=True)
 
     with right:
         st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
@@ -8730,32 +8926,34 @@ def _render_terminal_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) 
         )
         st.markdown("</div>", unsafe_allow_html=True)
 
-        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
-        st.markdown("<div class='terminal-title'>Liquidity Ladder (Event Buckets)</div>", unsafe_allow_html=True)
-        ladder = _liquidity_ladder_chart(scoped_events_df, selected_symbol)
-        if ladder is None:
-            _render_empty_state("No liquidity ladder", "No bucketed liquidity/activity bars are available in scope.")
-        else:
-            st.altair_chart(ladder, use_container_width=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+        if not simple_mode:
+            st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+            st.markdown("<div class='terminal-title'>Liquidity Ladder (Event Buckets)</div>", unsafe_allow_html=True)
+            ladder = _liquidity_ladder_chart(scoped_events_df, selected_symbol)
+            if ladder is None:
+                _render_empty_state("No liquidity ladder", "No bucketed liquidity/activity bars are available in scope.")
+            else:
+                st.altair_chart(ladder, use_container_width=True)
+            st.markdown("</div>", unsafe_allow_html=True)
 
-    st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
-    st.markdown(
-        f"<div class='terminal-title'>Portfolio / Positions (Event-Derived{', Range Scoped' if sync_enabled else ''})</div>",
-        unsafe_allow_html=True,
-    )
-    pos_df = _estimated_positions_table(scoped_events_df, state_df)
-    if pos_df.empty:
-        _render_empty_state("No portfolio positions", "No event-derived position table can be formed from current filtered events.")
-    else:
-        pos_tbl = _table_customize(pos_df.copy(), key="tradeboard_positions", default_sort_col="symbol", default_desc=False)
-        st.dataframe(
-            _paged_view(pos_tbl, key="tradeboard_positions_page", default_page_size=100),
-            use_container_width=True,
-            hide_index=True,
-            height=240,
+    if not simple_mode:
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown(
+            f"<div class='terminal-title'>Portfolio / Positions (Event-Derived{', Range Scoped' if sync_enabled else ''})</div>",
+            unsafe_allow_html=True,
         )
-    st.markdown("</div>", unsafe_allow_html=True)
+        pos_df = _estimated_positions_table(scoped_events_df, state_df)
+        if pos_df.empty:
+            _render_empty_state("No portfolio positions", "No event-derived position table can be formed from current filtered events.")
+        else:
+            pos_tbl = _table_customize(pos_df.copy(), key="tradeboard_positions", default_sort_col="symbol", default_desc=False)
+            st.dataframe(
+                _paged_view(pos_tbl, key="tradeboard_positions_page", default_page_size=100),
+                use_container_width=True,
+                hide_index=True,
+                height=240,
+            )
+        st.markdown("</div>", unsafe_allow_html=True)
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -11181,45 +11379,301 @@ def _render_workspace_help_drawer(workspace_name: str) -> None:
 
 def _render_command_center_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame, user_role: str) -> None:
     st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
-    st.markdown("<div class='section-caption'>Role-tuned command center with customizable summary tiles.</div>", unsafe_allow_html=True)
+    st.markdown("<div class='section-caption'>Figma-style command center: portfolio, watchlist, execution, and risk in one view.</div>", unsafe_allow_html=True)
     hs = _health_snapshot(events_df, state_df)
     notices = _notification_center_table(events_df, state_df)
     curve = _equity_curve_frame(events_df, state_df)
     pnl = _pnl_snapshot(curve, state_df)
-    default_tiles = [
-        "Freshness",
-        "Events 1h",
-        "Cycles 24h",
-        "Errors 24h",
-        "Current Equity",
-        "Return %",
-        "Max Drawdown %",
-        "Open Alerts",
-    ]
-    selected_tiles = st.session_state.get("ui_home_tiles", [])
-    if not isinstance(selected_tiles, list) or not selected_tiles:
-        selected_tiles = default_tiles
-    selected_tiles = st.multiselect(
-        "Visible Tiles",
-        options=default_tiles,
-        default=[t for t in selected_tiles if t in default_tiles] or default_tiles,
-        key="ui_home_tiles",
-    )
-    metrics: dict[str, str] = {
-        "Freshness": "-" if hs.get("freshness_min") is None else f"{float(hs['freshness_min']):.1f}m",
-        "Events 1h": f"{int(hs.get('events_1h', 0)):,}",
-        "Cycles 24h": f"{int(hs.get('cycles_24h', 0)):,}",
-        "Errors 24h": f"{int(hs.get('error_events_24h', 0)):,}",
-        "Current Equity": "-" if pnl.get("end_equity") is None else f"${float(pnl['end_equity']):,.2f}",
-        "Return %": "-" if pnl.get("return_pct") is None else f"{float(pnl['return_pct']):.2f}%",
-        "Max Drawdown %": "-" if pnl.get("max_drawdown_pct") is None else f"{float(pnl['max_drawdown_pct']):.2f}%",
-        "Open Alerts": f"{int(len(notices)):,}",
-    }
-    cols = st.columns(4)
-    for i, tile in enumerate(selected_tiles):
-        with cols[i % 4]:
-            st.metric(tile, metrics.get(tile, "-"))
+    watch = _watchlist_df(events_df, state_df)
+    orders = _orders_table(events_df)
+    alloc_tbl = _target_allocations_table(state_df)
+
+    def _num(value: Any, fallback: float = 0.0) -> float:
+        v = pd.to_numeric(value, errors="coerce")
+        try:
+            if pd.isna(v):
+                return float(fallback)
+        except Exception:
+            return float(fallback)
+        return float(v)
+
+    portfolio_value = _num(pnl.get("end_equity"), 0.0)
+    return_pct = _num(pnl.get("return_pct"), 0.0)
+    day_pnl = _num(pnl.get("last_day_pnl"), 0.0)
+    open_alerts = int(len(notices))
+    total_trades = int(len(orders))
+    active_symbols = int((pd.to_numeric(watch.get("order_events"), errors="coerce").fillna(0.0) > 0).sum()) if not watch.empty else 0
+    max_dd = float(pd.to_numeric(pnl.get("max_drawdown_pct"), errors="coerce") or 0.0)
+    fresh_txt = "-" if hs.get("freshness_min") is None else f"{float(hs['freshness_min']):.1f}m"
+
+    k1, k2, k3, k4 = st.columns(4)
+    with k1:
+        st.metric("Portfolio Value", ("$0.00" if portfolio_value <= 0 else f"${portfolio_value:,.2f}"), delta=f"{return_pct:.2f}%")
+    with k2:
+        st.metric("Session PnL", f"${day_pnl:,.2f}", delta=("Up" if day_pnl >= 0 else "Down"))
+    with k3:
+        st.metric("Today's Trades", f"{total_trades:,}", delta=f"Active Symbols {active_symbols}")
+    with k4:
+        st.metric("Open Alerts", f"{open_alerts:,}", delta=f"Freshness {fresh_txt}")
+
+    left, right = st.columns([1.95, 1.05])
+    with left:
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Portfolio Performance</div>", unsafe_allow_html=True)
+        eq_chart = _equity_curve_chart(curve)
+        if eq_chart is None:
+            _render_empty_state("No equity curve", "No P&L/equity timeline available in current runtime scope.")
+        else:
+            st.altair_chart(eq_chart.properties(height=320), use_container_width=True)
+        st.caption(f"Max DD: {max_dd:.2f}% | Cycles 24h: {int(hs.get('cycles_24h', 0)):,} | Errors 24h: {int(hs.get('error_events_24h', 0)):,}")
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Recent Trades</div>", unsafe_allow_html=True)
+        if orders.empty:
+            _render_empty_state("No recent trades", "No order events available in the selected scope.")
+        else:
+            cols = [c for c in ["ts", "event_type", "symbol", "side", "qty", "order_type", "order_status"] if c in orders.columns]
+            recent = orders[cols].copy().head(12)
+            st.dataframe(recent, use_container_width=True, hide_index=True, height=300)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Target Allocation</div>", unsafe_allow_html=True)
+        alloc_chart = _target_allocations_chart(state_df)
+        if alloc_chart is None:
+            _render_empty_state("No allocation", "No target allocation payload is currently available.")
+        else:
+            st.altair_chart(alloc_chart.properties(height=260), use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    with right:
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Watchlist</div>", unsafe_allow_html=True)
+        if watch.empty:
+            _render_empty_state("No watchlist symbols", "No symbol activity found in runtime scope.")
+        else:
+            wcols = [c for c in ["symbol", "target_wt_%", "order_events", "last_side"] if c in watch.columns]
+            st.dataframe(watch[wcols].head(10), use_container_width=True, hide_index=True, height=280)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Notifications</div>", unsafe_allow_html=True)
+        if notices.empty:
+            st.info("No active notifications.")
+        else:
+            ncols = [c for c in ["ts", "severity", "title", "source"] if c in notices.columns]
+            st.dataframe(notices[ncols].head(10), use_container_width=True, hide_index=True, height=280)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Risk Snapshot</div>", unsafe_allow_html=True)
+        risk_tbl = _risk_guardrail_table(events_df, state_df)
+        if risk_tbl.empty:
+            st.info("No risk guardrail rows.")
+        else:
+            st.dataframe(risk_tbl.head(8), use_container_width=True, hide_index=True, height=260)
+        st.markdown("</div>", unsafe_allow_html=True)
+
     st.caption(f"Persona mode: `{st.session_state.get('ui_persona_mode', 'Operator')}` | Role: `{user_role}`")
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_tradeboard_figma_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
+    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='section-caption'>Tradeboard (Figma Mode): streamlined symbol focus, chart, and execution context.</div>",
+        unsafe_allow_html=True,
+    )
+    symbols = _symbol_universe(events_df, state_df)
+    if not symbols:
+        _render_empty_state(
+            "No symbol stream detected",
+            "No symbols are available in current runtime state/events.",
+            "Confirm DB path, runtime loop health, and event ingestion.",
+        )
+        st.markdown("</div>", unsafe_allow_html=True)
+        return
+
+    if "ui_selected_symbol" not in st.session_state or st.session_state.ui_selected_symbol not in symbols:
+        st.session_state.ui_selected_symbol = symbols[0]
+
+    c1, c2, c3 = st.columns([1.1, 1.0, 1.0])
+    with c1:
+        st.selectbox(
+            "Symbol",
+            options=symbols,
+            index=symbols.index(st.session_state.ui_selected_symbol),
+            key="ui_selected_symbol",
+        )
+    with c2:
+        current_window = str(st.session_state.get("ui_time_window", "1D") or "1D")
+        if current_window not in TIME_WINDOW_OPTIONS:
+            current_window = "1D"
+        st.selectbox(
+            "Time Window",
+            options=list(TIME_WINDOW_OPTIONS),
+            index=list(TIME_WINDOW_OPTIONS).index(current_window),
+            key="ui_time_window",
+        )
+    with c3:
+        mode = str(st.session_state.get("ui_symbol_view_mode", "Intraday Activity") or "Intraday Activity")
+        st.selectbox(
+            "View Mode",
+            options=["Intraday Activity", "Lifecycle", "Event Mix"],
+            index=["Intraday Activity", "Lifecycle", "Event Mix"].index(mode) if mode in {"Intraday Activity", "Lifecycle", "Event Mix"} else 0,
+            key="ui_symbol_view_mode",
+        )
+
+    selected_symbol = str(st.session_state.get("ui_selected_symbol", symbols[0]) or symbols[0])
+    window = str(st.session_state.get("ui_time_window", "1D") or "1D")
+    scoped_events_df = _events_in_time_window(events_df, window)
+    summary = _symbol_summary(scoped_events_df, state_df, selected_symbol)
+    kpi = _tradeboard_scope_metrics(scoped_events_df, state_df, selected_symbol)
+    k1, k2, k3, k4 = st.columns(4)
+    with k1:
+        st.metric("Scope Events", f"{int(kpi.get('scope_events', 0)):,}")
+    with k2:
+        st.metric("Scope Orders", f"{int(kpi.get('scope_orders', 0)):,}")
+    with k3:
+        st.metric(f"{selected_symbol} Orders", f"{int(kpi.get('symbol_orders', 0)):,}")
+    with k4:
+        st.metric("Latest Event", str(kpi.get("latest_event_ts", "-")))
+
+    left, right = st.columns([1.85, 1.05])
+    with left:
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown(f"<div class='terminal-title'>{selected_symbol} Activity</div>", unsafe_allow_html=True)
+        chart_type = str(st.session_state.get("ui_symbol_chart_type", "Line") or "Line")
+        if str(st.session_state.get("ui_symbol_view_mode", "Intraday Activity")) == "Lifecycle":
+            chart = _order_lifecycle_chart(scoped_events_df, symbol_filter=selected_symbol, chart_type="Line")
+        elif str(st.session_state.get("ui_symbol_view_mode", "Intraday Activity")) == "Event Mix":
+            chart = _symbol_event_mix_chart(scoped_events_df, selected_symbol)
+        else:
+            chart = _symbol_activity_chart(scoped_events_df, selected_symbol, chart_type=chart_type)
+        if chart is None:
+            _render_empty_state("No chart data", "No chartable rows for selected symbol in this scope.")
+        else:
+            st.altair_chart(chart.properties(height=360), use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Recent Executions</div>", unsafe_allow_html=True)
+        sym_table = _symbol_activity_df(scoped_events_df, selected_symbol)
+        if sym_table.empty:
+            st.info("No executions in selected scope.")
+        else:
+            cols = [c for c in ["ts", "event_type", "side", "qty", "order_type", "cum_position"] if c in sym_table.columns]
+            st.dataframe(sym_table[cols].head(40), use_container_width=True, hide_index=True, height=280)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    with right:
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Watchlist</div>", unsafe_allow_html=True)
+        watch = _watchlist_df(events_df, state_df)
+        if watch.empty:
+            st.info("No watchlist rows.")
+        else:
+            wcols = [c for c in ["symbol", "target_wt_%", "order_events", "last_side"] if c in watch.columns]
+            st.dataframe(watch[wcols].head(12), use_container_width=True, hide_index=True, height=300)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Symbol Snapshot</div>", unsafe_allow_html=True)
+        if not summary:
+            st.info("No symbol summary available.")
+        else:
+            st.metric("Target Wt %", "-" if pd.isna(summary.get("target_wt_%")) else f"{float(pd.to_numeric(summary.get('target_wt_%'), errors='coerce') or 0.0):.2f}%")
+            st.metric("Net Qty (est)", f"{float(pd.to_numeric(summary.get('net_qty_est'), errors='coerce') or 0.0):,.4f}")
+            st.metric("Order Events", f"{int(pd.to_numeric(summary.get('order_events'), errors='coerce') or 0):,}")
+            st.metric("Last Side", str(summary.get("last_side") or "-").upper())
+        st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
+
+
+def _render_execution_figma_workspace(events_df: pd.DataFrame, state_df: pd.DataFrame) -> None:
+    st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+    st.markdown(
+        "<div class='section-caption'>Execution Journal (Figma Mode): blotter, execution quality, and lifecycle timeline.</div>",
+        unsafe_allow_html=True,
+    )
+    orders = _orders_table(events_df)
+    if orders.empty:
+        _render_empty_state(
+            "No execution journal yet",
+            "No order/exit events were found in current runtime scope.",
+            "Run paper/live loop or load a populated DB to inspect execution lifecycle.",
+        )
+        st.markdown("</div>", unsafe_allow_html=True)
+        return
+
+    enriched = _orders_blotter_enriched(orders)
+    slip_tbl, slip_summary = _execution_slippage_summary(orders)
+    total_orders = int(len(orders))
+    buy_orders = int((orders.get("side", pd.Series(dtype=str)).astype(str).str.lower() == "buy").sum())
+    sell_orders = int((orders.get("side", pd.Series(dtype=str)).astype(str).str.lower() == "sell").sum())
+    avg_adv_bps = float(slip_summary.get("avg_adverse_bps", 0.0) or 0.0) if slip_summary else 0.0
+    p95_adv_bps = float(slip_summary.get("p95_adverse_bps", 0.0) or 0.0) if slip_summary else 0.0
+
+    k1, k2, k3, k4 = st.columns(4)
+    with k1:
+        st.metric("Total Orders", f"{total_orders:,}")
+    with k2:
+        st.metric("Buy / Sell", f"{buy_orders:,} / {sell_orders:,}")
+    with k3:
+        st.metric("Avg Adverse bps", f"{avg_adv_bps:.2f}")
+    with k4:
+        st.metric("P95 Adverse bps", f"{p95_adv_bps:.2f}")
+
+    left, right = st.columns([1.75, 1.1])
+    with left:
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Orders Blotter</div>", unsafe_allow_html=True)
+        if enriched.empty:
+            st.dataframe(orders.head(100), use_container_width=True, hide_index=True, height=360)
+        else:
+            cols = [c for c in ["ts", "symbol_norm", "event_type", "side_norm", "qty_num", "exec_price", "order_type_norm", "order_status", "variant_norm"] if c in enriched.columns]
+            st.dataframe(enriched[cols].head(120), use_container_width=True, hide_index=True, height=360)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Execution Timeline</div>", unsafe_allow_html=True)
+        sym_opts = ["All"] + sorted([str(s) for s in orders["symbol"].dropna().astype(str).str.upper().unique().tolist()])
+        tl_symbol = st.selectbox("Timeline Symbol", options=sym_opts, index=0, key="figma_exec_timeline_symbol")
+        tl_filter = "" if tl_symbol == "All" else tl_symbol
+        timeline = _execution_timeline_chart(orders, symbol_filter=tl_filter)
+        if timeline is None:
+            st.info("No timeline points available.")
+        else:
+            st.altair_chart(timeline.properties(height=300), use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+    with right:
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Order Type Mix</div>", unsafe_allow_html=True)
+        otc = _execution_quality_order_type_chart(orders)
+        if otc is None:
+            st.info("Order type mix unavailable.")
+        else:
+            st.altair_chart(otc.properties(height=250), use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Orders by Symbol</div>", unsafe_allow_html=True)
+        sym_chart = _orders_by_symbol_chart(events_df)
+        if sym_chart is None:
+            st.info("No symbol breakdown available.")
+        else:
+            st.altair_chart(sym_chart.properties(height=250), use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
+
+        st.markdown("<div class='terminal-shell'>", unsafe_allow_html=True)
+        st.markdown("<div class='terminal-title'>Slippage Summary</div>", unsafe_allow_html=True)
+        if slip_tbl.empty:
+            st.info("Slippage summary unavailable.")
+        else:
+            st.dataframe(slip_tbl.head(20), use_container_width=True, hide_index=True, height=260)
+        st.markdown("</div>", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -11515,7 +11969,11 @@ def _render_workspace_by_name(
         _render_command_center_workspace(events_df=_scope(use_global, "command_center", True), state_df=state_df, user_role=user_role)
     elif workspace_name == "Tradeboard":
         use_global = _workspace_use_global_toggle("Tradeboard", default_value=True)
-        _render_terminal_workspace(events_df=_scope(use_global, "tradeboard", True), state_df=state_df)
+        scope_df = _scope(use_global, "tradeboard", True)
+        if str(st.session_state.get("ui_theme_preset", "") or "") == "Figma TradeAI":
+            _render_tradeboard_figma_workspace(events_df=scope_df, state_df=state_df)
+        else:
+            _render_terminal_workspace(events_df=scope_df, state_df=state_df)
     elif workspace_name == "Multi-Chart":
         use_global = _workspace_use_global_toggle("Multi-Chart", default_value=True)
         _render_multi_chart_workspace(events_df=_scope(use_global, "multi_chart", False), state_df=state_df)
@@ -11524,7 +11982,11 @@ def _render_workspace_by_name(
         _render_live_overview_workspace(events_df=_scope(use_global, "portfolio_pulse", True), state_df=state_df)
     elif workspace_name == "Execution Journal":
         use_global = _workspace_use_global_toggle("Execution Journal", default_value=True)
-        _render_execution_orders_workspace(events_df=_scope(use_global, "execution_journal", True), state_df=state_df)
+        scope_df = _scope(use_global, "execution_journal", True)
+        if str(st.session_state.get("ui_theme_preset", "") or "") == "Figma TradeAI":
+            _render_execution_figma_workspace(events_df=scope_df, state_df=state_df)
+        else:
+            _render_execution_orders_workspace(events_df=scope_df, state_df=state_df)
     elif workspace_name == "Strategy Lab":
         use_global = _workspace_use_global_toggle("Strategy Lab", default_value=True)
         _render_strategy_analytics_workspace(events_df=_scope(use_global, "strategy_lab", False), state_df=state_df)
@@ -11584,6 +12046,9 @@ def _main_app() -> None:
     all_prefs = _load_prefs()
     user_prefs = all_prefs.get(current_user, {}) if isinstance(all_prefs, dict) else {}
     _load_user_ui_prefs_once(current_user=current_user, user_prefs=user_prefs if isinstance(user_prefs, dict) else {})
+    _apply_simple_ui_bootstrap_once()
+    # Enforce Figma theme so older saved prefs do not pull the legacy look.
+    st.session_state["ui_theme_preset"] = "Figma TradeAI"
     _inject_dynamic_theme_css()
     _inject_compact_mode_css(enabled=bool(st.session_state.get("ui_mobile_compact_mode", False)))
     _inject_keyboard_shortcuts_js(enabled=bool(st.session_state.get("ui_keyboard_shortcuts_enabled", True)))
@@ -11903,8 +12368,8 @@ def _main_app() -> None:
             st.selectbox(
                 "Theme Preset",
                 options=list(THEME_PRESETS.keys()),
-                index=list(THEME_PRESETS.keys()).index(str(st.session_state.get("ui_theme_preset", "Neo Green")))
-                if str(st.session_state.get("ui_theme_preset", "Neo Green")) in THEME_PRESETS
+                index=list(THEME_PRESETS.keys()).index(str(st.session_state.get("ui_theme_preset", "Figma TradeAI")))
+                if str(st.session_state.get("ui_theme_preset", "Figma TradeAI")) in THEME_PRESETS
                 else 0,
                 key="ui_theme_preset",
             )
@@ -12359,16 +12824,25 @@ def _main_app() -> None:
     events_fast = _apply_widget_cadence(events_global_raw, key="fast", cadence_sec=fast_sec)
     events_heavy = _apply_widget_cadence(events_global_raw, key="heavy", cadence_sec=heavy_sec)
     events_global = events_fast
-    _render_top_command_bar(events_fast, state_df, user_role=user_role)
-    _render_global_command_palette_modal(events_fast, state_df, user_role=user_role)
-    _render_change_since_refresh_strip(events_fast, notices_df)
-    _render_realtime_status_ribbon(events_fast, state_df, current_user=current_user, user_role=user_role)
-    _render_active_context_bar(events_fast, state_df)
-    _render_workspace_preset_chips()
-    _render_onboarding_guide()
-    _render_workspace_quick_nav(_workspace_nav_options(user_role))
-    _render_keyboard_cheatsheet()
-    _render_activity_timeline_strip(events_fast)
+    figma_mode = str(st.session_state.get("ui_theme_preset", "") or "") == "Figma TradeAI"
+    if not figma_mode:
+        _render_top_command_bar(events_fast, state_df, user_role=user_role)
+        _render_global_command_palette_modal(events_fast, state_df, user_role=user_role)
+        _render_change_since_refresh_strip(events_fast, notices_df)
+        _render_realtime_status_ribbon(events_fast, state_df, current_user=current_user, user_role=user_role)
+        _render_active_context_bar(events_fast, state_df)
+        _render_workspace_preset_chips()
+        _render_onboarding_guide()
+        _render_workspace_quick_nav(_workspace_nav_options(user_role))
+        _render_keyboard_cheatsheet()
+        _render_activity_timeline_strip(events_fast)
+    else:
+        st.markdown("<div class='desk-block'>", unsafe_allow_html=True)
+        st.markdown(
+            "<div class='section-caption'>Figma UI Mode Active | Streamlined workspace shell enabled.</div>",
+            unsafe_allow_html=True,
+        )
+        st.markdown("</div>", unsafe_allow_html=True)
 
     live_mode_enabled = bool(st.session_state.get("ui_live_stream_enabled", False))
     if live_mode_enabled:
@@ -12385,13 +12859,14 @@ def _main_app() -> None:
         )
 
     _render_runtime_health_banner(cfg, db_path=db_path, events_df=events_fast, state_df=state_df)
-    _render_banner(db_path=db_path, state_df=state_df, events_df=events_fast)
-    _render_status_bar(events_df=events_fast, state_df=state_df)
-    _render_risk_strip(events_df=events_fast, state_df=state_df)
-    _render_actionable_alert_center(notices_df=notices_df)
-    _render_operator_brief(events_df=events_fast, state_df=state_df)
-    _render_kpis(events_df=events_fast, state_df=state_df)
-    _render_persistent_pnl_tiles(events_df=events_heavy, state_df=state_df)
+    if not figma_mode:
+        _render_banner(db_path=db_path, state_df=state_df, events_df=events_fast)
+        _render_status_bar(events_df=events_fast, state_df=state_df)
+        _render_risk_strip(events_df=events_fast, state_df=state_df)
+        _render_actionable_alert_center(notices_df=notices_df)
+        _render_operator_brief(events_df=events_fast, state_df=state_df)
+        _render_kpis(events_df=events_fast, state_df=state_df)
+        _render_persistent_pnl_tiles(events_df=events_heavy, state_df=state_df)
     st.caption(f"Preferred Workspace: `{st.session_state.get('ui_saved_workspace', 'Tradeboard')}` | Tip: pin browser tab with this dashboard open on your preferred tab.")
 
     allowed_tabs = _workspace_nav_options(user_role)

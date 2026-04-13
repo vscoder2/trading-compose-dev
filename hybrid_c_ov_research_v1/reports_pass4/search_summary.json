@@ -1,0 +1,40 @@
+{
+  "candidates_evaluated": 72,
+  "best_candidate": {
+    "candidate_id": "P4-0053",
+    "score": -1230.2684578504377,
+    "short_penalty_sum": 700.9252578504393,
+    "short_excess_sum": 0.0,
+    "long_diff_2y_vs_OV": -132.3357999999996,
+    "trail_scale": 1.1,
+    "threshold_scale": 1.2,
+    "stop_pct": 4.7,
+    "rv_gate": 77.5,
+    "mom_thr": 8.0,
+    "rv_cap": 6.0,
+    "strict_overlay": "OV_sh7_h1_dd0w20_re1_SOXS",
+    "light_overlay": "OV_sh4_h0_dd0w20_re1_SOXS",
+    "1m_ret": 68.73631464920453,
+    "1m_mdd": 10.01,
+    "2m_ret": 121.9538230571573,
+    "2m_mdd": 25.97,
+    "3m_ret": 123.1574304175969,
+    "3m_mdd": 26.58,
+    "4m_ret": 135.04629193844093,
+    "4m_mdd": 26.58,
+    "5m_ret": 286.9854236137836,
+    "5m_mdd": 26.58,
+    "6m_ret": 306.56622690662266,
+    "6m_mdd": 26.58,
+    "1y_ret": 602.9468279630989,
+    "1y_mdd": 32.58,
+    "2y_ret": 716.5346000000002,
+    "2y_mdd": 56.28
+  },
+  "strict_match_candidate": null,
+  "nearest_gate_candidate": null,
+  "reports": {
+    "ranked_csv": "/home/chewy/projects/trading-compose-dev/hybrid_c_ov_research_v1/reports_pass4/pass4_ranked.csv",
+    "benchmarks_csv": "/home/chewy/projects/trading-compose-dev/hybrid_c_ov_research_v1/reports_pass4/benchmarks_c_vs_ov.csv"
+  }
+}

@@ -1,0 +1,252 @@
+Variant,Date,Day Start Equity,Start Ticker,Intraday Switch Time,Intraday Switch,Buy Time,Buy Ticker,End-of-Day Ticker,Day End Equity,PnL ($),Return %,Drawdown %
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-10,10000.0,CASH,no change,no change,15:55,SPXS,SPXS,9999.0,-1.0,-0.01,0.01
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-11,9999.0,SPXS,08:01,SQQQ,no change,no change,CASH,9529.05,-469.95,-4.7,4.71
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-14,9529.05,CASH,no change,no change,15:55,SPXS,SPXS,9528.09,-0.95,-0.01,4.72
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-15,9528.09,SPXS,no change,no change,15:55,SQQQ,SPXS,9592.38,64.29,0.67,4.08
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-16,9592.38,SQQQ,no change,no change,15:55,TMV,TMV,10369.62,777.23,8.1,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-17,10369.62,TMV,no change,no change,no change,no change,TMV,10492.82,123.21,1.19,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-21,10492.82,TMV,no change,no change,no change,no change,TMV,11128.67,635.85,6.06,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-22,11128.67,TMV,no change,no change,15:55,SPXS,SPXS,10637.06,-491.61,-4.42,4.42
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-23,10637.06,SPXS,06:46,SPXS,15:55,SQQQ,SQQQ,9823.09,-813.97,-7.65,11.73
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-24,9823.09,SQQQ,10:28,SQQQ,15:55,SPXS,SPXS,9591.39,-231.7,-2.36,13.81
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-25,9591.39,SPXS,no change,no change,15:55,SPXL,SPXL,9501.75,-89.64,-0.93,14.62
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-28,9501.75,TMF,09:58,TQQQ,15:55,SPXS,SPXS,9563.22,61.47,0.65,14.07
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-29,9563.22,SPXS,no change,no change,15:55,TMV,TMV,9436.54,-126.68,-1.32,15.21
+OV_sh6_h1_dd0w40_re1_SOXS,2025-04-30,9436.54,SQQQ,16:35,SQQQ,15:55,SPXL,SPXL,9324.73,-111.8,-1.18,16.21
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-01,9324.73,TQQQ,09:59,TQQQ,15:55,TQQQ,SPXL,9372.0,47.27,0.51,15.79
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-02,9372.0,SPXL,no change,no change,no change,no change,SPXL,9531.71,159.71,1.7,14.35
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-05,9531.71,SPXL,16:01,TQQQ,15:55,SOXL,SPXL,9353.98,-177.73,-1.86,15.95
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-06,9353.98,SPXL,08:00,TQQQ,15:55,SPXS,SPXS,9115.48,-238.5,-2.55,18.09
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-07,9115.48,SPXS,no change,no change,15:55,TMV,SPXS,9049.97,-65.51,-0.72,18.68
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-08,9049.97,TMV,no change,no change,15:55,SOXL,SOXL,9094.69,44.72,0.49,18.28
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-09,9094.69,SOXL,10:27,TQQQ,15:55,TQQQ,SOXL,9145.72,51.03,0.56,17.82
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-12,9145.72,SOXL,04:00,SOXL,15:55,SOXL,SOXL,10047.05,901.33,9.86,9.72
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-13,10047.05,SPXL,13:59,SOXL,15:55,SOXL,SOXL,10571.62,524.57,5.22,5.01
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-14,10571.62,SOXL,no change,no change,no change,no change,TQQQ,10677.17,105.55,1.0,4.06
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-15,10677.17,TQQQ,08:00,TQQQ,15:55,TQQQ,TQQQ,10539.92,-137.25,-1.29,5.29
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-16,10539.92,TQQQ,10:44,TQQQ,15:55,TQQQ,SPXL,10599.66,59.74,0.57,4.75
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-19,10599.66,SPXL,12:10,TQQQ,15:55,TQQQ,SPXL,10452.61,-147.05,-1.39,6.07
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-20,10452.61,SPXL,15:00,TQQQ,15:55,TQQQ,SPXL,10313.26,-139.35,-1.33,7.33
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-21,10313.26,SPXL,13:17,TQQQ,15:55,TQQQ,SPXL,9976.31,-336.95,-3.27,10.35
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-22,9976.31,SPXL,07:59,TQQQ,15:55,TQQQ,SPXL,9842.62,-133.69,-1.34,11.56
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-23,9842.62,SPXL,07:20,TQQQ,15:55,TQQQ,SPXL,9538.29,-304.33,-3.09,14.29
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-27,9538.29,SPXL,15:31,SOXL,15:55,SOXL,SPXL,10105.89,567.6,5.95,9.19
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-28,10105.89,SPXL,14:52,TQQQ,15:55,TQQQ,SPXL,9986.26,-119.63,-1.18,10.27
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-29,9986.26,SOXL,07:25,SOXL,15:55,SOXL,SOXL,10403.12,416.86,4.17,6.52
+OV_sh6_h1_dd0w40_re1_SOXS,2025-05-30,10403.12,TQQQ,08:11,TQQQ,15:55,TQQQ,SPXL,10179.06,-224.06,-2.15,8.53
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-02,10179.06,SPXL,09:58,TQQQ,15:55,SOXS,SOXS,10264.73,85.67,0.84,7.76
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-03,10264.73,SOXS,10:25,SOXS,15:55,SOXL,SPXL,9751.23,-513.5,-5.0,12.38
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-04,9751.23,SOXL,no change,no change,no change,no change,SOXL,9903.55,152.32,1.56,11.01
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-05,9903.55,SOXL,09:39,TQQQ,15:55,TQQQ,SOXL,9827.32,-76.23,-0.77,11.69
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-06,9827.32,SOXL,no change,no change,no change,no change,SOXL,10072.87,245.55,2.5,9.49
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-09,10072.87,SOXL,10:57,SOXL,15:55,SOXL,SOXL,10337.64,264.77,2.63,7.11
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-10,10337.64,SOXL,08:00,TQQQ,15:55,TQQQ,SOXL,10563.35,225.71,2.18,5.08
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-11,10563.35,SOXL,09:46,TQQQ,15:55,TQQQ,SOXL,10480.96,-82.4,-0.78,5.82
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-12,10480.96,SOXL,19:59,TQQQ,15:55,TQQQ,SOXL,10498.11,17.15,0.16,5.67
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-13,10498.11,SOXL,08:03,TQQQ,15:55,TQQQ,SOXL,9913.19,-584.92,-5.57,10.92
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-16,9913.19,SOXL,18:51,SOXL,15:55,SOXS,SOXS,10406.53,493.34,4.98,6.49
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-17,10406.53,SOXS,no change,no change,15:55,SOXL,SOXL,10631.2,224.67,2.16,4.47
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-18,10631.2,SOXL,14:56,TQQQ,15:55,TMF,SOXL,10616.97,-14.23,-0.13,4.6
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-20,10616.97,SOXL,10:23,TQQQ,15:55,TQQQ,TMF,10551.63,-65.34,-0.62,5.19
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-23,10551.63,TQQQ,07:45,TQQQ,15:55,TQQQ,TMF,10615.39,63.76,0.6,4.61
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-24,10615.39,SOXL,no change,no change,15:55,SOXL,SOXL,11277.49,662.11,6.24,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-25,11277.49,SOXL,no change,no change,no change,no change,SOXL,11533.71,256.22,2.27,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-26,11533.71,SOXL,no change,no change,no change,no change,SOXL,11808.76,275.06,2.38,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-27,11808.76,SOXL,no change,no change,no change,no change,SOXL,11754.66,-54.1,-0.46,0.46
+OV_sh6_h1_dd0w40_re1_SOXS,2025-06-30,11754.66,SOXL,no change,no change,no change,no change,SOXL,11797.38,42.71,0.36,0.1
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-01,11797.38,SOXL,no change,no change,no change,no change,SOXL,11658.26,-139.12,-1.18,1.27
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-02,11658.26,SOXL,no change,no change,no change,no change,SOXL,12252.94,594.68,5.1,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-03,12252.94,SOXL,no change,no change,no change,no change,SOXL,12382.18,129.25,1.05,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-07,12382.18,SOXL,no change,no change,no change,no change,SOXL,11747.54,-634.64,-5.13,5.13
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-08,11747.54,SOXL,no change,no change,no change,no change,SOXL,12422.16,674.62,5.74,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-09,12422.16,SOXL,no change,no change,no change,no change,SOXL,12495.1,72.93,0.59,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-10,12495.1,SOXL,no change,no change,no change,no change,SOXL,12871.11,376.01,3.01,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-11,12871.11,SOXL,no change,no change,no change,no change,SOXL,12852.3,-18.81,-0.15,0.15
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-14,12852.3,SOXL,no change,no change,no change,no change,SOXL,12438.63,-413.67,-3.22,3.36
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-15,12438.63,SOXL,no change,no change,no change,no change,SOXL,12894.59,455.96,3.67,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-16,12894.59,SOXL,no change,no change,no change,no change,SOXL,12659.59,-235.0,-1.82,1.82
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-17,12659.59,SOXL,no change,no change,no change,no change,SOXL,12847.65,188.06,1.49,0.36
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-18,12847.65,SOXL,no change,no change,no change,no change,SOXL,12868.75,21.1,0.16,0.2
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-21,12868.75,SOXL,no change,no change,no change,no change,SOXL,12932.27,63.52,0.49,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-22,12932.27,SOXL,no change,no change,no change,no change,SOXL,12382.12,-550.15,-4.25,4.25
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-23,12382.12,SOXL,no change,no change,15:55,SOXS,SOXS,12039.02,-343.1,-2.77,6.91
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-24,12039.02,SOXS,no change,no change,no change,no change,SOXS,12050.23,11.21,0.09,6.82
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-25,12050.23,SOXS,no change,no change,no change,no change,SOXS,12094.52,44.29,0.37,6.48
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-28,12094.52,SOXS,no change,no change,15:55,SOXL,SOXL,11410.43,-684.09,-5.66,11.77
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-29,11410.43,SOXL,no change,no change,no change,no change,SOXL,11463.35,52.92,0.46,11.36
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-30,11463.35,SOXL,no change,no change,no change,no change,SOXL,11667.53,204.18,1.78,9.78
+OV_sh6_h1_dd0w40_re1_SOXS,2025-07-31,11667.53,SOXL,no change,no change,15:55,SOXS,SOXS,10508.86,-1158.66,-9.93,18.74
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-01,10508.86,SOXS,no change,no change,no change,no change,SOXS,10833.49,324.63,3.09,16.23
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-04,10833.49,SOXS,no change,no change,no change,no change,SOXS,10427.48,-406.01,-3.75,19.37
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-05,10427.48,SOXS,no change,no change,15:55,SOXL,SOXL,10581.0,153.52,1.47,18.18
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-06,10581.0,SOXL,no change,no change,no change,no change,SOXL,10278.04,-302.96,-2.86,20.52
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-07,10278.04,SOXL,no change,no change,no change,no change,SOXL,10727.15,449.11,4.37,17.05
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-08,10727.15,SOXL,no change,no change,no change,no change,SOXL,11047.32,320.18,2.98,14.58
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-11,11047.32,SOXL,no change,no change,no change,no change,SOXL,10944.2,-103.12,-0.93,15.37
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-12,10944.2,SOXL,no change,no change,no change,no change,SOXL,12057.28,1113.08,10.17,6.77
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-13,12057.28,SOXL,no change,no change,no change,no change,SOXL,12595.83,538.55,4.47,2.6
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-14,12595.83,SOXL,no change,no change,no change,no change,SOXL,12689.04,93.21,0.74,1.88
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-15,12689.04,SOXL,no change,no change,no change,no change,SOXL,11780.08,-908.96,-7.16,8.91
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-18,11780.08,SOXL,no change,no change,15:55,SOXS,SOXS,11831.44,51.36,0.44,8.51
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-19,11831.44,SOXS,no change,no change,15:55,SOXL,SOXL,12441.21,609.77,5.15,3.8
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-20,12441.21,SOXL,no change,no change,no change,no change,SOXL,12273.95,-167.27,-1.34,5.09
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-21,12273.95,SOXL,no change,no change,no change,no change,SOXL,12100.25,-173.69,-1.42,6.43
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-22,12100.25,SOXL,10:21,SOXL,15:55,SOXL,SOXL,13138.96,1038.7,8.58,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-25,13138.96,SOXL,no change,no change,no change,no change,SOXL,13119.79,-19.17,-0.15,0.15
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-26,13119.79,SOXL,no change,no change,no change,no change,SOXL,13414.27,294.48,2.24,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-27,13414.27,SOXL,no change,no change,no change,no change,SOXL,13490.83,76.56,0.57,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-28,13490.83,SOXL,no change,no change,no change,no change,SOXL,13689.49,198.67,1.47,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-08-29,13689.49,SOXL,no change,no change,no change,no change,SOXL,12375.4,-1314.09,-9.6,9.6
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-02,12375.4,SOXL,no change,no change,15:55,SOXS,SOXS,12078.15,-297.25,-2.4,11.77
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-03,12078.15,SOXS,no change,no change,no change,no change,SOXS,12292.67,214.52,1.78,10.2
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-04,12292.67,SOXS,no change,no change,no change,no change,SOXS,11902.37,-390.3,-3.18,13.05
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-05,11902.37,SOXS,no change,no change,15:55,SOXL,SOXL,11497.01,-405.36,-3.41,16.02
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-08,11497.01,SOXL,no change,no change,no change,no change,SOXL,11753.52,256.51,2.23,14.14
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-09,11753.52,SOXL,no change,no change,no change,no change,SOXL,11803.51,49.99,0.43,13.78
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-10,11803.51,SOXL,no change,no change,no change,no change,SOXL,12438.24,634.73,5.38,9.14
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-11,12438.24,SOXL,no change,no change,no change,no change,SOXL,12655.63,217.39,1.75,7.55
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-12,12655.63,SOXL,no change,no change,no change,no change,SOXL,12764.3,108.67,0.86,6.76
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-15,12764.3,SOXL,no change,no change,no change,no change,SOXL,13007.78,243.48,1.91,4.98
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-16,13007.78,SOXL,no change,no change,no change,no change,SOXL,13285.96,278.17,2.14,2.95
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-17,13285.96,SOXL,no change,no change,no change,no change,SOXL,13287.35,1.39,0.01,2.94
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-18,13287.35,SOXL,no change,no change,no change,no change,SOXL,14616.35,1329.01,10.0,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-19,14616.35,SOXL,no change,no change,no change,no change,SOXL,14322.9,-293.45,-2.01,2.01
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-22,14322.9,SOXL,no change,no change,no change,no change,SOXL,15003.27,680.37,4.75,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-23,15003.27,SOXL,no change,no change,no change,no change,SOXL,14909.81,-93.46,-0.62,0.62
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-24,14909.81,SOXL,no change,no change,no change,no change,SOXL,14809.82,-99.99,-0.67,1.29
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-25,14809.82,SOXL,no change,no change,no change,no change,SOXL,14681.57,-128.25,-0.87,2.14
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-26,14681.57,SOXL,no change,no change,no change,no change,SOXL,14772.86,91.3,0.62,1.54
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-29,14772.86,SOXL,no change,no change,no change,no change,SOXL,14803.3,30.43,0.21,1.33
+OV_sh6_h1_dd0w40_re1_SOXS,2025-09-30,14803.3,SOXL,no change,no change,no change,no change,SOXL,15109.8,306.5,2.07,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-01,15109.8,SOXL,no change,no change,no change,no change,SOXL,16029.3,919.5,6.09,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-02,16029.3,SOXL,no change,no change,no change,no change,SOXL,16966.19,936.89,5.84,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-03,16966.19,SOXL,no change,no change,no change,no change,SOXL,16637.95,-328.24,-1.93,1.93
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-06,16637.95,SOXL,09:33,SOXL,15:55,SOXL,SOXL,18377.17,1739.22,10.45,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-07,18377.17,SOXL,no change,no change,no change,no change,SOXL,17102.93,-1274.24,-6.93,6.93
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-08,17102.93,SOXL,no change,no change,15:55,SOXS,SOXS,18815.17,1712.24,10.01,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-09,18815.17,SOXS,no change,no change,15:55,SOXL,SOXL,19109.85,294.68,1.57,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-10,19109.85,SOXL,no change,no change,no change,no change,SOXL,15665.86,-3443.99,-18.02,18.02
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-13,15665.86,SOXL,04:00,SOXL,15:55,SOXS,SOXS,16944.24,1278.38,8.16,11.33
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-14,16944.24,SOXS,no change,no change,15:55,SOXL,SOXL,18047.82,1103.58,6.51,5.56
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-15,18047.82,SOXL,11:37,SOXL,15:55,SOXS,SOXS,19350.06,1302.24,7.22,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-16,19350.06,SOXS,09:17,SOXS,15:55,SOXL,SOXL,18438.76,-911.3,-4.71,4.71
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-17,18438.76,SOXL,no change,no change,no change,no change,SOXL,18311.22,-127.54,-0.69,5.37
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-20,18311.22,SOXL,no change,no change,no change,no change,SOXL,19322.99,1011.76,5.53,0.14
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-21,19322.99,SOXL,no change,no change,no change,no change,SOXL,18973.98,-349.01,-1.81,1.94
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-22,18973.98,SOXL,no change,no change,15:55,SOXS,SOXS,17403.57,-1570.41,-8.28,10.06
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-23,17403.57,SOXS,09:50,SOXS,no change,no change,CASH,16519.31,-884.26,-5.08,14.63
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-24,16519.31,CASH,no change,no change,15:55,SOXL,SOXL,16517.66,-1.65,-0.01,14.64
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-27,16517.66,SOXL,no change,no change,no change,no change,SOXL,17840.44,1322.78,8.01,7.8
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-28,17840.44,SOXL,no change,no change,no change,no change,SOXL,17887.95,47.51,0.27,7.56
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-29,17887.95,SOXL,no change,no change,no change,no change,SOXL,18817.32,929.37,5.2,2.75
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-30,18817.32,SOXL,no change,no change,no change,no change,SOXL,18123.28,-694.04,-3.69,6.34
+OV_sh6_h1_dd0w40_re1_SOXS,2025-10-31,18123.28,SOXL,no change,no change,no change,no change,SOXL,18283.27,159.99,0.88,5.51
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-03,18283.27,SOXL,no change,no change,no change,no change,SOXL,18465.72,182.45,1.0,4.57
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-04,18465.72,SOXL,no change,no change,no change,no change,SOXL,16266.79,-2198.93,-11.91,15.93
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-05,16266.79,SOXL,15:50,SOXL,15:55,SOXS,SOXS,18000.11,1733.33,10.66,6.98
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-06,18000.11,SOXS,no change,no change,15:55,SOXL,SOXL,19670.42,1670.31,9.28,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-07,19670.42,SOXL,no change,no change,15:55,SOXS,SOXS,18820.15,-850.27,-4.32,4.32
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-10,18820.15,SOXS,04:00,SOXS,no change,no change,CASH,17206.72,-1613.43,-8.57,12.52
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-11,17206.72,CASH,no change,no change,15:55,SOXL,SOXL,17205.0,-1.72,-0.01,12.53
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-12,17205.0,SOXL,no change,no change,15:55,SOXS,SOXS,17950.39,745.39,4.33,8.74
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-13,17950.39,SOXS,no change,no change,15:55,SOXL,SOXL,19805.11,1854.72,10.33,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-14,19805.11,SOXL,no change,no change,15:55,SOXS,SOXS,19629.48,-175.64,-0.89,0.89
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-17,19629.48,SOXS,no change,no change,no change,no change,SOXS,20643.8,1014.33,5.17,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-18,20643.8,SOXS,no change,no change,no change,no change,SOXS,21859.81,1216.01,5.89,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-19,21859.81,SOXS,no change,no change,no change,no change,SOXS,20844.4,-1015.41,-4.65,4.65
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-20,20844.4,SOXS,no change,no change,15:55,SOXL,SOXL,24004.2,3159.8,15.16,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-21,24004.2,SOXL,no change,no change,15:55,SOXS,SOXS,24637.72,633.52,2.64,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-24,24637.72,SOXS,09:31,SOXS,15:55,SOXL,SOXL,23442.4,-1195.32,-4.85,4.85
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-25,23442.4,SOXL,no change,no change,no change,no change,SOXL,23500.8,58.4,0.25,4.61
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-26,23500.8,SOXL,15:57,SOXL,15:55,SOXL,SOXL,25472.86,1972.05,8.39,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-11-28,25472.86,SOXL,no change,no change,no change,no change,SOXL,26610.24,1137.38,4.47,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-01,26610.24,SOXL,no change,no change,no change,no change,SOXL,26840.31,230.07,0.86,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-02,26840.31,SOXL,no change,no change,no change,no change,SOXL,28369.78,1529.47,5.7,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-03,28369.78,SOXL,no change,no change,no change,no change,SOXL,30177.93,1808.15,6.37,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-04,30177.93,SOXL,no change,no change,no change,no change,SOXL,29192.85,-985.08,-3.26,3.26
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-05,29192.85,SOXL,no change,no change,no change,no change,SOXL,30164.97,972.12,3.33,0.04
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-08,30164.97,SOXL,no change,no change,no change,no change,SOXL,30932.95,767.98,2.55,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-09,30932.95,SOXL,no change,no change,no change,no change,SOXL,31010.72,77.77,0.25,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-10,31010.72,SOXL,no change,no change,no change,no change,SOXL,32316.6,1305.88,4.21,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-11,32316.6,SOXL,no change,no change,no change,no change,SOXL,31467.61,-848.99,-2.63,2.63
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-12,31467.61,SOXL,no change,no change,no change,no change,SOXL,27008.81,-4458.8,-14.17,16.42
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-15,27008.81,SOXL,no change,no change,15:55,SOXS,SOXS,26588.72,-420.09,-1.56,17.72
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-16,26588.72,SOXS,no change,no change,no change,no change,SOXS,26633.49,44.77,0.17,17.59
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-17,26633.49,SOXS,no change,no change,no change,no change,SOXS,29977.29,3343.8,12.55,7.24
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-18,29977.29,SOXS,no change,no change,no change,no change,SOXS,27536.25,-2441.04,-8.14,14.79
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-19,27536.25,SOXS,09:45,SOXS,15:55,SOXL,SOXL,25336.52,-2199.73,-7.99,21.6
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-22,25336.52,SOXL,no change,no change,no change,no change,SOXL,26120.94,784.43,3.1,19.17
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-23,26120.94,SOXL,no change,no change,no change,no change,SOXL,26435.08,314.13,1.2,18.2
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-24,26435.08,SOXL,no change,no change,no change,no change,SOXL,26637.84,202.76,0.77,17.57
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-26,26637.84,SOXL,no change,no change,no change,no change,SOXL,26798.24,160.4,0.6,17.08
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-29,26798.24,SOXL,no change,no change,no change,no change,SOXL,26510.68,-287.56,-1.07,17.97
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-30,26510.68,SOXL,no change,no change,no change,no change,SOXL,26466.25,-44.43,-0.17,18.1
+OV_sh6_h1_dd0w40_re1_SOXS,2025-12-31,26466.25,SOXL,no change,no change,no change,no change,SOXL,25636.12,-830.12,-3.14,20.67
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-02,25636.12,SOXL,10:20,SOXL,15:55,SOXL,SOXL,28461.28,2825.16,11.02,11.93
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-05,28461.28,SOXL,no change,no change,no change,no change,SOXL,29527.68,1066.39,3.75,8.63
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-06,29527.68,SOXL,no change,no change,no change,no change,SOXL,32600.34,3072.66,10.41,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-07,32600.34,SOXL,no change,no change,no change,no change,SOXL,31423.99,-1176.35,-3.61,3.61
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-08,31423.99,SOXL,no change,no change,no change,no change,SOXL,29910.25,-1513.74,-4.82,8.25
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-09,29910.25,SOXL,no change,no change,no change,no change,SOXL,32672.64,2762.38,9.24,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-12,32672.64,SOXL,no change,no change,no change,no change,SOXL,33067.26,394.63,1.21,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-13,33067.26,SOXL,no change,no change,no change,no change,SOXL,33745.05,677.79,2.05,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-14,33745.05,SOXL,no change,no change,no change,no change,SOXL,33241.98,-503.07,-1.49,1.49
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-15,33241.98,SOXL,09:37,SOXL,15:55,SOXL,SOXL,36141.91,2899.93,8.72,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-16,36141.91,SOXL,no change,no change,no change,no change,SOXL,37719.51,1577.6,4.37,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-20,37719.51,SOXL,no change,no change,no change,no change,SOXL,36095.33,-1624.18,-4.31,4.31
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-21,36095.33,SOXL,11:42,SOXL,15:55,SOXL,SOXL,39053.46,2958.13,8.2,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-22,39053.46,SOXL,no change,no change,no change,no change,SOXL,39010.48,-42.98,-0.11,0.11
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-23,39010.48,SOXL,no change,no change,no change,no change,SOXL,37684.13,-1326.34,-3.4,3.51
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-26,37684.13,SOXL,no change,no change,no change,no change,SOXL,37260.44,-423.69,-1.12,4.59
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-27,37260.44,SOXL,no change,no change,no change,no change,SOXL,39888.56,2628.13,7.05,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-28,39888.56,SOXL,04:00,SOXL,15:55,SOXL,SOXL,42990.0,3101.43,7.78,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-29,42990.0,SOXL,no change,no change,no change,no change,SOXL,43115.8,125.8,0.29,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-01-30,43115.8,SOXL,no change,no change,no change,no change,SOXL,37905.82,-5209.98,-12.08,12.08
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-02,37905.82,SOXL,no change,no change,15:55,SOXS,SOXS,39865.67,1959.85,5.17,7.54
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-03,39865.67,SOXS,07:31,SOXS,15:55,SOXL,SOXL,37939.66,-1926.01,-4.83,12.01
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-04,37939.66,SOXL,no change,no change,15:55,SOXS,SOXS,33257.97,-4681.69,-12.34,22.86
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-05,33257.97,SOXS,no change,no change,no change,no change,SOXS,33543.63,285.66,0.86,22.2
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-06,33543.63,SOXS,04:26,SOXS,15:55,SOXL,SOXL,31668.72,-1874.91,-5.59,26.55
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-09,31668.72,SOXL,no change,no change,no change,no change,SOXL,32771.06,1102.34,3.48,23.99
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-10,32771.06,SOXL,no change,no change,no change,no change,SOXL,32401.27,-369.78,-1.13,24.85
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-11,32401.27,SOXL,no change,no change,no change,no change,SOXL,34904.13,2502.86,7.72,19.05
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-12,34904.13,SOXL,no change,no change,no change,no change,SOXL,32333.7,-2570.43,-7.36,25.01
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-13,32333.7,SOXL,no change,no change,15:55,SOXS,SOXS,32882.13,548.43,1.7,23.74
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-17,32882.13,SOXS,no change,no change,15:55,SOXL,SOXL,32786.23,-95.9,-0.29,23.96
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-18,32786.23,SOXL,no change,no change,no change,no change,SOXL,33909.14,1122.9,3.42,21.35
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-19,33909.14,SOXL,no change,no change,no change,no change,SOXL,33118.0,-791.14,-2.33,23.19
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-20,33118.0,SOXL,no change,no change,no change,no change,SOXL,34090.33,972.33,2.94,20.93
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-23,34090.33,SOXL,no change,no change,no change,no change,SOXL,33325.94,-764.39,-2.24,22.71
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-24,33325.94,SOXL,no change,no change,no change,no change,SOXL,35044.8,1718.86,5.16,18.72
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-25,35044.8,SOXL,no change,no change,no change,no change,SOXL,36698.53,1653.73,4.72,14.88
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-26,36698.53,SOXL,no change,no change,no change,no change,SOXL,33232.84,-3465.69,-9.44,22.92
+OV_sh6_h1_dd0w40_re1_SOXS,2026-02-27,33232.84,SOXL,no change,no change,15:55,SOXS,SOXS,31942.77,-1290.07,-3.88,25.91
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-02,31942.77,SOXS,no change,no change,no change,no change,SOXS,31944.55,1.77,0.01,25.91
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-03,31944.55,SOXS,no change,no change,no change,no change,SOXS,36736.88,4792.33,15.0,14.79
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-04,36736.88,SOXS,no change,no change,no change,no change,SOXS,34341.39,-2395.49,-6.52,20.35
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-05,34341.39,SOXS,13:43,SOXS,15:55,SOXS,SOXS,36877.45,2536.06,7.38,14.47
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-06,36877.45,SOXS,09:30,SOXS,15:55,SOXL,SOXL,39091.86,2214.41,6.0,9.33
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-09,39091.86,SOXL,15:43,SOXL,15:55,SOXS,SOXS,43132.55,4040.69,10.34,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-10,43132.55,SOXS,04:36,SOXS,15:55,SOXL,SOXL,41079.02,-2053.53,-4.76,4.76
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-11,41079.02,SOXL,no change,no change,15:55,SOXS,SOXS,42549.4,1470.38,3.58,1.35
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-12,42549.4,SOXS,10:02,SOXS,15:55,SOXL,SOXL,45852.17,3302.77,7.76,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-13,45852.17,SOXL,no change,no change,15:55,SOXS,SOXS,46163.32,311.15,0.68,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-16,46163.32,SOXS,06:42,SOXS,15:55,SOXL,SOXL,43976.37,-2186.95,-4.74,4.74
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-17,43976.37,SOXL,no change,no change,no change,no change,SOXL,44860.65,884.28,2.01,2.82
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-18,44860.65,SOXL,no change,no change,no change,no change,SOXL,44590.45,-270.2,-0.6,3.41
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-19,44590.45,SOXL,no change,no change,no change,no change,SOXL,45024.4,433.95,0.97,2.47
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-20,45024.4,SOXL,no change,no change,no change,no change,SOXL,41548.7,-3475.7,-7.72,10.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-23,41548.7,SOXL,10:50,SOXL,15:55,SOXS,SOXS,45482.15,3933.45,9.47,1.48
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-24,45482.15,SOXS,11:24,SOXS,no change,no change,CASH,43327.51,-2154.64,-4.74,6.14
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-25,43327.51,CASH,no change,no change,15:55,SOXS,SOXS,43323.18,-4.33,-0.01,6.15
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-26,43323.18,SOXS,11:46,SOXS,15:55,SOXL,SOXL,46990.03,3666.85,8.46,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-27,46990.03,SOXL,no change,no change,15:55,SOXS,SOXS,44679.07,-2310.96,-4.92,4.92
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-30,44679.07,SOXS,10:59,SOXS,15:55,SOXS,SOXS,48109.76,3430.7,7.68,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-03-31,48109.76,SOXS,08:01,SOXS,no change,no change,CASH,45837.35,-2272.42,-4.72,4.72
+OV_sh6_h1_dd0w40_re1_SOXS,2026-04-01,45837.35,CASH,no change,no change,15:55,SOXL,SOXL,45832.76,-4.58,-0.01,4.73
+OV_sh6_h1_dd0w40_re1_SOXS,2026-04-02,45832.76,SOXL,no change,no change,no change,no change,SOXL,46324.41,491.65,1.07,3.71
+OV_sh6_h1_dd0w40_re1_SOXS,2026-04-06,46324.41,SOXL,no change,no change,no change,no change,SOXL,48027.61,1703.2,3.68,0.17
+OV_sh6_h1_dd0w40_re1_SOXS,2026-04-07,48027.61,SOXL,19:33,SOXL,15:55,SOXL,SOXL,55430.24,7402.63,15.41,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-04-08,55430.24,SOXL,07:15,SOXL,15:55,SOXL,SOXL,64213.1,8782.86,15.84,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-04-09,64213.1,SOXL,no change,no change,no change,no change,SOXL,68575.01,4361.91,6.79,0.0
+OV_sh6_h1_dd0w40_re1_SOXS,2026-04-10,68575.01,SOXL,no change,no change,no change,no change,SOXL,72874.95,4299.94,6.27,0.0

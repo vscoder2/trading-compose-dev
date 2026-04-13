@@ -1,0 +1,24 @@
+Date,Day Start Equity,Start Ticker,Intraday Switch Time,Intraday Switch,Buy Time,Buy Ticker,End-of-Day Ticker,Day End Equity,PnL ($),Return %,Drawdown %
+2026-03-10,10000.0,CASH,no change,no change,15:55,SOXL,SOXL,9999.0,-1.0,-0.01,0.01
+2026-03-11,9999.0,SOXL,no change,no change,15:55,SOXS,SOXS,10356.9,357.9,3.58,0.0
+2026-03-12,10356.9,SOXS,10:02,SOXS,15:55,SOXL,SOXL,11160.83,803.92,7.76,0.0
+2026-03-13,11160.83,SOXL,no change,no change,no change,no change,SOXL,11238.81,77.99,0.7,0.0
+2026-03-16,11238.81,SOXL,15:13,SOXL,15:55,SOXL,SOXL,12131.0,892.19,7.94,0.0
+2026-03-17,12131.0,SOXL,no change,no change,no change,no change,SOXL,12374.93,243.93,2.01,0.0
+2026-03-18,12374.93,SOXL,no change,no change,no change,no change,SOXL,12300.4,-74.53,-0.6,0.6
+2026-03-19,12300.4,SOXL,no change,no change,no change,no change,SOXL,12420.1,119.71,0.97,0.0
+2026-03-20,12420.1,SOXL,no change,no change,no change,no change,SOXL,11461.32,-958.78,-7.72,7.72
+2026-03-23,11461.32,SOXL,10:50,SOXL,15:55,SOXS,SOXS,12546.37,1085.05,9.47,0.0
+2026-03-24,12546.37,SOXS,11:24,SOXS,no change,no change,CASH,11952.01,-594.36,-4.74,4.74
+2026-03-25,11952.01,CASH,no change,no change,15:55,SOXS,SOXS,11950.82,-1.2,-0.01,4.75
+2026-03-26,11950.82,SOXS,11:46,SOXS,15:55,SOXL,SOXL,12962.32,1011.51,8.46,0.0
+2026-03-27,12962.32,SOXL,no change,no change,no change,no change,SOXL,12327.31,-635.02,-4.9,4.9
+2026-03-30,12327.31,SOXL,no change,no change,no change,no change,SOXL,10794.0,-1533.31,-12.44,16.73
+2026-03-31,10794.0,SOXL,10:09,SOXL,15:55,SOXL,SOXL,11577.65,783.65,7.26,10.68
+2026-04-01,11577.65,SOXL,14:02,SOXL,15:55,SOXL,SOXL,12770.44,1192.79,10.3,1.48
+2026-04-02,12770.44,SOXL,no change,no change,no change,no change,SOXL,12907.43,136.99,1.07,0.42
+2026-04-06,12907.43,SOXL,no change,no change,no change,no change,SOXL,13382.0,474.56,3.68,0.0
+2026-04-07,13382.0,SOXL,19:33,SOXL,15:55,SOXL,SOXL,15444.6,2062.6,15.41,0.0
+2026-04-08,15444.6,SOXL,07:15,SOXL,15:55,SOXL,SOXL,17891.78,2447.18,15.84,0.0
+2026-04-09,17891.78,SOXL,no change,no change,no change,no change,SOXL,19107.15,1215.37,6.79,0.0
+2026-04-10,19107.15,SOXL,no change,no change,no change,no change,SOXL,20305.24,1198.1,6.27,0.0

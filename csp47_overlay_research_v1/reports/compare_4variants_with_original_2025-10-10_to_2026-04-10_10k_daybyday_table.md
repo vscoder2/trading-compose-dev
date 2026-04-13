@@ -1,0 +1,502 @@
+| Variant | Date | Day Start Equity | Start Ticker | Intraday Switch Time | Intraday Switch | Buy Time | Buy Ticker | End-of-Day Ticker | Day End Equity | PnL ($) | Return % | Drawdown % |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-10 | 10000.00 | CASH | no change | no change | 15:55 | SOXL | SOXL | 9999.00 | -1.00 | -0.01 | 0.01 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-13 | 9999.00 | SOXL | 04:00 | SOXL | 15:55 | SOXS | SOXS | 10813.87 | 814.87 | 8.15 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-14 | 10813.87 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 11517.02 | 703.15 | 6.50 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-15 | 11517.02 | SOXL | 11:37 | SOXL | 15:55 | SOXS | SOXS | 12346.80 | 829.78 | 7.20 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-16 | 12346.80 | SOXS | 09:17 | SOXS | 15:55 | SOXL | SOXL | 11764.15 | -582.65 | -4.72 | 4.72 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-17 | 11764.15 | SOXL | no change | no change | no change | no change | SOXL | 11682.78 | -81.37 | -0.69 | 5.38 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-20 | 11682.78 | SOXL | no change | no change | no change | no change | SOXL | 12328.29 | 645.52 | 5.53 | 0.15 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-21 | 12328.29 | SOXL | no change | no change | no change | no change | SOXL | 12105.62 | -222.67 | -1.81 | 1.95 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-22 | 12105.62 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 11102.57 | -1003.05 | -8.29 | 10.08 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-23 | 11102.57 | SOXS | 09:50 | SOXS | no change | no change | CASH | 10537.41 | -565.17 | -5.09 | 14.65 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-24 | 10537.41 | CASH | no change | no change | 15:55 | SOXL | SOXL | 10536.35 | -1.05 | -0.01 | 14.66 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-27 | 10536.35 | SOXL | no change | no change | no change | no change | SOXL | 11380.13 | 843.78 | 8.01 | 7.83 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-28 | 11380.13 | SOXL | no change | no change | no change | no change | SOXL | 11410.44 | 30.31 | 0.27 | 7.58 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-29 | 11410.44 | SOXL | no change | no change | no change | no change | SOXL | 12003.27 | 592.83 | 5.20 | 2.78 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-30 | 12003.27 | SOXL | no change | no change | no change | no change | SOXL | 11560.55 | -442.72 | -3.69 | 6.37 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-10-31 | 11560.55 | SOXL | no change | no change | no change | no change | SOXL | 11662.61 | 102.05 | 0.88 | 5.54 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-03 | 11662.61 | SOXL | no change | no change | no change | no change | SOXL | 11778.99 | 116.38 | 1.00 | 4.60 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-04 | 11778.99 | SOXL | no change | no change | no change | no change | SOXL | 10376.32 | -1402.66 | -11.91 | 15.96 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-05 | 10376.32 | SOXL | 15:50 | SOXL | 15:55 | SOXS | SOXS | 11480.84 | 1104.51 | 10.64 | 7.01 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-06 | 11480.84 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 12544.94 | 1064.10 | 9.27 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-07 | 12544.94 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 12001.47 | -543.47 | -4.33 | 4.33 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-10 | 12001.47 | SOXS | 04:00 | SOXS | no change | no change | CASH | 10971.51 | -1029.97 | -8.58 | 12.54 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-11 | 10971.51 | CASH | no change | no change | 15:55 | SOXL | SOXL | 10970.41 | -1.10 | -0.01 | 12.55 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-12 | 10970.41 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 11444.55 | 474.14 | 4.32 | 8.77 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-13 | 11444.55 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 12625.79 | 1181.24 | 10.32 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-14 | 12625.79 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 12512.57 | -113.22 | -0.90 | 0.90 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-17 | 12512.57 | SOXS | no change | no change | no change | no change | SOXS | 13159.14 | 646.57 | 5.17 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-18 | 13159.14 | SOXS | no change | no change | no change | no change | SOXS | 13934.27 | 775.13 | 5.89 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-19 | 13934.27 | SOXS | no change | no change | no change | no change | SOXS | 13287.01 | -647.26 | -4.65 | 4.65 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-20 | 13287.01 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 15299.65 | 2012.65 | 15.15 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-21 | 15299.65 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 15701.87 | 402.22 | 2.63 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-24 | 15701.87 | SOXS | 09:31 | SOXS | 15:55 | SOXL | SOXL | 14938.59 | -763.28 | -4.86 | 4.86 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-25 | 14938.59 | SOXL | no change | no change | no change | no change | SOXL | 14975.81 | 37.22 | 0.25 | 4.62 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-26 | 14975.81 | SOXL | 15:57 | SOXL | 15:55 | SOXL | SOXL | 16230.87 | 1255.06 | 8.38 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-11-28 | 16230.87 | SOXL | no change | no change | no change | no change | SOXL | 16955.59 | 724.72 | 4.47 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-01 | 16955.59 | SOXL | no change | no change | no change | no change | SOXL | 17102.19 | 146.60 | 0.86 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-02 | 17102.19 | SOXL | no change | no change | no change | no change | SOXL | 18076.74 | 974.55 | 5.70 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-03 | 18076.74 | SOXL | no change | no change | no change | no change | SOXL | 19228.86 | 1152.12 | 6.37 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-04 | 19228.86 | SOXL | no change | no change | no change | no change | SOXL | 18601.18 | -627.68 | -3.26 | 3.26 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-05 | 18601.18 | SOXL | no change | no change | no change | no change | SOXL | 19220.60 | 619.42 | 3.33 | 0.04 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-08 | 19220.60 | SOXL | no change | no change | no change | no change | SOXL | 19709.94 | 489.34 | 2.55 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-09 | 19709.94 | SOXL | no change | no change | no change | no change | SOXL | 19759.50 | 49.55 | 0.25 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-10 | 19759.50 | SOXL | no change | no change | no change | no change | SOXL | 20591.58 | 832.09 | 4.21 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-11 | 20591.58 | SOXL | no change | no change | no change | no change | SOXL | 20050.62 | -540.96 | -2.63 | 2.63 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-12 | 20050.62 | SOXL | no change | no change | no change | no change | SOXL | 17209.55 | -2841.07 | -14.17 | 16.42 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-15 | 17209.55 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 16940.18 | -269.37 | -1.57 | 17.73 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-16 | 16940.18 | SOXS | no change | no change | no change | no change | SOXS | 16968.71 | 28.52 | 0.17 | 17.59 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-17 | 16968.71 | SOXS | no change | no change | no change | no change | SOXS | 19099.11 | 2130.40 | 12.55 | 7.25 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-18 | 19099.11 | SOXS | no change | no change | no change | no change | SOXS | 17543.87 | -1555.23 | -8.14 | 14.80 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-19 | 17543.87 | SOXS | 09:45 | SOXS | 15:55 | SOXL | SOXL | 16140.77 | -1403.11 | -8.00 | 21.61 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-22 | 16140.77 | SOXL | no change | no change | no change | no change | SOXL | 16640.49 | 499.72 | 3.10 | 19.19 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-23 | 16640.49 | SOXL | no change | no change | no change | no change | SOXL | 16840.61 | 200.12 | 1.20 | 18.22 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-24 | 16840.61 | SOXL | no change | no change | no change | no change | SOXL | 16969.78 | 129.17 | 0.77 | 17.59 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-26 | 16969.78 | SOXL | no change | no change | no change | no change | SOXL | 17071.96 | 102.18 | 0.60 | 17.09 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-29 | 17071.96 | SOXL | no change | no change | no change | no change | SOXL | 16888.77 | -183.19 | -1.07 | 17.98 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-30 | 16888.77 | SOXL | no change | no change | no change | no change | SOXL | 16860.47 | -28.30 | -0.17 | 18.12 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2025-12-31 | 16860.47 | SOXL | no change | no change | no change | no change | SOXL | 16331.63 | -528.84 | -3.14 | 20.69 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-02 | 16331.63 | SOXL | 10:20 | SOXL | 15:55 | SOXL | SOXL | 18129.60 | 1797.97 | 11.01 | 11.96 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-05 | 18129.60 | SOXL | no change | no change | no change | no change | SOXL | 18808.89 | 679.28 | 3.75 | 8.66 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-06 | 18808.89 | SOXL | no change | no change | no change | no change | SOXL | 20766.15 | 1957.26 | 10.41 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-07 | 20766.15 | SOXL | no change | no change | no change | no change | SOXL | 20016.82 | -749.32 | -3.61 | 3.61 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-08 | 20016.82 | SOXL | no change | no change | no change | no change | SOXL | 19052.58 | -964.24 | -4.82 | 8.25 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-09 | 19052.58 | SOXL | no change | no change | no change | no change | SOXL | 20812.20 | 1759.62 | 9.24 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-12 | 20812.20 | SOXL | no change | no change | no change | no change | SOXL | 21063.57 | 251.37 | 1.21 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-13 | 21063.57 | SOXL | no change | no change | no change | no change | SOXL | 21495.32 | 431.75 | 2.05 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-14 | 21495.32 | SOXL | no change | no change | no change | no change | SOXL | 21174.87 | -320.45 | -1.49 | 1.49 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-15 | 21174.87 | SOXL | 09:37 | SOXL | 15:55 | SOXL | SOXL | 23019.80 | 1844.93 | 8.71 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-16 | 23019.80 | SOXL | no change | no change | no change | no change | SOXL | 24024.61 | 1004.82 | 4.37 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-20 | 24024.61 | SOXL | no change | no change | no change | no change | SOXL | 22990.13 | -1034.49 | -4.31 | 4.31 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-21 | 22990.13 | SOXL | 11:42 | SOXL | 15:55 | SOXL | SOXL | 24871.76 | 1881.63 | 8.18 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-22 | 24871.76 | SOXL | no change | no change | no change | no change | SOXL | 24844.38 | -27.37 | -0.11 | 0.11 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-23 | 24844.38 | SOXL | no change | no change | no change | no change | SOXL | 23999.68 | -844.70 | -3.40 | 3.51 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-26 | 23999.68 | SOXL | no change | no change | no change | no change | SOXL | 23729.84 | -269.84 | -1.12 | 4.59 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-27 | 23729.84 | SOXL | no change | no change | no change | no change | SOXL | 25403.60 | 1673.76 | 7.05 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-28 | 25403.60 | SOXL | 04:00 | SOXL | 15:55 | SOXL | SOXL | 27376.06 | 1972.45 | 7.76 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-29 | 27376.06 | SOXL | no change | no change | no change | no change | SOXL | 27456.17 | 80.11 | 0.29 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-01-30 | 27456.17 | SOXL | no change | no change | no change | no change | SOXL | 24138.45 | -3317.72 | -12.08 | 12.08 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-02 | 24138.45 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 25383.95 | 1245.50 | 5.16 | 7.55 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-03 | 25383.95 | SOXS | 07:31 | SOXS | 15:55 | SOXL | SOXL | 24155.17 | -1228.78 | -4.84 | 12.02 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-04 | 24155.17 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 21172.34 | -2982.83 | -12.35 | 22.89 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-05 | 21172.34 | SOXS | no change | no change | no change | no change | SOXS | 21354.20 | 181.86 | 0.86 | 22.22 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-06 | 21354.20 | SOXS | 04:26 | SOXS | 15:55 | SOXL | SOXL | 20158.59 | -1195.60 | -5.60 | 26.58 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-09 | 20158.59 | SOXL | no change | no change | no change | no change | SOXL | 20860.29 | 701.69 | 3.48 | 24.02 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-10 | 20860.29 | SOXL | no change | no change | no change | no change | SOXL | 20624.90 | -235.38 | -1.13 | 24.88 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-11 | 20624.90 | SOXL | no change | no change | no change | no change | SOXL | 22218.08 | 1593.18 | 7.72 | 19.08 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-12 | 22218.08 | SOXL | no change | no change | no change | no change | SOXL | 20581.89 | -1636.20 | -7.36 | 25.04 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-13 | 20581.89 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 20928.90 | 347.01 | 1.69 | 23.77 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-17 | 20928.90 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 20865.77 | -63.12 | -0.30 | 24.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-18 | 20865.77 | SOXL | no change | no change | no change | no change | SOXL | 21580.41 | 714.64 | 3.42 | 21.40 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-19 | 21580.41 | SOXL | no change | no change | no change | no change | SOXL | 21076.91 | -503.49 | -2.33 | 23.23 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-20 | 21076.91 | SOXL | no change | no change | no change | no change | SOXL | 21695.72 | 618.81 | 2.94 | 20.98 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-23 | 21695.72 | SOXL | no change | no change | no change | no change | SOXL | 21209.25 | -486.47 | -2.24 | 22.75 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-24 | 21209.25 | SOXL | no change | no change | no change | no change | SOXL | 22303.17 | 1093.91 | 5.16 | 18.77 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-25 | 22303.17 | SOXL | no change | no change | no change | no change | SOXL | 23355.63 | 1052.47 | 4.72 | 14.93 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-26 | 23355.63 | SOXL | no change | no change | no change | no change | SOXL | 21150.00 | -2205.63 | -9.44 | 22.97 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-02-27 | 21150.00 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 20326.94 | -823.06 | -3.89 | 25.97 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-02 | 20326.94 | SOXS | no change | no change | no change | no change | SOXS | 20328.07 | 1.13 | 0.01 | 25.96 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-03 | 20328.07 | SOXS | no change | no change | no change | no change | SOXS | 23377.70 | 3049.63 | 15.00 | 14.85 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-04 | 23377.70 | SOXS | no change | no change | no change | no change | SOXS | 21853.31 | -1524.38 | -6.52 | 20.41 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-05 | 21853.31 | SOXS | 13:43 | SOXS | 15:55 | SOXS | SOXS | 23464.80 | 1611.49 | 7.37 | 14.54 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-06 | 23464.80 | SOXS | 09:30 | SOXS | 15:55 | SOXL | SOXL | 24871.33 | 1406.53 | 5.99 | 9.41 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-09 | 24871.33 | SOXL | 15:43 | SOXL | 15:55 | SOXS | SOXS | 27439.38 | 2568.05 | 10.33 | 0.06 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-10 | 27439.38 | SOXS | 04:36 | SOXS | 15:55 | SOXL | SOXL | 26130.39 | -1308.99 | -4.77 | 4.83 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-11 | 26130.39 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 27062.99 | 932.60 | 3.57 | 1.43 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-12 | 27062.99 | SOXS | 10:02 | SOXS | 15:55 | SOXL | SOXL | 29160.75 | 2097.77 | 7.75 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-13 | 29160.75 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 29355.71 | 194.95 | 0.67 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-16 | 29355.71 | SOXS | 06:42 | SOXS | 15:55 | SOXL | SOXL | 27962.20 | -1393.50 | -4.75 | 4.75 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-17 | 27962.20 | SOXL | no change | no change | no change | no change | SOXL | 28524.47 | 562.26 | 2.01 | 2.83 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-18 | 28524.47 | SOXL | no change | no change | no change | no change | SOXL | 28352.66 | -171.80 | -0.60 | 3.42 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-19 | 28352.66 | SOXL | no change | no change | no change | no change | SOXL | 28628.59 | 275.93 | 0.97 | 2.48 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-20 | 28628.59 | SOXL | no change | no change | no change | no change | SOXL | 26418.58 | -2210.01 | -7.72 | 10.01 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-23 | 26418.58 | SOXL | 10:50 | SOXL | 15:55 | SOXS | SOXS | 28916.76 | 2498.18 | 9.46 | 1.50 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-24 | 28916.76 | SOXS | 11:24 | SOXS | no change | no change | CASH | 27544.12 | -1372.64 | -4.75 | 6.17 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-25 | 27544.12 | CASH | no change | no change | 15:55 | SOXS | SOXS | 27541.37 | -2.75 | -0.01 | 6.18 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-26 | 27541.37 | SOXS | 11:46 | SOXS | 15:55 | SOXL | SOXL | 29869.46 | 2328.10 | 8.45 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-27 | 29869.46 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 28397.65 | -1471.81 | -4.93 | 4.93 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-30 | 28397.65 | SOXS | 10:59 | SOXS | 15:55 | SOXS | SOXS | 30575.11 | 2177.46 | 7.67 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-03-31 | 30575.11 | SOXS | 08:01 | SOXS | no change | no change | CASH | 29128.02 | -1447.10 | -4.73 | 4.73 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-04-01 | 29128.02 | CASH | no change | no change | 15:55 | SOXL | SOXL | 29125.10 | -2.91 | -0.01 | 4.74 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-04-02 | 29125.10 | SOXL | no change | no change | no change | no change | SOXL | 29437.53 | 312.42 | 1.07 | 3.72 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-04-06 | 29437.53 | SOXL | no change | no change | no change | no change | SOXL | 30519.85 | 1082.32 | 3.68 | 0.18 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-04-07 | 30519.85 | SOXL | 19:33 | SOXL | 15:55 | SOXL | SOXL | 35220.44 | 4700.59 | 15.40 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-04-08 | 35220.44 | SOXL | 07:15 | SOXL | 15:55 | SOXL | SOXL | 40796.99 | 5576.56 | 15.83 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-04-09 | 40796.99 | SOXL | no change | no change | no change | no change | SOXL | 43568.28 | 2771.29 | 6.79 | 0.00 |
+| OV_sh6_h1_dd0w20_re1_SOXS | 2026-04-10 | 43568.28 | SOXL | no change | no change | no change | no change | SOXL | 46300.20 | 2731.91 | 6.27 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-10 | 10000.00 | CASH | no change | no change | 15:55 | SOXL | SOXL | 9999.00 | -1.00 | -0.01 | 0.01 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-13 | 9999.00 | SOXL | 04:00 | SOXL | 15:55 | SOXS | SOXS | 10813.87 | 814.87 | 8.15 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-14 | 10813.87 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 11517.02 | 703.15 | 6.50 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-15 | 11517.02 | SOXL | 11:37 | SOXL | 15:55 | SOXS | SOXS | 12346.80 | 829.78 | 7.20 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-16 | 12346.80 | SOXS | 09:17 | SOXS | 15:55 | SOXL | SOXL | 11764.15 | -582.65 | -4.72 | 4.72 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-17 | 11764.15 | SOXL | no change | no change | no change | no change | SOXL | 11682.78 | -81.37 | -0.69 | 5.38 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-20 | 11682.78 | SOXL | no change | no change | no change | no change | SOXL | 12328.29 | 645.52 | 5.53 | 0.15 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-21 | 12328.29 | SOXL | no change | no change | no change | no change | SOXL | 12105.62 | -222.67 | -1.81 | 1.95 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-22 | 12105.62 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 11102.57 | -1003.05 | -8.29 | 10.08 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-23 | 11102.57 | SOXS | 09:50 | SOXS | no change | no change | CASH | 10537.41 | -565.17 | -5.09 | 14.65 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-24 | 10537.41 | CASH | no change | no change | 15:55 | SOXL | SOXL | 10536.35 | -1.05 | -0.01 | 14.66 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-27 | 10536.35 | SOXL | no change | no change | no change | no change | SOXL | 11380.13 | 843.78 | 8.01 | 7.83 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-28 | 11380.13 | SOXL | no change | no change | no change | no change | SOXL | 11410.44 | 30.31 | 0.27 | 7.58 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-29 | 11410.44 | SOXL | no change | no change | no change | no change | SOXL | 12003.27 | 592.83 | 5.20 | 2.78 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-30 | 12003.27 | SOXL | no change | no change | no change | no change | SOXL | 11560.55 | -442.72 | -3.69 | 6.37 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-10-31 | 11560.55 | SOXL | no change | no change | no change | no change | SOXL | 11662.61 | 102.05 | 0.88 | 5.54 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-03 | 11662.61 | SOXL | no change | no change | no change | no change | SOXL | 11778.99 | 116.38 | 1.00 | 4.60 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-04 | 11778.99 | SOXL | no change | no change | no change | no change | SOXL | 10376.32 | -1402.66 | -11.91 | 15.96 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-05 | 10376.32 | SOXL | 15:50 | SOXL | 15:55 | SOXS | SOXS | 11480.84 | 1104.51 | 10.64 | 7.01 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-06 | 11480.84 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 12544.94 | 1064.10 | 9.27 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-07 | 12544.94 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 12001.47 | -543.47 | -4.33 | 4.33 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-10 | 12001.47 | SOXS | 04:00 | SOXS | no change | no change | CASH | 10971.51 | -1029.97 | -8.58 | 12.54 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-11 | 10971.51 | CASH | no change | no change | 15:55 | SOXL | SOXL | 10970.41 | -1.10 | -0.01 | 12.55 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-12 | 10970.41 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 11444.55 | 474.14 | 4.32 | 8.77 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-13 | 11444.55 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 12625.79 | 1181.24 | 10.32 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-14 | 12625.79 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 12512.57 | -113.22 | -0.90 | 0.90 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-17 | 12512.57 | SOXS | no change | no change | no change | no change | SOXS | 13159.14 | 646.57 | 5.17 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-18 | 13159.14 | SOXS | no change | no change | no change | no change | SOXS | 13934.27 | 775.13 | 5.89 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-19 | 13934.27 | SOXS | no change | no change | no change | no change | SOXS | 13287.01 | -647.26 | -4.65 | 4.65 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-20 | 13287.01 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 15299.65 | 2012.65 | 15.15 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-21 | 15299.65 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 15701.87 | 402.22 | 2.63 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-24 | 15701.87 | SOXS | 09:31 | SOXS | 15:55 | SOXL | SOXL | 14938.59 | -763.28 | -4.86 | 4.86 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-25 | 14938.59 | SOXL | no change | no change | no change | no change | SOXL | 14975.81 | 37.22 | 0.25 | 4.62 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-26 | 14975.81 | SOXL | 15:57 | SOXL | 15:55 | SOXL | SOXL | 16230.87 | 1255.06 | 8.38 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-11-28 | 16230.87 | SOXL | no change | no change | no change | no change | SOXL | 16955.59 | 724.72 | 4.47 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-01 | 16955.59 | SOXL | no change | no change | no change | no change | SOXL | 17102.19 | 146.60 | 0.86 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-02 | 17102.19 | SOXL | no change | no change | no change | no change | SOXL | 18076.74 | 974.55 | 5.70 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-03 | 18076.74 | SOXL | no change | no change | no change | no change | SOXL | 19228.86 | 1152.12 | 6.37 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-04 | 19228.86 | SOXL | no change | no change | no change | no change | SOXL | 18601.18 | -627.68 | -3.26 | 3.26 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-05 | 18601.18 | SOXL | no change | no change | no change | no change | SOXL | 19220.60 | 619.42 | 3.33 | 0.04 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-08 | 19220.60 | SOXL | no change | no change | no change | no change | SOXL | 19709.94 | 489.34 | 2.55 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-09 | 19709.94 | SOXL | no change | no change | no change | no change | SOXL | 19759.50 | 49.55 | 0.25 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-10 | 19759.50 | SOXL | no change | no change | no change | no change | SOXL | 20591.58 | 832.09 | 4.21 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-11 | 20591.58 | SOXL | no change | no change | no change | no change | SOXL | 20050.62 | -540.96 | -2.63 | 2.63 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-12 | 20050.62 | SOXL | no change | no change | no change | no change | SOXL | 17209.55 | -2841.07 | -14.17 | 16.42 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-15 | 17209.55 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 16940.18 | -269.37 | -1.57 | 17.73 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-16 | 16940.18 | SOXS | no change | no change | no change | no change | SOXS | 16968.71 | 28.52 | 0.17 | 17.59 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-17 | 16968.71 | SOXS | no change | no change | no change | no change | SOXS | 19099.11 | 2130.40 | 12.55 | 7.25 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-18 | 19099.11 | SOXS | no change | no change | no change | no change | SOXS | 17543.87 | -1555.23 | -8.14 | 14.80 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-19 | 17543.87 | SOXS | 09:45 | SOXS | 15:55 | SOXL | SOXL | 16140.77 | -1403.11 | -8.00 | 21.61 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-22 | 16140.77 | SOXL | no change | no change | no change | no change | SOXL | 16640.49 | 499.72 | 3.10 | 19.19 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-23 | 16640.49 | SOXL | no change | no change | no change | no change | SOXL | 16840.61 | 200.12 | 1.20 | 18.22 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-24 | 16840.61 | SOXL | no change | no change | no change | no change | SOXL | 16969.78 | 129.17 | 0.77 | 17.59 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-26 | 16969.78 | SOXL | no change | no change | no change | no change | SOXL | 17071.96 | 102.18 | 0.60 | 17.09 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-29 | 17071.96 | SOXL | no change | no change | no change | no change | SOXL | 16888.77 | -183.19 | -1.07 | 17.98 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-30 | 16888.77 | SOXL | no change | no change | no change | no change | SOXL | 16860.47 | -28.30 | -0.17 | 18.12 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2025-12-31 | 16860.47 | SOXL | no change | no change | no change | no change | SOXL | 16331.63 | -528.84 | -3.14 | 20.69 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-02 | 16331.63 | SOXL | 10:20 | SOXL | 15:55 | SOXL | SOXL | 18129.60 | 1797.97 | 11.01 | 11.96 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-05 | 18129.60 | SOXL | no change | no change | no change | no change | SOXL | 18808.89 | 679.28 | 3.75 | 8.66 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-06 | 18808.89 | SOXL | no change | no change | no change | no change | SOXL | 20766.15 | 1957.26 | 10.41 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-07 | 20766.15 | SOXL | no change | no change | no change | no change | SOXL | 20016.82 | -749.32 | -3.61 | 3.61 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-08 | 20016.82 | SOXL | no change | no change | no change | no change | SOXL | 19052.58 | -964.24 | -4.82 | 8.25 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-09 | 19052.58 | SOXL | no change | no change | no change | no change | SOXL | 20812.20 | 1759.62 | 9.24 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-12 | 20812.20 | SOXL | no change | no change | no change | no change | SOXL | 21063.57 | 251.37 | 1.21 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-13 | 21063.57 | SOXL | no change | no change | no change | no change | SOXL | 21495.32 | 431.75 | 2.05 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-14 | 21495.32 | SOXL | no change | no change | no change | no change | SOXL | 21174.87 | -320.45 | -1.49 | 1.49 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-15 | 21174.87 | SOXL | 09:37 | SOXL | 15:55 | SOXL | SOXL | 23019.80 | 1844.93 | 8.71 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-16 | 23019.80 | SOXL | no change | no change | no change | no change | SOXL | 24024.61 | 1004.82 | 4.37 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-20 | 24024.61 | SOXL | no change | no change | no change | no change | SOXL | 22990.13 | -1034.49 | -4.31 | 4.31 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-21 | 22990.13 | SOXL | 11:42 | SOXL | 15:55 | SOXL | SOXL | 24871.76 | 1881.63 | 8.18 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-22 | 24871.76 | SOXL | no change | no change | no change | no change | SOXL | 24844.38 | -27.37 | -0.11 | 0.11 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-23 | 24844.38 | SOXL | no change | no change | no change | no change | SOXL | 23999.68 | -844.70 | -3.40 | 3.51 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-26 | 23999.68 | SOXL | no change | no change | no change | no change | SOXL | 23729.84 | -269.84 | -1.12 | 4.59 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-27 | 23729.84 | SOXL | no change | no change | no change | no change | SOXL | 25403.60 | 1673.76 | 7.05 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-28 | 25403.60 | SOXL | 04:00 | SOXL | 15:55 | SOXL | SOXL | 27376.06 | 1972.45 | 7.76 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-29 | 27376.06 | SOXL | no change | no change | no change | no change | SOXL | 27456.17 | 80.11 | 0.29 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-01-30 | 27456.17 | SOXL | no change | no change | no change | no change | SOXL | 24138.45 | -3317.72 | -12.08 | 12.08 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-02 | 24138.45 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 25383.95 | 1245.50 | 5.16 | 7.55 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-03 | 25383.95 | SOXS | 07:31 | SOXS | 15:55 | SOXL | SOXL | 24155.17 | -1228.78 | -4.84 | 12.02 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-04 | 24155.17 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 21172.34 | -2982.83 | -12.35 | 22.89 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-05 | 21172.34 | SOXS | no change | no change | no change | no change | SOXS | 21354.20 | 181.86 | 0.86 | 22.22 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-06 | 21354.20 | SOXS | 04:26 | SOXS | 15:55 | SOXL | SOXL | 20158.59 | -1195.60 | -5.60 | 26.58 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-09 | 20158.59 | SOXL | no change | no change | no change | no change | SOXL | 20860.29 | 701.69 | 3.48 | 24.02 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-10 | 20860.29 | SOXL | no change | no change | no change | no change | SOXL | 20624.90 | -235.38 | -1.13 | 24.88 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-11 | 20624.90 | SOXL | no change | no change | no change | no change | SOXL | 22218.08 | 1593.18 | 7.72 | 19.08 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-12 | 22218.08 | SOXL | no change | no change | no change | no change | SOXL | 20581.89 | -1636.20 | -7.36 | 25.04 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-13 | 20581.89 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 20928.90 | 347.01 | 1.69 | 23.77 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-17 | 20928.90 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 20865.77 | -63.12 | -0.30 | 24.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-18 | 20865.77 | SOXL | no change | no change | no change | no change | SOXL | 21580.41 | 714.64 | 3.42 | 21.40 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-19 | 21580.41 | SOXL | no change | no change | no change | no change | SOXL | 21076.91 | -503.49 | -2.33 | 23.23 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-20 | 21076.91 | SOXL | no change | no change | no change | no change | SOXL | 21695.72 | 618.81 | 2.94 | 20.98 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-23 | 21695.72 | SOXL | no change | no change | no change | no change | SOXL | 21209.25 | -486.47 | -2.24 | 22.75 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-24 | 21209.25 | SOXL | no change | no change | no change | no change | SOXL | 22303.17 | 1093.91 | 5.16 | 18.77 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-25 | 22303.17 | SOXL | no change | no change | no change | no change | SOXL | 23355.63 | 1052.47 | 4.72 | 14.93 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-26 | 23355.63 | SOXL | no change | no change | no change | no change | SOXL | 21150.00 | -2205.63 | -9.44 | 22.97 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-02-27 | 21150.00 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 20326.94 | -823.06 | -3.89 | 25.97 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-02 | 20326.94 | SOXS | no change | no change | no change | no change | SOXS | 20328.07 | 1.13 | 0.01 | 25.96 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-03 | 20328.07 | SOXS | no change | no change | no change | no change | SOXS | 23377.70 | 3049.63 | 15.00 | 14.85 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-04 | 23377.70 | SOXS | no change | no change | no change | no change | SOXS | 21853.31 | -1524.38 | -6.52 | 20.41 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-05 | 21853.31 | SOXS | 13:43 | SOXS | 15:55 | SOXS | SOXS | 23464.80 | 1611.49 | 7.37 | 14.54 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-06 | 23464.80 | SOXS | 09:30 | SOXS | 15:55 | SOXL | SOXL | 24871.33 | 1406.53 | 5.99 | 9.41 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-09 | 24871.33 | SOXL | 15:43 | SOXL | 15:55 | SOXS | SOXS | 27439.38 | 2568.05 | 10.33 | 0.06 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-10 | 27439.38 | SOXS | 04:36 | SOXS | 15:55 | SOXL | SOXL | 26130.39 | -1308.99 | -4.77 | 4.83 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-11 | 26130.39 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 27062.99 | 932.60 | 3.57 | 1.43 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-12 | 27062.99 | SOXS | 10:02 | SOXS | 15:55 | SOXL | SOXL | 29160.75 | 2097.77 | 7.75 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-13 | 29160.75 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 29355.71 | 194.95 | 0.67 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-16 | 29355.71 | SOXS | 06:42 | SOXS | 15:55 | SOXL | SOXL | 27962.20 | -1393.50 | -4.75 | 4.75 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-17 | 27962.20 | SOXL | no change | no change | no change | no change | SOXL | 28524.47 | 562.26 | 2.01 | 2.83 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-18 | 28524.47 | SOXL | no change | no change | no change | no change | SOXL | 28352.66 | -171.80 | -0.60 | 3.42 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-19 | 28352.66 | SOXL | no change | no change | no change | no change | SOXL | 28628.59 | 275.93 | 0.97 | 2.48 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-20 | 28628.59 | SOXL | no change | no change | no change | no change | SOXL | 26418.58 | -2210.01 | -7.72 | 10.01 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-23 | 26418.58 | SOXL | 10:50 | SOXL | 15:55 | SOXS | SOXS | 28916.76 | 2498.18 | 9.46 | 1.50 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-24 | 28916.76 | SOXS | 11:24 | SOXS | no change | no change | CASH | 27544.12 | -1372.64 | -4.75 | 6.17 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-25 | 27544.12 | CASH | no change | no change | 15:55 | SOXS | SOXS | 27541.37 | -2.75 | -0.01 | 6.18 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-26 | 27541.37 | SOXS | 11:46 | SOXS | 15:55 | SOXL | SOXL | 29869.46 | 2328.10 | 8.45 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-27 | 29869.46 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 28397.65 | -1471.81 | -4.93 | 4.93 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-30 | 28397.65 | SOXS | 10:59 | SOXS | 15:55 | SOXS | SOXS | 30575.11 | 2177.46 | 7.67 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-03-31 | 30575.11 | SOXS | 08:01 | SOXS | no change | no change | CASH | 29128.02 | -1447.10 | -4.73 | 4.73 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-04-01 | 29128.02 | CASH | no change | no change | 15:55 | SOXL | SOXL | 29125.10 | -2.91 | -0.01 | 4.74 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-04-02 | 29125.10 | SOXL | no change | no change | no change | no change | SOXL | 29437.53 | 312.42 | 1.07 | 3.72 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-04-06 | 29437.53 | SOXL | no change | no change | no change | no change | SOXL | 30519.85 | 1082.32 | 3.68 | 0.18 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-04-07 | 30519.85 | SOXL | 19:33 | SOXL | 15:55 | SOXL | SOXL | 35220.44 | 4700.59 | 15.40 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-04-08 | 35220.44 | SOXL | 07:15 | SOXL | 15:55 | SOXL | SOXL | 40796.99 | 5576.56 | 15.83 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-04-09 | 40796.99 | SOXL | no change | no change | no change | no change | SOXL | 43568.28 | 2771.29 | 6.79 | 0.00 |
+| OV_sh6_h1_dd0w40_re1_SOXS | 2026-04-10 | 43568.28 | SOXL | no change | no change | no change | no change | SOXL | 46300.20 | 2731.91 | 6.27 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-10 | 10000.00 | CASH | no change | no change | 15:55 | SOXL | SOXL | 9999.00 | -1.00 | -0.01 | 0.01 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-13 | 9999.00 | SOXL | 04:00 | SOXL | 15:55 | SOXL | SOXL | 10813.87 | 814.87 | 8.15 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-14 | 10813.87 | SOXL | no change | no change | no change | no change | SOXL | 10120.48 | -693.39 | -6.41 | 6.41 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-15 | 10120.48 | SOXL | 11:37 | SOXL | 15:55 | SOXL | SOXL | 10849.64 | 729.16 | 7.20 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-16 | 10849.64 | SOXL | no change | no change | no change | no change | SOXL | 11037.81 | 188.17 | 1.73 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-17 | 11037.81 | SOXL | no change | no change | no change | no change | SOXL | 10961.46 | -76.35 | -0.69 | 0.69 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-20 | 10961.46 | SOXL | no change | no change | no change | no change | SOXL | 11567.12 | 605.66 | 5.53 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-21 | 11567.12 | SOXL | no change | no change | no change | no change | SOXL | 11358.20 | -208.92 | -1.81 | 1.81 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-22 | 11358.20 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 10417.08 | -941.12 | -8.29 | 9.94 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-23 | 10417.08 | SOXS | 09:50 | SOXS | 15:55 | SOXL | SOXL | 9885.82 | -531.26 | -5.10 | 14.54 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-24 | 9885.82 | SOXL | no change | no change | no change | no change | SOXL | 10416.79 | 530.97 | 5.37 | 9.94 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-27 | 10416.79 | SOXL | no change | no change | no change | no change | SOXL | 11250.99 | 834.21 | 8.01 | 2.73 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-28 | 11250.99 | SOXL | no change | no change | no change | no change | SOXL | 11280.96 | 29.96 | 0.27 | 2.47 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-29 | 11280.96 | SOXL | no change | no change | no change | no change | SOXL | 11867.06 | 586.10 | 5.20 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-30 | 11867.06 | SOXL | no change | no change | no change | no change | SOXL | 11429.36 | -437.69 | -3.69 | 3.69 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-10-31 | 11429.36 | SOXL | no change | no change | no change | no change | SOXL | 11530.26 | 100.90 | 0.88 | 2.84 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-03 | 11530.26 | SOXL | no change | no change | no change | no change | SOXL | 11645.32 | 115.06 | 1.00 | 1.87 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-04 | 11645.32 | SOXL | no change | no change | no change | no change | SOXL | 10258.57 | -1386.75 | -11.91 | 13.55 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-05 | 10258.57 | SOXL | 15:50 | SOXL | 15:55 | SOXL | SOXL | 11350.55 | 1091.98 | 10.64 | 4.35 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-06 | 11350.55 | SOXL | no change | no change | no change | no change | SOXL | 10345.32 | -1005.23 | -8.86 | 12.82 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-07 | 10345.32 | SOXL | no change | no change | no change | no change | SOXL | 9900.12 | -445.21 | -4.30 | 16.57 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-10 | 9900.12 | SOXL | no change | no change | no change | no change | SOXL | 10829.32 | 929.21 | 9.39 | 8.74 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-11 | 10829.32 | SOXL | no change | no change | no change | no change | SOXL | 10042.68 | -786.65 | -7.26 | 15.37 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-12 | 10042.68 | SOXL | no change | no change | no change | no change | SOXL | 10479.86 | 437.18 | 4.35 | 11.69 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-13 | 10479.86 | SOXL | no change | no change | no change | no change | SOXL | 9400.15 | -1079.71 | -10.30 | 20.79 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-14 | 9400.15 | SOXL | no change | no change | no change | no change | SOXL | 9318.65 | -81.50 | -0.87 | 21.47 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-17 | 9318.65 | SOXL | no change | no change | no change | no change | SOXL | 8848.89 | -469.76 | -5.04 | 25.43 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-18 | 8848.89 | SOXL | no change | no change | no change | no change | SOXL | 8332.47 | -516.43 | -5.84 | 29.78 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-19 | 8332.47 | SOXL | 17:36 | SOXL | 15:55 | SOXL | SOXL | 9182.37 | 849.90 | 10.20 | 22.62 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-20 | 9182.37 | SOXL | 08:02 | SOXL | 15:55 | SOXL | SOXL | 9773.31 | 590.94 | 6.44 | 17.64 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-21 | 9773.31 | SOXL | no change | no change | no change | no change | SOXL | 10033.25 | 259.95 | 2.66 | 15.45 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-24 | 10033.25 | SOXL | 10:11 | SOXL | 15:55 | SOXL | SOXL | 10881.97 | 848.71 | 8.46 | 8.30 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-25 | 10881.97 | SOXL | no change | no change | no change | no change | SOXL | 10909.08 | 27.11 | 0.25 | 8.07 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-26 | 10909.08 | SOXL | 15:57 | SOXL | 15:55 | SOXL | SOXL | 11823.32 | 914.25 | 8.38 | 0.37 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-11-28 | 11823.32 | SOXL | no change | no change | no change | no change | SOXL | 12351.24 | 527.92 | 4.47 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-01 | 12351.24 | SOXL | no change | no change | no change | no change | SOXL | 12458.03 | 106.79 | 0.86 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-02 | 12458.03 | SOXL | no change | no change | no change | no change | SOXL | 13167.94 | 709.91 | 5.70 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-03 | 13167.94 | SOXL | no change | no change | no change | no change | SOXL | 14007.20 | 839.26 | 6.37 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-04 | 14007.20 | SOXL | no change | no change | no change | no change | SOXL | 13549.97 | -457.23 | -3.26 | 3.26 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-05 | 13549.97 | SOXL | no change | no change | no change | no change | SOXL | 14001.18 | 451.21 | 3.33 | 0.04 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-08 | 14001.18 | SOXL | no change | no change | no change | no change | SOXL | 14357.64 | 356.46 | 2.55 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-09 | 14357.64 | SOXL | no change | no change | no change | no change | SOXL | 14393.74 | 36.10 | 0.25 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-10 | 14393.74 | SOXL | no change | no change | no change | no change | SOXL | 14999.87 | 606.13 | 4.21 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-11 | 14999.87 | SOXL | no change | no change | no change | no change | SOXL | 14605.81 | -394.06 | -2.63 | 2.63 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-12 | 14605.81 | SOXL | no change | no change | no change | no change | SOXL | 12536.24 | -2069.57 | -14.17 | 16.42 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-15 | 12536.24 | SOXL | no change | no change | no change | no change | SOXL | 12343.72 | -192.52 | -1.54 | 17.71 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-16 | 12343.72 | SOXL | no change | no change | no change | no change | SOXL | 12251.98 | -91.75 | -0.74 | 18.32 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-17 | 12251.98 | SOXL | no change | no change | no change | no change | SOXL | 10788.54 | -1463.44 | -11.94 | 28.08 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-18 | 10788.54 | SOXL | 09:46 | SOXL | 15:55 | SOXL | SOXL | 11886.55 | 1098.01 | 10.18 | 20.76 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-19 | 11886.55 | SOXL | no change | no change | no change | no change | SOXL | 12833.09 | 946.54 | 7.96 | 14.45 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-22 | 12833.09 | SOXL | no change | no change | no change | no change | SOXL | 13230.41 | 397.32 | 3.10 | 11.80 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-23 | 13230.41 | SOXL | no change | no change | no change | no change | SOXL | 13389.52 | 159.11 | 1.20 | 10.74 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-24 | 13389.52 | SOXL | no change | no change | no change | no change | SOXL | 13492.22 | 102.70 | 0.77 | 10.05 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-26 | 13492.22 | SOXL | no change | no change | no change | no change | SOXL | 13573.46 | 81.24 | 0.60 | 9.51 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-29 | 13573.46 | SOXL | no change | no change | no change | no change | SOXL | 13427.81 | -145.65 | -1.07 | 10.48 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-30 | 13427.81 | SOXL | no change | no change | no change | no change | SOXL | 13405.30 | -22.50 | -0.17 | 10.63 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2025-12-31 | 13405.30 | SOXL | no change | no change | no change | no change | SOXL | 12984.84 | -420.46 | -3.14 | 13.43 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-02 | 12984.84 | SOXL | 10:20 | SOXL | 15:55 | SOXL | SOXL | 14414.36 | 1429.52 | 11.01 | 3.90 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-05 | 14414.36 | SOXL | no change | no change | no change | no change | SOXL | 14954.44 | 540.08 | 3.75 | 0.30 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-06 | 14954.44 | SOXL | no change | no change | no change | no change | SOXL | 16510.60 | 1556.16 | 10.41 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-07 | 16510.60 | SOXL | no change | no change | no change | no change | SOXL | 15914.84 | -595.77 | -3.61 | 3.61 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-08 | 15914.84 | SOXL | no change | no change | no change | no change | SOXL | 15148.20 | -766.64 | -4.82 | 8.25 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-09 | 15148.20 | SOXL | no change | no change | no change | no change | SOXL | 16547.22 | 1399.02 | 9.24 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-12 | 16547.22 | SOXL | no change | no change | no change | no change | SOXL | 16747.08 | 199.86 | 1.21 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-13 | 16747.08 | SOXL | no change | no change | no change | no change | SOXL | 17090.35 | 343.27 | 2.05 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-14 | 17090.35 | SOXL | no change | no change | no change | no change | SOXL | 16835.57 | -254.78 | -1.49 | 1.49 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-15 | 16835.57 | SOXL | 09:37 | SOXL | 15:55 | SOXL | SOXL | 18302.42 | 1466.85 | 8.71 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-16 | 18302.42 | SOXL | no change | no change | no change | no change | SOXL | 19101.32 | 798.90 | 4.37 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-20 | 19101.32 | SOXL | no change | no change | no change | no change | SOXL | 18278.83 | -822.49 | -4.31 | 4.31 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-21 | 18278.83 | SOXL | 11:42 | SOXL | 15:55 | SOXL | SOXL | 19774.86 | 1496.03 | 8.18 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-22 | 19774.86 | SOXL | no change | no change | no change | no change | SOXL | 19753.10 | -21.76 | -0.11 | 0.11 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-23 | 19753.10 | SOXL | no change | no change | no change | no change | SOXL | 19081.50 | -671.60 | -3.40 | 3.51 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-26 | 19081.50 | SOXL | no change | no change | no change | no change | SOXL | 18866.96 | -214.54 | -1.12 | 4.59 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-27 | 18866.96 | SOXL | no change | no change | no change | no change | SOXL | 20197.72 | 1330.76 | 7.05 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-28 | 20197.72 | SOXL | 04:00 | SOXL | 15:55 | SOXL | SOXL | 21765.97 | 1568.24 | 7.76 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-29 | 21765.97 | SOXL | no change | no change | no change | no change | SOXL | 21829.66 | 63.69 | 0.29 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-01-30 | 21829.66 | SOXL | no change | no change | no change | no change | SOXL | 19191.83 | -2637.83 | -12.08 | 12.08 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-02 | 19191.83 | SOXL | no change | no change | no change | no change | SOXL | 20188.15 | 996.32 | 5.19 | 7.52 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-03 | 20188.15 | SOXL | no change | no change | no change | no change | SOXL | 18923.08 | -1265.07 | -6.27 | 13.31 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-04 | 18923.08 | SOXL | no change | no change | no change | no change | SOXL | 16591.32 | -2331.76 | -12.32 | 24.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-05 | 16591.32 | SOXL | no change | no change | no change | no change | SOXL | 16439.04 | -152.27 | -0.92 | 24.69 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-06 | 16439.04 | SOXL | 09:56 | SOXL | 15:55 | SOXL | SOXL | 18423.76 | 1984.71 | 12.07 | 15.60 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-09 | 18423.76 | SOXL | no change | no change | no change | no change | SOXL | 19065.06 | 641.31 | 3.48 | 12.66 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-10 | 19065.06 | SOXL | no change | no change | no change | no change | SOXL | 18849.93 | -215.13 | -1.13 | 13.65 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-11 | 18849.93 | SOXL | no change | no change | no change | no change | SOXL | 20306.01 | 1456.07 | 7.72 | 6.98 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-12 | 20306.01 | SOXL | no change | no change | no change | no change | SOXL | 18810.62 | -1495.39 | -7.36 | 13.83 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-13 | 18810.62 | SOXL | no change | no change | no change | no change | SOXL | 19133.51 | 322.88 | 1.72 | 12.35 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-17 | 19133.51 | SOXL | no change | no change | no change | no change | SOXL | 19115.65 | -17.86 | -0.09 | 12.43 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-18 | 19115.65 | SOXL | no change | no change | no change | no change | SOXL | 19770.35 | 654.70 | 3.42 | 9.43 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-19 | 19770.35 | SOXL | no change | no change | no change | no change | SOXL | 19309.09 | -461.26 | -2.33 | 11.55 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-20 | 19309.09 | SOXL | no change | no change | no change | no change | SOXL | 19875.99 | 566.91 | 2.94 | 8.95 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-23 | 19875.99 | SOXL | no change | no change | no change | no change | SOXL | 19430.32 | -445.67 | -2.24 | 10.99 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-24 | 19430.32 | SOXL | no change | no change | no change | no change | SOXL | 20432.48 | 1002.16 | 5.16 | 6.40 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-25 | 20432.48 | SOXL | no change | no change | no change | no change | SOXL | 21396.67 | 964.19 | 4.72 | 1.98 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-26 | 21396.67 | SOXL | no change | no change | no change | no change | SOXL | 19376.04 | -2020.63 | -9.44 | 11.24 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-02-27 | 19376.04 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 18622.02 | -754.02 | -3.89 | 14.69 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-02 | 18622.02 | SOXS | no change | no change | no change | no change | SOXS | 18623.05 | 1.03 | 0.01 | 14.69 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-03 | 18623.05 | SOXS | no change | no change | no change | no change | SOXS | 21416.89 | 2793.84 | 15.00 | 1.89 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-04 | 21416.89 | SOXS | no change | no change | no change | no change | SOXS | 20020.37 | -1396.53 | -6.52 | 8.29 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-05 | 20020.37 | SOXS | 13:43 | SOXS | 15:55 | SOXS | SOXS | 21496.69 | 1476.32 | 7.37 | 1.53 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-06 | 21496.69 | SOXS | 09:30 | SOXS | 15:55 | SOXL | SOXL | 22785.24 | 1288.55 | 5.99 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-09 | 22785.24 | SOXL | 15:43 | SOXL | 15:55 | SOXL | SOXL | 25137.90 | 2352.66 | 10.33 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-10 | 25137.90 | SOXL | no change | no change | no change | no change | SOXL | 25702.58 | 564.68 | 2.25 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-11 | 25702.58 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 26619.92 | 917.33 | 3.57 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-12 | 26619.92 | SOXS | 10:02 | SOXS | 15:55 | SOXL | SOXL | 28683.34 | 2063.42 | 7.75 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-13 | 28683.34 | SOXL | no change | no change | no change | no change | SOXL | 28883.76 | 200.42 | 0.70 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-16 | 28883.76 | SOXL | 15:13 | SOXL | 15:55 | SOXL | SOXL | 31173.56 | 2289.80 | 7.93 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-17 | 31173.56 | SOXL | no change | no change | no change | no change | SOXL | 31800.40 | 626.84 | 2.01 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-18 | 31800.40 | SOXL | no change | no change | no change | no change | SOXL | 31608.87 | -191.53 | -0.60 | 0.60 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-19 | 31608.87 | SOXL | no change | no change | no change | no change | SOXL | 31916.48 | 307.61 | 0.97 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-20 | 31916.48 | SOXL | no change | no change | no change | no change | SOXL | 29452.66 | -2463.82 | -7.72 | 7.72 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-23 | 29452.66 | SOXL | 10:50 | SOXL | 15:55 | SOXS | SOXS | 32237.75 | 2785.08 | 9.46 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-24 | 32237.75 | SOXS | 11:24 | SOXS | no change | no change | CASH | 30707.47 | -1530.28 | -4.75 | 4.75 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-25 | 30707.47 | CASH | no change | no change | 15:55 | SOXS | SOXS | 30704.39 | -3.07 | -0.01 | 4.76 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-26 | 30704.39 | SOXS | 11:46 | SOXS | 15:55 | SOXL | SOXL | 33299.86 | 2595.47 | 8.45 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-27 | 33299.86 | SOXL | no change | no change | no change | no change | SOXL | 31668.52 | -1631.35 | -4.90 | 4.90 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-30 | 31668.52 | SOXL | no change | no change | no change | no change | SOXL | 27729.50 | -3939.02 | -12.44 | 16.73 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-03-31 | 27729.50 | SOXL | 10:09 | SOXL | 15:55 | SOXL | SOXL | 29739.70 | 2010.21 | 7.25 | 10.69 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-04-01 | 29739.70 | SOXL | 14:02 | SOXL | 15:55 | SOXL | SOXL | 32800.37 | 3060.66 | 10.29 | 1.50 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-04-02 | 32800.37 | SOXL | no change | no change | no change | no change | SOXL | 33152.22 | 351.85 | 1.07 | 0.44 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-04-06 | 33152.22 | SOXL | no change | no change | no change | no change | SOXL | 34371.12 | 1218.90 | 3.68 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-04-07 | 34371.12 | SOXL | 19:33 | SOXL | 15:55 | SOXL | SOXL | 39664.86 | 5293.75 | 15.40 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-04-08 | 39664.86 | SOXL | 07:15 | SOXL | 15:55 | SOXL | SOXL | 45945.12 | 6280.26 | 15.83 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-04-09 | 45945.12 | SOXL | no change | no change | no change | no change | SOXL | 49066.12 | 3120.99 | 6.79 | 0.00 |
+| C_sp4.7_rv75_tr1.10_th1.20 | 2026-04-10 | 49066.12 | SOXL | no change | no change | no change | no change | SOXL | 52142.77 | 3076.65 | 6.27 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-10 | 10000.00 | CASH | no change | no change | 15:55 | SOXL | SOXL | 9999.00 | -1.00 | -0.01 | 0.01 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-13 | 9999.00 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 11333.63 | 1334.63 | 13.35 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-14 | 11333.63 | SOXS | no change | no change | no change | no change | SOXS | 12074.20 | 740.57 | 6.53 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-15 | 12074.20 | SOXS | no change | no change | no change | no change | SOXS | 11024.98 | -1049.22 | -8.69 | 8.69 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-16 | 11024.98 | SOXS | no change | no change | no change | no change | SOXS | 10823.42 | -201.55 | -1.83 | 10.36 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-17 | 10823.42 | SOXS | no change | no change | no change | no change | SOXS | 10930.13 | 106.71 | 0.99 | 9.48 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-20 | 10930.13 | SOXS | no change | no change | no change | no change | SOXS | 10306.85 | -623.28 | -5.70 | 14.64 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-21 | 10306.85 | SOXS | no change | no change | no change | no change | SOXS | 10500.62 | 193.77 | 1.88 | 13.03 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-22 | 10500.62 | SOXS | no change | no change | no change | no change | SOXS | 11373.33 | 872.71 | 8.31 | 5.80 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-23 | 11373.33 | SOXS | no change | no change | no change | no change | SOXS | 10474.26 | -899.07 | -7.91 | 13.25 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-24 | 10474.26 | SOXS | no change | no change | no change | no change | SOXS | 9937.50 | -536.76 | -5.12 | 17.70 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-27 | 9937.50 | SOXS | no change | no change | no change | no change | SOXS | 9118.12 | -819.38 | -8.25 | 24.48 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-28 | 9118.12 | SOXS | no change | no change | no change | no change | SOXS | 9103.85 | -14.27 | -0.16 | 24.60 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-29 | 9103.85 | SOXS | no change | no change | no change | no change | SOXS | 8634.55 | -469.30 | -5.15 | 28.49 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-30 | 8634.55 | SOXS | no change | no change | no change | no change | SOXS | 8956.85 | 322.31 | 3.73 | 25.82 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-10-31 | 8956.85 | SOXS | no change | no change | no change | no change | SOXS | 8877.55 | -79.31 | -0.89 | 26.48 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-03 | 8877.55 | SOXS | no change | no change | no change | no change | SOXS | 8797.39 | -80.16 | -0.90 | 27.14 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-04 | 8797.39 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 9839.55 | 1042.16 | 11.85 | 18.51 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-05 | 9839.55 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 10861.75 | 1022.20 | 10.39 | 10.04 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-06 | 10861.75 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 11868.47 | 1006.72 | 9.27 | 1.70 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-07 | 11868.47 | SOXL | no change | no change | no change | no change | SOXL | 11357.71 | -510.75 | -4.30 | 5.93 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-10 | 11357.71 | SOXL | no change | no change | no change | no change | SOXL | 12423.73 | 1066.01 | 9.39 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-11 | 12423.73 | SOXL | no change | no change | no change | no change | SOXL | 11521.26 | -902.47 | -7.26 | 7.26 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-12 | 11521.26 | SOXL | no change | no change | no change | no change | SOXL | 12022.81 | 501.55 | 4.35 | 3.23 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-13 | 12022.81 | SOXL | no change | no change | no change | no change | SOXL | 10784.13 | -1238.68 | -10.30 | 13.20 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-14 | 10784.13 | SOXL | no change | no change | no change | no change | SOXL | 10690.63 | -93.50 | -0.87 | 13.95 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-17 | 10690.63 | SOXL | no change | no change | no change | no change | SOXL | 10151.72 | -538.92 | -5.04 | 18.29 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-18 | 10151.72 | SOXL | no change | no change | no change | no change | SOXL | 9559.26 | -592.46 | -5.84 | 23.06 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-19 | 9559.26 | SOXL | no change | no change | no change | no change | SOXL | 9980.87 | 421.61 | 4.41 | 19.66 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-20 | 9980.87 | SOXL | no change | no change | no change | no change | SOXL | 8495.59 | -1485.28 | -14.88 | 31.62 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-21 | 8495.59 | SOXL | no change | no change | no change | no change | SOXL | 8721.55 | 225.96 | 2.66 | 29.80 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-24 | 8721.55 | SOXL | no change | no change | no change | no change | SOXL | 9954.69 | 1233.14 | 14.14 | 19.87 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-25 | 9954.69 | SOXL | no change | no change | no change | no change | SOXL | 9979.49 | 24.80 | 0.25 | 19.67 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-26 | 9979.49 | SOXL | no change | no change | no change | no change | SOXL | 10830.98 | 851.49 | 8.53 | 12.82 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-11-28 | 10830.98 | SOXL | no change | no change | no change | no change | SOXL | 11314.59 | 483.61 | 4.47 | 8.93 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-01 | 11314.59 | SOXL | no change | no change | no change | no change | SOXL | 11412.41 | 97.82 | 0.86 | 8.14 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-02 | 11412.41 | SOXL | no change | no change | no change | no change | SOXL | 12062.74 | 650.33 | 5.70 | 2.91 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-03 | 12062.74 | SOXL | no change | no change | no change | no change | SOXL | 12831.56 | 768.82 | 6.37 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-04 | 12831.56 | SOXL | no change | no change | no change | no change | SOXL | 12412.70 | -418.85 | -3.26 | 3.26 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-05 | 12412.70 | SOXL | no change | no change | no change | no change | SOXL | 12826.05 | 413.34 | 3.33 | 0.04 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-08 | 12826.05 | SOXL | no change | no change | no change | no change | SOXL | 13152.59 | 326.54 | 2.55 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-09 | 13152.59 | SOXL | no change | no change | no change | no change | SOXL | 13185.66 | 33.07 | 0.25 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-10 | 13185.66 | SOXL | no change | no change | no change | no change | SOXL | 13740.91 | 555.26 | 4.21 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-11 | 13740.91 | SOXL | no change | no change | no change | no change | SOXL | 13379.93 | -360.99 | -2.63 | 2.63 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-12 | 13379.93 | SOXL | no change | no change | no change | no change | SOXL | 11484.06 | -1895.87 | -14.17 | 16.42 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-15 | 11484.06 | SOXL | no change | no change | no change | no change | SOXL | 11307.70 | -176.36 | -1.54 | 17.71 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-16 | 11307.70 | SOXL | no change | no change | no change | no change | SOXL | 11223.65 | -84.05 | -0.74 | 18.32 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-17 | 11223.65 | SOXL | no change | no change | no change | no change | SOXL | 9883.04 | -1340.61 | -11.94 | 28.08 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-18 | 9883.04 | SOXL | no change | no change | no change | no change | SOXL | 10684.24 | 801.20 | 8.11 | 22.25 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-19 | 10684.24 | SOXL | no change | no change | no change | no change | SOXL | 11535.04 | 850.80 | 7.96 | 16.05 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-22 | 11535.04 | SOXL | no change | no change | no change | no change | SOXL | 11892.17 | 357.13 | 3.10 | 13.45 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-23 | 11892.17 | SOXL | no change | no change | no change | no change | SOXL | 12035.18 | 143.02 | 1.20 | 12.41 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-24 | 12035.18 | SOXL | no change | no change | no change | no change | SOXL | 12127.50 | 92.31 | 0.77 | 11.74 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-26 | 12127.50 | SOXL | no change | no change | no change | no change | SOXL | 12200.52 | 73.02 | 0.60 | 11.21 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-29 | 12200.52 | SOXL | no change | no change | no change | no change | SOXL | 12069.60 | -130.92 | -1.07 | 12.16 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-30 | 12069.60 | SOXL | no change | no change | no change | no change | SOXL | 12049.38 | -20.23 | -0.17 | 12.31 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2025-12-31 | 12049.38 | SOXL | no change | no change | no change | no change | SOXL | 11671.44 | -377.93 | -3.14 | 15.06 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-02 | 11671.44 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 13013.66 | 1342.22 | 11.50 | 5.29 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-05 | 13013.66 | SOXS | no change | no change | no change | no change | SOXS | 12519.95 | -493.71 | -3.79 | 8.89 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-06 | 12519.95 | SOXS | no change | no change | no change | no change | SOXS | 11284.08 | -1235.87 | -9.87 | 17.88 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-07 | 11284.08 | SOXS | no change | no change | no change | no change | SOXS | 11663.04 | 378.96 | 3.36 | 15.12 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-08 | 11663.04 | SOXS | no change | no change | no change | no change | SOXS | 12208.31 | 545.27 | 4.68 | 11.15 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-09 | 12208.31 | SOXS | no change | no change | no change | no change | SOXS | 11117.42 | -1090.89 | -8.94 | 19.09 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-12 | 11117.42 | SOXS | no change | no change | no change | no change | SOXS | 10976.12 | -141.30 | -1.27 | 20.12 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-13 | 10976.12 | SOXS | no change | no change | no change | no change | SOXS | 10737.26 | -238.86 | -2.18 | 21.86 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-14 | 10737.26 | SOXS | no change | no change | no change | no change | SOXS | 10927.25 | 189.99 | 1.77 | 20.48 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-15 | 10927.25 | SOXS | no change | no change | no change | no change | SOXS | 10311.71 | -615.54 | -5.63 | 24.96 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-16 | 10311.71 | SOXS | no change | no change | no change | no change | SOXS | 9860.80 | -450.91 | -4.37 | 28.24 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-20 | 9860.80 | SOXS | no change | no change | no change | no change | SOXS | 10297.01 | 436.21 | 4.42 | 25.06 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-21 | 10297.01 | SOXS | no change | no change | no change | no change | SOXS | 9316.00 | -981.01 | -9.53 | 32.20 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-22 | 9316.00 | SOXS | no change | no change | no change | no change | SOXS | 9337.44 | 21.44 | 0.23 | 32.05 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-23 | 9337.44 | SOXS | no change | no change | no change | no change | SOXS | 9662.93 | 325.49 | 3.49 | 29.68 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-26 | 9662.93 | SOXS | no change | no change | no change | no change | SOXS | 9751.63 | 88.69 | 0.92 | 29.03 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-27 | 9751.63 | SOXS | no change | no change | no change | no change | SOXS | 9055.45 | -696.18 | -7.14 | 34.10 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-28 | 9055.45 | SOXS | no change | no change | no change | no change | SOXS | 8367.33 | -688.12 | -7.60 | 39.11 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-29 | 8367.33 | SOXS | no change | no change | no change | no change | SOXS | 8361.17 | -6.16 | -0.07 | 39.15 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-01-30 | 8361.17 | SOXS | no change | no change | no change | no change | SOXS | 9343.97 | 982.80 | 11.75 | 32.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-02 | 9343.97 | SOXS | no change | no change | no change | no change | SOXS | 8865.55 | -478.42 | -5.12 | 35.48 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-03 | 8865.55 | SOXS | no change | no change | no change | no change | SOXS | 9390.90 | 525.36 | 5.93 | 31.66 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-04 | 9390.90 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 10526.43 | 1135.52 | 12.09 | 23.39 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-05 | 10526.43 | SOXL | no change | no change | no change | no change | SOXL | 10429.82 | -96.61 | -0.92 | 24.10 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-06 | 10429.82 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 12200.27 | 1770.45 | 16.97 | 11.21 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-09 | 12200.27 | SOXS | no change | no change | no change | no change | SOXS | 11805.87 | -394.41 | -3.23 | 14.08 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-10 | 11805.87 | SOXS | no change | no change | no change | no change | SOXS | 11927.04 | 121.18 | 1.03 | 13.20 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-11 | 11927.04 | SOXS | no change | no change | no change | no change | SOXS | 10957.24 | -969.80 | -8.13 | 20.26 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-12 | 10957.24 | SOXS | no change | no change | no change | no change | SOXS | 11838.48 | 881.24 | 8.04 | 13.85 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-13 | 11838.48 | SOXS | no change | no change | no change | no change | SOXS | 11578.33 | -260.15 | -2.20 | 15.74 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-17 | 11578.33 | SOXS | no change | no change | no change | no change | SOXS | 11546.87 | -31.46 | -0.27 | 15.97 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-18 | 11546.87 | SOXS | no change | no change | no change | no change | SOXS | 11187.71 | -359.15 | -3.11 | 18.58 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-19 | 11187.71 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 11443.93 | 256.21 | 2.29 | 16.72 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-20 | 11443.93 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 11776.38 | 332.46 | 2.91 | 14.30 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-23 | 11776.38 | SOXS | no change | no change | no change | no change | SOXS | 11983.70 | 207.31 | 1.76 | 12.79 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-24 | 11983.70 | SOXS | no change | no change | no change | no change | SOXS | 11396.95 | -586.74 | -4.90 | 17.06 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-25 | 11396.95 | SOXS | no change | no change | no change | no change | SOXS | 10880.29 | -516.67 | -4.53 | 20.82 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-26 | 10880.29 | SOXS | no change | no change | no change | no change | SOXS | 11913.10 | 1032.81 | 9.49 | 13.30 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-02-27 | 11913.10 | SOXS | no change | no change | no change | no change | SOXS | 12394.64 | 481.55 | 4.04 | 9.80 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-02 | 12394.64 | SOXS | no change | no change | no change | no change | SOXS | 12395.33 | 0.69 | 0.01 | 9.79 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-03 | 12395.33 | SOXS | no change | no change | no change | no change | SOXS | 14254.89 | 1859.55 | 15.00 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-04 | 14254.89 | SOXS | no change | no change | no change | no change | SOXS | 13325.37 | -929.51 | -6.52 | 6.52 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-05 | 13325.37 | SOXS | no change | no change | no change | no change | SOXS | 13911.14 | 585.77 | 4.40 | 2.41 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-06 | 13911.14 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 15575.80 | 1664.66 | 11.97 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-09 | 15575.80 | SOXL | no change | no change | no change | no change | SOXL | 17312.80 | 1737.00 | 11.15 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-10 | 17312.80 | SOXL | no change | no change | no change | no change | SOXL | 17701.71 | 388.90 | 2.25 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-11 | 17701.71 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 18333.49 | 631.78 | 3.57 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-12 | 18333.49 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 20315.28 | 1981.79 | 10.81 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-13 | 20315.28 | SOXL | no change | no change | no change | no change | SOXL | 20457.23 | 141.95 | 0.70 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-16 | 20457.23 | SOXL | no change | no change | no change | no change | SOXL | 21783.46 | 1326.23 | 6.48 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-17 | 21783.46 | SOXL | no change | no change | no change | no change | SOXL | 22221.48 | 438.02 | 2.01 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-18 | 22221.48 | SOXL | no change | no change | no change | no change | SOXL | 22087.64 | -133.84 | -0.60 | 0.60 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-19 | 22087.64 | SOXL | no change | no change | no change | no change | SOXL | 22302.60 | 214.96 | 0.97 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-20 | 22302.60 | SOXL | no change | no change | no change | no change | SOXL | 20580.93 | -1721.67 | -7.72 | 7.72 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-23 | 20580.93 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 21626.91 | 1045.98 | 5.08 | 3.03 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-24 | 21626.91 | SOXS | no change | no change | no change | no change | SOXS | 20999.00 | -627.91 | -2.90 | 5.85 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-25 | 20999.00 | SOXS | no change | no change | no change | no change | SOXS | 20156.69 | -842.31 | -4.01 | 9.62 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-26 | 20156.69 | SOXS | no change | no change | 15:55 | SOXL | SOXL | 23023.72 | 2867.02 | 14.22 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-27 | 23023.72 | SOXL | no change | no change | no change | no change | SOXL | 21895.79 | -1127.92 | -4.90 | 4.90 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-30 | 21895.79 | SOXL | no change | no change | no change | no change | SOXL | 19172.33 | -2723.46 | -12.44 | 16.73 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-03-31 | 19172.33 | SOXL | no change | no change | no change | no change | SOXL | 22532.60 | 3360.27 | 17.53 | 2.13 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-04-01 | 22532.60 | SOXL | no change | no change | no change | no change | SOXL | 24534.66 | 2002.06 | 8.89 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-04-02 | 24534.66 | SOXL | no change | no change | no change | no change | SOXL | 24797.84 | 263.18 | 1.07 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-04-06 | 24797.84 | SOXL | no change | no change | no change | no change | SOXL | 25709.58 | 911.74 | 3.68 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-04-07 | 25709.58 | SOXL | no change | no change | no change | no change | SOXL | 26494.43 | 784.85 | 3.05 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-04-08 | 26494.43 | SOXL | no change | no change | 15:55 | SOXS | SOXS | 31642.83 | 5148.40 | 19.43 | 0.00 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-04-09 | 31642.83 | SOXS | no change | no change | no change | no change | SOXS | 29492.40 | -2150.43 | -6.80 | 6.80 |
+| SOXL_Growth_v2.4.5_RL_original_daily | 2026-04-10 | 29492.40 | SOXS | no change | no change | no change | no change | SOXS | 27634.15 | -1858.25 | -6.30 | 12.67 |

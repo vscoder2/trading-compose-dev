@@ -1,0 +1,12 @@
+Window,Period,Start Equity,Final Equity,PnL ($),Return %,MaxDD %,Trading Days,CSV
+1m,2026-03-10 to 2026-04-10,10000.0,20305.24,10305.24,103.05,16.73,23,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2026-03-10_to_2026-04-10_10k.csv
+2m,2026-02-10 to 2026-04-10,10000.0,27698.03,17698.03,176.98,16.73,42,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2026-02-10_to_2026-04-10_10k.csv
+3m,2026-01-12 to 2026-04-10,10000.0,31188.42,21188.42,211.88,24.69,62,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2026-01-10_to_2026-04-10_10k.csv
+4m,2025-12-10 to 2026-04-10,10000.0,34828.26,24828.26,248.28,28.08,83,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-12-10_to_2026-04-10_10k.csv
+5m,2025-11-10 to 2026-04-10,10000.0,48260.48,38260.48,382.6,28.08,104,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-11-10_to_2026-04-10_10k.csv
+6m,2025-10-10 to 2026-04-10,10000.0,52294.21,42294.21,422.94,29.78,125,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-10-10_to_2026-04-10_10k.csv
+1y,2025-04-10 to 2026-04-10,10000.0,89484.12,79484.12,794.84,32.78,251,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2025-04-10_to_2026-04-10_10k.csv
+2y,2024-04-10 to 2026-04-10,10000.0,40037.44,30037.44,300.37,81.42,502,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2024-04-10_to_2026-04-10_10k.csv
+3y,2023-04-10 to 2026-04-10,10000.0,50227.02,40227.02,402.27,81.42,754,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2023-04-10_to_2026-04-10_10k.csv
+4y,2022-04-11 to 2026-04-10,10000.0,82412.59,72412.59,724.13,81.42,1003,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2022-04-10_to_2026-04-10_10k.csv
+5y,2021-04-12 to 2026-04-10,10000.0,52185.01,42185.01,421.85,81.42,1256,/home/chewy/projects/trading-compose-dev/fev1_best_research_v1/reports/C_sp4.7_rv75_tr1.10_th1.20_2021-04-10_to_2026-04-10_10k.csv

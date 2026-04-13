@@ -1,0 +1,103 @@
+{
+  "rows": [
+    {
+      "variant": "runtime_switch_loop.py",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 15172.81163739692,
+      "pnl": 5172.811637396921,
+      "return_pct": 51.728116373969215,
+      "maxdd_pct": 12.751156043855769,
+      "maxdd_usd": 2075.7774181089226,
+      "events": 8,
+      "days": 22
+    },
+    {
+      "variant": "runtime_switch_loop_v2_controlplane.py",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 15169.777378495332,
+      "pnl": 5169.7773784953315,
+      "return_pct": 51.697773784953306,
+      "maxdd_pct": 12.751156043855769,
+      "maxdd_usd": 2075.7774181089226,
+      "events": 8,
+      "days": 22
+    },
+    {
+      "variant": "MRV2-00004",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 14231.609627925005,
+      "pnl": 4231.609627925005,
+      "return_pct": 42.31609627925006,
+      "maxdd_pct": 15.541578474672338,
+      "maxdd_usd": 2373.0905202607755,
+      "events": 8,
+      "days": 22
+    },
+    {
+      "variant": "MRV2-00003",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 12439.91283990887,
+      "pnl": 2439.9128399088695,
+      "return_pct": 24.39912839908869,
+      "maxdd_pct": 16.846873503111954,
+      "maxdd_usd": 2248.546165623029,
+      "events": 8,
+      "days": 22
+    },
+    {
+      "variant": "MRV2-00002",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 12268.838041603884,
+      "pnl": 2268.8380416038835,
+      "return_pct": 22.688380416038846,
+      "maxdd_pct": 18.027923842768747,
+      "maxdd_usd": 2373.0905202607755,
+      "events": 8,
+      "days": 22
+    },
+    {
+      "variant": "runtime_m0106_loop.py",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 11590.064524501639,
+      "pnl": 1590.0645245016385,
+      "return_pct": 15.900645245016376,
+      "maxdd_pct": 18.48537984191362,
+      "maxdd_usd": 2248.546165623029,
+      "events": 8,
+      "days": 22
+    },
+    {
+      "variant": "MRV2-00007",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 11336.470743863762,
+      "pnl": 1336.4707438637615,
+      "return_pct": 13.364707438637623,
+      "maxdd_pct": 18.48667391631752,
+      "maxdd_usd": 2248.546165623029,
+      "events": 8,
+      "days": 22
+    },
+    {
+      "variant": "MRV2-00012",
+      "period": "2026-03-10 to 2026-04-09",
+      "start_equity": 10000.0,
+      "final_equity": 11336.470743863762,
+      "pnl": 1336.4707438637615,
+      "return_pct": 13.364707438637623,
+      "maxdd_pct": 18.48667391631752,
+      "maxdd_usd": 2248.546165623029,
+      "events": 8,
+      "days": 22
+    }
+  ],
+  "start_day": "2026-03-10",
+  "end_day": "2026-04-09",
+  "source_candidate_csv": "/home/chewy/projects/trading-compose-dev/meta_router_v2/reports/sweep_meta_router_v2_safe_20260327_20260327_full.csv"
+}

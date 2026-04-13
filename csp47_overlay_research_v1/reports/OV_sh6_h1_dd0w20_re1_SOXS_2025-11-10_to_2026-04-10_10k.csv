@@ -1,0 +1,105 @@
+Date,Day Start Equity,Start Ticker,Intraday Switch Time,Intraday Switch,Buy Time,Buy Ticker,End-of-Day Ticker,Day End Equity,PnL ($),Return %,Drawdown %
+2025-11-10,10000.0,CASH,no change,no change,15:55,SOXS,SOXS,9999.0,-1.0,-0.01,0.01
+2025-11-11,9999.0,SOXS,no change,no change,15:55,SOXL,SOXL,10728.46,729.46,7.3,0.0
+2025-11-12,10728.46,SOXL,no change,no change,15:55,SOXS,SOXS,11192.14,463.68,4.32,0.0
+2025-11-13,11192.14,SOXS,no change,no change,15:55,SOXL,SOXL,12347.33,1155.19,10.32,0.0
+2025-11-14,12347.33,SOXL,no change,no change,15:55,SOXS,SOXS,12236.61,-110.72,-0.9,0.9
+2025-11-17,12236.61,SOXS,no change,no change,no change,no change,SOXS,12868.92,632.31,5.17,0.0
+2025-11-18,12868.92,SOXS,no change,no change,no change,no change,SOXS,13626.95,758.03,5.89,0.0
+2025-11-19,13626.95,SOXS,no change,no change,no change,no change,SOXS,12993.97,-632.99,-4.65,4.65
+2025-11-20,12993.97,SOXS,no change,no change,15:55,SOXL,SOXL,14962.22,1968.26,15.15,0.0
+2025-11-21,14962.22,SOXL,no change,no change,15:55,SOXS,SOXS,15355.57,393.35,2.63,0.0
+2025-11-24,15355.57,SOXS,09:31,SOXS,15:55,SOXL,SOXL,14609.12,-746.45,-4.86,4.86
+2025-11-25,14609.12,SOXL,no change,no change,no change,no change,SOXL,14645.52,36.4,0.25,4.62
+2025-11-26,14645.52,SOXL,15:57,SOXL,15:55,SOXL,SOXL,15872.9,1227.38,8.38,0.0
+2025-11-28,15872.9,SOXL,no change,no change,no change,no change,SOXL,16581.64,708.74,4.47,0.0
+2025-12-01,16581.64,SOXL,no change,no change,no change,no change,SOXL,16725.0,143.36,0.86,0.0
+2025-12-02,16725.0,SOXL,no change,no change,no change,no change,SOXL,17678.06,953.06,5.7,0.0
+2025-12-03,17678.06,SOXL,no change,no change,no change,no change,SOXL,18804.77,1126.71,6.37,0.0
+2025-12-04,18804.77,SOXL,no change,no change,no change,no change,SOXL,18190.94,-613.84,-3.26,3.26
+2025-12-05,18190.94,SOXL,no change,no change,no change,no change,SOXL,18796.7,605.76,3.33,0.04
+2025-12-08,18796.7,SOXL,no change,no change,no change,no change,SOXL,19275.24,478.55,2.55,0.0
+2025-12-09,19275.24,SOXL,no change,no change,no change,no change,SOXL,19323.71,48.46,0.25,0.0
+2025-12-10,19323.71,SOXL,no change,no change,no change,no change,SOXL,20137.44,813.74,4.21,0.0
+2025-12-11,20137.44,SOXL,no change,no change,no change,no change,SOXL,19608.41,-529.03,-2.63,2.63
+2025-12-12,19608.41,SOXL,no change,no change,no change,no change,SOXL,16830.0,-2778.41,-14.17,16.42
+2025-12-15,16830.0,SOXL,no change,no change,15:55,SOXS,SOXS,16566.57,-263.43,-1.57,17.73
+2025-12-16,16566.57,SOXS,no change,no change,no change,no change,SOXS,16594.47,27.9,0.17,17.59
+2025-12-17,16594.47,SOXS,no change,no change,no change,no change,SOXS,18677.88,2083.41,12.55,7.25
+2025-12-18,18677.88,SOXS,no change,no change,no change,no change,SOXS,17156.95,-1520.93,-8.14,14.8
+2025-12-19,17156.95,SOXS,09:45,SOXS,15:55,SOXL,SOXL,15784.78,-1372.16,-8.0,21.61
+2025-12-22,15784.78,SOXL,no change,no change,no change,no change,SOXL,16273.49,488.7,3.1,19.19
+2025-12-23,16273.49,SOXL,no change,no change,no change,no change,SOXL,16469.19,195.71,1.2,18.22
+2025-12-24,16469.19,SOXL,no change,no change,no change,no change,SOXL,16595.52,126.32,0.77,17.59
+2025-12-26,16595.52,SOXL,no change,no change,no change,no change,SOXL,16695.44,99.93,0.6,17.09
+2025-12-29,16695.44,SOXL,no change,no change,no change,no change,SOXL,16516.29,-179.15,-1.07,17.98
+2025-12-30,16516.29,SOXL,no change,no change,no change,no change,SOXL,16488.61,-27.68,-0.17,18.12
+2025-12-31,16488.61,SOXL,no change,no change,no change,no change,SOXL,15971.44,-517.17,-3.14,20.69
+2026-01-02,15971.44,SOXL,10:20,SOXL,15:55,SOXL,SOXL,17729.76,1758.31,11.01,11.96
+2026-01-05,17729.76,SOXL,no change,no change,no change,no change,SOXL,18394.06,664.3,3.75,8.66
+2026-01-06,18394.06,SOXL,no change,no change,no change,no change,SOXL,20308.15,1914.09,10.41,0.0
+2026-01-07,20308.15,SOXL,no change,no change,no change,no change,SOXL,19575.36,-732.8,-3.61,3.61
+2026-01-08,19575.36,SOXL,no change,no change,no change,no change,SOXL,18632.38,-942.97,-4.82,8.25
+2026-01-09,18632.38,SOXL,no change,no change,no change,no change,SOXL,20353.19,1720.81,9.24,0.0
+2026-01-12,20353.19,SOXL,no change,no change,no change,no change,SOXL,20599.02,245.83,1.21,0.0
+2026-01-13,20599.02,SOXL,no change,no change,no change,no change,SOXL,21021.25,422.23,2.05,0.0
+2026-01-14,21021.25,SOXL,no change,no change,no change,no change,SOXL,20707.86,-313.39,-1.49,1.49
+2026-01-15,20707.86,SOXL,09:37,SOXL,15:55,SOXL,SOXL,22512.1,1804.24,8.71,0.0
+2026-01-16,22512.1,SOXL,no change,no change,no change,no change,SOXL,23494.76,982.66,4.37,0.0
+2026-01-20,23494.76,SOXL,no change,no change,no change,no change,SOXL,22483.08,-1011.67,-4.31,4.31
+2026-01-21,22483.08,SOXL,11:42,SOXL,15:55,SOXL,SOXL,24323.21,1840.13,8.18,0.0
+2026-01-22,24323.21,SOXL,no change,no change,no change,no change,SOXL,24296.44,-26.77,-0.11,0.11
+2026-01-23,24296.44,SOXL,no change,no change,no change,no change,SOXL,23470.37,-826.07,-3.4,3.51
+2026-01-26,23470.37,SOXL,no change,no change,no change,no change,SOXL,23206.49,-263.88,-1.12,4.59
+2026-01-27,23206.49,SOXL,no change,no change,no change,no change,SOXL,24843.33,1636.85,7.05,0.0
+2026-01-28,24843.33,SOXL,04:00,SOXL,15:55,SOXL,SOXL,26772.28,1928.95,7.76,0.0
+2026-01-29,26772.28,SOXL,no change,no change,no change,no change,SOXL,26850.63,78.34,0.29,0.0
+2026-01-30,26850.63,SOXL,no change,no change,no change,no change,SOXL,23606.08,-3244.55,-12.08,12.08
+2026-02-02,23606.08,SOXL,no change,no change,15:55,SOXS,SOXS,24824.11,1218.03,5.16,7.55
+2026-02-03,24824.11,SOXS,07:31,SOXS,15:55,SOXL,SOXL,23622.43,-1201.68,-4.84,12.02
+2026-02-04,23622.43,SOXL,no change,no change,15:55,SOXS,SOXS,20705.39,-2917.04,-12.35,22.89
+2026-02-05,20705.39,SOXS,no change,no change,no change,no change,SOXS,20883.23,177.84,0.86,22.22
+2026-02-06,20883.23,SOXS,04:26,SOXS,15:55,SOXL,SOXL,19714.0,-1169.23,-5.6,26.58
+2026-02-09,19714.0,SOXL,no change,no change,no change,no change,SOXL,20400.22,686.22,3.48,24.02
+2026-02-10,20400.22,SOXL,no change,no change,no change,no change,SOXL,20170.02,-230.19,-1.13,24.88
+2026-02-11,20170.02,SOXL,no change,no change,no change,no change,SOXL,21728.07,1558.05,7.72,19.08
+2026-02-12,21728.07,SOXL,no change,no change,no change,no change,SOXL,20127.96,-1600.11,-7.36,25.04
+2026-02-13,20127.96,SOXL,no change,no change,15:55,SOXS,SOXS,20467.31,339.36,1.69,23.77
+2026-02-17,20467.31,SOXS,no change,no change,15:55,SOXL,SOXL,20405.58,-61.73,-0.3,24.0
+2026-02-18,20405.58,SOXL,no change,no change,no change,no change,SOXL,21104.46,698.88,3.42,21.4
+2026-02-19,21104.46,SOXL,no change,no change,no change,no change,SOXL,20612.07,-492.39,-2.33,23.23
+2026-02-20,20612.07,SOXL,no change,no change,no change,no change,SOXL,21217.23,605.16,2.94,20.98
+2026-02-23,21217.23,SOXL,no change,no change,no change,no change,SOXL,20741.49,-475.74,-2.24,22.75
+2026-02-24,20741.49,SOXL,no change,no change,no change,no change,SOXL,21811.27,1069.79,5.16,18.77
+2026-02-25,21811.27,SOXL,no change,no change,no change,no change,SOXL,22840.53,1029.25,4.72,14.93
+2026-02-26,22840.53,SOXL,no change,no change,no change,no change,SOXL,20683.54,-2156.98,-9.44,22.97
+2026-02-27,20683.54,SOXL,no change,no change,15:55,SOXS,SOXS,19878.64,-804.91,-3.89,25.97
+2026-03-02,19878.64,SOXS,no change,no change,no change,no change,SOXS,19879.74,1.1,0.01,25.96
+2026-03-03,19879.74,SOXS,no change,no change,no change,no change,SOXS,22862.11,2982.37,15.0,14.85
+2026-03-04,22862.11,SOXS,no change,no change,no change,no change,SOXS,21371.34,-1490.76,-6.52,20.41
+2026-03-05,21371.34,SOXS,13:43,SOXS,15:55,SOXS,SOXS,22947.29,1575.95,7.37,14.54
+2026-03-06,22947.29,SOXS,09:30,SOXS,15:55,SOXL,SOXL,24322.8,1375.51,5.99,9.41
+2026-03-09,24322.8,SOXL,15:43,SOXL,15:55,SOXS,SOXS,26834.21,2511.41,10.33,0.06
+2026-03-10,26834.21,SOXS,04:36,SOXS,15:55,SOXL,SOXL,25554.09,-1280.12,-4.77,4.83
+2026-03-11,25554.09,SOXL,no change,no change,15:55,SOXS,SOXS,26466.12,912.03,3.57,1.43
+2026-03-12,26466.12,SOXS,10:02,SOXS,15:55,SOXL,SOXL,28517.62,2051.5,7.75,0.0
+2026-03-13,28517.62,SOXL,no change,no change,15:55,SOXS,SOXS,28708.27,190.65,0.67,0.0
+2026-03-16,28708.27,SOXS,06:42,SOXS,15:55,SOXL,SOXL,27345.5,-1362.77,-4.75,4.75
+2026-03-17,27345.5,SOXL,no change,no change,no change,no change,SOXL,27895.37,549.86,2.01,2.83
+2026-03-18,27895.37,SOXL,no change,no change,no change,no change,SOXL,27727.35,-168.01,-0.6,3.42
+2026-03-19,27727.35,SOXL,no change,no change,no change,no change,SOXL,27997.19,269.84,0.97,2.48
+2026-03-20,27997.19,SOXL,no change,no change,no change,no change,SOXL,25835.93,-2161.27,-7.72,10.01
+2026-03-23,25835.93,SOXL,10:50,SOXL,15:55,SOXS,SOXS,28279.01,2443.08,9.46,1.5
+2026-03-24,28279.01,SOXS,11:24,SOXS,no change,no change,CASH,26936.64,-1342.36,-4.75,6.17
+2026-03-25,26936.64,CASH,no change,no change,15:55,SOXS,SOXS,26933.95,-2.69,-0.01,6.18
+2026-03-26,26933.95,SOXS,11:46,SOXS,15:55,SOXL,SOXL,29210.7,2276.75,8.45,0.0
+2026-03-27,29210.7,SOXL,no change,no change,15:55,SOXS,SOXS,27771.35,-1439.35,-4.93,4.93
+2026-03-30,27771.35,SOXS,10:59,SOXS,15:55,SOXS,SOXS,29900.79,2129.44,7.67,0.0
+2026-03-31,29900.79,SOXS,08:01,SOXS,no change,no change,CASH,28485.6,-1415.18,-4.73,4.73
+2026-04-01,28485.6,CASH,no change,no change,15:55,SOXL,SOXL,28482.76,-2.85,-0.01,4.74
+2026-04-02,28482.76,SOXL,no change,no change,no change,no change,SOXL,28788.29,305.53,1.07,3.72
+2026-04-06,28788.29,SOXL,no change,no change,no change,no change,SOXL,29846.74,1058.45,3.68,0.18
+2026-04-07,29846.74,SOXL,19:33,SOXL,15:55,SOXL,SOXL,34443.66,4596.92,15.4,0.0
+2026-04-08,34443.66,SOXL,07:15,SOXL,15:55,SOXL,SOXL,39897.23,5453.57,15.83,0.0
+2026-04-09,39897.23,SOXL,no change,no change,no change,no change,SOXL,42607.39,2710.17,6.79,0.0
+2026-04-10,42607.39,SOXL,no change,no change,no change,no change,SOXL,45279.06,2671.66,6.27,0.0

@@ -1,0 +1,12 @@
+{
+  "candidates_proxy_evaluated": 3600,
+  "candidates_full_evaluated": 24,
+  "gate_ok_count_full": 0,
+  "strict_match_candidate": null,
+  "nearest_gate_candidate": null,
+  "reports": {
+    "proxy_csv": "/home/chewy/projects/trading-compose-dev/hybrid_c_ov_research_v1/reports_pass6/pass6_proxy_ranked.csv",
+    "full_csv": "/home/chewy/projects/trading-compose-dev/hybrid_c_ov_research_v1/reports_pass6/pass6_full_top_validated.csv",
+    "benchmarks_csv": "/home/chewy/projects/trading-compose-dev/hybrid_c_ov_research_v1/reports_pass6/benchmarks_c_vs_ov.csv"
+  }
+}

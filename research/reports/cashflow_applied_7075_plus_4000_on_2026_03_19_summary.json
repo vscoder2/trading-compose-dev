@@ -1,0 +1,11 @@
+{
+  "start_deposit_2026_03_17": 7075.0,
+  "additional_deposit_2026_03_19": 4000.0,
+  "total_contributions": 11075.0,
+  "final_equity": 14619.274242,
+  "total_pnl_vs_contributions": 3544.274242,
+  "total_return_pct_vs_contributions": 32.002476,
+  "max_drawdown_pct": 16.735068,
+  "max_drawdown_usd": 1864.126471,
+  "assumption": "Cash addition applied at start of 2026-03-19 before that day trading return."
+}

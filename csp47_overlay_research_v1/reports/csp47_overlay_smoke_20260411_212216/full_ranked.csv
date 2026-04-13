@@ -1,0 +1,2 @@
+candidate_id,avg_return_pct,avg_max_dd_pct,score,ret_wins,dd_wins,both_wins,delta_avg_return_pct,delta_avg_max_dd_pct,strict_accept,shock_drop_pct,shock_hold_days,dd_trigger_pct,dd_window_days,reentry_pos_days,defensive_symbol
+OV_sh10_h1_dd18w20_re1_SOXS,30.1088,20.23,9.8788,0,0,0,-72.9436,3.5,False,10.0,1,18.0,20,1,SOXS

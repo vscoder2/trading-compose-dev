@@ -1,0 +1,15 @@
+{"loaded_env_vars": 8, "env_file": "/home/chewy/projects/trading-compose-dev/.env.dev", "env_override": true}
+{"loaded_env_vars": 8, "env_file": "/home/chewy/projects/trading-compose-dev/.env.dev", "env_override": true}
+Traceback (most recent call last):
+  File "/home/chewy/projects/trading-compose-dev/research/tools/search_12of12_envelope.py", line 445, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/home/chewy/projects/trading-compose-dev/research/tools/search_12of12_envelope.py", line 388, in main
+    row = fut.result()
+          ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 449, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/concurrent/futures/_base.py", line 401, in __get_result
+    raise self._exception
+concurrent.futures.process.BrokenProcessPool: A process in the process pool was terminated abruptly while the future was running or pending.

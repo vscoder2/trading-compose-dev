@@ -1,0 +1,6 @@
+{"loaded_env_vars": 8, "env_file": "/home/chewy/projects/trading-compose-dev/.env.dev", "env_override": true}
+{"stage": "eval", "completed": 20, "total": 80, "mode": "sequential"}
+{"stage": "eval", "completed": 40, "total": 80, "mode": "sequential"}
+{"stage": "eval", "completed": 60, "total": 80, "mode": "sequential"}
+{"stage": "eval", "completed": 80, "total": 80, "mode": "sequential"}
+{"results_csv": "/home/chewy/projects/trading-compose-dev/research/reports/meta_router_12of12/search_12of12_envelope_safe_s42_20260327.csv", "results_json": "/home/chewy/projects/trading-compose-dev/research/reports/meta_router_12of12/search_12of12_envelope_safe_s42_20260327.json", "strict_12of12_count": 0}

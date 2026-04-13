@@ -1,0 +1,35 @@
+{
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "mode": "paper",
+  "data_feed": "sip",
+  "end_date": "2026-04-08",
+  "windows": [
+    "1m"
+  ],
+  "initial_equity": 11075.0,
+  "rebalance_time_ny": "15:55",
+  "runtime_profit_lock_order_type": "market_order",
+  "rebalance_threshold_v1": 0.05,
+  "controlplane_threshold_cap_v2": 0.5,
+  "output_csv": "/home/chewy/projects/trading-compose-dev/research/reports/probe_last30_now_20260408.csv",
+  "rows": [
+    {
+      "window": "1m",
+      "period": "2026-03-09 to 2026-04-08",
+      "start_equity": 11075.0,
+      "v1_final_equity": 19267.29497688094,
+      "v1_return_pct": 73.9710607393313,
+      "v1_maxdd_pct": 12.751156043855758,
+      "v1_events": 9,
+      "v1_variant_regimes_seen": 1,
+      "v2_final_equity": 19267.29497688094,
+      "v2_return_pct": 73.9710607393313,
+      "v2_maxdd_pct": 12.751156043855758,
+      "v2_events": 9,
+      "v2_variant_regimes_seen": 1,
+      "v2_minus_v1_equity": 0.0,
+      "v2_minus_v1_return_pct": 0.0,
+      "v2_vs_v1_diff_bps": 0.0
+    }
+  ]
+}

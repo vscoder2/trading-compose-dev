@@ -1,0 +1,26 @@
+{
+  "run_id": "csp47_overlay_deep_bounded_v2_20260411_224102",
+  "reports_dir": "/home/chewy/projects/trading-compose-dev/csp47_overlay_research_v1/reports/csp47_overlay_deep_bounded_v2_20260411_224102",
+  "baseline_candidate": "LOCKED_C_sp4.7_rv75_tr1.10_th1.20",
+  "candidate_count": 48,
+  "selected_for_full": 16,
+  "quick_windows": [
+    "1m",
+    "3m",
+    "6m",
+    "1y",
+    "2y"
+  ],
+  "full_windows": [
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "1y",
+    "2y"
+  ],
+  "top_k_from_quick": 16,
+  "strict_accept_count": 2
+}

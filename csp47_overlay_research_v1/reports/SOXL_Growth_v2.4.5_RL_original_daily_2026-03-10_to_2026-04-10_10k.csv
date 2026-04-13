@@ -1,0 +1,24 @@
+Date,Day Start Equity,Start Ticker,Intraday Switch Time,Intraday Switch,Buy Time,Buy Ticker,End-of-Day Ticker,Day End Equity,PnL ($),Return %,Drawdown %
+2026-03-10,10000.0,CASH,no change,no change,15:55,SOXL,SOXL,9999.0,-1.0,-0.01,0.01
+2026-03-11,9999.0,SOXL,no change,no change,15:55,SOXS,SOXS,10355.87,356.87,3.57,0.0
+2026-03-12,10355.87,SOXS,no change,no change,15:55,SOXL,SOXL,11475.3,1119.44,10.81,0.0
+2026-03-13,11475.3,SOXL,no change,no change,no change,no change,SOXL,11555.49,80.18,0.7,0.0
+2026-03-16,11555.49,SOXL,no change,no change,no change,no change,SOXL,12304.62,749.14,6.48,0.0
+2026-03-17,12304.62,SOXL,no change,no change,no change,no change,SOXL,12552.05,247.42,2.01,0.0
+2026-03-18,12552.05,SOXL,no change,no change,no change,no change,SOXL,12476.44,-75.6,-0.6,0.6
+2026-03-19,12476.44,SOXL,no change,no change,no change,no change,SOXL,12597.86,121.42,0.97,0.0
+2026-03-20,12597.86,SOXL,no change,no change,no change,no change,SOXL,11625.36,-972.5,-7.72,7.72
+2026-03-23,11625.36,SOXL,no change,no change,15:55,SOXS,SOXS,12216.19,590.83,5.08,3.03
+2026-03-24,12216.19,SOXS,no change,no change,no change,no change,SOXS,11861.51,-354.68,-2.9,5.85
+2026-03-25,11861.51,SOXS,no change,no change,no change,no change,SOXS,11385.73,-475.79,-4.01,9.62
+2026-03-26,11385.73,SOXS,no change,no change,15:55,SOXL,SOXL,13005.19,1619.47,14.22,0.0
+2026-03-27,13005.19,SOXL,no change,no change,no change,no change,SOXL,12368.08,-637.12,-4.9,4.9
+2026-03-30,12368.08,SOXL,no change,no change,no change,no change,SOXL,10829.7,-1538.38,-12.44,16.73
+2026-03-31,10829.7,SOXL,no change,no change,no change,no change,SOXL,12727.78,1898.08,17.53,2.13
+2026-04-01,12727.78,SOXL,no change,no change,no change,no change,SOXL,13858.67,1130.89,8.89,0.0
+2026-04-02,13858.67,SOXL,no change,no change,no change,no change,SOXL,14007.33,148.66,1.07,0.0
+2026-04-06,14007.33,SOXL,no change,no change,no change,no change,SOXL,14522.33,515.0,3.68,0.0
+2026-04-07,14522.33,SOXL,no change,no change,no change,no change,SOXL,14965.66,443.33,3.05,0.0
+2026-04-08,14965.66,SOXL,no change,no change,15:55,SOXS,SOXS,17873.79,2908.13,19.43,0.0
+2026-04-09,17873.79,SOXS,no change,no change,no change,no change,SOXS,16659.1,-1214.69,-6.8,6.8
+2026-04-10,16659.1,SOXS,no change,no change,no change,no change,SOXS,15609.45,-1049.65,-6.3,12.67

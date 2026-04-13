@@ -1,0 +1,69 @@
+{
+  "baseline": {
+    "1m": {
+      "m0106_dd": 7.068698847574766,
+      "m0106_final": 16810.788583133068,
+      "v1_dd": 7.999528287601359,
+      "v1_final": 19508.989836837496,
+      "v2_dd": 8.27267070067973,
+      "v2_final": 14906.13604668267
+    },
+    "2m": {
+      "m0106_dd": 7.068698847574783,
+      "m0106_final": 19000.8106958482,
+      "v1_dd": 8.66704569580889,
+      "v1_final": 21020.108235875323,
+      "v2_dd": 16.376428800803208,
+      "v2_final": 16072.359641471796
+    }
+  },
+  "best_full_candidate": {
+    "1m_best_baseline_dd": 7.068698847574766,
+    "1m_best_baseline_final": 19508.989836837496,
+    "1m_meta_dd": 7.068698847574766,
+    "1m_meta_final": 16810.788583133068,
+    "1m_meta_return": 68.10788583133068,
+    "2m_best_baseline_dd": 7.068698847574783,
+    "2m_best_baseline_final": 21020.108235875323,
+    "2m_meta_dd": 16.752223752908872,
+    "2m_meta_final": 15354.670085784659,
+    "2m_meta_return": 53.54670085784659,
+    "avg_dd_over_best_baseline_pct": 4.841762452667044,
+    "avg_uplift_pct_vs_best_baseline": -20.391511176927846,
+    "burst_dd20_max": 12.0,
+    "burst_ret3d_min": 0.1,
+    "burst_rv20_max": 120.0,
+    "candidate_id": "MRV1-0002",
+    "ranking_score": -218.4403991272796,
+    "riskoff_crossovers20_min": 7,
+    "riskoff_dd20_min": 18.0,
+    "riskoff_rv20_min": 90.0,
+    "router_days_m0106_all": 193,
+    "router_days_v1_all": 269,
+    "router_days_v2_all": 128,
+    "wins_vs_best_baseline": 0
+  },
+  "outputs": {
+    "coarse_csv": "/home/chewy/projects/trading-compose-dev/meta_router_v1/reports/sweep_meta_router_smoke_fix_20260327_20260327_coarse.csv",
+    "full_csv": "/home/chewy/projects/trading-compose-dev/meta_router_v1/reports/sweep_meta_router_smoke_fix_20260327_20260327_full.csv",
+    "json": "/home/chewy/projects/trading-compose-dev/meta_router_v1/reports/sweep_meta_router_smoke_fix_20260327_20260327.json"
+  },
+  "run": {
+    "coarse_windows": [
+      "1m"
+    ],
+    "coarse_workers": 8,
+    "data_feed": "sip",
+    "end_date": "2026-03-27",
+    "full_windows": [
+      "1m",
+      "2m"
+    ],
+    "full_workers": 4,
+    "grid_size": 32,
+    "initial_equity": 10000.0,
+    "mode": "paper",
+    "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "topk_to_full": 4
+  }
+}

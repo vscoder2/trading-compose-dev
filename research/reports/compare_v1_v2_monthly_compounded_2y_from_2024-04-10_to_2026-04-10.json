@@ -1,0 +1,13 @@
+{
+  "start": "2024-04-10",
+  "end": "2026-04-10",
+  "initial_principal": 10000.0,
+  "windows": 24,
+  "v1_terminal": 17930.77717488336,
+  "v2_terminal": 19197.353679500196,
+  "v2_minus_v1_terminal": 1266.576504616838,
+  "outputs": {
+    "compare_csv": "/home/chewy/projects/trading-compose-dev/research/reports/compare_v1_v2_monthly_compounded_2y_from_2024-04-10_to_2026-04-10.csv",
+    "long_csv": "/home/chewy/projects/trading-compose-dev/research/reports/compare_v1_v2_monthly_compounded_2y_from_2024-04-10_to_2026-04-10_long.csv"
+  }
+}

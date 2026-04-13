@@ -1,0 +1,15 @@
+{
+  "run_id": "csp47_overlay_smoke_20260411_212216",
+  "reports_dir": "/home/chewy/projects/trading-compose-dev/csp47_overlay_research_v1/reports/csp47_overlay_smoke_20260411_212216",
+  "baseline_candidate": "LOCKED_C_sp4.7_rv75_tr1.10_th1.20",
+  "candidate_count": 1,
+  "selected_for_full": 1,
+  "quick_windows": [
+    "1m"
+  ],
+  "full_windows": [
+    "1m"
+  ],
+  "top_k_from_quick": 1,
+  "strict_accept_count": 0
+}

@@ -1,0 +1,22 @@
+id,title,phase,priority,bucket,difficulty,depends_on,status,runtime_insertion_point,new_tables_or_keys,notes
+I2-001,Canonical spec freeze,Phase0,1,governance,L,,completed,phase0-docs,,Single authoritative scope and terms
+I2-002,Terminology and key alignment,Phase0,2,governance,L,I2-001,completed,phase0-docs,,Fix wrong key names and behavior claims
+I2-003,Acceptance matrix freeze,Phase0,3,governance,L,I2-001|I2-002,completed,phase0-docs,,Gate for implementation start
+I2-010,Supervisory kernel scaffold,Phase1,4,safety,M,I2-003,completed,pre-submit policy layer,decision_cycles|policy_state,New module track only
+I2-011,Protective-action priority ladder,Phase1,5,safety,M,I2-010,completed,before any order submit,decision_reasons,Hard ordering of action classes
+I2-012,Decision dry-run validator,Phase1,6,safety,M,I2-011,completed,immediately pre-submit,decision_precheck,Reject invalid intent sets
+I2-013,Broker-state drift detector,Phase1,7,execution,M,I2-010,completed,cycle start before decisions,drift_snapshots,Detect local-vs-broker divergence
+I2-014,Pending-order reconciliation,Phase1,8,execution,M,I2-013,completed,cycle start and pre-submit,open_order_state,Suppress duplicate or stale actions
+I2-015,Persistent lock objects,Phase1,9,safety,M,I2-010,completed,shared lock checks,locks,Durable lock state across restarts
+I2-016,Dynamic exposure scaling,Phase2,10,risk,M,I2-015,completed,after target build before intent,risk_state,Scale risk under stress
+I2-017,Hard portfolio drawdown brake,Phase2,11,risk,M,I2-016,completed,pre-buy eligibility,risk_state,Block net-new risk under deep DD
+I2-018,Recovery probe mode,Phase2,12,risk,M,I2-017,completed,post-brake transition,risk_state,Stepwise re-risk path
+I2-019,Session PnL circuit breaker,Phase2,13,risk,M,I2-015,completed,intraday and pre-eval gating,session_state,Limit same-day damage loop
+I2-020,Intraday no-reentry guard,Phase2,14,risk,L,I2-015|I2-019,completed,rebalance intent filter,locks,Block same-session reentry after PL exit
+I2-021,Less-binary switch logic (hysteresis),Phase3,15,decision,M,I2-015,completed,regime selection block,hysteresis_state,Separate enter vs exit bands
+I2-022,Regime confidence score,Phase3,16,decision,M,I2-021,completed,post-regime metrics,risk_state,Bounded confidence 0..1
+I2-023,Adaptive rebalance threshold,Phase3,17,decision,L,I2-022,completed,intent builder input,threshold_policy,Wider in noisy regimes
+I2-024,Order conflict resolver,Phase4,18,execution,M,I2-011|I2-014,completed,post-intent pre-submit,action_resolution,One net action per symbol
+I2-025,Reason attribution + decision hash,Phase4,19,observability,M,I2-011|I2-012,completed,cycle completion,decision_reasons|decision_hash,Explain and reproduce decisions
+I2-026,EOD reconciliation + turnover monitor,Phase4,20,observability,M,I2-014|I2-025,completed,end-of-day export,turnover_monitor|eod_reports,Daily operator truth
+I2-027,Live shadow comparator sidecar,Phase5,21,research,H,I2-026,completed,parallel sidecar path,shadow_cycles,Non-trading alternative path comparison

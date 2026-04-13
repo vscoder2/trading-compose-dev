@@ -1,0 +1,35 @@
+{
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "mode": "paper",
+  "data_feed": "sip",
+  "end_date": "2026-03-27",
+  "windows": [
+    "1m"
+  ],
+  "initial_equity": 10000.0,
+  "rebalance_time_ny": "15:55",
+  "runtime_profit_lock_order_type": "market_order",
+  "rebalance_threshold_v1": 0.05,
+  "controlplane_threshold_cap_v2": 0.05,
+  "output_csv": "switch_runtime_v1/reports/compare_v1_v2_true_historical_runtime_review2_20260327.csv",
+  "rows": [
+    {
+      "window": "1m",
+      "period": "2026-02-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "v1_final_equity": 19508.989836837496,
+      "v1_return_pct": 95.08989836837496,
+      "v1_maxdd_pct": 7.999528287601359,
+      "v1_events": 8,
+      "v1_variant_regimes_seen": 1,
+      "v2_final_equity": 19508.989836837496,
+      "v2_return_pct": 95.08989836837496,
+      "v2_maxdd_pct": 7.999528287601359,
+      "v2_events": 8,
+      "v2_variant_regimes_seen": 1,
+      "v2_minus_v1_equity": 0.0,
+      "v2_minus_v1_return_pct": 0.0,
+      "v2_vs_v1_diff_bps": 0.0
+    }
+  ]
+}

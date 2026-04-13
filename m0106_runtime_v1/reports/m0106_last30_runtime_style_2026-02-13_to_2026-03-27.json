@@ -1,0 +1,354 @@
+{
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_m0106",
+  "mode": "paper_runtime_style_historical_sim",
+  "settings": {
+    "data_feed": "sip",
+    "eval_time": "15:55",
+    "profit_lock_order_type": "market_order",
+    "rebalance_order_type": "market",
+    "initial_equity": 10000.0
+  },
+  "period": {
+    "start_day": "2026-02-13",
+    "end_day": "2026-03-27",
+    "days": 30
+  },
+  "summary": {
+    "final_equity": 16605.18,
+    "total_return_pct": 66.0518,
+    "max_drawdown_pct": 7.0687,
+    "max_drawdown_usd": 1263.05
+  },
+  "daily": [
+    {
+      "day": "2026-02-13",
+      "start_equity": 10000.0,
+      "end_equity": 9999.0,
+      "pnl": -1.0,
+      "ret_pct": -0.01,
+      "drawdown_pct": 0.01,
+      "fell_pct": 0.01,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "15:55 | SOXS"
+    },
+    {
+      "day": "2026-02-17",
+      "start_equity": 9999.0,
+      "end_equity": 9971.83,
+      "pnl": -27.17,
+      "ret_pct": -0.2717,
+      "drawdown_pct": 0.2817,
+      "fell_pct": 0.2717,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-02-18",
+      "start_equity": 9971.83,
+      "end_equity": 9659.74,
+      "pnl": -312.1,
+      "ret_pct": -3.1298,
+      "drawdown_pct": 3.4026,
+      "fell_pct": 3.1298,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "15:55 | SOXL; 15:55 | TMF"
+    },
+    {
+      "day": "2026-02-19",
+      "start_equity": 9659.74,
+      "end_equity": 9641.08,
+      "pnl": -18.66,
+      "ret_pct": -0.1932,
+      "drawdown_pct": 3.5892,
+      "fell_pct": 0.1932,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-02-20",
+      "start_equity": 9641.08,
+      "end_equity": 9629.93,
+      "pnl": -11.14,
+      "ret_pct": -0.1156,
+      "drawdown_pct": 3.7007,
+      "fell_pct": 0.1156,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-02-23",
+      "start_equity": 9629.93,
+      "end_equity": 9658.54,
+      "pnl": 28.61,
+      "ret_pct": 0.2971,
+      "drawdown_pct": 3.4146,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-02-24",
+      "start_equity": 9658.54,
+      "end_equity": 9791.92,
+      "pnl": 133.38,
+      "ret_pct": 1.381,
+      "drawdown_pct": 2.0808,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-02-25",
+      "start_equity": 9791.92,
+      "end_equity": 9888.7,
+      "pnl": 96.78,
+      "ret_pct": 0.9883,
+      "drawdown_pct": 1.113,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-02-26",
+      "start_equity": 9888.7,
+      "end_equity": 9798.23,
+      "pnl": -90.47,
+      "ret_pct": -0.9149,
+      "drawdown_pct": 2.0177,
+      "fell_pct": 0.9149,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "15:55 | SOXS"
+    },
+    {
+      "day": "2026-02-27",
+      "start_equity": 9798.23,
+      "end_equity": 10194.29,
+      "pnl": 396.06,
+      "ret_pct": 4.0422,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-02",
+      "start_equity": 10194.29,
+      "end_equity": 10194.86,
+      "pnl": 0.57,
+      "ret_pct": 0.0056,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-03",
+      "start_equity": 10194.86,
+      "end_equity": 11724.29,
+      "pnl": 1529.44,
+      "ret_pct": 15.002,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-04",
+      "start_equity": 11724.29,
+      "end_equity": 10959.79,
+      "pnl": -764.5,
+      "ret_pct": -6.5207,
+      "drawdown_pct": 6.5207,
+      "fell_pct": 6.5207,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-05",
+      "start_equity": 10959.79,
+      "end_equity": 11793.22,
+      "pnl": 833.43,
+      "ret_pct": 7.6044,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "13:08 | SOXS",
+      "new_purchase_time_stock": "15:55 | SOXS"
+    },
+    {
+      "day": "2026-03-06",
+      "start_equity": 11793.22,
+      "end_equity": 12526.95,
+      "pnl": 733.72,
+      "ret_pct": 6.2216,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "09:30 | SOXS",
+      "new_purchase_time_stock": "15:55 | SOXL"
+    },
+    {
+      "day": "2026-03-09",
+      "start_equity": 12526.95,
+      "end_equity": 13850.05,
+      "pnl": 1323.1,
+      "ret_pct": 10.562,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "15:41 | SOXL",
+      "new_purchase_time_stock": "15:55 | SOXL"
+    },
+    {
+      "day": "2026-03-10",
+      "start_equity": 13850.05,
+      "end_equity": 14801.2,
+      "pnl": 951.16,
+      "ret_pct": 6.8675,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "14:14 | SOXL",
+      "new_purchase_time_stock": "15:55 | SOXL"
+    },
+    {
+      "day": "2026-03-11",
+      "start_equity": 14801.2,
+      "end_equity": 15331.0,
+      "pnl": 529.79,
+      "ret_pct": 3.5794,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "15:55 | SOXS; 15:55 | TMF"
+    },
+    {
+      "day": "2026-03-12",
+      "start_equity": 15331.0,
+      "end_equity": 16096.54,
+      "pnl": 765.55,
+      "ret_pct": 4.9935,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "10:02 | SOXS",
+      "new_purchase_time_stock": "15:55 | SOXL"
+    },
+    {
+      "day": "2026-03-13",
+      "start_equity": 16096.54,
+      "end_equity": 16209.02,
+      "pnl": 112.47,
+      "ret_pct": 0.6987,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-16",
+      "start_equity": 16209.02,
+      "end_equity": 17437.08,
+      "pnl": 1228.06,
+      "ret_pct": 7.5764,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "10:38 | SOXL",
+      "new_purchase_time_stock": "15:55 | SOXL"
+    },
+    {
+      "day": "2026-03-17",
+      "start_equity": 17437.08,
+      "end_equity": 17784.84,
+      "pnl": 347.76,
+      "ret_pct": 1.9944,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "15:55 | TMF"
+    },
+    {
+      "day": "2026-03-18",
+      "start_equity": 17784.84,
+      "end_equity": 17509.49,
+      "pnl": -275.35,
+      "ret_pct": -1.5482,
+      "drawdown_pct": 1.5482,
+      "fell_pct": 1.5482,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-19",
+      "start_equity": 17509.49,
+      "end_equity": 17812.63,
+      "pnl": 303.13,
+      "ret_pct": 1.7313,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-20",
+      "start_equity": 17812.63,
+      "end_equity": 16704.2,
+      "pnl": -1108.42,
+      "ret_pct": -6.2227,
+      "drawdown_pct": 6.2227,
+      "fell_pct": 6.2227,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "15:55 | SOXL"
+    },
+    {
+      "day": "2026-03-23",
+      "start_equity": 16704.2,
+      "end_equity": 17868.23,
+      "pnl": 1164.02,
+      "ret_pct": 6.9685,
+      "drawdown_pct": 0.0,
+      "fell_pct": 0.0,
+      "sale_time_stock": "07:13 | SOXL",
+      "new_purchase_time_stock": "15:55 | SOXS"
+    },
+    {
+      "day": "2026-03-24",
+      "start_equity": 17868.23,
+      "end_equity": 17349.45,
+      "pnl": -518.78,
+      "ret_pct": -2.9034,
+      "drawdown_pct": 2.9034,
+      "fell_pct": 2.9034,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    },
+    {
+      "day": "2026-03-25",
+      "start_equity": 17349.45,
+      "end_equity": 16652.36,
+      "pnl": -697.09,
+      "ret_pct": -4.0179,
+      "drawdown_pct": 6.8046,
+      "fell_pct": 4.0179,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "15:55 | TMF"
+    },
+    {
+      "day": "2026-03-26",
+      "start_equity": 16652.36,
+      "end_equity": 17460.56,
+      "pnl": 808.2,
+      "ret_pct": 4.8534,
+      "drawdown_pct": 2.2815,
+      "fell_pct": 0.0,
+      "sale_time_stock": "11:05 | SOXS",
+      "new_purchase_time_stock": "15:55 | SOXL"
+    },
+    {
+      "day": "2026-03-27",
+      "start_equity": 17460.56,
+      "end_equity": 16605.18,
+      "pnl": -855.39,
+      "ret_pct": -4.899,
+      "drawdown_pct": 7.0687,
+      "fell_pct": 4.899,
+      "sale_time_stock": "no change",
+      "new_purchase_time_stock": "no change"
+    }
+  ]
+}

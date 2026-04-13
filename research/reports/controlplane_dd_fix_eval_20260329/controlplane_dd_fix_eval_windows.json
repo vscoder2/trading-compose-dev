@@ -1,0 +1,127 @@
+{
+  "config": {
+    "cap": 0.1,
+    "enter": 0.72,
+    "exit": 0.64,
+    "enter_days": 3,
+    "exit_days": 2
+  },
+  "end_date": "2026-03-27",
+  "windows": [
+    "10d",
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "1y"
+  ],
+  "csv": "/home/chewy/projects/trading-compose-dev/research/reports/controlplane_dd_fix_eval_20260329/controlplane_dd_fix_eval_windows.csv",
+  "rows": [
+    {
+      "window": "10d",
+      "period": "2026-03-13 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 10472.494399019504,
+      "baseline_return_pct": 4.724943990195052,
+      "baseline_maxdd_pct": 7.9995282876013585,
+      "fixed_final_equity": 10472.494399019504,
+      "fixed_return_pct": 4.724943990195052,
+      "fixed_maxdd_pct": 7.9995282876013585,
+      "fixed_minus_baseline_equity": 0.0,
+      "fixed_minus_baseline_return_pct": 0.0
+    },
+    {
+      "window": "1m",
+      "period": "2026-02-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 19508.989836837496,
+      "baseline_return_pct": 95.08989836837496,
+      "baseline_maxdd_pct": 7.999528287601359,
+      "fixed_final_equity": 14906.13604668267,
+      "fixed_return_pct": 49.0613604668267,
+      "fixed_maxdd_pct": 8.27267070067973,
+      "fixed_minus_baseline_equity": -4602.853790154826,
+      "fixed_minus_baseline_return_pct": -46.02853790154826
+    },
+    {
+      "window": "2m",
+      "period": "2026-01-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 21020.108235875323,
+      "baseline_return_pct": 110.20108235875324,
+      "baseline_maxdd_pct": 8.66704569580889,
+      "fixed_final_equity": 16072.359641471796,
+      "fixed_return_pct": 60.72359641471796,
+      "fixed_maxdd_pct": 16.376428800803208,
+      "fixed_minus_baseline_equity": -4947.748594403527,
+      "fixed_minus_baseline_return_pct": -49.47748594403528
+    },
+    {
+      "window": "3m",
+      "period": "2025-12-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 14624.546478507096,
+      "baseline_return_pct": 46.245464785070965,
+      "baseline_maxdd_pct": 22.704213841574788,
+      "fixed_final_equity": 21200.832441858118,
+      "fixed_return_pct": 112.00832441858117,
+      "fixed_maxdd_pct": 16.376428800803186,
+      "fixed_minus_baseline_equity": 6576.285963351022,
+      "fixed_minus_baseline_return_pct": 65.7628596335102
+    },
+    {
+      "window": "4m",
+      "period": "2025-11-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 18050.89332677282,
+      "baseline_return_pct": 80.50893326772821,
+      "baseline_maxdd_pct": 29.044692603023503,
+      "fixed_final_equity": 26167.920175110386,
+      "fixed_return_pct": 161.67920175110388,
+      "fixed_maxdd_pct": 16.376428800803197,
+      "fixed_minus_baseline_equity": 8117.026848337566,
+      "fixed_minus_baseline_return_pct": 81.17026848337566
+    },
+    {
+      "window": "5m",
+      "period": "2025-10-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 22955.068534363105,
+      "baseline_return_pct": 129.55068534363105,
+      "baseline_maxdd_pct": 29.044692603023563,
+      "fixed_final_equity": 23557.666621484233,
+      "fixed_return_pct": 135.57666621484233,
+      "fixed_maxdd_pct": 16.376428800803197,
+      "fixed_minus_baseline_equity": 602.5980871211286,
+      "fixed_minus_baseline_return_pct": 6.025980871211289
+    },
+    {
+      "window": "6m",
+      "period": "2025-09-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 14832.68094832519,
+      "baseline_return_pct": 48.3268094832519,
+      "baseline_maxdd_pct": 29.04469260302352,
+      "fixed_final_equity": 25037.90044416518,
+      "fixed_return_pct": 150.3790044416518,
+      "fixed_maxdd_pct": 17.360492864386565,
+      "fixed_minus_baseline_equity": 10205.219495839992,
+      "fixed_minus_baseline_return_pct": 102.0521949583999
+    },
+    {
+      "window": "1y",
+      "period": "2025-03-27 to 2026-03-27",
+      "start_equity": 10000.0,
+      "baseline_final_equity": 23643.357697744024,
+      "baseline_return_pct": 136.43357697744025,
+      "baseline_maxdd_pct": 35.42609707057258,
+      "fixed_final_equity": 53930.450968963225,
+      "fixed_return_pct": 439.30450968963225,
+      "fixed_maxdd_pct": 17.360492864386543,
+      "fixed_minus_baseline_equity": 30287.0932712192,
+      "fixed_minus_baseline_return_pct": 302.87093271219203
+    }
+  ]
+}

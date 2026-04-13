@@ -1,0 +1,19 @@
+{
+  "shock_drop_pct": [0.0, 8.0, 10.0, 12.0],
+  "shock_hold_days": [1, 2],
+  "dd_trigger_pct": [0.0, 18.0, 24.0],
+  "dd_window_days": [20, 40],
+  "reentry_pos_days": [1, 2],
+  "defensive_symbol": ["SOXS"],
+  "quick_windows": ["1m", "3m", "6m", "1y", "2y"],
+  "full_windows": ["1m", "2m", "3m", "4m", "5m", "6m", "1y", "2y", "3y", "5y"],
+  "top_k_from_quick": 16,
+  "dd_penalty": 1.0,
+  "warmup_days": 260,
+  "rebalance_threshold": 0.05,
+  "controlplane_threshold_cap": 0.50,
+  "controlplane_hysteresis_enter": 0.62,
+  "controlplane_hysteresis_exit": 0.58,
+  "controlplane_hysteresis_enter_days": 2,
+  "controlplane_hysteresis_exit_days": 2
+}

@@ -1,0 +1,17 @@
+candidate_id,avg_return_pct,avg_max_dd_pct,score,ret_wins,dd_wins,both_wins,delta_avg_return_pct,delta_avg_max_dd_pct,strict_accept,shock_drop_pct,shock_hold_days,dd_trigger_pct,dd_window_days,reentry_pos_days,defensive_symbol
+OV_sh6_h1_dd0w20_re1_SOXS,329.2111,26.76,302.4511,1,7,1,0.9526,-5.5437,True,6.0,1,0.0,20,1,SOXS
+OV_sh6_h1_dd0w40_re1_SOXS,329.2111,26.76,302.4511,1,7,1,0.9526,-5.5437,True,6.0,1,0.0,40,1,SOXS
+OV_sh0_h1_dd0w20_re1_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,1,0.0,20,1,SOXS
+OV_sh0_h1_dd0w20_re2_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,1,0.0,20,2,SOXS
+OV_sh0_h1_dd0w40_re1_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,1,0.0,40,1,SOXS
+OV_sh0_h1_dd0w40_re2_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,1,0.0,40,2,SOXS
+OV_sh0_h2_dd0w20_re1_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,2,0.0,20,1,SOXS
+OV_sh0_h2_dd0w20_re2_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,2,0.0,20,2,SOXS
+OV_sh0_h2_dd0w40_re1_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,2,0.0,40,1,SOXS
+OV_sh0_h2_dd0w40_re2_SOXS,328.2585,32.3037,295.9548,0,0,0,0.0,0.0,False,0.0,2,0.0,40,2,SOXS
+OV_sh6_h2_dd0w20_re1_SOXS,212.8301,30.165,182.6651,1,5,1,-115.4284,-2.1387,False,6.0,2,0.0,20,1,SOXS
+OV_sh6_h2_dd0w40_re1_SOXS,212.8301,30.165,182.6651,1,5,1,-115.4284,-2.1387,False,6.0,2,0.0,40,1,SOXS
+OV_sh6_h1_dd0w20_re2_SOXS,147.6587,31.6513,116.0075,1,4,1,-180.5998,-0.6525,False,6.0,1,0.0,20,2,SOXS
+OV_sh6_h1_dd0w40_re2_SOXS,147.6587,31.6513,116.0075,1,4,1,-180.5998,-0.6525,False,6.0,1,0.0,40,2,SOXS
+OV_sh6_h2_dd0w20_re2_SOXS,147.6587,31.6513,116.0075,1,4,1,-180.5998,-0.6525,False,6.0,2,0.0,20,2,SOXS
+OV_sh6_h2_dd0w40_re2_SOXS,147.6587,31.6513,116.0075,1,4,1,-180.5998,-0.6525,False,6.0,2,0.0,40,2,SOXS

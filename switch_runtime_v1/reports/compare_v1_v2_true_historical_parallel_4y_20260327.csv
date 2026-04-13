@@ -1,0 +1,2 @@
+window,period,start_equity,v1_final_equity,v1_return_pct,v1_maxdd_pct,v1_events,v1_variant_regimes_seen,v2_final_equity,v2_return_pct,v2_maxdd_pct,v2_events,v2_variant_regimes_seen,v2_minus_v1_equity,v2_minus_v1_return_pct,v2_vs_v1_diff_bps
+4y,2022-03-28 to 2026-03-27,10000.0,22991.29676854431,129.9129676854431,73.6307057248128,261,3,25302.60405151487,153.0260405151487,74.19558211063514,293,3,2311.3072829705598,23.1130728297056,1005.296615601426

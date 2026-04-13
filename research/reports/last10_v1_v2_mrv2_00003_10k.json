@@ -1,0 +1,42 @@
+{
+  "run": {
+    "loaded_env_vars": 8,
+    "data_feed": "sip",
+    "rebalance_time_ny": "15:55",
+    "runtime_profit_lock_order_type": "market_order",
+    "slippage_bps": 1.0,
+    "sell_fee_bps": 0.0
+  },
+  "rows": [
+    {
+      "variant": "runtime_switch_loop.py",
+      "period": "2026-03-24 to 2026-04-07",
+      "start_equity": 10000.0,
+      "final_equity": 12065.141846479277,
+      "pnl": 2065.141846479277,
+      "return_pct": 20.65141846479277,
+      "maxdd_pct": 14.463014771456248,
+      "maxdd_usd": 1744.983247453447
+    },
+    {
+      "variant": "runtime_switch_loop_v2_controlplane.py",
+      "period": "2026-03-24 to 2026-04-07",
+      "start_equity": 10000.0,
+      "final_equity": 12065.141846479277,
+      "pnl": 2065.141846479277,
+      "return_pct": 20.65141846479277,
+      "maxdd_pct": 14.463014771456248,
+      "maxdd_usd": 1744.983247453447
+    },
+    {
+      "variant": "MRV2-00003",
+      "period": "2026-03-24 to 2026-04-07",
+      "start_equity": 10000.0,
+      "final_equity": 10033.702414367026,
+      "pnl": 33.702414367025995,
+      "return_pct": 0.33702414367025035,
+      "maxdd_pct": 16.727903653806905,
+      "maxdd_usd": 1683.335316994575
+    }
+  ]
+}

@@ -1,0 +1,39 @@
+flowchart TD
+    A[Start: use daily close history] --> B{mdd SOXL 60d >= 50?}
+
+    B -- Yes --> C[Crash mode]
+    B -- No --> D[Normal mode]
+
+    C --> C1{stdev TQQQ 14d <= 18?}
+    C1 -- Yes --> C2{stdev TQQQ 100d <= 3.8?}
+    C2 -- Yes --> C3[top2_growth]
+    C2 -- No --> C4{rsi TQQQ 30d >= 50?}
+    C4 -- Yes --> C5{stdev TQQQ 30d >= 5.8?}
+    C5 -- Yes --> C6[SOXS]
+    C5 -- No --> C7[SPXL]
+    C4 -- No --> C8{cumret TQQQ 8d <= -20?}
+    C8 -- Yes --> C9[SOXL]
+    C8 -- No --> C10{mdd TQQQ 200d <= 65?}
+    C10 -- Yes --> C11[bottom2_hedge]
+    C10 -- No --> C12[SOXL]
+
+    C1 -- No --> C13{cumret TQQQ 30d <= -10?}
+    C13 -- Yes --> C11
+    C13 -- No --> C14[top3_growth]
+
+    D --> D1{rsi SOXL 32d <= 62.1995?}
+    D1 -- No --> D2{rsi SOXL 32d >= 50?}
+    D2 -- Yes --> D3[SOXS]
+    D2 -- No --> D4[top3_growth]
+
+    D1 -- Yes --> D5{stdev SOXL 105d <= 4.9226?}
+    D5 -- Yes --> D6[SOXL]
+    D5 -- No --> D7{rsi SOXL 30d >= 57.49?}
+    D7 -- Yes --> D8{stdev SOXL 30d >= 5.4135?}
+    D8 -- Yes --> D3
+    D8 -- No --> D9[top2_normal]
+    D7 -- No --> D10{cumret SOXL 32d <= -12?}
+    D10 -- Yes --> D6
+    D10 -- No --> D11{mdd SOXL 250d <= 71?}
+    D11 -- Yes --> D3
+    D11 -- No --> D6

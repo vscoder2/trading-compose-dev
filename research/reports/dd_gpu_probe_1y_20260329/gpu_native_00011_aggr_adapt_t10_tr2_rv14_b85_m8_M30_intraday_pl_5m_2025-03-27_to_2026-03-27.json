@@ -1,0 +1,48 @@
+{
+  "engine": "gpu_native_daily_batch",
+  "window": {
+    "start_date": "2025-03-27",
+    "end_date": "2026-03-27"
+  },
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "combo_index": 11,
+  "combo": {
+    "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+    "profit_lock_exec_model": "paper_live_style_optimistic",
+    "runtime_profit_lock_order_type": "market_order",
+    "rebalance_time_ny": "15:56",
+    "slippage_bps": 1.0,
+    "sell_fee_bps": 1.0,
+    "rebalance_min_trade_weight_delta": 0.05,
+    "daily_synthetic_parity": true,
+    "daily_synthetic_parity_split_adjustment": true,
+    "paper_live_style_daily_synth_profile": true,
+    "warmup_days": 260,
+    "daily_lookback_days": 800,
+    "anchor_window_start_equity": true
+  },
+  "cpu": {
+    "final_equity": 4265.44200158867,
+    "total_return_pct": -57.34557998411329,
+    "max_drawdown_pct": 94.94672139898877,
+    "max_drawdown_usd": 46394.381911355544,
+    "elapsed_sec": 0.016425609588623047
+  },
+  "gpu": {
+    "final_equity": 4265.44200158867,
+    "total_return_pct": -57.34557998411329,
+    "max_drawdown_pct": 94.94672139898877,
+    "max_drawdown_usd": 46394.381911355544,
+    "elapsed_sec": 0.2397317886352539,
+    "backend": "cupy_gpu:0",
+    "probe_reason": "ok"
+  },
+  "parity": {
+    "final_equity_diff_bps_vs_cpu": 0.0
+  },
+  "notes": {
+    "runtime_profit_lock_order_type": "market_order",
+    "engine_note": "",
+    "daily_synthetic_mechanics": true
+  }
+}

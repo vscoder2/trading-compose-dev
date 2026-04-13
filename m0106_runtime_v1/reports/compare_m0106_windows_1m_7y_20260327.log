@@ -1,0 +1,303 @@
+{"loaded_env_vars": 8, "env_file": "/home/chewy/projects/trading-compose-dev/.env.dev", "env_override": true}
+{
+  "outputs": {
+    "csv": "/home/chewy/projects/trading-compose-dev/m0106_runtime_v1/reports/compare_m0106_windows_1m_7y_20260327_20260327.csv",
+    "json": "/home/chewy/projects/trading-compose-dev/m0106_runtime_v1/reports/compare_m0106_windows_1m_7y_20260327_20260327.json"
+  },
+  "rows": [
+    {
+      "m0106_cpu_events": 8,
+      "m0106_cpu_final_equity": 16810.788583133068,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 7.068698847574766,
+      "m0106_cpu_maxdd_usd": 1278.690822261393,
+      "m0106_cpu_pnl": 6810.788583133068,
+      "m0106_cpu_return_pct": 68.10788583133068,
+      "m0106_gpu_events": 8,
+      "m0106_gpu_final_equity": 16810.788583133068,
+      "m0106_gpu_maxdd_pct": 7.068698847574766,
+      "m0106_gpu_maxdd_usd": 1278.690822261393,
+      "m0106_gpu_pnl": 6810.788583133068,
+      "m0106_gpu_return_pct": 68.10788583133068,
+      "m0106_variants_seen": 2,
+      "period": "2026-02-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "1m"
+    },
+    {
+      "m0106_cpu_events": 12,
+      "m0106_cpu_final_equity": 19000.8106958482,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 7.068698847574783,
+      "m0106_cpu_maxdd_usd": 1445.272012800433,
+      "m0106_cpu_pnl": 9000.810695848199,
+      "m0106_cpu_return_pct": 90.00810695848199,
+      "m0106_gpu_events": 12,
+      "m0106_gpu_final_equity": 19000.8106958482,
+      "m0106_gpu_maxdd_pct": 7.068698847574783,
+      "m0106_gpu_maxdd_usd": 1445.272012800433,
+      "m0106_gpu_pnl": 9000.810695848199,
+      "m0106_gpu_return_pct": 90.00810695848199,
+      "m0106_variants_seen": 2,
+      "period": "2026-01-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "2m"
+    },
+    {
+      "m0106_cpu_events": 17,
+      "m0106_cpu_final_equity": 17277.606026261263,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 9.893362411045333,
+      "m0106_cpu_maxdd_usd": 1839.3546188780838,
+      "m0106_cpu_pnl": 7277.606026261263,
+      "m0106_cpu_return_pct": 72.77606026261263,
+      "m0106_gpu_events": 17,
+      "m0106_gpu_final_equity": 17277.606026261263,
+      "m0106_gpu_maxdd_pct": 9.893362411045333,
+      "m0106_gpu_maxdd_usd": 1839.3546188780838,
+      "m0106_gpu_pnl": 7277.606026261263,
+      "m0106_gpu_return_pct": 72.77606026261263,
+      "m0106_variants_seen": 3,
+      "period": "2025-12-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "3m"
+    },
+    {
+      "m0106_cpu_events": 20,
+      "m0106_cpu_final_equity": 17708.347282379695,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 10.325185577832023,
+      "m0106_cpu_maxdd_usd": 1967.4960933493403,
+      "m0106_cpu_pnl": 7708.347282379695,
+      "m0106_cpu_return_pct": 77.08347282379695,
+      "m0106_gpu_events": 20,
+      "m0106_gpu_final_equity": 17708.347282379695,
+      "m0106_gpu_maxdd_pct": 10.325185577832023,
+      "m0106_gpu_maxdd_usd": 1967.4960933493403,
+      "m0106_gpu_pnl": 7708.347282379695,
+      "m0106_gpu_return_pct": 77.08347282379695,
+      "m0106_variants_seen": 3,
+      "period": "2025-11-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "4m"
+    },
+    {
+      "m0106_cpu_events": 26,
+      "m0106_cpu_final_equity": 19705.586547482577,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 12.806243171288354,
+      "m0106_cpu_maxdd_usd": 2715.4955330499506,
+      "m0106_cpu_pnl": 9705.586547482577,
+      "m0106_cpu_return_pct": 97.05586547482577,
+      "m0106_gpu_events": 26,
+      "m0106_gpu_final_equity": 19705.586547482577,
+      "m0106_gpu_maxdd_pct": 12.806243171288354,
+      "m0106_gpu_maxdd_usd": 2715.4955330499506,
+      "m0106_gpu_pnl": 9705.586547482577,
+      "m0106_gpu_return_pct": 97.05586547482577,
+      "m0106_variants_seen": 3,
+      "period": "2025-10-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "5m"
+    },
+    {
+      "m0106_cpu_events": 28,
+      "m0106_cpu_final_equity": 18621.2991031889,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 21.234413930745053,
+      "m0106_cpu_maxdd_usd": 4254.8890221258425,
+      "m0106_cpu_pnl": 8621.2991031889,
+      "m0106_cpu_return_pct": 86.212991031889,
+      "m0106_gpu_events": 28,
+      "m0106_gpu_final_equity": 18621.2991031889,
+      "m0106_gpu_maxdd_pct": 21.234413930745053,
+      "m0106_gpu_maxdd_usd": 4254.8890221258425,
+      "m0106_gpu_pnl": 8621.2991031889,
+      "m0106_gpu_return_pct": 86.212991031889,
+      "m0106_variants_seen": 3,
+      "period": "2025-09-25 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "6m"
+    },
+    {
+      "m0106_cpu_events": 63,
+      "m0106_cpu_final_equity": 19418.06157526601,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 21.234413930745053,
+      "m0106_cpu_maxdd_usd": 4436.94591713067,
+      "m0106_cpu_pnl": 9418.061575266009,
+      "m0106_cpu_return_pct": 94.18061575266007,
+      "m0106_gpu_events": 63,
+      "m0106_gpu_final_equity": 19418.06157526601,
+      "m0106_gpu_maxdd_pct": 21.234413930745053,
+      "m0106_gpu_maxdd_usd": 4436.94591713067,
+      "m0106_gpu_pnl": 9418.061575266009,
+      "m0106_gpu_return_pct": 94.18061575266007,
+      "m0106_variants_seen": 3,
+      "period": "2025-03-27 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "1y"
+    },
+    {
+      "m0106_cpu_events": 139,
+      "m0106_cpu_final_equity": 12988.608771626676,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 47.35542206743855,
+      "m0106_cpu_maxdd_usd": 6618.663925089831,
+      "m0106_cpu_pnl": 2988.6087716266757,
+      "m0106_cpu_return_pct": 29.88608771626675,
+      "m0106_gpu_events": 139,
+      "m0106_gpu_final_equity": 12988.608771626676,
+      "m0106_gpu_maxdd_pct": 47.35542206743855,
+      "m0106_gpu_maxdd_usd": 6618.663925089831,
+      "m0106_gpu_pnl": 2988.6087716266757,
+      "m0106_gpu_return_pct": 29.88608771626675,
+      "m0106_variants_seen": 3,
+      "period": "2024-03-27 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "2y"
+    },
+    {
+      "m0106_cpu_events": 201,
+      "m0106_cpu_final_equity": 15221.281657531135,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 53.561105135378256,
+      "m0106_cpu_maxdd_usd": 8772.810205433712,
+      "m0106_cpu_pnl": 5221.281657531135,
+      "m0106_cpu_return_pct": 52.21281657531136,
+      "m0106_gpu_events": 201,
+      "m0106_gpu_final_equity": 15221.281657531135,
+      "m0106_gpu_maxdd_pct": 53.561105135378256,
+      "m0106_gpu_maxdd_usd": 8772.810205433712,
+      "m0106_gpu_pnl": 5221.281657531135,
+      "m0106_gpu_return_pct": 52.21281657531136,
+      "m0106_variants_seen": 3,
+      "period": "2023-03-28 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "3y"
+    },
+    {
+      "m0106_cpu_events": 321,
+      "m0106_cpu_final_equity": 29610.801413840607,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 53.56110513537812,
+      "m0106_cpu_maxdd_usd": 17066.233099095374,
+      "m0106_cpu_pnl": 19610.801413840607,
+      "m0106_cpu_return_pct": 196.10801413840608,
+      "m0106_gpu_events": 321,
+      "m0106_gpu_final_equity": 29610.801413840607,
+      "m0106_gpu_maxdd_pct": 53.56110513537812,
+      "m0106_gpu_maxdd_usd": 17066.233099095374,
+      "m0106_gpu_pnl": 19610.801413840607,
+      "m0106_gpu_return_pct": 196.10801413840608,
+      "m0106_variants_seen": 3,
+      "period": "2022-03-28 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "4y"
+    },
+    {
+      "m0106_cpu_events": 354,
+      "m0106_cpu_final_equity": 26966.192807400857,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 53.56110513537822,
+      "m0106_cpu_maxdd_usd": 15542.008668199782,
+      "m0106_cpu_pnl": 16966.192807400857,
+      "m0106_cpu_return_pct": 169.66192807400859,
+      "m0106_gpu_events": 354,
+      "m0106_gpu_final_equity": 26966.192807400857,
+      "m0106_gpu_maxdd_pct": 53.56110513537822,
+      "m0106_gpu_maxdd_usd": 15542.008668199782,
+      "m0106_gpu_pnl": 16966.192807400857,
+      "m0106_gpu_return_pct": 169.66192807400859,
+      "m0106_variants_seen": 3,
+      "period": "2021-03-28 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "5y"
+    },
+    {
+      "m0106_cpu_events": 644,
+      "m0106_cpu_final_equity": 36277.05830050591,
+      "m0106_cpu_gpu_diff_bps": 0.0,
+      "m0106_cpu_maxdd_pct": 53.561105135378135,
+      "m0106_cpu_maxdd_usd": 20908.340995341066,
+      "m0106_cpu_pnl": 26277.05830050591,
+      "m0106_cpu_return_pct": 262.77058300505905,
+      "m0106_gpu_events": 644,
+      "m0106_gpu_final_equity": 36277.05830050591,
+      "m0106_gpu_maxdd_pct": 53.561105135378135,
+      "m0106_gpu_maxdd_usd": 20908.340995341066,
+      "m0106_gpu_pnl": 26277.05830050591,
+      "m0106_gpu_return_pct": 262.77058300505905,
+      "m0106_variants_seen": 3,
+      "period": "2019-03-29 to 2026-03-27",
+      "start_equity": 10000.0,
+      "window": "7y"
+    }
+  ],
+  "run": {
+    "data_feed": "sip",
+    "end_date": "2026-03-27",
+    "gpu_backend": "cupy_available_cpu_logic",
+    "initial_equity": 10000.0,
+    "m0106_config": {
+      "defensive_trigger_down_pct": -0.006,
+      "hysteresis_enter": 0.72,
+      "hysteresis_enter_days": 6,
+      "hysteresis_exit": 0.64,
+      "hysteresis_exit_days": 2,
+      "recent_aggressive_total_cap": 0.4,
+      "recent_always_defensive_blend": 0.35,
+      "recent_days": 75,
+      "recent_defensive_blend": 0.2,
+      "recent_inverse_cap_weight": 0.1,
+      "recent_primary_cap_weight": 0.3,
+      "shock_down_pct": -0.05,
+      "shock_hold_days": 3,
+      "threshold_cap": 0.1
+    },
+    "mode": "paper",
+    "rebalance_time_ny": "15:55",
+    "runtime_profit_lock_order_type": "market_order",
+    "runtime_stop_price_offset_bps": 2.0,
+    "sell_fee_bps": 0.0,
+    "slippage_bps": 1.0,
+    "strategy_profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_m0106",
+    "windows": [
+      "1m",
+      "2m",
+      "3m",
+      "4m",
+      "5m",
+      "6m",
+      "1y",
+      "2y",
+      "3y",
+      "4y",
+      "5y",
+      "7y"
+    ]
+  }
+}
+	Command being timed: "/home/chewy/projects/trading-compose-dev/composer_original/.venv/bin/python /home/chewy/projects/trading-compose-dev/m0106_runtime_v1/tools/historical_m0106_windows.py --env-file /home/chewy/projects/trading-compose-dev/.env.dev --env-override --mode paper --data-feed sip --strategy-profile aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m_m0106 --windows 1m,2m,3m,4m,5m,6m,1y,2y,3y,4y,5y,7y --end-date 2026-03-27 --initial-equity 10000 --slippage-bps 1 --sell-fee-bps 0 --rebalance-time-ny 15:55 --runtime-profit-lock-order-type market_order --runtime-stop-price-offset-bps 2 --output-prefix compare_m0106_windows_1m_7y_20260327"
+	User time (seconds): 415.95
+	System time (seconds): 9.65
+	Percent of CPU this job got: 74%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 9:35.12
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 19325576
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 5233241
+	Voluntary context switches: 175421
+	Involuntary context switches: 3369
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 56
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

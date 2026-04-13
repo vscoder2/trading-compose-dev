@@ -1,0 +1,3 @@
+variant,period,initial_equity,final_equity,pnl,return_pct,max_dd_pct,days
+fev1_best,2026-02-10 to 2026-04-10,10000.0,26789.25,16789.25,167.8925,16.73,42
+C_sp4.7_rv75_tr1.10_th1.20,2026-02-10 to 2026-04-10,10000.0,27698.03,17698.03,176.9803,16.73,42

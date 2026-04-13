@@ -1,0 +1,118 @@
+{
+  "profile": "aggr_adapt_t10_tr2_rv14_b85_m8_M30_intraday_pl_5m",
+  "mode": "paper",
+  "data_feed": "sip",
+  "end_date": "2026-04-10",
+  "windows": [
+    "10d",
+    "1m",
+    "2m",
+    "3m",
+    "4m",
+    "5m",
+    "6m",
+    "1y"
+  ],
+  "initial_equity": 10000.0,
+  "rebalance_time_ny": "15:55",
+  "runtime_profit_lock_order_type": "market_order",
+  "grid": {
+    "fast_signal_thresholds": [
+      0.66,
+      0.68,
+      0.7
+    ],
+    "fast_trend_gap_pcts": [
+      6.0,
+      8.0,
+      10.0
+    ],
+    "fast_inverse_min_weights": [
+      0.8,
+      0.9
+    ],
+    "candidate_count": 18
+  },
+  "outputs": {
+    "details_csv": "/home/chewy/projects/trading-compose-dev/fast_entry_variant_v1/reports/feov1_grid_full_20260410_20260410_details.csv",
+    "ranked_csv": "/home/chewy/projects/trading-compose-dev/fast_entry_variant_v1/reports/feov1_grid_full_20260410_20260410_ranked.csv",
+    "summary_json": "/home/chewy/projects/trading-compose-dev/fast_entry_variant_v1/reports/feov1_grid_full_20260410_20260410_summary.json"
+  },
+  "top5": [
+    {
+      "cid": "FEV1-0001",
+      "fast_signal_threshold": 0.66,
+      "fast_trend_gap_pct": 6.0,
+      "fast_inverse_min_weight": 0.8,
+      "windows": 8,
+      "sum_fast_minus_v2_return_pct": 321.1500603925472,
+      "sum_fast_minus_v2_maxdd_pct": -17.474350709968583,
+      "sum_fast_minus_v2_equity": 32115.00603925471,
+      "sum_fast_override_days": 8,
+      "avg_fast_minus_v2_return_pct": 40.1437575490684,
+      "avg_fast_minus_v2_maxdd_pct": -2.184293838746073,
+      "avg_fast_minus_v2_equity": 4014.3757549068387,
+      "score": 45.25028022334827
+    },
+    {
+      "cid": "FEV1-0002",
+      "fast_signal_threshold": 0.66,
+      "fast_trend_gap_pct": 6.0,
+      "fast_inverse_min_weight": 0.9,
+      "windows": 8,
+      "sum_fast_minus_v2_return_pct": 321.1500603925472,
+      "sum_fast_minus_v2_maxdd_pct": -17.474350709968583,
+      "sum_fast_minus_v2_equity": 32115.00603925471,
+      "sum_fast_override_days": 8,
+      "avg_fast_minus_v2_return_pct": 40.1437575490684,
+      "avg_fast_minus_v2_maxdd_pct": -2.184293838746073,
+      "avg_fast_minus_v2_equity": 4014.3757549068387,
+      "score": 45.25028022334827
+    },
+    {
+      "cid": "FEV1-0003",
+      "fast_signal_threshold": 0.66,
+      "fast_trend_gap_pct": 8.0,
+      "fast_inverse_min_weight": 0.8,
+      "windows": 8,
+      "sum_fast_minus_v2_return_pct": 321.1500603925472,
+      "sum_fast_minus_v2_maxdd_pct": -17.474350709968583,
+      "sum_fast_minus_v2_equity": 32115.00603925471,
+      "sum_fast_override_days": 8,
+      "avg_fast_minus_v2_return_pct": 40.1437575490684,
+      "avg_fast_minus_v2_maxdd_pct": -2.184293838746073,
+      "avg_fast_minus_v2_equity": 4014.3757549068387,
+      "score": 45.25028022334827
+    },
+    {
+      "cid": "FEV1-0004",
+      "fast_signal_threshold": 0.66,
+      "fast_trend_gap_pct": 8.0,
+      "fast_inverse_min_weight": 0.9,
+      "windows": 8,
+      "sum_fast_minus_v2_return_pct": 321.1500603925472,
+      "sum_fast_minus_v2_maxdd_pct": -17.474350709968583,
+      "sum_fast_minus_v2_equity": 32115.00603925471,
+      "sum_fast_override_days": 8,
+      "avg_fast_minus_v2_return_pct": 40.1437575490684,
+      "avg_fast_minus_v2_maxdd_pct": -2.184293838746073,
+      "avg_fast_minus_v2_equity": 4014.3757549068387,
+      "score": 45.25028022334827
+    },
+    {
+      "cid": "FEV1-0005",
+      "fast_signal_threshold": 0.66,
+      "fast_trend_gap_pct": 10.0,
+      "fast_inverse_min_weight": 0.8,
+      "windows": 8,
+      "sum_fast_minus_v2_return_pct": 321.1500603925472,
+      "sum_fast_minus_v2_maxdd_pct": -17.474350709968583,
+      "sum_fast_minus_v2_equity": 32115.00603925471,
+      "sum_fast_override_days": 8,
+      "avg_fast_minus_v2_return_pct": 40.1437575490684,
+      "avg_fast_minus_v2_maxdd_pct": -2.184293838746073,
+      "avg_fast_minus_v2_equity": 4014.3757549068387,
+      "score": 45.25028022334827
+    }
+  ]
+}
